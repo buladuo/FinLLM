@@ -1,0 +1,42 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.env/
+
+# Logs and debug output
+logs/
+*.log
+
+
+
+# Dependency directories
+node_modules/
+*.egg-info/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Ignore compiled files
+*.so
+*.dll
+
+# Test results
+*.coverage
+.coverage.*
+.cache/
+
+# Ignore specific services or files
+runtime.log
+
+# Ignore Python packaging files
+dist/
+build/

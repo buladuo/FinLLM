@@ -1,0 +1,4 @@
+id,question,result
+tttt----1----1-1-1,600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？,astockbasicinfodb.lc_stockarchives
+tttt----1----1-1-2,该公司实控人是否发生改变？如果发生变化，什么时候变成了谁？是哪国人？是否有永久境外居留权？（回答时间用XXXX-XX-XX）,astockshareholderdb.lc_actualcontroller
+tttt----1----1-1-3,在实控人发生变化的当年股权发生了几次转让？,"astockshareholderdb.lc_actualcontroller, astockshareholderdb.lc_sharetransfer"

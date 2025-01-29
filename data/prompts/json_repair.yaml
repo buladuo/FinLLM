@@ -1,0 +1,99 @@
+default: 1
+type: json_repair
+
+prompts:
+  - id: 1
+    content: | 
+      一下内容包含部分可能的json内容，我需要你进行修复为json格式,要求必须要使用```json xxx ```包含json内容,以下是一些示例：
+      **示例1**:
+      user:
+      [{
+        id: 1,
+        content: 'abc'
+      }]
+      assistant:
+      ```json
+      [{
+        id: 1,
+        content: 'xxx'
+      }]
+      ```
+      缺少```json表示
+      **示例2**:
+      [{
+        id: 1,
+        response: 'abcabc'
+      },
+      {
+        id: 21,
+        response: 'abcde'
+      }]
+      assistant:
+      ```json
+      [{
+        id: 1,
+        response: 'abcabc'
+      },
+      {
+        id: 21,
+        response: 'abcde'
+      }]
+      ```
+      缺少```json表示
+      **示例3**:
+      user:
+      [
+        asdcs: akudks,
+        akkxds: keiwed
+        zjjckd: {
+          xkjdkscs:uiquwd,
+          lsjckd:'xmmk'
+        }
+      ]
+      assistant:
+      ```json
+      [{
+        asdcs: akudks,
+        akkxds: keiwed,
+        zjjckd: {
+          xkjdkscs:uiquwd,
+          lsjckd:'xmmk'
+        }
+      }]
+      ```
+      json字符串错误,[]应当成为{}
+      **示例4**:
+      user:
+      [
+        asdcs: akudks,
+        akkxds: keiwed,
+        zjjckd
+      ]
+      assistant:
+      ```json
+      [{
+        asdcs: akudks,
+        akkxds: keiwed
+      }]
+      ```
+      **示例5**:
+      user:
+      {
+        id: 1,
+        content: 'abc'
+      }
+      assistant:
+      ```json
+      [{
+        id: 1,
+        content: 'abc'
+      }]
+      ```
+      缺少应该是List格式而不是字典Dict格式，应当添加[]
+
+      多余部分是无效内容
+      **注意事项**
+      - 对于缺少键的不完整的部分，删除，不必保留。
+      - 对于原本没有的，不可以随意添加内容。
+      - 如果传入的是一个字典而不是List,你应该改写成为数组形式
+      

@@ -1,0 +1,56 @@
+default: 1
+type: json_repair
+
+prompts:
+  - id: 1
+    content: | 
+      以下内容包含部分可能的 SQL 语句，我需要你进行修复为标准的 SQL 格式，要求每一条 SQL 语句必须单独使用 ```sql xxx ``` 包裹。以下是一些示例：
+      **示例1**:
+      user:
+      SELECT * FROM users WHERE id = 1;
+      assistant:
+      ```sql
+      SELECT * FROM users WHERE id = 1;
+      ```
+      缺少 ```sql 表示
+
+      **示例2**:
+      user:
+      INSERT INTO users (name, age) VALUES ('John', 30);
+      DELETE FROM users WHERE id = 1;
+      assistant:
+      ```sql
+      INSERT INTO users (name, age) VALUES ('John', 30);
+      ```
+      ```sql
+      DELETE FROM users WHERE id = 1;
+      ```
+      每一条 SQL 语句必须单独放在一个 ```sql ``` 块内
+
+      **示例3**:
+      user:
+      UPDATE users SET age = 31 WHERE name = 'John';
+      assistant:
+      ```sql
+      UPDATE users SET age = 31 WHERE name = 'John';
+      ```
+      SQL 语句错误，缺少必要的关键字
+
+      **示例4**:
+      user:
+      DELETE FROM users WHERE id = 1;
+      SELECT * FROM orders WHERE status = 'completed';
+      assistant:
+      ```sql
+      DELETE FROM users WHERE id = 1;
+      ```
+      ```sql
+      SELECT * FROM orders WHERE status = 'completed';
+      ```
+      多余部分是无效内容
+
+      **注意事项**
+      - 对于缺少关键字的 SQL 语句，删除，不必保留。
+      - 对于原本没有的，不可以随意添加内容。
+      - 每一条 SQL 语句必须单独放在一个 ```sql ``` 块内，不可以将多个 SQL 语句放在同一个 ```sql ``` 块中。
+      
