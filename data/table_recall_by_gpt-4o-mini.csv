@@ -208,3 +208,108 @@ tttt----66----37-5-3,连续放量天数为多少？,astockmarketquotesdb.cs_stoc
 tttt----67----38-2-1,厦门钨业在2019年全年的最低收盘价是多少，出现在哪一天，XXXX年XX月XX日？,astockmarketquotesdb.qt_dailyquote
 tttt----67----38-2-2,厦门钨业在当天的VRSI量相对强弱是多少，保留4位小数？,
 tttt----67----38-2-3,厦门钨业已连跌几天？,astockmarketquotesdb.cs_stockpatterns
+tttt----68----38-5-1,厦门钨业在2021年全年的最低收盘价是多少，出现在哪一天，XXXX年XX月XX日？,astockmarketquotesdb.qt_stockperformance
+tttt----68----38-5-2,厦门钨业在当天的VRSI量相对强弱是多少，保留4位小数？,
+tttt----68----38-5-3,厦门钨业已连跌几天？,astockmarketquotesdb.cs_stockpatterns
+tttt----69----39-2-1,芯片概念概念板块属于什么2级概念？,astockindustrydb.lc_conceptlist
+tttt----69----39-2-2,"截止2023年末,该2级概念下一共有几个未终止的概念板块？",astockindustrydb.lc_conceptlist
+tttt----69----39-2-3,芯片概念概念板块的英文名称是什么？,astockindustrydb.lc_conceptlist
+tttt----70----40-2-1,按2021年末新版申万行业分类，现在杰瑞股份属于什么申万二级行业？,astockindustrydb.lc_exgindchange
+tttt----70----40-2-2,2021年末，该申万二级行业中有几个股票？,astockindustrydb.lc_industryvaluation
+tttt----70----40-2-3,2021年末，该股票的总市值占二级行业总市值百分之多少（四舍五入保留2位小数）？,astockindustrydb.lc_industryvaluation
+tttt----71----41-2-1,2021年末，按新版申万行业分类，现在均胜电子属于什么申万一级行业？,astockindustrydb.lc_exgindustry
+tttt----71----41-2-2,2021年末，该一级行业中有几个股票？,astockindustrydb.lc_industryvaluation
+tttt----71----41-2-3,2021年末，该股票的A股流通市值占一级行业流通市值百分之多少（四舍五入保留2位小数）？,astockindustrydb.lc_industryvaluation
+tttt----72----29-2-1,2020-07-02风电零部件行业的总市值是多少(元)？,astockindustrydb.lc_industryvaluation
+tttt----72----29-2-2,其中A股流通市值是多少（元）？,astockbasicinfodb.lc_stockarchives
+tttt----72----29-2-3,下一个交易日的A股流通市值是多少（元）？,
+tttt----73----17-2-1,软通动力在2019年报酬总额和领取报酬的管理层人数是多少？,astockoperationsdb.lc_rewardstat
+tttt----73----17-2-2,其中前三名董事的报酬是多少？,astockoperationsdb.lc_rewardstat
+tttt----73----17-2-3,该公司2020年报酬总额是多少？与2019年相比增加还是减少？,astockoperationsdb.lc_rewardstat
+tttt----74----18-2-1,天弘增利短债C的基金管理人是谁？,publicfunddb.mf_investadvisoroutline
+tttt----74----18-2-2,该基金的运作方式是什么？,publicfunddb.mf_fundarchives
+tttt----74----18-2-3,该基金的投资风格是什么？,publicfunddb.mf_fundarchives
+tttt----75----42-2-1,截止至中国软件2021年Q4季度，研发投入总额是多少？（调整后的合并报表）,astockfinancedb.lc_intassetsdetail
+tttt----75----42-2-2,截止至中国软件2021年Q4季度，研发投入占营业收入比例是多少？,astockfinancedb.lc_intassetsdetail
+tttt----75----42-2-3,请根据中国软件截止至2021年Q4季度的研发人员数量和占比推算公司总人数（计算方式：总人数 = 研发人员数量 ÷ (研发人员占比 ÷ 100)，结果取整）。,astockoperationsdb.lc_staff
+tttt----76----43-2-1,陆家嘴在2019年的最大借贷金额是多少？,astockeventsdb.lc_credit
+tttt----76----43-2-2,陆家嘴在2019年的单次首次借贷金额最高的借款方是谁？其单次首次借贷金额是多少？,astockeventsdb.lc_credit
+tttt----76----43-2-3,陆家嘴在2019年最新的借贷事件是什么？给我的答案包括事件内容、借贷方、出借方和借贷金额等信息。,astockeventsdb.lc_credit
+tttt----77----44-2-1,亿帆医药在2020年的最大担保金额是多少？,astockeventsdb.lc_warrant
+tttt----77----44-2-2,亿帆医药在2020年的最大担保金额涉及的担保方是谁？担保金额是多少？,astockeventsdb.lc_warrant
+tttt----77----44-2-3,亿帆医药在2020年最新的担保事件是什么？答案包括事件内容、担保方、被担保方和担保金额信息。,astockeventsdb.lc_warrant
+tttt----78----45-2-1,许继电气在2021年发布了多少条重大事项公告？,astockeventsdb.lc_regroup
+tttt----78----45-2-2,许继电气在2021年签订的涉及金额最大的合同标的是哪个？金额是多少？,astockeventsdb.lc_majorcontract
+tttt----78----45-2-3,许继电气在2021年签订金额最大的合同是否发生在重大事项公告之后？签订的合同日期和重大事项公告日期分别是什么（XXXX-XX-XX）？,astockeventsdb.lc_majorcontract
+tttt----79----46-2-1,美亚光电在2021年的减持计划中，最大可减持股份数量（减持股份数量上限(股)）与最小可减持股份数量（减持股份数量下限(股)）的差距是多少？,astockshareholderdb.lc_transferplan
+tttt----79----46-2-2,美亚光电在2021年的减持计划中涉及了多少名股东？,astockshareholderdb.lc_transferplan
+tttt----79----46-2-3,美亚光电在2021年的减持计划中，哪位股东的最大减持比例最高？,astockshareholderdb.lc_transferplan
+tttt----80----1-2-1 ,利亚德的证券代码和ISIN代码是什么？,astockbasicinfodb.lc_stockarchives
+tttt----80----1-2-2 ,该公司最新的证监会行业代码是多少？该行业下有多少家上市公司？,astockindustrydb.lc_exgindustry
+tttt----80----1-2-3 ,利亚德最近三次投资者调研的具体时间(xxxx-xx-xx的格式)、地点和参与机构数量分别是多少？,astockeventsdb.lc_investorra
+tttt----81----2-2-1 ,隧道股份在2021年底有多少个国家队持股股东？,astockshareholderdb.lc_nationalstockholdst
+tttt----81----2-2-2 ,这些股东的持有A股总数是多少？,astockshareholderdb.lc_nationalstockholdst
+tttt----81----2-2-3 ,在这些股东中，持股比例最高的是哪个股东？持股比例是多少？（保留2位小数）,astockshareholderdb.lc_stockholdingst
+tttt----82----3-2-1 ,中国宝安2021年底的员工总数是多少？其中技术人员占比是多少？（保留2位小数）,astockoperationsdb.lc_staff
+tttt----82----3-2-2 ,在该公司的技术人员中，具有硕士及以上学历（硕士+博士）的人员占比是多少？（保留2位小数）,astockoperationsdb.lc_staff
+tttt----82----3-2-3 ,该公司的人才结构是否合理？请分析技术人员、生产人员、销售人员的比例构成。,astockoperationsdb.lc_staff
+tttt----83----4-2-1 ,海信家电在2021-12-24这天，小单、中单和大单的净流入情况如何？净流入额分别是多少？(单位：元),astockmarketquotesdb.cs_stockcapflowindex
+tttt----83----4-2-2 ,基于上述资金流向数据，大单对比小单的净买入率(额)差值是多少个百分点？这种资金流向组合反映了什么现象？ (保留两位小数),astockmarketquotesdb.cs_stockcapflowindex
+tttt----83----4-2-3 ,请结合该股票所属的概念板块，2021-12-24当天其所属概念板块的大单小单净买入率差值是多少个百分点？,astockindustrydb.lc_coconcept
+tttt----84----5-2-1 ,永泰能源在2020年发生了几次业务范围变更？请列出每次变更的具体日期（xxxx-xx-xx的格式）,"astockbasicinfodb.lc_business, astockindustrydb.lc_exgindchange"
+tttt----84----5-2-2 ,在2020年永泰能源的业务变更日期前后30天内，公司发生了多少次信用评级相关事件？请列出具体的事件日期。,astockeventsdb.lc_credit
+tttt----84----5-2-3 ,比较永泰能源在2019年和2020年的业务变更次数和信用事件次数，计算2020年相对于2019年的变化率。哪个指标的变化更大？,"astockbasicinfodb.lc_business, indexdb.lc_indexcomponent"
+tttt----85----6-2-1 ,鹏华基金在2019年成立了多少只基金？这些基金的总募集规模是多少？(单位：元),publicfunddb.mf_fundarchives
+tttt----85----6-2-2 ,在上述成立的基金中，有多少只是股票型基金？这些股票型基金的平均募集规模是多少？(单位：元),publicfunddb.mf_fundarchives
+tttt----85----6-2-3 ,请分析该公司2019年新成立的股票型基金中，采用被动投资策略(指数型)的基金占比是多少？这一比例相比同期其他基金公司是高还是低？,publicfunddb.mf_fundarchives
+tttt----86----7-2-1 ,安琪酵母在2021年12月31日的股东总户数是多少？其中A股股东户均持股数是多少股？,astockshareholderdb.lc_shnumber
+tttt----86----7-2-2 ,基于上述股东数据，该公司A股户均持股数相比上一季度的变化率是多少(四舍五入到小数点后两位)？这种变化反映了什么现象？,astockshareholderdb.lc_shnumber
+tttt----86----7-2-3 ,该公司2021年的管理层总薪酬是多少，所有公司平均水平是多少？该公司管理层薪酬与行业平均水平的差异率是多少？ (四舍五入保留两位小数),astockoperationsdb.lc_rewardstat
+tttt----87----8-2-1 ,健康元药业集团股份有限公司在2020-2021年期间进行了几次股份回购？每次回购的金额(单位：万元，保留两位小数)和股数分别是多少？,astockshareholderdb.lc_buyback
+tttt----87----8-2-2 ,最近一次回购的主要目的是什么？是否涉及股权激励计划？,"astockshareholderdb.lc_buyback, astockfinancedb.lc_ashareseasonednewissue"
+tttt----87----8-2-3 ,该公司在2020-2021年期间的回购总金额在A股上市公司中排名如何？,astockshareholderdb.lc_buyback
+tttt----88----9-2-1 ,伟明环保最近一期员工持股计划的参与总人数是多少？其中管理层参与人数占比(四舍五入精确到小数点后两位，并以百分比形式表示)是多少？,"astockshareholderdb.lc_esop, astockoperationsdb.lc_staff"
+tttt----88----9-2-2 ,该期员工持股计划的股票来源是什么？计划购买股票数量是多少股？,"astockshareholderdb.lc_esop, astockshareholderdb.lc_esop"
+tttt----88----9-2-3 ,"对比伟明环保与在证券市场和证券类别相同的公司的员工持股计划,分析:(1)在证券市场和证券类别相同的公司的员工持股计划的数量(2)该公司的持股计划规模处于什么水平(精确到小数点后两位，并以百分比形式表示)?(3)管理层参与人数比例处于什么水平(精确到小数点后两位，并以百分比形式表示)?(4)锁定期长度处于什么水平(精确到小数点后两位，并以百分比形式表示)?","astockshareholderdb.lc_esop, astockshareholderdb.lc_esopsummary"
+tttt----89----10-2-1 ,光环新网(代码:300383)的年度报告中在2021年年末的机构持股比例是多少(四舍五入精确到小数点后两位，并以百分比形式表示)？其中基金持股比例是多少(四舍五入精确到小数点后两位，并以百分比形式表示)？,astockshareholderdb.lc_stockholdingst
+tttt----89----10-2-2 ,非基金定报，以最后一次统计日期为准，该公司2021年全年(第一季度末到第四季度末)机构持股比例分别是多少(四舍五入精确到小数点后两位，并以百分比形式表示)？,astockshareholderdb.lc_stockholdingst
+tttt----89----10-2-3 ,对比2020年末和2021年末的数据，该公司的机构持股比例和基金持股比例分别是多少(四舍五入精确到小数点后两位，并以百分比形式表示)，变化了多少(保留正负符号，四舍五入精确到小数点后两位，并以百分比形式表示)？,astockshareholderdb.lc_stockholdingst
+tttt----90----11-2-1 ,九州通在2020-2021年间实施了几次分红方案？每次分红的合计派现金额（四舍五入保留两位小数，单位元）和实施公告日期（xxxx-xx-xx的格式）分别是多少？,astockfinancedb.lc_dividend
+tttt----90----11-2-2 ,从公司年报中，在2020-2021年间，该公司的机构持无限售流通A股比例是是否增长(输出是/否)，请列出具体数据，保留4位小数。,astockshareholderdb.lc_stockholdingst
+tttt----90----11-2-3 ,在2020-2021年间，公司发生了多少重大借贷事件（单笔金额超过3000万元）？这些借贷事件最大金额和对应的借款方和贷款方是谁？,astockeventsdb.lc_credit
+tttt----91----12-2-1 ,在2021-12-31这一天，A股市场中创出月度新高的公司有哪些（中文名称缩写即可）？他们的证券代码是多少？,astockmarketquotesdb.cs_stockpatterns
+tttt----91----12-2-2 ,在这些创出新高的公司中，哪些公司的股东中包含企业资本？请列出公司名（中文名称缩写即可）和企业资本股东名称,astockshareholderdb.lc_nationalstockholdst
+tttt----91----12-2-3 ,"对于同时具备企业资本背景和创新高的公司，请从以下维度深入分析：
+    这些公司的行业代码是什么？行业相同的公司分别是什么（中文名称缩写即可）",astockindustrydb.lc_exgindustry
+tttt----92----13-2-1 ,华夏鼎康债券A在2019年的分红次数是多少？每次分红的派现比例是多少？,publicfunddb.mf_dividend
+tttt----92----13-2-2 ,基于上述分红数据，在2019年最后一次分红时，如果一位投资者持有1000份该基金，税后可以获得多少分红收益？,publicfunddb.mf_dividend
+tttt----92----13-2-3 ,请结合该基金所属的债券型基金分类，分析2019年同类基金的平均分红次数和平均派现比例（四舍五入保留4位小数）,publicfunddb.mf_dividend
+tttt----93----14-2-1 ,中铁工业在2021年签订了哪些金额较大的重大合同？请列出前两大合同的发布日期(xxxx-xx-xx的格式)，合同标的和合同金额(四舍五入保留两位小数)。,astockeventsdb.lc_majorcontract
+tttt----93----14-2-2 ,中铁工业2021年重大合同的季度数量如何？,astockeventsdb.lc_majorcontract
+tttt----93----14-2-3 ,"分析2021年重大合同的交易对手特征：
+1. 重复交易的客户数量及其合同金额（保留两位小数）以及数量和金额占总量的占比（四舍五入保留两位小数，并以百分比形式表示）？
+2. 单一交易对手的合同总金额，最高是谁，总金额是多少（保留两位小数），全部交易对手合同总金额占比（四舍五入保留两位小数，并以百分比形式表示）？",astockeventsdb.lc_majorcontract
+tttt----94----15-2-1 ,华峰化学在2019年发生了哪些舆情事件？请列出事件发生时间(YYYY-MM-DD)、事件名称和情感方向。,institutiondb.ps_newssecurity
+tttt----94----15-2-2 ,在上述重大事件发生期间，华峰化学是否出现过停牌？如有，请列出停牌起止日期(YYYY-MM-DD)和具体原因。,astockmarketquotesdb.lc_suspendresumption
+tttt----94----15-2-3 ,2019年期间，华峰化学发生的最大比例股权变动是在哪一天（xxxx-xx-xx）？这次变动前后5个交易日的股价累计涨跌幅是多少？（保留2位小数）,astockshareholderdb.lc_sharetransfer
+tttt----95----16-2-1 ,大北农在2019年第一季度末的资产负债率是多少？其中流动资产和非流动资产分别占总资产的比例是多少？（四舍五入保留2位小数）,astockfinancedb.lc_balancesheetall
+tttt----95----16-2-2 ,基于上述资产结构特征，该公司在2019年为其子公司提供担保的总金额是多少？(保留2位小数)最长担保期限为多少个月？（保留整数）,astockeventsdb.lc_warrant
+tttt----95----16-2-3 ,针对上述担保事项，公司在2019年召开的股东大会的具体日期以及参会股东所持表决权占公司总股本的比例是多少？(可以使用最近一次可查总股本的数据)（四舍五入保留2位小数）,"astockeventsdb.lc_warrant, astockshareholderdb.lc_smattendinfo"
+tttt----96----17-2-1 ,梅花生物在2019年进行了几次股票回购？回购金额合计是多少？(四舍五入保留2位小数),astockshareholderdb.lc_buyback
+tttt----96----17-2-2 ,在上述回购计划中，最大单笔回购的具体时间(xxxx-xx-xx的格式)和金额是多少？(四舍五入保留2位小数),astockshareholderdb.lc_buyback
+tttt----96----17-2-3 ,该公司2019年的平均回购时间跨度是多少？(天为单位，2位小数)平均回购金额是多少？(四舍五入保留2位小数),astockshareholderdb.lc_buyback
+tttt----97----18-2-1 ,深科技在2021年12月24日的交易数据如何?具体包括收盘价、成交量、换手率，保留2位小数。,astockmarketquotesdb.qt_dailyquote
+tttt----97----18-2-2 ,"基于上述交易数据，该股当日是否创出了近一周、近一月的新高?如果不是,最高价分别是多少?","astockmarketquotesdb.qt_dailyquote, astockmarketquotesdb.qt_stockperformance"
+tttt----97----18-2-3 ,"结合该股当日的MACD指标(考虑成交量)以及均线排列情况,从技术面分析其走势特征。",astockmarketquotesdb.cs_stockpatterns
+tttt----98----19-2-1 ,安井食品在2019年第一季度的最高价、最低价分别是多少？成交量最大的一天是哪天（XXXX-XX-XX）？,astockmarketquotesdb.qt_dailyquote
+tttt----98----19-2-2 ,在上述成交量最大的那天，该股票是否创下了近一周、近一月或近一季度的新高？如果是，分别创下了哪些新高？,astockmarketquotesdb.qt_stockperformance
+tttt----98----19-2-3 ,分析该股票2019年1月份的成交量特征：哪几天的成交量超过月均量的2倍？具体是多少比例？这些放量日的收盘价相比前一日分别上涨/下跌了多少？(四舍五入保留两位小数),astockmarketquotesdb.cs_turnovervoltecindex
+tttt----99----20-2-1 ,美年健康在2019年发生的股权质押中，质押比例最大的一笔是哪个股东质押给了谁？质押股数和占总股本比例是多少，保留4位小数？,astockshareholderdb.lc_sharefp
+tttt----99----20-2-2 ,在上述最大比例质押发生时，该公司的短期借款余额是多少？(保留两位小数),astockeventsdb.lc_credit
+tttt----99----20-2-3 ,该公司2019年全年累计发生几笔股权质押？质押融资总额占其年末总资产的比例是多少？(保留两位小数),"astockshareholderdb.lc_sharefp, astockshareholderdb.lc_sharefpsta"
+tttt----100----21-2-1 ,横店东磁在2019年1月份进行了多少次投资者关系活动？这些活动中参与机构最多的一次活动发生在哪天(xxxx-xx-xx的格式)，有多少家机构参与？,astockeventsdb.lc_investorra
+tttt----100----21-2-2 ,该公司高管的年度薪酬总额是多少？一年后呢？变化比例是(四舍五入保留到小数点两位)？,astockoperationsdb.lc_rewardstat
+tttt----100----21-2-3 ,请结合该公司所属的概念板块，列出2021年该公司所属的各个概念板块的平均高管薪酬和投资者关系活动频次是多少？（四舍五入保留两位小数）,"astockindustrydb.lc_coconcept, astockindustrydb.lc_conceptlist, astockoperationsdb.lc_rewardstat, astockeventsdb.lc_investorra, astockeventsdb.lc_investordetail"
+tttt----101----22-2-1 ,中直股份在2021年12月31日的总股本是多少？其中有限售条件的流通股占比是多少？(保留两位小数),"astockshareholderdb.lc_sharestru, astockshareholderdb.lc_mshareholder"
+tttt----101----22-2-2 ,在这个时间点，该股票的境内自然人持股和境外自然人持股比例分别是多少？两者相差多少个百分点？(保留两位小数),astockshareholderdb.cs_foreignholdingst
+tttt----101----22-2-3 ,该股票属于哪些概念板块？在这些概念板块中，其他公司2021年12月31日的平均有限售股比例是多少？该股票是高于还是低于板块平均水平，偏离了多少个百分点？(保留两位小数),"astockindustrydb.lc_coconcept, astockindustrydb.lc_conceptlist"

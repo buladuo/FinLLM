@@ -11,7 +11,11 @@ venv/
 logs/
 *.log
 
-
+# Data files
+data/
+*.csv
+*.db
+*.sqlite3
 
 # Dependency directories
 node_modules/
