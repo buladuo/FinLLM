@@ -1,0 +1,306 @@
+default: 1
+full_table_name: indexdb.lc_indexbasicinfo.yaml
+database_name: indexdb
+database_name_zh: 指数数据库
+table_name: lc_indexbasicinfo
+table_name_zh: 指数基本情况
+table_describe: 1.收录了市场上主要指数的基本情况，包括指数类别、成份证券类别、发布机构、发布日期、基期基点、指数发布的币种等信息。2.数据源：中证指数有限公司、上海证券交易所、深圳证券交易所、中央国债登记结算有限责任公司、申银万国研究所、标普道琼斯指数公司等
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndexCode
+  column_description: 指数内部编码
+  annotation_zh: 指数内部代码（IndexCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到指数的代码、简称。
+  annotation: 'IndexCode: associated with "InnerCode" in "SecuMain", to obtain the
+    index code and abbreviation.'
+- column_name: IndustryStandard
+  column_description: 行业标准
+  annotation_zh: 行业标准(IndustryStandard)：与(CT_SystemConst)表中的DM字段关联，令LB = 1081 AND
+    DM NOT IN (2,8,10,11,15,16,17,18,19,21,25,26,27,29,31,32,34,35,36,39,41,42,43,99)，得到行业标准的具体描述：1-CSRC行业分类，3-中信行业分类，5-SSE行业分类，6-聚源行业分类(旧)，7-SSE-GICS行业分类，9-申万行业分类，12-中证指数行业分类，13-中信标普GICS行业分类，14-新华ICB行业分类，20-国证行业分类，22-证监会行业分类2012版，23-证监会行业分类2012版(中证披露)，24-申万行业分类2014版，28-中证指数行业分类(2016版)，30-聚源行业分类2016，33-伦交所行业分类（ICB），37-中信行业2019分类，38-申万行业分类(新)，40-中证指数行业分类(2021版)，44-中国上市公司协会上市公司行业统计分类指引，46-华证上市公司行业分类标准(2022)，47-战略性新兴产业分类(2018)，48-证监会行业分类(融合国民经济)，49-长江行业分类，50-聚源行业分类(2023)，100-恒生行业分类。
+  annotation: 'Industry Standard: Associated with the DM field in the (CT_SystemConst)
+    table, let LB = 1081 AND DM NOT IN (2,8,10,11,15,16,17,18,19,21,25,26,27,29,31,32,34,35,36,39,41,42,43,99),
+    the specific description of the industry standard is as follows: 1-CSRC industry
+    classification, 3-CITIC industry classification, 5-SSE industry classification,
+    6-Juyuan industry classification (old), 7-SSE-GICS industry classification, 9-Shenwan
+    industry classification, 12-CSSCI index industry classification, 13-CITIC S&P
+    GICS industry classification, 14-Xinhua ICB industry classification, 20-Guozheng
+    industry classification, 22-CSRC industry classification 2012 version, 23-CSRC
+    industry classification 2012 version (Citics disclosure), 24-Shenwan industry
+    classification 2014 version, 28-CSSCI index industry classification (2016 version),
+    30-Juyuan industry classification 2016, 33-LSE industry classification (ICB),
+    37-CITIC industry classification 2019, 38-Shenwan industry classification (new),
+    40-CSSCI index industry classification (2021 version), 44-China Association for
+    Public Companies industry classification guidelines for listed companies, 46-Huazheng
+    listed company industry classification standards (2022), 47-Strategic emerging
+    industry classification (2018), 48-CSRC industry classification (integrated with
+    the national economy), 49-Changjiang industry classification, 50-Juyuan industry
+    classification (2023), 100-Hengsheng industry classification.'
+- column_name: IndustryType
+  column_description: 行业类别
+  annotation_zh: 行业类别(IndustryType)：当IndustryStandard in (1,3,5,6,7,9,12,20,22,24,28,30,33,37,44,46)
+    时,"IndustryType"与"CT_IndustryType"的"IndustryNum"关联,同时令CT_IndustryType.Standard=IndustryStandard;当IndustryStandard=23时,"IndustryType"与"CT_IndustryType"的"IndustryNum"关联,同时令CT_IndustryType.Standard=22;当IndustryStandard=13时,"IndustryCode"与"CT_IndustryType"的"IndustryNum"关联,同时令CT_IndustryType.Standard=6;当IndustryStandard
+    in (38,40) 时,"IndustryType"与"CT_IndustryType"的"IndustryCode"关联,同时令CT_IndustryType.Standard=IndustryStandard;当IndustryStandard=14时,"IndustryType"与"CT_SystemConst"的"DM"关联,"LB=1529";当IndustryStandard=100时,"IndustryType"与"HK_IndustryCategory"的"IndustryNum"关联,Standard=100
+  annotation: When IndustryStandard is in (1,3,5,6,7,9,12,20,22,24,28,30,33,37,44,46),
+    "IndustryType" is associated with "IndustryNum" of "CT_IndustryType", and CT_IndustryType.Standard
+    is set to IndustryStandard; when IndustryStandard equals 23, "IndustryType" is
+    associated with "IndustryNum" of "CT_IndustryType", and CT_IndustryType.Standard
+    is set to 22; when IndustryStandard equals 13, "IndustryCode" is associated with
+    "IndustryNum" of "CT_IndustryType", and CT_IndustryType.Standard is set to 6;
+    when IndustryStandard is in (38,40), "IndustryType" is associated with "IndustryCode"
+    of "CT_IndustryType", and CT_IndustryType.Standard is set to IndustryStandard;
+    when IndustryStandard equals 14, "IndustryType" is associated with "DM" of "CT_SystemConst",
+    LB=1529; when IndustryStandard equals 100, "IndustryType" is associated with "IndustryNum"
+    of "HK_IndustryCategory", Standard=100.
+- column_name: PubOrgName
+  column_description: 发布机构名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CreatIndexOrgName
+  column_description: 编制机构名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PubDate
+  column_description: 发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BaseDate
+  column_description: 基日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BasePoint
+  column_description: 基点(点)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: WAMethod
+  column_description: 加权方式
+  annotation_zh: 加权方式(WAMethod)：与(CT_SystemConst)表中的DM字段关联，令LB = 1265 and DM not in
+    (4,54,50,40,5,13,10,12,30,11,63)，得到加权方式的具体描述：1-持仓市值加权，2-产量加权，3-自由流通市值加权，6-分档自由流通市值加权，7-调整自由流通市值加权，33-债券发行量加权，34-债券流通托管量加权，41-调整流通市值加权，42-流通市值加权，43-总市值加权，44-风格评分加权法，45-基本面加权，46-等权，47-股息加权，48-市盈率加权，49-流动性加权，51-消费量加权，52-波动率倒数加权，53-固定权重，55-贝塔系数加权，56-收益率加权，57-调整总市值加权，60-等风险加权，61-ESG评分加权，62-持股金额加权，64-消费金额加权。
+  annotation: 'Weighting Method (WAMethod): Associated with the DM field in the (CT_SystemConst)
+    table, let LB = 1265 and DM not in (4,54,50,40,5,13,10,12,30,11,63), obtain the
+    specific description of the weighting method: 1 - Market Value of Positions Weighted,
+    2 - Production Weighted, 3 - Free Float Market Value Weighted, 6 - Tiered Free
+    Float Market Value Weighted, 7 - Adjusted Free Float Market Value Weighted, 33
+    - Bond Issuance Volume Weighted, 34 - Bond Circulation Custody Volume Weighted,
+    41 - Adjusted Circulating Market Value Weighted, 42 - Circulating Market Value
+    Weighted, 43 - Total Market Value Weighted, 44 - Style Score Weighting Method,
+    45 - Fundamental Weighted, 46 - Equal Weighted, 47 - Dividend Weighted, 48 - Price-to-Earnings
+    Ratio Weighted, 49 - Liquidity Weighted, 51 - Consumption Volume Weighted, 52
+    - Inverse Volatility Weighted, 53 - Fixed Weight, 55 - Beta Coefficient Weighted,
+    56 - Yield Weighted, 57 - Adjusted Total Market Value Weighted, 60 - Equal Risk
+    Weighted, 61 - ESG Score Weighted, 62 - Shareholding Amount Weighted, 64 - Consumption
+    Amount Weighted.'
+- column_name: IndexType
+  column_description: 指数类别
+  annotation_zh: 指数类别(IndexType)：与(CT_SystemConst)表中的DM字段关联，令LB=1266 AND DM IN (10,30,42,43,44,45,46,47,50,57,60,61)，得到指数类别的具体描述：10-综合类指数，30-行业类指数，42-策略类指数，43-风格类指数，44-主题类指数，45-基金类指数，46-债券类指数，47-规模类指数，50-期货类指数，57-其他类指数，60-多资产指数，61-外汇指数。
+  annotation: 'Index Type: Associated with the DM field in the (CT_SystemConst) table,
+    let LB=1266 AND DM IN (10,30,42,43,44,45,46,47,50,57,60,61), to obtain the specific
+    description of the index type: 10-Composite Index, 30-Industry Index, 42-Strategy
+    Index, 43-Style Index, 44-Theme Index, 45-Fund Index, 46-Bond Index, 47-Scale
+    Index, 50-Future Index, 57-Other Index, 60-Multi-Asset Index, 61-Foreign Exchange
+    Index.'
+- column_name: PubIndexType
+  column_description: 指数类别(发布机构)
+  annotation_zh: 指数类别(发布机构)(PubIndexType)与(CT_SystemConst)表中的DM字段关联，令LB = 1266 AND
+    MS NOT LIKE '%废弃%' AND DM>100，得到指数类别(发布机构)的具体描述：121000-申万300子行业，121101-申万一级行业，121102-申万二级行业，121103-申万三级行业，121201-申万非发布指数，121300-申万量化策略，121600-申万特征指数，121700-申万市场表征，121800-申万新三板，121900-申万定制发布，122000-申万主题，122100-申万风格指数，123000-申万公募基金分类指数，131100-风格指数，131200-主题指数，131300-行业指数，131400-策略指数，131500-区域指数，131800-定制指数，141000-天相基准指数，141100-天相风格指数，141200-天相特征指数，141300-天相表现指数，141401-天相一级行业指数，141402-天相二级行业指数，141500-天相地区指数，161001-中信一级行业指数，161002-中信二级行业指数，161003-中信三级行业指数，161004-中信四级行业指数，161005-中信-产业指数，161006-中信-产业链指数，161007-中信-风格指数，461001-中债-综合指数，461002-中债-分类指数-按信用等级，461003-中债-分类指数-按流通场所，461004-中债-分类指数-按计息方式，461005-中债-分类指数-按发行人，461006-中债-分类指数-按发行期限，461007-中债-分类指数-按待偿期限，461008-中债-分类指数-其他，461009-中债-定制指数，461010-中债-成份指数，461011-中债-策略指数，461012-中债-绿色债指数，461013-中债-利率指数，461014-中债-投资者分类指数，461015-中债-外币计价指数，461016-中债-分类指数-按区域，461017-中债-非发布指数，461018-中债-美元债券指数，461019-中债-分类指数-按中债市场隐含评级，461020-中债-分类指数-按中债行业，461021-中债-碳系列指数，461022-中债-多资产指数，461023-中债-股票指数-股票规模指数，461024-中债-主题指数，471004-中证-基金指数，471005-中证-期货指数，471006-中证-其他指数，471009-中证-债券指数，471010-中证-可转债指数，471011-中证-股票指数，471012-中证-组合资产指数，481001-恒生-市值指数，481002-恒生-行业指数，481003-恒生-因子及策略指数，481004-恒生-可持续发展指数，481005-恒生-固定收益产品指数，491001-规模指数，491002-基金指数，491003-债券指数，491004-央视50，491005-央视创新，491006-央视成长，491007-央视回报，491008-央视治理，491009-央视责任，491010-央视生态，491011-央视文化，491012-多资产指数，491013-跨境指数，491014-人民币指数，491015-综合指数，501001-华证-A股-规模，501002-华证-A股-行业主题，501003-华证-A股-策略，501004-华证-A股-因子，501005-华证-沪深港-行业主题，501006-华证-沪深港-策略，501007-华证-ESG行业指数，501008-华证-行业主题，511000-聚源综合，515000-聚源可转债指数，516001-聚源基金分类指数。
+  annotation: 'The exponent category (publishing authority) (PubIndexType) is associated
+    with the DM field in the CT_SystemConst table, where LB = 1266 AND MS NOT LIKE
+    ''%discard%'' AND DM > 100, resulting in the specific description of the exponent
+    category (publishing authority): 121000-Shenwan 300 Sub-industry, 121101-Shenwan
+    First-level Industry, 121102-Shenwan Second-level Industry, 121103-Shenwan Third-level
+    Industry, 121201-Shenwan Non-published Index, 121300-Shenwan Quantitative Strategy,
+    121600-Shenwan Characteristic Index, 121700-Shenwan Market Characterization, 121800-Shenwan新三板,
+    121900-Shenwan Customized Publishing, 122000-Shenwan Theme, 122100-Shenwan Style
+    Index, 123000-Shenwan Public Fund Classification Index, 131100-Style Index, 131200-Theme
+    Index, 131300-Industry Index, 131400-Strategy Index, 131500-Regional Index, 131800-Custom
+    Index, 141000-Tianxiang Benchmark Index, 141100-Tianxiang Style Index, 141200-Tianxiang
+    Characteristic Index, 141300-Tianxiang Performance Index, 141401-Tianxiang First-level
+    Industry Index, 141402-Tianxiang Second-level Industry Index, 141500-Tianxiang
+    Regional Index, 161001-CITIC First-level Industry Index, 161002-CITIC Second-level
+    Industry Index, 161003-CITIC Third-level Industry Index, 161004-CITIC Fourth-level
+    Industry Index, 161005-CITIC Industry Index, 161006-CITIC Industry Chain Index,
+    161007-CITIC Style Index, 461001-CBond Comprehensive Index, 461002-CBond Classification
+    Index by Credit Rating, 461003-CBond Classification Index by Circulation Venue,
+    461004-CBond Classification Index by Interest Calculation Method, 461005-CBond
+    Classification Index by Issuer, 461006-CBond Classification Index by Issue Tenor,
+    461007-CBond Classification Index by Remaining Tenor, 461008-CBond Classification
+    Index-Other, 461009-CBond Custom Index, 461010-CBond Component Index, 461011-CBond
+    Strategy Index, 461012-CBond Green Bond Index, 461013-CBond Interest Rate Index,
+    461014-CBond Investor Classification Index, 461015-CBond Foreign Currency Denominated
+    Index, 461016-CBond Classification Index by Region, 461017-CBond Non-published
+    Index, 461018-CBond US Dollar Bond Index, 461019-CBond Classification Index by
+    CBond Implicit Rating, 461020-CBond Classification Index by CBond Industry, 461021-CBond
+    Carbon Series Index, 461022-CBond Multi-asset Index, 461023-CBond Stock Index-Stock
+    Size Index, 461024-CBond Theme Index, 471004-CSS Fund Index, 471005-CSS Futures
+    Index, 471006-CSS Other Index, 471009-CSS Bond Index, 471010-CSS Convertible Bond
+    Index, 471011-CSS Stock Index, 471012-CSS Portfolio Asset Index, 481001-HS Market
+    Capitalization Index, 481002-HS Industry Index, 481003-HS Factor and Strategy
+    Index, 481004-HS Sustainable Development Index, 481005-HS Fixed Income Product
+    Index, 491001-Size Index, 491002-Fund Index, 491003-Bond Index, 491004-CCTV 50,
+    491005-CCTV Innovation, 491006-CCTV Growth, 491007-CCTV Return, 491008-CCTV Governance,
+    491009-CCTV Responsibility, 491010-CCTV Ecology, 491011-CCTV Culture, 491012-Multi-asset
+    Index, 491013-Cross-border Index, 491014-RMB Index, 491015-Comprehensive Index,
+    501001-Huazheng A-share Size, 501002-Huazheng A-share Industry Theme, 501003-Huazheng
+    A-share Strategy, 501004-Huazheng A-share Factor, 501005-Huazheng Shanghai/Shenzhen/Hong
+    Kong Industry Theme, 501006-Huazheng Shanghai/Shenzhen/Hong Kong Strategy, 501'
+- column_name: IndexSeries
+  column_description: 指数系列
+  annotation_zh: 指数系列(IndexSeries)与(CT_SystemConst)表中的DM字段关联，令LB=2395，得到指数系列的具体描述：101000-中证系列，101100-上证系列，101200-新三板系列，101300-中华交易系列，101400-AMAC系列，101600-北证系列，201000-国证系列，201100-深证系列，201200-央视指数，201300-国际合作
+  annotation: 'The exponential series (IndexSeries) is associated with the DM field
+    in the (CT_SystemConst) table. With LB set to 2395, the specific description of
+    the exponential series is as follows: 101000 - CSI Series, 101100 - SSE Series,
+    101200 - NEeq Series, 101300 - China Trading Series, 101400 - AMAC Series, 101600
+    - Beijing Stock Exchange Series, 201000 - National Securities Index Series, 201100
+    - SZSE Series, 201200 - CCTV Index, 201300 - International Cooperation.'
+- column_name: IndexPriceType
+  column_description: 指数计算类别
+  annotation_zh: 指数设计类别（IndexDesignType）：与(CT_SystemConst)表中的DM字段关联，令LB = 2013，得到指数设计类别的具体描述：1-主指数，2-衍生指数。
+  annotation: 'Index Design Category (IndexDesignType): Associated with the DM field
+    in the (CT_SystemConst) table, set LB = 2013, to obtain the specific description
+    of the index design category: 1 - Primary Index, 2 - Derived Index.'
+- column_name: IndexDesignType
+  column_description: 指数设计类别
+  annotation_zh: 与主指数关系(Relationship)：与(CT_SystemConst)表中的DM字段关联，令LB=2014，得到与主指数关系的具体描述：1-币种不同，2-分红规则不同，3-分红规则和币种都不同，4-税后分红，5-主指数，6-待偿期限不同，7-分红规则和待偿期限都不同，8-税后分红和待偿期限不同，9-对冲指数，30-转发指数，31-加权方式不同。
+  annotation: 'Relationship with the main index: Associated with the DM field in the
+    (CT_SystemConst) table, setting LB=2014, the specific description of the relationship
+    with the main index is as follows: 1 - Different currencies, 2 - Different dividend
+    rules, 3 - Different dividend rules and currencies, 4 - Post-tax dividends, 5
+    - Main index, 6 - Different maturity periods, 7 - Different dividend rules and
+    maturity periods, 8 - Different post-tax dividends and maturity periods, 9 - Hedging
+    index, 30 - Forward index, 31 - Different weighting methods.'
+- column_name: Relationship
+  column_description: 与主指数关系
+  annotation_zh: 与主指数关系(Relationship)与(CT_SystemConst)表中的DM字段关联，令LB=2014，得到与主指数关系的具体描述：1-币种不同，2-分红规则不同，3-分红规则和币种都不同，4-税后分红，5-主指数，6-待偿期限不同，7-分红规则和待偿期限都不同，8-税后分红和待偿期限不同，9-对冲指数，30-转发指数，31-加权方式不同。
+  annotation: 'Associated with the DM field in the (CT_SystemConst) table for the
+    main index relationship, setting LB=2014, the specific description of the main
+    index relationship is as follows: 1 - Different currencies, 2 - Different dividend
+    rules, 3 - Different dividend rules and currencies, 4 - Post-tax dividends, 5
+    - Main index, 6 - Different maturity periods, 7 - Different dividend rules and
+    maturity periods, 8 - Different post-tax dividends and maturity periods, 9 - Hedging
+    index, 30 - Forward index, 31 - Different weighting methods.'
+- column_name: RelaMainIndexCode
+  column_description: 对应主指数代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RelaMainCode
+  column_description: 对应主指数内码
+  annotation_zh: 对应主指数内码（RelaMainCode）：当个数小于7位时，与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到指数的代码、简称；反之与“港股证券主表（HK_SecuMain）”中的“证券内部编码（InnerCode）”关联，得到指数的代码、简称。该字段为空或等于IndexCode时，表示该指数为主指数。当衍生指数有币种不同、分红方式不同等多层衍生关系时，主指数有多个，该字段维护原则为：权重一致的前提下，维护与衍生指数层级关系最远的主指数，即最上级主指数，对冲指数和等权指数特别处理，维护层级关系最近的主指数
+  annotation: 'Corresponding main index code (RelaMainCode): When the number of digits
+    is less than 7, it is associated with the "InnerCode" in the "SecuMain" to obtain
+    the index code and abbreviation; otherwise, it is associated with the "InnerCode"
+    in the "HK_SecuMain" to obtain the index code and abbreviation. If this field
+    is empty or equal to IndexCode, it indicates that the index is the main index.
+    When there are multiple layers of derivative relationships such as different currencies
+    and different dividend distribution methods in the derivative index, there are
+    multiple main indices. The maintenance principle of this field is: under the premise
+    of consistent weight, maintain the main index with the farthest hierarchical relationship
+    from the derivative index, that is, the highest-level main index, with special
+    handling for hedging indices and equal-weight indices, maintaining the closest
+    main index in the hierarchical relationship.'
+- column_name: ComponentType
+  column_description: 成份证券类别
+  annotation_zh: 成份证券类别(ComponentType)与(CT_SystemConst)表中的DM字段关联，令LB = 1008 AND DM
+    IN (1000,1001,1003,1004,1005,1300,1301,1303,1500,1503,1506,1509,1515,1521,1522,2100,1703,3100,1900,1901,3200,4110,9999)，得到成份证券类别的具体描述：1000-股票，1001-A股，1003-B股，1004-H股，1005-红筹股，1300-基金，1301-封闭式基金，1303-开放式基金，1500-债券，1503-国债，1506-企债，1509-金融债，1515-可转债，1521-资产证券化产品，1522-同业存单，1703-票据，1900-理财产品，1901-银行理财产品，2100-组合资产，3100-期货，3200-商品，4110-金融货币，9999-其他。
+  annotation: 'The ComponentType is associated with the DM field in the CT_SystemConst
+    table, where LB = 1008 AND DM IN (1000,1001,1003,1004,1005,1300,1301,1303,1500,1503,1506,1509,1515,1521,1522,2100,1703,3100,1900,1901,3200,4110,9999),
+    resulting in the specific description of the ComponentType: 1000-Stocks, 1001-A
+    Shares, 1003-B Shares, 1004-H Shares, 1005-Red Chip Stocks, 1300-Funds, 1301-Closed-End
+    Funds, 1303-Open-End Funds, 1500-Bonds, 1503-Government Bonds, 1506-Corporate
+    Bonds, 1509-Financial Bonds, 1515-Convertible Bonds, 1521-Asset-Backed Securities,
+    1522-Interbank Deposit Certificates, 1703-Bills, 1900-Financial Products, 1901-Bank
+    Financial Products, 2100-Portfolio Assets, 3100-Futures, 3200-Commodities, 4110-Financial
+    Currency, 9999-Other.'
+- column_name: SecuMarket
+  column_description: 成份证券市场
+  annotation_zh: 成份证券市场(SecuMarket)与(CT_SystemConst)表中的DM字段关联，令LB = 2015，得到成份证券市场的具体描述：1-全球市场，2-沪深港市场，3-香港证券交易所，4-大中华市场，5-沪深市场，6-大陆市场，7-上海证券交易所，8-深圳证券交易所，9-新三板市场，10-银行间市场，11-中国债券市场，12-跨市场，13-中国期货市场，14-开放式基金市场，15-深港市场，16-沪港市场，17-封闭式基金市场，18-境外市场，19-韩国市场，20-新加坡市场，21-台湾证券交易所，22-印度尼西亚证券交易所，23-马来西亚证券交易所，24-特拉维夫证券交易所，25-巴基斯坦卡拉奇证券交易所，26-伦敦证券交易所，27-法国巴黎证券交易所，28-德国市场，29-荷兰阿姆斯特丹证券交易所，30-布鲁塞尔证券交易所，31-西班牙市场，32-布达佩斯证券交易所，33-爱尔兰证券交易所，34-维也纳证券交易所，35-瑞士市场，36-美国市场，37-澳大利亚证券交易所，38-新西兰证券交易所，39-沪深京市场，40-北京证券交易所，41-阿根廷市场，42-埃及市场，43-挪威市场，44-巴西市场，45-保加利亚市场，46-日本市场，47-菲律宾市场，48-丹麦市场，49-越南市场，50-加拿大市场，51-摩洛哥市场，52-卡塔尔市场，53-斯里兰卡市场，54-葡萄牙市场，55-孟加拉国市场，56-意大利市场，57-俄罗斯市场，58-墨西哥市场，59-瑞典市场，60-泰国市场，61-土耳其市场，62-印度市场，2801-德国法兰克福证券交易所，3101-西班牙马德里证券交易所，3102-西班牙巴塞罗那证券交易所，3601-美国费城证券交易所，3602-美国证券交易所，3603-芝加哥商业交易所，3604-美国纳斯达克证券交易所，3605-纽约证券交易所，4601-东京证券交易所，4602-日本大阪证券交易所，4603-日本名古屋证券交易所，4901-胡志明市证券交易所，4902-河内证券交易所，5001-加拿大多伦多证券交易所，5002-加拿大证券交易所，6201-印度国家证券交易所，6202-印度孟买证券交易所。
+  annotation: 'The Component Securities Market (SecuMarket) is associated with the
+    DM field in the (CT_SystemConst) table. Setting LB = 2015, the specific description
+    of the Component Securities Market is as follows: 1-Global Market, 2-Shanghai,
+    Shenzhen, and Hong Kong Market, 3-Hong Kong Stock Exchange, 4-Great China Market,
+    5-Shanghai and Shenzhen Market, 6-Mainland Market, 7-Shanghai Stock Exchange,
+    8-Shenzhen Stock Exchange, 9-National Equities Exchange and Quotation System (NEEQ),
+    10-Interbank Market, 11-China Bond Market, 12-Cross-Market, 13-China Futures Market,
+    14-Open-Ended Fund Market, 15-Shenzhen and Hong Kong Market, 16-Shanghai and Hong
+    Kong Market, 17-Closed-Ended Fund Market, 18-Overseas Market, 19-South Korea Market,
+    20-Singapore Market, 21-Taiwan Stock Exchange, 22-Indonesia Stock Exchange, 23-Malaysia
+    Stock Exchange, 24-Tel Aviv Stock Exchange, 25-Karachi Stock Exchange of Pakistan,
+    26-London Stock Exchange, 27-Paris Stock Exchange of France, 28-German Market,
+    29-Amsterdam Stock Exchange of the Netherlands, 30-Brussels Stock Exchange, 31-Spanish
+    Market, 32-Budapest Stock Exchange, 33-Ireland Stock Exchange, 34-Vienna Stock
+    Exchange, 35-Swiss Market, 36-US Market, 37-Australia Stock Exchange, 38-New Zealand
+    Stock Exchange, 39-Shanghai, Beijing, and Jing Market, 40-Beijing Stock Exchange,
+    41-Argentina Market, 42-Egypt Market, 43-Norway Market, 44-Brazil Market, 45-Bulgaria
+    Market, 46-Japan Market, 47-Philippines Market, 48-Denmark Market, 49-Vietnam
+    Market, 50-Canada Market, 51-Morocco Market, 52-Qatar Market, 53-Sri Lanka Market,
+    54-Portugal Market, 55-Bangladesh Market, 56-Italy Market, 57-Russia Market, 58-Mexico
+    Market, 59-Sweden Market, 60-Thailand Market, 61-Turkey Market, 62-India Market,
+    2801-Frankfurt Stock Exchange of Germany, 3101-Madrid Stock Exchange of Spain,
+    3102-Barcelona Stock Exchange of Spain, 3601-Philadelphia Stock Exchange of the
+    US, 3602-American Stock Exchange, 3603-Chicago Mercantile Exchange, 3604-NASDAQ
+    Stock Market of the US, 3605-New York Stock Exchange, 4601-Tokyo Stock Exchange,
+    4602-Osaka Stock Exchange of Japan, 4603-Nagoya Stock Exchange of Japan, 4901-Ho
+    Chi Minh City Stock Exchange, 4902-Hanoi Stock Exchange, 5001-Toronto Stock Exchange
+    of Canada, 5002-Canada Stock Exchange, 6201-National Stock Exchange of India,
+    6202-Mumbai Stock Exchange of India.'
+- column_name: ComponentSum
+  column_description: 成份证券数量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ComponentAdPeriod
+  column_description: 成份证券调整周期
+  annotation_zh: 成份证券调整周期(ComponentAdPeriod)与(CT_SystemConst)表中的DM字段关联，令LB = 1264，得到成份证券调整周期的具体描述：1-每日，7-每周，15-半个月，30-一个月，60-两个月，90-三个月，120-四个月，183-半年，365-一年，997-自动调整，998-不定期调整，999-其他。
+  annotation: 'The component security adjustment period (ComponentAdPeriod) is associated
+    with the DM field in the (CT_SystemConst) table. Setting LB = 1264, the specific
+    description of the component security adjustment period is as follows: 1 - daily,
+    7 - weekly, 15 - half a month, 30 - monthly, 60 - every two months, 90 - every
+    three months, 120 - every four months, 183 - half a year, 365 - annually, 997
+    - automatic adjustment, 998 - irregular adjustment, 999 - other.'
+- column_name: CurrencyCode
+  column_description: 币种
+  annotation_zh: 币种(CurrencyCode)与(CT_SystemConst)表中的DM字段关联，令LB=1548，得到币种的具体描述：1000-美元，1100-港元，1110-印度卢比，1120-印度尼西亚卢比，1130-伊朗里亚尔，1140-波兰兹罗提，1150-匈牙利福林，1160-日本元，1161-欧洲日元(离岸)，1170-约旦第纳尔，1180-科威特第纳尔，1190-阿联酋迪拉姆，1200-亚美尼亚德拉姆，1210-澳门元，1220-马来西亚林吉特，1230-安第列斯群岛盾，1240-安哥拉宽扎，1250-尼泊尔卢比，1260-哈萨克斯坦坚戈，1270-巴基斯坦卢比，1280-阿鲁巴岛弗罗林，1290-菲律宾比索，1300-阿塞拜疆马纳特，1310-波斯尼亚马克，1320-新加坡元，1330-韩国元，1340-孟加拉塔卡，1350-百慕大元，1360-泰国铢，1370-沙特里亚尔，1380-文莱林吉特，1390-不丹努尔特鲁姆，1400-博茨瓦纳普拉，1410-白俄罗斯卢布，1420-人民币元，1430-台湾元，1440-伯利兹元，1450-南苏丹镑，1460-世界投资报告法郎，1470-佛得角埃斯库多，1480-厄立特里亚纳克法，1490-埃塞俄比亚比尔，1500-福克兰群岛镑，1510-格鲁吉亚拉里，1520-直布罗陀镑，1530-克罗地亚库纳，1540-以色列新谢克尔，1550-吉尔吉斯斯坦索姆，1560-开曼群岛元，1570-莱索托马洛蒂，1580-摩尔多瓦列伊，1590-马其顿第纳尔，1600-蒙古图格里克，1610-马拉维克瓦查，1620-梅蒂卡尔，1630-纳米比亚元，1640-巴布亚新几内亚基那，1650-塞尔维亚第纳尔，1660-圣赫勒拿群岛磅，1670-圣多美和普林西比多布拉，1680-太平洋法郎，1690-非共体法郎，1700-斯威士兰里兰吉尼，1710-塔吉克斯坦索莫尼，1720-土库曼斯坦马纳特，1730-汤加潘加，1740-乌克兰格里夫纳，1750-乌兹别克斯坦苏姆，1760-瓦努阿图瓦图，1770-萨摩亚塔拉，1780-中非金融合作法郎，1790-东加勒比元，1800-哈萨克斯坦腾格(废弃)，1810-人民币(离岸)，2470-坦桑尼亚先令，3000-欧元，3010-比利时法郎，3020-丹麦克朗，3030-英镑，3040-德国马克，3050-法国法郎，3070-意大利里拉，3090-荷兰盾，3120-西班牙比塞塔，3150-奥地利先令，3180-芬兰马克，3260-挪威克朗，3300-瑞典克朗，3310-瑞士法郎，3311-记帐瑞士法郎，3313-清算瑞士法郎，3440-俄罗斯卢布，4100-巴西雷亚尔，4290-墨西哥比索，5010-加拿大元，6010-澳大利亚元，6090-新西兰元，7101-刚果法郎，7103-尼日利亚奈拉，7105-越南盾，7107-肯尼亚先令，7109-卢森堡法郎，7111-摩洛哥迪拉姆，7113-南非兰特，7115-斯里兰卡卢比，7117-新苏丹磅，7119-也门里亚尔(废弃)，7121-爱尔兰镑，8000-阿尔巴尼亚列克，8010-阿尔及利亚第纳尔，8020-阿富汗尼，8030-阿根廷比索，8040-也门里亚尔，8050-阿曼里亚尔，8060-埃及镑，8070-巴巴多斯元，8080-巴哈马元，8090-巴拉圭瓜拉尼，8100-巴林第纳尔，8110-巴拿马巴波亚，8120-保加利亚列弗，8130-冰岛克朗，8140-波兰兹罗提(废弃)，8150-玻利维亚诺，8160-布隆迪法郎，8170-朝鲜圆，8180-赤道几内亚埃奎勒，8190-多米尼加比索，8200-厄瓜多尔苏克雷，8210-斐济元，8220-冈比亚法拉西，8230-哥伦比亚比索，8240-哥斯达黎加科朗，8250-古巴比索，8260-圭亚那元，8270-海地古德，8280-洪都拉斯伦皮拉，8290-吉布提法郎，8300-几内亚法郎，8310-几内亚比索，8320-加纳塞地，8330-柬埔寨瑞尔，8340-捷克克朗，8350-津巴布韦元，8360-卡塔尔里亚尔，8370-科摩罗法郎，8380-老挝基普，8390-黎巴嫩镑，8400-利比里亚元，8410-利比亚第纳尔，8420-卢旺达法郎，8430-罗马尼亚列伊，8440-马达加斯加阿里亚里，8450-马尔代夫卢比，8460-马耳他镑，8470-毛里求斯卢比，8480-毛里塔尼亚乌吉亚，8490-秘鲁新索尔，8500-缅甸元，8510-也门第纳尔，8520-南斯拉夫新第纳尔，8530-尼加拉瓜科多巴，8540-埃斯库多，8550-萨尔瓦多科朗，8560-塞拉里昂利昂，8570-塞浦路斯镑，8580-塞舌尔卢比，8590-沙特阿拉伯亚尔(废弃)，8600-苏里南元，8610-所罗门元，8620-索马里先令，8630-特立尼达多巴哥元，8640-突尼斯第纳尔，8650-土耳其里拉，8660-危地马拉格查尔，8670-委内瑞拉玻利瓦尔，8680-乌干达先令，8690-乌拉圭新比索，8700-希腊德拉马克，8710-匈牙利福林(废弃)，8720-叙利亚镑，8730-牙买加元，8740-伊拉克第纳尔，8750-赞比亚克瓦查，8760-扎伊尔，8770-智利比索，8780-玻利维亚Mvdol基金，8790-智利CUF基金，8800-哥伦比亚实际价值单位，8810-古巴可兑换比索，8820-墨西哥UDI基金，8830-莫桑比克梅蒂卡尔(废弃)，8840-东帝汶埃斯库多，9000-本币(废弃)，9900-其他货币，9901-本地货币，9990-特别提款权，9999-各币种折合美元。
+  annotation: 'The currency code is associated with the DM field in the CT_SystemConst
+    table, setting LB=1548, the specific description of the currency is: 1000-USD,
+    1100-HKD, 1110-INR, 1120-IDR, 1130-IRR, 1140-PLN, 1150-HUF, 1160-JPY, 1161-EUR
+    (offshore), 1170-JOD, 1180-KWD, 1190-AED, 1200-AMD, 1210-MOP, 1220-MYR, 1230-ANG,
+    1240-AOA, 1250-NPR, 1260-KZT, 1270-PKR, 1280-AWG, 1290-PHP, 1300-AZM, 1310-BAM,
+    1320-SGD, 1330-KRW, 1340-BDT, 1350-BMD, 1360-THB, 1370-SAR, 1380-BRN, 1390-BT,
+    1400-BWP, 1410-BYR, 1420-CNY, 1430-TWD, 1440-BZD, 1450-SSP, 1460-FRF, 1470-CVE,
+    1480-ERN, 1490-ETB, 1500-FKP, 1510-GE, 1520-GIP, 1530-HRK, 1540-ILS, 1550-KGS,
+    1560-CAY, 1570-LSL, 1580-MDL, 1590-MKD, 1600-MNT, 1610-MWK, 1620-MET, 1630-NAD,
+    1640-PGK, 1650-RSD, 1660-SH, 1670-STD, 1680-PF, 1690-FCF, 1700-SZL, 1710-TJS,
+    1720-TMT, 1730-TTD, 1740-UAH, 1750-UZS, 1760-VUV, 1770-WST, 1780-CAF, 1790-EC,
+    1800-KZT (abolished), 1810-CNY (offshore), 2470-TZS, 3000-EUR, 3010-BEF, 3020-DKK,
+    3030-GBP, 3040-DEM, 3050-FRF, 3070-ITL, 3090-NLG, 3120-ESP, 3150-ATS, 3180-FIM,
+    3260-NOK, 3300-SEK, 3310-CHF, 3311-CHF (nostro), 3313-CHF (clearing), 3440-RUR,
+    4100-BRL, 4290-MXN, 5010-CAD, 6010-AUD, 6090-NZD, 7101-CDF, 7103-NGN, 7105-VND,
+    7107-KES, 7109-LUF, 7111-MAD, 7113-ZAR, 7115-LKR, 7117-SDP (abolished), 7119-YER
+    (abolished), 7121-IEP, 8000-ALL, 8010-DZD, 8020-AFN, 8030-ARS, 8040-YER, 8050-OMR,
+    8060-EGP, 8070-BBD, 8080-BSD, 8090-PYG, 8100-BHD, 8110-PAB, 8120-BGN, 8130-ISK,
+    8140-PLN (abolished), 8150-BOB, 8160-BIF, 8170-KRW, 8180-GQ, 8190-DOP, 8200-SVC,
+    8210-FJD, 8220-DM, 8230-COP, 8240-CRC, 8250-CUP, 8260-GYD, 8270-HTG, 8280-HNL,
+    8290-DJF, 8300-GNF, 8310-GGP, 8320-GHS, 8330-KHR, 8340-CZK, 8350-ZWD, 8360-QAR,
+    8'
+- column_name: IndexAbstract
+  column_description: 指数摘要
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndexRemark
+  column_description: 指数介绍
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EndDate
+  column_description: 停用日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

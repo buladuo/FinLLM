@@ -1,0 +1,128 @@
+default: 1
+full_table_name: astockshareholderdb.lc_mshareholder.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: lc_mshareholder
+table_name_zh: 大股东介绍
+table_describe: 1.收录上市公司及发债企业大股东的基本资料，包括直接持股和间接持股，以及持股比例、背景介绍等内容。2.数据范围：2004-12-31至今3.信息来源：募集说明书、招股说明书、定报、临时公告等
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MSHName
+  column_description: 股东名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MSHPercentage
+  column_description: 持股比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MSHNumber
+  column_description: 股东地位
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GetMethod
+  column_description: 股权获取方式
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LegalRepr
+  column_description: 法人代表
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RegCapital
+  column_description: 注册资本(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MainBusiness
+  column_description: 主要业务
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EconomicNature
+  column_description: 经济性质
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BackgroundIntr
+  column_description: 背景介绍
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfExisted
+  column_description: 是否存在
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BulletinType
+  column_description: 公告类别
+  annotation_zh: 公告类别(BulletinType)与(CT_SystemConst)表中的DM字段关联，令LB = 1311，得到公告类别的具体描述：10-发行上市书，20-定期报告，30-业绩快报，50-章程制度，60-更正公告，70-临时公告，90-交易所通报，91-交易所临时停(复)牌公告，99-其他。
+  annotation: 'The BulletinType is associated with the DM field in the CT_SystemConst
+    table, with LB set to 1311, the specific description of the BulletinType is: 10-Issue
+    and Listing Prospectus, 20-Regular Reports, 30-Earnings Preview, 50-Bylaws and
+    Regulations, 60-Correction Notice, 70-Interim Notice, 90-Stock Exchange Circular,
+    91-Stock Exchange Temporary Suspension (Resumption) Notice, 99-Other.'
+- column_name: NationalityDesc
+  column_description: 国籍描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PermanentResidency
+  column_description: 永久境外居留权
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: StructureChart
+  column_description: 实际控制人结构图
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FileType
+  column_description: 报告原文文件格式
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHAttribute
+  column_description: 股东性质
+  annotation_zh: 公告类别(BulletinType)与(CT_SystemConst)表中的DM字段关联，令LB = 1311，得到公告类别的具体描述：10-发行上市书，20-定期报告，30-业绩快报，50-章程制度，60-更正公告，70-临时公告，90-交易所通报，91-交易所临时停(复)牌公告，99-其他。
+  annotation: 'The BulletinType is associated with the DM field in the CT_SystemConst
+    table, with LB set to 1311, the specific description of the BulletinType is: 10-Issue
+    and Listing Prospectus, 20-Regular Reports, 30-Earnings Preview, 50-Bylaws and
+    Regulations, 60-Correction Notice, 70-Interim Notice, 90-Stock Exchange Circular,
+    91-Stock Exchange Temporary Suspension (Resumption) Notice, 99-Other.'
+- column_name: CurrencyUnit
+  column_description: 货币单位
+  annotation_zh: 货币单位（CurrencyUnit）与（CT_SystemConst）中的DM字段关联，令LB=1068，得到注册资本的货币单位具体描述：
+    1000-美元 1100-港元 1420-人民币元 3000-欧元
+  annotation: 'The currency unit (CurrencyUnit) is associated with the DM field in
+    (CT_SystemConst). When LB=1068, the specific description of the registered capital''s
+    currency unit is obtained: 1000-USD, 1100-HKD, 1420-CNY, 3000-EUR.'
+- column_name: GDID
+  column_description: 股东ID
+  annotation_zh: 股东ID（GDID）：当股东属性（SHAttribute）=2时，与机构基本资料（LC_InstiArchive）中的企业编号（CompanyCode）关联；股东属性（SHAttribute）=3时，与理财产品主表（SF_PlanMain）或证券主表（SecuMain）中的内部编码（InnerCode）关联。
+  annotation: 'Stockholder ID (GDID): When the stockholder attribute (SHAttribute)
+    equals 2, it is associated with the Company Code in the Institutional Basic Information
+    (LC_InstiArchive); when the stockholder attribute (SHAttribute) equals 3, it is
+    associated with the Inner Code in the Financial Product Main Table (SF_PlanMain)
+    or Security Main Table (SecuMain).'

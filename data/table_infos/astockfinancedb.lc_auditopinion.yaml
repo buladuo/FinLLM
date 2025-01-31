@@ -1,0 +1,75 @@
+default: 1
+full_table_name: astockfinancedb.lc_auditopinion.yaml
+database_name: astockfinancedb
+database_name_zh: 上市公司财务指标/财务报表/融资与分红
+table_name: lc_auditopinion
+table_name_zh: 公司历年审计意见
+table_describe: 1.收录中介机构对公司季度、半年度、年度经营情况的评价，区分审计单位、审计意见类型，本表涵盖了公司招股以来的历次纪录。2.数据范围：1990-12-31至今3.信息来源：定期报告、审计报告等
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AccountingFirms
+  column_description: 会计师事务所
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InstiBelongedCode
+  column_description: 所属机构
+  annotation_zh: 所属机构（InstiBelongedCode）：与“机构基本资料（LC_InstiArchive）”中的“企业编号（CompanyCode）”关联，得到所属机构的基本信息、联系方式等。
+  annotation: 'Affiliation (InstiBelongedCode): Associated with the "Institution Basic
+    Information (LC_InstiArchive)" under the "Company Code (CompanyCode)", to obtain
+    the basic information and contact details of the affiliated institution.'
+- column_name: CPA
+  column_description: 注册会计师
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OpinionType
+  column_description: 审计意见类型
+  annotation_zh: 审计意见类型(OpinionType)与(CT_SystemConst)表中的DM字段关联，令LB = 1051 AND DM IN(1,2,3,,4,5,6,7,10,11)，得到审计意见类型的具体描述：
+  annotation: 'The audit opinion type (OpinionType) is associated with the DM field
+    in the (CT_SystemConst) table, with LB = 1051 AND DM IN (1,2,3,4,5,6,7,10,11),
+    yielding the specific description of the audit opinion type:'
+- column_name: OpinionFullText
+  column_description: 审计意见全文
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AuditReportsType
+  column_description: 审计报告类型
+  annotation_zh: 审计报告类型(AuditReportsType)与(CT_SystemConst)表中的DM字段关联，令LB = 2244 AND
+    DM IN (1,2)，得到审计报告类型的具体描述：1-财务报表审计报告，2-内部控制审计报告。
+  annotation: 'The type of audit report (AuditReportsType) is associated with the
+    DM field in the (CT_SystemConst) table, with LB = 2244 AND DM IN (1,2), yielding
+    the specific description of the audit report type: 1-Financial Statement Audit
+    Report, 2-Internal Control Audit Report.'
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan

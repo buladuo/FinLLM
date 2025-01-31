@@ -1,0 +1,79 @@
+default: 1
+full_table_name: astockshareholderdb.lc_nationalstockholdst.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: lc_nationalstockholdst
+table_name_zh: A股国家队持股统计
+table_describe: 1.内容说明：本表记录股市国家队成员持有A股的相关信息，包含：持有A股总数，占总股本比例，持有A股数量增减，持有A股数量增减幅度等。2.数据范围：2003-01-01至今3.信息来源：聚源
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 内部编码
+  annotation_zh: 内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到证券的交易代码、简称等。
+  annotation: 'Internal Code: Associated with the "InnerCode" in the "SecuMain" table,
+    obtaining the security''s trading code, abbreviation, etc.'
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: EndDate
+  column_description: 截止日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHID
+  column_description: 股东ID
+  annotation_zh: 股东ID（SHID）：与机构基本资料（LC_InstiArchive）中的企业编号（CompanyCode）关联
+  annotation: 'Shareholder ID (SHID): associated with the Company Code in the Institutional
+    Basic Information (LC_InstiArchive)'
+- column_name: SHName
+  column_description: 股东名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldAShareSum
+  column_description: 持有A股总数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RestrainedAShare
+  column_description: 其中:有限售A股数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UnstintedAShare
+  column_description: 其中:无限售A股数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTOfTotalShares
+  column_description: 占总股本比例(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTOfFloatShares
+  column_description: 占流通A股比例(%)111
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldASumChange
+  column_description: 持有A股数量增减(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldASumChangeRate
+  column_description: 持有A股数量增减幅度(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 修改时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

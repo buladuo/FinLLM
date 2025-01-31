@@ -1,0 +1,99 @@
+default: 1
+full_table_name: constantdb.ct_systemconst.yaml
+database_name: constantdb
+database_name_zh: 常量库
+table_name: ct_systemconst
+table_name_zh: 系统常量表
+table_describe: 本表收录数据库中各种常量值的具体分类和常量名称描述。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LB
+  column_description: 常量分类编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LBMC
+  column_description: 常量分类名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MS
+  column_description: 常量描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DM
+  column_description: 常量代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FVALUE
+  column_description: 浮点值
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IVALUE
+  column_description: 整型值
+  annotation_zh: 可参见Q&A
+  annotation: For reference, see Q&A
+- column_name: DVALUE
+  column_description: 日期值
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CVALUE
+  column_description: 字符值
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LB
+  column_description: 常量分类编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LBMC
+  column_description: 常量分类名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MS
+  column_description: 常量描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DM
+  column_description: 常量代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FVALUE
+  column_description: 浮点值
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IVALUE
+  column_description: 整型值
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DVALUE
+  column_description: 日期值
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CVALUE
+  column_description: 字符值
+  annotation_zh: .nan
+  annotation: .nan

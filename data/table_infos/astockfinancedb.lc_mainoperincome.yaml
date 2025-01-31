@@ -1,0 +1,252 @@
+default: 1
+full_table_name: astockfinancedb.lc_mainoperincome.yaml
+database_name: astockfinancedb
+database_name_zh: 上市公司财务指标/财务报表/融资与分红
+table_name: lc_mainoperincome
+table_name_zh: 公司主营业务构成
+table_describe: 1收录公司主营业务的收入来源、成本构成；主营业务收入、成本和利润与上年同期的对比较。2.数据范围：1998-12-31至今3.信息来源：招股说明书、定报、审计报告等
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DateType
+  column_description: 日期类型
+  annotation_zh: 日期类型(DateType)与(CT_SystemConst)表中的DM字段关联，令LB = 1074，得到日期类型的具体描述：1-月份，2-季度，3-期末累计，4-当月及累计，5-日，6-周，7-旬，8-半月，9-年度，11-上年同月，12-上年同期，13-上年同季，14-期末，21-上月=100，22-2005年=100，23-2005年=100（季度），24-2005年=100（月度），25-2005年=100,经季节性调整，26-2005年=100,经季节性调整（volume），27-2005年=101（季度），28-经季节性调整，29-（上年=100）_当月，30-（上年＝100）_累计值，31-（上年同期=100）_当期值，32-（上年同期=100）_累计值，33-（上月=100）_当期值，34-1980=100，35-1999-2001年=100，36-2000年=100，37-按1985/1986年价格计算，38-按1985年价格计算，39-按1987年价格计算，40-按1988年价格计算，41-按1990年价格计算，42-按1991/1992年价格计算，43-按1993年价格计算，44-按1994年价格计算，45-按1995/1996年价格计算，46-按1995年价格计算，47-按1996年价格计算，48-按1997/1998年价格计算，49-按1997年价格计算，50-按1998年价格计算，51-按1999年价格计算，52-按2000年价格计算，53-按2002年价格计算，54-按2003年价格计算，55-按2005年价格计算，56-按当年价格计算，57-按上年价格计算，58-本季值，59-比上年累计增长，60-比上年同期累计增长，61-比上年同期增长，62-比上年同期增减，63-比上月增长，64-比上月增长（2009年以前），65-当季值，66-当年累计，67-当期值，68-当期值（2010年以后），69-当月值，70-环比增长，71-环比增长（经季节性调整），72-环比增长（经季节性调整）（volume），73-环比增长（经季节性调整）（名义），74-环比增长（名义），75-季末累计值，76-季末值，77-累计为去年同期，78-累计增长，79-累计增长（2010年以后），80-累计增减额，81-累计值，82-累计值（2010年以后），83-平均值，84-期末值，85-期末值(2010年以前)，86-期平均值，87-去年累计，88-去年同期累计，89-上季=100，90-上年同期=100，91-上年同期=100（累计值），92-上年同月=100，93-上月=100，94-同比增长，95-同比增长（2010年以后），96-同比增长（经季节性调整），97-同比增长（经季节性调整）（名义），98-同比增长（名义），99-指标值，100-总累计，101-上年=100，102-1978=100，103-（季度）_环比增长（经季节性调整），104-（季度）（2005年=100,经季节性调整），105-（季度）_期末值，106-（季度）_期平均值，107-（季度）_同比增长，108-（季度）_同比增长（经季节性调整），109-（月度）（2005年=100,经季节性调整），110-（月度）_环比增长（经季节性调整），111-（月度）_期末值，112-（月度）_期平均值，113-（月度）_同比增长，114-（月度）_同比增长（经季节性调整），115-初值，116-终值，117-累计环比增长，118-累计同比增长，119-当月环比增长，120-当月同比增长，121-比年初增长，122-比年初增减，123-同比增减，124-累计值比去年同期，125-自年初累计，1978-1978年=100，1985-1985年=100，1990-1990年=100，1991-1991年=100，1996-1996年=100，2000-2000年=100，19953-1995年3月=100，20000-2000年同月=100，20001-月度/季度。
+  annotation: 'The date type (DateType) is associated with the DM field in the (CT_SystemConst)
+    table. Setting LB = 1074, the specific description of the date type is obtained:
+    1-month, 2-quarter, 3-period-end cumulative, 4-current month and cumulative, 5-day,
+    6-week, 7-decade, 8-half month, 9-annual, 11-same month of the previous year,
+    12-same period of the previous year, 13-same quarter of the previous year, 14-period-end,
+    21-last month=100, 22-2005=100, 23-2005=100 (quarter), 24-2005=100 (monthly),
+    25-2005=100, seasonally adjusted, 26-2005=100, seasonally adjusted (volume), 27-2005=101
+    (quarter), 28-seasonally adjusted, 29-(last year=100)_current month, 30-(last
+    year=100)_cumulative value, 31-(same period of the previous year=100)_current
+    value, 32-(same period of the previous year=100)_cumulative value, 33-(last month=100)_current
+    value, 34-1980=100, 35-1999-2001=100, 36-2000=100, 37-calculated at 1985/1986
+    prices, 38-calculated at 1985 prices, 39-calculated at 1987 prices, 40-calculated
+    at 1988 prices, 41-calculated at 1990 prices, 42-calculated at 1991/1992 prices,
+    43-calculated at 1993 prices, 44-calculated at 1994 prices, 45-calculated at 1995/1996
+    prices, 46-calculated at 1995 prices, 47-calculated at 1996 prices, 48-calculated
+    at 1997/1998 prices, 49-calculated at 1997 prices, 50-calculated at 1998 prices,
+    51-calculated at 1999 prices, 52-calculated at 2000 prices, 53-calculated at 2002
+    prices, 54-calculated at 2003 prices, 55-calculated at 2005 prices, 56-calculated
+    at the current year prices, 57-calculated at the previous year prices, 58-current
+    quarter value, 59-increased by compared to the same period of the previous year,
+    60-cumulative increased by compared to the same period of the previous year, 61-increased
+    by compared to the same period of the previous year, 62-increased or decreased
+    compared to the same period of the previous year, 63-increased by compared to
+    the previous month, 64-increased by compared to the previous month (before 2009),
+    65-current quarter value, 66-cumulative value of the current year, 67-current
+    value, 68-current value (after 2010), 69-current month value, 70-increased by
+    month-on-month, 71-increased by month-on-month (seasonally adjusted), 72-increased
+    by month-on-month (seasonally adjusted) (volume), 73-increased by month-on-month
+    (nominal), 74-increased by month-on-month (nominal), 75-cumulative value at the
+    end of the quarter, 76-value at the end of the quarter, 77-cumulative value is
+    the same period of the previous year, 78-cumulative increased by, 79-cumulative
+    increased by (after 2010), 80-cumulative increase or decrease amount, 81-cumulative
+    value, 82-cumulative value (after 2010), 83-average value, 84-period-end value,
+    85-period-end value (before 2010), 86-period average value, 87-cumulative value
+    of the previous year, 88-cumulative value of the same period of the previous year,
+    89-last quarter=100, 90-same period of the previous year=100, 91-same period of
+    the previous year=100 (cumulative value), 92-same month of the previous year=100,
+    93-last month=100, 94-increased by year-on-year, 95-increased by year-on-year
+    (after 2010), 96-increased by year-on-year (seasonally adjusted), 97-increased
+    by year-on-year (seasonally adjusted) (nominal), 98-increased by year-on-year
+    (nominal), 99-indicator value, 100-total cumulative, 101-last year=100, 102-1978=100,
+    103-(quarter)_increased by month-on-month (seasonally adjusted'
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfMerged
+  column_description: 合并标志
+  annotation_zh: 合并标志(IfMerged)与(CT_SystemConst)表中的DM字段关联，令LB = 1189，得到合并标志的具体描述：1-合并，2-母公司，3-合并调整，4-母公司调整，5-合并修正前，6-母公司修正前，7-专项合并。
+  annotation: 'Merge the IfMerged and CT_SystemConst tables by associating the DM
+    field, set LB = 1189, to obtain the specific description of the merged标志: 1-merge,
+    2-parent company, 3-merge adjustment, 4-parent company adjustment, 5-merge correction
+    before, 6-parent company correction before, 7-special merge.'
+- column_name: IfAdjusted
+  column_description: 是否调整
+  annotation_zh: 调整标志(IfAdjusted)：与“系统常量表（CT_SystemConst）”中的“代码（DM）”关联，令“LB=1188”，得到财务报表“调整标志”的具体描述。1-是，2-否，3-前，其中3-前代表数据更正的时候，会把之前的数据的调整标志改成前，此处理2010年开始废弃。
+  annotation: 'Adjustment Flag (IfAdjusted): Associated with "DM" in "System Constants
+    Table (CT_SystemConst)", set "LB=1188" to obtain the specific description of the
+    financial statement "Adjustment Flag". 1-Yes, 2-No, 3-Former, where 3-Former represents
+    that when data is corrected, the adjustment flag of the previous data will be
+    changed to former, this treatment was abandoned starting from 2010.'
+- column_name: Classification
+  column_description: 分类方式
+  annotation_zh: 分类方式(Classification)与(CT_SystemConst)表中的DM字段关联，令LB = 1046 AND DM
+    IN (10,20,30)，得到分类方式的具体描述：10-按行业，20-按产品，30-按地区。
+  annotation: 30-By region.
+- column_name: SN
+  column_description: 显示序号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Project
+  column_description: 经营项目名称
+  annotation_zh: 经营项目名称(Project)：经营项目名称中“其他业务”对应展示原文披露的其他业务收入/成本，与主营业务区分列示。
+  annotation: The "Other Businesses" in the project name (Project) corresponds to
+    the disclosure of other business income/costs as shown in the original text, which
+    is separately listed from the main business.
+- column_name: Industry
+  column_description: 所属行业
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RegionAndBusiness
+  column_description: 地区与业务性质
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MainOperIncome
+  column_description: 主营业务收入(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MainOperCost
+  column_description: 主营业务成本(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MainOperProfit
+  column_description: 主营业务利润(元)
+  annotation_zh: 主营业务利润(MainOperProfit)：优先取原文披露值，如未披露，则计算，计算公式=当主营业务收入>0时，主营业务收入-主营业务成本，否则不计算.
+  annotation: 'Main Business Profit (MainOperProfit): Preferably take the original
+    disclosed value, if not disclosed, then calculate, calculation formula = when
+    the main business income > 0, main business income - main business cost, otherwise
+    do not calculate.'
+- column_name: MainOperIncomeFormerYear
+  column_description: 上年同期主营业务收入(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MainOperCostFormerYear
+  column_description: 上年同期主营业务成本(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MainOperProfitFormerYear
+  column_description: 上年同期主营业务利润(元)
+  annotation_zh: 上年同期主营业务利润(元)(MainOperProfitFormerYear)：优先取原文披露值，如未披露，则计算，计算公式=当上年同期主营业务收入>0时，上年同期主营业务收入-上年同期主营业务成本，否则不计算.
+  annotation: 'Main operating profit (yuan) of the same period last year (MainOperProfitFormerYear):
+    Preferably take the original disclosed value, if not disclosed, then calculate,
+    calculation formula = when the main operating income of the same period last year
+    > 0, the main operating income of the same period last year - the main operating
+    cost of the same period last year, otherwise do not calculate.'
+- column_name: MainIncomeGrowRateYOY
+  column_description: 主营业务收入同比
+  annotation_zh: 主营业务收入同比(MainIncomeGrowRateYOY)：优先取原文披露值，如未披露，则计算，计算公式=（主营业务收入-上年同期主营业务收入）/ABS上年同期主营业务收入。
+  annotation: 'Main operating income year-on-year growth (MainIncomeGrowRateYOY):
+    Prefer the original text disclosure value, if not disclosed, then calculate, calculation
+    formula = (main operating income - main operating income of the same period last
+    year) / ABS main operating income of the same period last year.'
+- column_name: MainICostGrowRateYOY
+  column_description: 主营业务成本同比
+  annotation_zh: 主营业务成本同比(MainICostGrowRateYOY)：优先取原文披露值，如未披露，则计算，计算公式=（主营业务成本-上年同期主营业务成本）/ABS上年同期主营业务成本。
+  annotation: 'Main operating cost year-on-year growth rate (MainICostGrowRateYOY):
+    Prefer the original text disclosure value, if not disclosed, then calculate, calculation
+    formula = (main operating cost - main operating cost of the same period last year)
+    / ABS main operating cost of the same period last year.'
+- column_name: MainProfitGrowRateYOY
+  column_description: 主营业务利润同比
+  annotation_zh: 主营业务利润同比(MainProfitGrowRateYOY)：优先取原文披露值，如未披露，则计算，计算公式=（主营业务利润-上年同期主营业务利润）/ABS上年同期主营业务利润。
+  annotation: 'Main business profit year-on-year growth rate (MainProfitGrowRateYOY):
+    Prefer the original text disclosure value, if not disclosed, then calculate, calculation
+    formula = (main business profit - main business profit of the same period of the
+    previous year) / ABS main business profit of the same period of the previous year.'
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GrossProfit
+  column_description: 毛利率
+  annotation_zh: 毛利率(GrossProfit)：优先取原文披露值，如未披露，则计算，计算公式=当主营业务收入>0时，（主营业务收入-主营业务成本）/ABS主营业务收入，否则不计算.
+  annotation: 'Gross Profit Margin: Prefer the original disclosed value, if not disclosed,
+    then calculate. Calculation formula = When the main business income > 0, (main
+    business income - main business cost) / ABS main business income, otherwise do
+    not calculate.'
+- column_name: GrossProfitYOY
+  column_description: 毛利率同比
+  annotation_zh: 毛利率同比(GrossProfitYOY)=（毛利率-上年同期毛利率）/ABS上年同期毛利率。
+  annotation: Gross Profit YOY = (Gross Profit Margin - Gross Profit Margin of the
+    same period last year) / ABS(Gross Profit Margin of the same period last year).
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSourceCode
+  column_description: 信息来源编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CurrencyUnit
+  column_description: 货币单位
+  annotation_zh: 货币单位(CurrencyUnit)与(CT_SystemConst)表中的DM字段关联，令LB = 1068，得到货币单位的具体描述：1000-美元，1001-美分，1002-美元(次日)，1003-美元(同日)，1100-港元，1110-印度卢比，1120-印度尼西亚卢比，1130-伊朗里亚尔，1140-波兰兹罗提，1150-匈牙利福林，1160-日本元，1161-欧洲日元(离岸)，1170-约旦第纳尔，1180-科威特第纳尔，1190-阿联酋迪拉姆，1200-亚美尼亚德拉姆，1210-澳门元，1220-马来西亚林吉特，1230-安第列斯群岛盾，1240-安哥拉宽扎，1250-尼泊尔卢比，1260-哈萨克斯坦坚戈，1270-巴基斯坦卢比，1280-阿鲁巴岛弗罗林，1290-菲律宾比索，1300-阿塞拜疆马纳特，1310-波斯尼亚马克，1320-新加坡元，1330-韩国元，1340-孟加拉塔卡，1350-百慕大元，1360-泰国铢，1370-沙特里亚尔，1380-文莱林吉特，1390-不丹努尔特鲁姆，1400-博茨瓦纳普拉，1410-白俄罗斯卢布，1420-人民币元，1430-台湾元，1440-伯利兹元，1450-南苏丹镑，1460-世界投资报告法郎，1470-佛得角埃斯库多，1480-厄立特里亚纳克法，1490-埃塞俄比亚比尔，1500-福克兰群岛镑，1510-格鲁吉亚拉里，1520-直布罗陀镑，1530-克罗地亚库纳，1540-以色列新谢克尔，1550-吉尔吉斯斯坦索姆，1560-开曼群岛元，1570-莱索托马洛蒂，1580-摩尔多瓦列伊，1590-马其顿第纳尔，1600-蒙古图格里克，1610-马拉维克瓦查，1620-梅蒂卡尔，1630-纳米比亚元，1640-巴布亚新几内亚基那，1650-塞尔维亚第纳尔，1660-圣赫勒拿群岛磅，1670-圣多美和普林西比多布拉，1680-太平洋法郎，1690-非共体法郎，1700-斯威士兰里兰吉尼，1710-塔吉克斯坦索莫尼，1720-土库曼斯坦马纳特，1730-汤加潘加，1740-乌克兰格里夫纳，1750-乌兹别克斯坦苏姆，1760-瓦努阿图瓦图，1770-萨摩亚塔拉，1780-中非金融合作法郎，1790-东加勒比元，1810-人民币(离岸)，2470-坦桑尼亚先令，3000-欧元，3010-比利时法郎，3020-丹麦克朗，3030-英镑，3031-便士，3040-德国马克，3050-法国法郎，3070-意大利里拉，3090-荷兰盾，3100-葡萄牙埃斯库多，3110-立陶宛立特，3120-西班牙比塞塔，3130-拉脱维亚立特，3140-斯洛文尼亚托拉尔，3150-奥地利先令，3160-斯洛伐克克朗，3170-爱沙尼亚克朗，3180-芬兰马克，3190-安道尔比塞塔(废弃)，3260-挪威克朗，3300-瑞典克朗，3310-瑞士法郎，3311-记帐瑞士法郎，3313-清算瑞士法郎，3430-苏联卢布(废弃)，3440-俄国卢布，3450-俄罗斯卢布，4000-巴西雷亚尔(废弃)，4100-巴西里亚尔，4290-墨西哥比索，5010-加拿大元，6010-澳大利亚元，6090-新西兰元，7101-刚果法郎，7103-尼日利亚奈拉，7105-越南盾，7107-肯尼亚先令，7109-卢森堡法郎，7111-摩洛哥迪拉姆，7113-南非兰特，7115-斯里兰卡卢比，7117-苏丹第纳尔，7119-也门里亚尔(废弃)，7120-苏丹镑，7121-爱尔兰镑，7123-土耳其里拉(废弃)，7125-捷克克朗(废弃)，8000-阿尔巴尼亚列克，8010-阿尔及利亚第纳尔，8020-阿富汗尼，8030-阿根廷比索，8040-也门里亚尔，8050-阿曼里亚尔，8060-埃及镑，8070-巴巴多斯元，8080-巴哈马元，8090-巴拉圭瓜拉尼，8100-巴林第纳尔，8110-巴拿马巴波亚，8120-保加利亚列弗，8130-冰岛克朗，8150-玻利维亚诺，8160-布隆迪法郎，8170-朝鲜圆，8180-赤道几内亚埃奎勒，8190-多米尼加比索，8200-厄瓜多尔苏克雷，8210-斐济元，8220-冈比亚法拉西，8230-哥伦比亚比索，8240-哥斯达黎加科朗，8250-古巴比索，8260-圭亚那元，8270-海地古德，8280-洪都拉斯伦皮拉，8290-吉布提法郎，8300-几内亚法郎，8310-几内亚比索，8320-加纳塞地，8330-柬埔寨瑞尔，8340-捷克克朗，8350-津巴布韦元，8360-卡塔尔里亚尔，8370-科摩罗法郎，8380-老挝基普，8390-黎巴嫩镑，8400-利比里亚元，8410-利比亚第纳尔，8420-卢旺达法郎，8430-罗马尼亚列伊，8440-马达加斯加阿里亚里，8450-马尔代夫卢比，8460-马耳他镑，8470-毛里求斯卢比，8480-毛里塔尼亚乌吉亚，8490-秘鲁新索尔，8500-缅甸元，8510-也门第纳尔，8520-南斯拉夫新第纳尔，8530-尼加拉瓜科多巴，8540-埃斯库多，8550-萨尔瓦多科朗，8560-塞拉里昂利昂，8570-塞浦路斯镑，8580-塞舌尔卢比，8590-沙特阿拉伯亚尔，8600-苏里南元，8610-所罗门元，8620-索马里先令，8630-特立尼达多巴哥元，8640-突尼斯第纳尔，8650-土耳其里拉，8660-危地马拉格查尔，8670-委内瑞拉玻利瓦尔，8680-乌干达先令，8690-乌拉圭新比索，8700-希腊德拉马克，8720-叙利亚镑，8730-牙买加元，8740-伊拉克第纳尔，8750-赞比亚克瓦查，8760-扎伊尔，8770-智利比索，8780-玻利维亚Mvdol基金，8790-智利CUF基金，8800-哥伦比亚实际价值单位，8810-古巴可兑换比索，8820-墨西哥UDI基金，8830-莫桑比克梅蒂卡尔，8840-东帝汶埃斯库多，8850-罗马尼亚列伊(废弃)，8860-苏里南盾(废弃)，8870-马尔加什法郎(废弃)，8880-赞比亚克瓦查(废弃)，9900-其他货币，9901-本地货币，9990-特别提款权，9999-各币种折合美元。
+  annotation: 'The currency unit (CurrencyUnit) is associated with the DM field in
+    the (CT_SystemConst) table. Setting LB = 1068, the specific description of the
+    currency unit is as follows: 1000-USD, 1001-Cents, 1002-USD (next day), 1003-USD
+    (same day), 1100-HKD, 1110-INR, 1120-IDR, 1130-IRR, 1140-PLN, 1150-HUF, 1160-JPY,
+    1161-EUR (offshore), 1170-JOD, 1180-KWD, 1190-AED, 1200-AMD, 1210-MOP, 1220-MYR,
+    1230-ANG, 1240-AOA, 1250-NPR, 1260-KZT, 1270-PKR, 1280-AFL, 1290-PHP, 1300-AZM,
+    1310-BAM, 1320-SGD, 1330-KRW, 1340-BDT, 1350-BMD, 1360-THB, 1370-SAR, 1380-BRN,
+    1390-BT, 1400-BWP, 1410-BYR, 1420-CNY, 1430-TWD, 1440-BZD, 1450-SSP, 1460-FRF,
+    1470-CVE, 1480-ERN, 1490-ETB, 1500-FKP, 1510-GEL, 1520-GIP, 1530-HRK, 1540-ILS,
+    1550-KGS, 1560-KYD, 1570-LSL, 1580-MDL, 1590-MKD, 1600-MNT, 1610-MWK, 1620-MET,
+    1630-NAD, 1640-PGK, 1650-RSD, 1660-SHP, 1670-STD, 1680-XPF, 1690-XAF, 1700-SZL,
+    1710-TJS, 1720-TMT, 1730-TTD, 1740-UAH, 1750-UZS, 1760-VES, 1770-SAM, 1780-XAF,
+    1790-XCD, 1810-CNY (offshore), 2470-TZS, 3000-EUR, 3010-BEF, 3020-DKK, 3030-GBP,
+    3031-Pence, 3040-DEM, 3050-FRF, 3070-ITL, 3090-NLG, 3100-PTE, 3110-LTL, 3120-ESP,
+    3130-LVL, 3140-SIT, 3150-ATS, 3160-SK, 3170-EEK, 3180-FIM, 3190-ADP (abolished),
+    3260-NOK, 3300-SEK, 3310-CHF, 3311-CHF (nostro), 3313-CHF (clearing), 3430-SUR
+    (abolished), 3440-RUR, 3450-RUB, 4000-BRL (abolished), 4100-BRZ, 4290-MXN, 5010-CAD,
+    6010-AUD, 6090-NZD, 7101-CDF, 7103-NGN, 7105-VND, 7107-KES, 7109-LUF, 7111-MAD,
+    7113-ZAR, 7115-LKR, 7117-SDG, 7119-YER (abolished), 7120-SDR, 7121-IEP, 7123-TRY
+    (abolished), 7125-CZK (abolished), 8000-ALL, 8010-DZD, 8020-AFN, 8030-ARS, 8040-YER,
+    8050-OMR, 8060-EGP, 8070-BBD, 8080-BS, 8090-PG, 8100-BHD, 8110-PAB, 8120-BGN,
+    8130-ISK, 8150-BOB, 8160-BIF, 8170-KRW, 8180-GEQ, 8190-DOP'
+- column_name: Level
+  column_description: 所属层级
+  annotation_zh: 所属层级（Level）展示各字段对应层级：如合计--0级；合计下面的一级明细项--1级；一级明细项对应的其中项--2级，依次类推。当原文披露明细同时包含两种层级关系时，会对披露维度更为精确、明细的按照对应层级标注（1、2、3、4......），另外一种则作为“其中项”不参与运算，所属层级赋值“99”。（具体样例参见：Q&A）
+  annotation: 'Level display corresponds to the level of each field: such as total
+    - level 0; the first-level detailed items under the total - level 1; the items
+    corresponding to the first-level detailed items - level 2, and so on. When the
+    original text discloses details containing two levels of relationships, it will
+    be more precise in disclosing dimensions, and the details will be marked according
+    to the corresponding level (1, 2, 3, 4...), and the other type will be used as
+    "item" not participating in the calculation, with the level value assigned as
+    "99". (For specific examples, see: Q&A)'
+- column_name: ParentName
+  column_description: 上级科目名称
+  annotation_zh: 上级科目名称（ParentName）展示各字段对应上级科目名称：如“合计”对应上级为空；“合计下面的一级明细项”对应上级为“合计”；“一级明细项对应的其中项”对应上级为“一级明细项”，依次类推。
+  annotation: 'Display the corresponding parent subject name for each field: For example,
+    "Total" corresponds to no parent; "the first-level detail item under Total" corresponds
+    to "Total"; "the item corresponding to the first-level detail item" corresponds
+    to "first-level detail item", and so on.'
+- column_name: GrossProfitFormerYear
+  column_description: 上年同期毛利率
+  annotation_zh: 上年同期毛利率(GrossProfitFormerYear)：优先取原文披露值，如未披露，则计算，计算公式=当上年同期主营业务收入>0时，（上年同期主营业务收入-上年同期主营业务成本）/ABS上年同期主营业务收入，否则不计算.
+  annotation: 'Gross Profit Margin of the Same Period Last Year: Preferably take the
+    original disclosed value, if not disclosed, then calculate. Calculation formula
+    = When the main business income of the same period last year is greater than 0,
+    (main business income of the same period last year - main business cost of the
+    same period last year) / ABS main business income of the same period last year,
+    otherwise do not calculate.'
+- column_name: GrossProfitIncrease
+  column_description: 毛利率比上年同期增减
+  annotation_zh: .nan
+  annotation: .nan

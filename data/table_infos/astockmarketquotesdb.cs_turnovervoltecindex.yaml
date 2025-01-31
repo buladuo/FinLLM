@@ -1,0 +1,162 @@
+default: 1
+full_table_name: astockmarketquotesdb.cs_turnovervoltecindex.yaml
+database_name: astockmarketquotesdb
+database_name_zh: 上市公司股票行情
+table_name: cs_turnovervoltecindex
+table_name_zh: 境内股票成交量技术指标
+table_describe: 内容说明：收录境内股票上市之日起基于日、周、月、季、半年、年K线行情衍生计算的成交量技术指标数据范围：股票上市起-至今信息来源：基于沪深京交易所及股转系统行情数据衍生计算
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: 证券内部编码（InnerCode）与“证券主表(SecuMain)”中的“证券内部编码(InnerCode)”关联，得到股票的证券代码、简称等其他详细信息。
+  annotation: The internal code (InnerCode) of securities is associated with the "InnerCode"
+    in the "SecuMain" table, obtaining other detailed information such as the security
+    code and abbreviation of the stock.
+- column_name: GilCode
+  column_description: 聚源代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TradingDay
+  column_description: 交易日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndexCycle
+  column_description: 指标周期
+  annotation_zh: 指标周期(IndexCycle)，该字段固定以下常量：0-日，1-周，2-月，3-季，4-半年，5-年
+  annotation: 'IndexCycle, this field is fixed with the following constants: 0-Daily,
+    1-Weekly, 2-Monthly, 3-Quarterly, 4-Half Yearly, 5-Annually'
+- column_name: SecuMarket
+  column_description: 证券市场
+  annotation_zh: 证券市场(SecuMarket)与(CT_SystemConst)表中的DM字段关联，令LB=201 AND DM IN (18,81,83,90)，得到证券市场的具体描述：18-北京证券交易所，81-三板市场，83-上海证券交易所，90-深圳证券交易所。
+  annotation: 'The securities market (SecuMarket) is associated with the DM field
+    in the (CT_SystemConst) table, with LB=201 AND DM IN (18,81,83,90), resulting
+    in the specific description of the securities market: 18-Beijing Securities Exchange,
+    81-Third Board Market, 83-Shanghai Securities Exchange, 90-Shenzhen Securities
+    Exchange.'
+- column_name: AMA5
+  column_description: 成交额简单移动平均(5日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AMA10
+  column_description: 成交额简单移动平均(10日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AMA20
+  column_description: 成交额简单移动平均(20日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AMA30
+  column_description: 成交额简单移动平均(30日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AMA60
+  column_description: 成交额简单移动平均(60日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AMA120
+  column_description: 成交额简单移动平均(120日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AMA250
+  column_description: 成交额简单移动平均(250日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMA5
+  column_description: 成交量简单移动平均(5日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMA10
+  column_description: 成交量简单移动平均(10日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMA20
+  column_description: 成交量简单移动平均(20日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMA30
+  column_description: 成交量简单移动平均(30日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMA60
+  column_description: 成交量简单移动平均(60日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMA120
+  column_description: 成交量简单移动平均(120日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMA250
+  column_description: 成交量简单移动平均(250日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMACD_EMA12
+  column_description: 成交量指数平滑异同平均(12日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMACD_EMA26
+  column_description: 成交量指数平滑异同平均(26日)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMACD_DIFF
+  column_description: 成交量指数平滑异同平均DIFF
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMACD_DEA
+  column_description: 成交量指数平滑异同平均DEA
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VMACD_MACD
+  column_description: 成交量指数平滑异同平均MACD
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VolumeRatio
+  column_description: 量比
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VOSC
+  column_description: VOSC成交量震荡指标
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TAPI_TAPI
+  column_description: TAPI加权指数成交量TAPI
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TAPI_TAPIMA
+  column_description: TAPI加权指数成交量TAPIMA
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VSTD
+  column_description: VSTD成交量标准差
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VROC
+  column_description: VROC量变动速率(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VR
+  column_description: VR成交量比率(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VRSI
+  column_description: VRSI量相对强弱
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

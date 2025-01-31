@@ -1,0 +1,247 @@
+default: 1
+full_table_name: astockshareholderdb.lc_sharetransfer.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: lc_sharetransfer
+table_name_zh: 股东股权变动
+table_describe: 1.收录公司股东股权转让、二级市场买卖、股权拍卖、大宗交易、股东重组等引起股东股权变动方面的明细资料，并包含与股权分置改革相关的股东增持、减持等信息。2.数据范围：1996-01-26至今3.信息来源：上交所和深交所大宗交易公开信息、临时公告等。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ContractSignDate
+  column_description: 股权转让协议签署日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ApprovedDate
+  column_description: 转让批准日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TranDate
+  column_description: 股权正式变动日期/过户日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TransfererName
+  column_description: 股权出让方名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TansfererEcoNature
+  column_description: 股权出让方经济性质
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TranShareType
+  column_description: 出让股权性质
+  annotation_zh: 出让股权性质(TranShareType)与(CT_SystemConst)表中的DM字段关联，令LB = 1040，得到出让股权性质的具体描述：1-国家股，2-国有法人股，3-外资法人股，4-其他法人股，5-流通A股，6-B股，7-H股，8-转配股，9-专项资产管理计划转让，10-资产支持证券转让，11-中小企业私募债转让，12-中国存托凭证，13-可转换公司债券。
+  annotation: 'The nature of equity transfer (TranShareType) is associated with the
+    DM field in the (CT_SystemConst) table, with LB set to 1040, resulting in the
+    specific description of the nature of equity transfer: 1 - State-owned shares,
+    2 - State-owned legal person shares, 3 - Foreign-funded legal person shares, 4
+    - Other legal person shares, 5 - Tradable A shares, 6 - B shares, 7 - H shares,
+    8 - Transferable subscription shares, 9 - Special asset management plan transfer,
+    10 - Asset-backed securities transfer, 11 - Small and medium-sized enterprise
+    private debt transfer, 12 - Chinese depository receipts, 13 - Convertible corporate
+    bonds.'
+- column_name: SumBeforeTran
+  column_description: 出让前持股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTBeforeTran
+  column_description: 出让前持股比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SumAfterTran
+  column_description: 出让后持股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTAfterTran
+  column_description: 出让后持股比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ReceiverName
+  column_description: 接受股权质押方
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ReceiverEcoNature
+  column_description: 股权受让方经济性质
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SumAfterRece
+  column_description: 受让后持股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTAfterRece
+  column_description: 受让后持股比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TranMode
+  column_description: 股权转让方式
+  annotation_zh: 股权转让方式(TranMode)与(CT_SystemConst)表中的DM字段关联，令LB = 1202 AND DM NOT
+    IN ( 8,51,55,57,98)，得到股权转让方式的具体描述：1-协议转让，2-国有股行政划转或变更，3-执行法院裁定，4-以资抵债，5-二级市场买卖，6-其他-股东重组，7-股东更名，9-其他-要约收购，10-以股抵债，11-大宗交易(席位)，12-大宗交易，13-其他-ETF换购，14-其他-行权买入，15-集中竞价，16-定向可转债转让，17-集合竞价，18-连续竞价，19-做市，20-询价转让，21-赠与，22-继承，24-间接方式转让，53-股改后间接股东增持，56-交易所集中交易，59-股权激励，70-国有股转持，71-老股转让，80-司法拍卖，99-其他。
+  annotation: 'The transfer method of equity transfer (TranMode) is associated with
+    the DM field in the (CT_SystemConst) table, with LB = 1202 AND DM NOT IN (8,51,55,57,98),
+    resulting in the specific description of the equity transfer method: 1-Protocol
+    transfer, 2-State-owned shares administrative transfer or change, 3-Enforce court
+    ruling, 4-Pay debt with assets, 5-Secondary market trading, 6-Other - Shareholder
+    restructuring, 7-Shareholder name change, 9-Other - Tender offer, 10-Pay debt
+    with shares, 11-Bulk transaction (seat), 12-Bulk transaction, 13-Other - ETF subscription,
+    14-Other - Exercise purchase, 15-Concentrated bidding, 16-Directed convertible
+    bond transfer, 17-Collective bidding, 18-Continuous bidding, 19-Market making,
+    20-Inquiry transfer, 21-Gift, 22-Inheritance, 24-Indirect method of transfer,
+    53-Indirect shareholder increase after share reform, 56-Exchange centralized trading,
+    59-Equity incentive, 70-State-owned shares transfer holding, 71-Old shares transfer,
+    80-Judicial auction, 99-Other.'
+- column_name: InvolvedSum
+  column_description: 涉及股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTOfTansferer
+  column_description: 占出让方原持股数比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTOfTotalShares
+  column_description: 占总股本比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DealPrice
+  column_description: 交易价格(元/股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DealTurnover
+  column_description: 交易金额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ValidCondition
+  column_description: 生效条件
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TranStatement
+  column_description: 事项描述与进展说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfSuspended
+  column_description: 是否终止实施
+  annotation_zh: 是否终止实施（IfSuspended），该字段固定以下常量：1-是；0-否
+  annotation: 'Whether to terminate the implementation (IfSuspended), this field is
+    fixed with the following constants: 1-Yes; 0-No.'
+- column_name: SuspendedPublDate
+  column_description: 终止实施公告日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SNBeforeTran
+  column_description: 出让前股东序号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SNAfterTran
+  column_description: 出让后股东序号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SNAfterRece
+  column_description: 受让后股东序号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfSPBlockTradeCode
+  column_description: 是否专场大宗交易代码
+  annotation_zh: 是否专场大宗交易代码（IfSPBLockTradeCode），该字段固定以下常量：1-是；0-否
+  annotation: 'Whether to set up a special bulk transaction code (IfSPBLockTradeCode),
+    this field is fixed with the following constants: 1-yes; 0-no.'
+- column_name: IfSPBlockTrade
+  column_description: 是否专场大宗交易
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ResSumAfterTran
+  column_description: 其中:出让后有限售股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: NonResSumAfterTran
+  column_description: 其中:出让后无限售股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ResSumAfterRece
+  column_description: 其中:受让后有限售股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: NonResSumAfterRece
+  column_description: 其中:受让后无限售股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InitialInfoPublDate
+  column_description: 首次信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TransfererAttribute
+  column_description: 股权出让方所属性质
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TransfererCode
+  column_description: 股权出让方编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ReceiverAttribute
+  column_description: 股权受让方所属性质
+  annotation_zh: 股权受让方所属性质(ReceiverAttribute)与(CT_SystemConst)表中的DM字段关联，令LB = 1783
+    and DM in (1,2,3,99)，得到股权受让方所属性质的具体描述：1-自然人，2-企业，3-证券品种，99-其他。
+  annotation: 'The attribute of equity transfer recipient (ReceiverAttribute) is associated
+    with the DM field in the (CT_SystemConst) table, with LB = 1783 and DM in (1,2,3,99),
+    yielding the specific description of the attribute of equity transfer recipient:
+    1 - Natural Person, 2 - Enterprise, 3 - Securities Variety, 99 - Other.'
+- column_name: ReceiverCode
+  column_description: 股权受让方编码
+  annotation_zh: 当股权受让方所属性质(ReceiverAttribute)=2时，与“企业码表(EP_CompanyMain)”中的“企业编号(CompanyCode)”关联,得到事件主体企业的基本信息;
+    当股权受让方所属性质(ReceiverAttribute)=3时,与“证券码表总表(SecuMainAll)”中的“证券内部编码(InnerCode)”关联,得到事件主体证券品种的基本信息。
+  annotation: When the attribute of equity transfer recipient (ReceiverAttribute)
+    equals 2, it is associated with the "Company Code" in the "Enterprise Code Table
+    (EP_CompanyMain)", and the basic information of the event subject enterprise is
+    obtained; when the attribute of equity transfer recipient (ReceiverAttribute)
+    equals 3, it is associated with the "Inner Code" in the "Securities Code Table
+    (SecuMainAll)", and the basic information of the event subject securities variety
+    is obtained.
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SumBeforeRece
+  column_description: 受让前持股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTBeforerRece
+  column_description: 受让前持股比例(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TranStartDate
+  column_description: 股权变动起始日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SerialNumber
+  column_description: 序号
+  annotation_zh: .nan
+  annotation: .nan

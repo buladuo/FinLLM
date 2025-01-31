@@ -1,0 +1,45 @@
+default: 1
+full_table_name: astockfinancedb.lc_operatingstatus.yaml
+database_name: astockfinancedb
+database_name_zh: 上市公司财务指标/财务报表/融资与分红
+table_name: lc_operatingstatus
+table_name_zh: 公司经营情况述评
+table_describe: 1.收录公司管理层对季度、半年度、年度经营情况的自我评价，以及其后期发展计划和预测，本表涵盖了公司招股以来的历次纪录。2.数据范围：1997-12-31至今3.信息来源：定期报告
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OperatingStatement
+  column_description: 经营述评
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan

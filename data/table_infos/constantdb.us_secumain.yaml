@@ -1,0 +1,117 @@
+default: 1
+full_table_name: constantdb.us_secumain.yaml
+database_name: constantdb
+database_name_zh: 常量库
+table_name: us_secumain
+table_name_zh: 美股证券主表
+table_describe: 本表收录美国等境外市场单个证券品种的简称、上市交易所等基础信息。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuCode
+  column_description: 证券代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuAbbr
+  column_description: 证券简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChiSpelling
+  column_description: 拼音证券简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuCategory
+  column_description: 证券类别
+  annotation_zh: 证券类别(SecuCategory)与(CT_SystemConst)表中的DM字段关联，令LB = 1177 AND DM IN
+    (55,62,74,75,78,101,201,202,203,204,205,206,207,208)，得到证券类别的具体描述：55-优先股，62-ETF基金，74-普通股，75-美国存托凭证（ADR），78-临时证券(Temporary)，101-全球存托凭证(GDR)，201-其他存托凭证(DR)，202-无投票权的存托凭证(NVDR)，203-具有权益特征的证券(Preferred
+    Equity)，204-权利(Right)，205-结构性产品(Structured Products)，206-单位证券(Unit)，207-权证(Warrant)，208-外国证券(Alien/Foreign)。
+  annotation: 'The security category (SecuCategory) is associated with the DM field
+    in the (CT_SystemConst) table, with LB = 1177 AND DM IN (55,62,74,75,78,101,201,202,203,204,205,206,207,208),
+    resulting in the specific description of the security category: 55 - Preference
+    Shares, 62 - ETF Fund, 74 - Common Stock, 75 - American Depositary Receipt (ADR),
+    78 - Temporary Securities, 101 - Global Depositary Receipt (GDR), 201 - Other
+    Depositary Receipts (DR), 202 - Non-Voting Depositary Receipt (NVDR), 203 - Securities
+    with Equity Features (Preferred Equity), 204 - Rights, 205 - Structured Products,
+    206 - Unit Securities, 207 - Warrants, 208 - Foreign Securities (Alien/Foreign).'
+- column_name: SecuMarket
+  column_description: 证券市场
+  annotation_zh: 证券市场(SecuMarket)与(CT_SystemConst)表中的DM字段关联，令LB = 201 and DM IN (49,55,57,65,66,67,68,69,70,76,77,78,80,86,87,94,96,114,190,210,280,290,320,360,460,480,500,620)，得到证券市场的具体描述：49-澳大利亚证券交易所，55-巴西圣保罗证券交易所，57-马来西亚吉隆坡证券交易所，65-印度尼西亚证券交易所，66-泰国证券交易所，67-韩国首尔证券交易所，68-东京证券交易所，69-新加坡证券交易所，70-台湾证券交易所，76-美国证券交易所，77-美国纳斯达克证券交易所，78-纽约证券交易所，80-加拿大多伦多证券交易所，86-法国巴黎证券交易所，87-德国法兰克福证券交易所，94-瑞士证券交易所，96-约翰内斯堡证券交易所，114-德国证券交易所，190-韩国科斯达克交易所，210-印度国家证券交易所，280-菲律宾证券交易所，290-印度孟买证券交易所，320-俄罗斯莫斯科证券交易所，360-纽交所群岛交易所(NYSE
+    Arca)，460-美国OTC(OTCBB和OtherOTC)，480-投资者交易所(IEX)，500-Cboe BZX US Equities Exchange，620-胡志明市证券交易所。
+  annotation: 'The secuMarket is associated with the DM field in the CT_SystemConst
+    table, where LB = 201 and DM IN (49,55,57,65,66,67,68,69,70,76,77,78,80,86,87,94,96,114,190,210,280,290,320,360,460,480,500,620),
+    resulting in the specific description of the secuMarket: 49-Australian Securities
+    Exchange, 55-Brazil Sao Paulo Securities Exchange, 57-Malaysia Kuala Lumpur Securities
+    Exchange, 65-Indonesia Stock Exchange, 66-Thailand Stock Exchange, 67-South Korea
+    Seoul Stock Exchange, 68-Tokyo Stock Exchange, 69-Singapore Stock Exchange, 70-Taiwan
+    Stock Exchange, 76-U.S. Securities Exchange, 77-U.S. NASDAQ Stock Exchange, 78-New
+    York Stock Exchange, 80-Canada Toronto Stock Exchange, 86-France Paris Stock Exchange,
+    87-Germany Frankfurt Stock Exchange, 94-Switzerland Stock Exchange, 96-Johannesburg
+    Stock Exchange, 114-German Stock Exchange, 190-South Korea KOSDAQ Exchange, 210-India
+    National Stock Exchange, 280-Philippines Stock Exchange, 290-India Mumbai Stock
+    Exchange, 320-Russia Moscow Stock Exchange, 360-NYSE Arca, 460-U.S. OTC (OTCBB
+    and OtherOTC), 480-Investors Exchange (IEX), 500-Cboe BZX US Equities Exchange,
+    620-Ho Chi Minh City Stock Exchange.'
+- column_name: ListedSector
+  column_description: 上市板块
+  annotation_zh: 上市板块(ListedSector)与(CT_SystemConst)表中的DM字段关联，令LB = 207 AND DM IN
+    (101,102,103)，得到上市板块的具体描述：101-纳斯达克全球精选市场（NASDAQ-GS），102-纳斯达克全球市场（NASDAQ-GM），103-纳斯达克资本市场（NASDAQ-CM）。
+  annotation: 'The listed sector (ListedSector) is associated with the DM field in
+    the (CT_SystemConst) table, with LB = 207 AND DM IN (101,102,103), resulting in
+    the specific description of the listed sector: 101 - NASDAQ Global Select Market
+    (NASDAQ-GS), 102 - NASDAQ Global Market (NASDAQ-GM), 103 - NASDAQ Capital Market
+    (NASDAQ-CM).'
+- column_name: ListedDate
+  column_description: 上市日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ListedState
+  column_description: 上市状态
+  annotation_zh: '上市状态(ListedState)与(CT_SystemConst)表中的DM字段关联，令LB = 1176 and DM in
+    (1,2,4,5,9)，得到上市状态的具体描述：1-上市，2-预上市，4-上市失败，5-终止，9-其他。
+
+    '
+  annotation: 'The listing status (ListedState) is associated with the DM field in
+    the (CT_SystemConst) table, with LB = 1176 and DM in (1,2,4,5,9), yielding the
+    specific description of the listing status: 1 - Listed, 2 - Pre-listed, 4 - Listing
+    Failed, 5 - Terminated, 9 - Other.'
+- column_name: ISIN
+  column_description: ISIN代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DelistingDate
+  column_description: 退市日期1
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EngName
+  column_description: 英文名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChiName
+  column_description: 中文名称
+  annotation_zh: .nan
+  annotation: .nan

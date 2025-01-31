@@ -1,0 +1,57 @@
+default: 1
+full_table_name: astockeventsdb.lc_investordetail.yaml
+database_name: astockeventsdb
+database_name_zh: 上市公司公告资讯/重大事项
+table_name: lc_investordetail
+table_name_zh: 投资者关系活动调研明细
+table_describe: 1、收录参与上市公司调研活动的调研机构明细数据，包括调研单位、调研人员等指标。2、数据范围：2016-至今3、信息来源：交易所，上交所互动易和深交所互动易
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RID
+  column_description: 投资者关系活动ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Participant
+  column_description: 调研机构
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ParticipantID
+  column_description: 调研机构编码
+  annotation_zh: 调研机构编码（ParticipantID）：与企业码表（EP_CompanyMain）中的企业编号（CompanyCode）关联，可取得调研机构详细信息。
+  annotation: 'Research institution code (ParticipantID): associated with the company
+    code (CompanyCode) in the enterprise code table (EP_CompanyMain), detailed information
+    of the research institution can be obtained.'
+- column_name: PersonalName
+  column_description: 调研人员
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PersonalID
+  column_description: 调研人员编码
+  annotation_zh: 调研人员编码（PersonalID）：该字段暂不维护。
+  annotation: 'Researchers'' encoding (PersonalID): This field is currently not maintained.'
+- column_name: PostName
+  column_description: 职位名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SerialNumber
+  column_description: 序号
+  annotation_zh: .nan
+  annotation: .nan

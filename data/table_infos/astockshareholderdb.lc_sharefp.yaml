@@ -1,0 +1,141 @@
+default: 1
+full_table_name: astockshareholderdb.lc_sharefp.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: lc_sharefp
+table_name_zh: 股东股权冻结和质押
+table_describe: 1.收录股东股权被冻结和质押及进展情况，包括被冻结质押股东、被接受股权质押方、涉及股数以及冻结质押期限起始和截止日等内容。2.数据范围：1999-09-30至今3.信息来源：股权质押公告、股权冻结公告、解除质押冻结公告等。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TypeSelect
+  column_description: 类别选择
+  annotation_zh: 类别选择(TypeSelect)与(CT_SystemConst)表中的DM字段关联，令LB = 1201 AND DM IN (2,3,5)，得到类别选择的具体描述：2-股权冻结，3-股权质押，5-股票质押式回购。
+  annotation: 'The Category Selection (TypeSelect) is associated with the DM field
+    in the (CT_SystemConst) table, with LB = 1201 AND DM IN (2,3,5), resulting in
+    the specific description of the Category Selection: 2-Equity Freezing, 3-Equity
+    Pledge, 5-Stock Repurchase by Pledge.'
+- column_name: FPSHName
+  column_description: 股权被冻结质押股东名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ReceiverName
+  column_description: 接受股权质押方
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InvolvedSum
+  column_description: 涉及股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTOfPledger
+  column_description: 占冻结质押方持股数比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTOfTotalShares
+  column_description: 占总股本比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FPReason
+  column_description: 股权冻结质押原因
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: StartDate
+  column_description: 起始日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Statement
+  column_description: 备注说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHSN
+  column_description: 股权被冻结质押股东序号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHAttribute
+  column_description: 股东所属性质
+  annotation_zh: 股权被冻结质押股东所属性质(SHAttribute)与(CT_SystemConst)表中的DM字段关联，令LB = 1783 AND
+    DM IN (1,2,3,99)，得到股权被冻结质押股东所属性质的具体描述：1-自然人，2-企业，3-证券品种，99-其他。
+  annotation: 'The equity freeze and pledge attribute of the shareholder (SHAttribute)
+    is associated with the DM field in the (CT_SystemConst) table, where LB = 1783
+    AND DM IN (1,2,3,99), resulting in the specific description of the equity freeze
+    and pledge attribute of the shareholder: 1 - Individual, 2 - Enterprise, 3 - Securities
+    Type, 99 - Other.'
+- column_name: SHID
+  column_description: 股权被冻结质押股东ID
+  annotation_zh: 股权被冻结质押股东ID(SHID)：当股权被冻结质押股东所属性质(SHAttribute)=2时，与企业码表（EP_CompanyMain）中的企业编号（CompanyCode）关联
+  annotation: 'When the equity is frozen and pledged, the shareholder ID (SHID): associated
+    with the enterprise code (CompanyCode) in the enterprise code table (EP_CompanyMain)
+    when the nature of the shareholder (SHAttribute) = 2.'
+- column_name: ReceiverAttribute
+  column_description: 接受股权质押方所属性质
+  annotation_zh: 接受股权质押方所属性质(ReceiverAttribute)与(CT_SystemConst)表中的DM字段关联，令LB = 1783
+    AND DM IN (1,2,3,99)，得到接受股权质押方所属性质的具体描述：1-自然人，2-企业，3-证券品种，99-其他。
+  annotation: 'The nature of the equity pledge receiver (ReceiverAttribute) is associated
+    with the DM field in the (CT_SystemConst) table, where LB = 1783 AND DM IN (1,2,3,99),
+    resulting in the specific description of the nature of the equity pledge receiver:
+    1 - Individual, 2 - Enterprise, 3 - Securities Type, 99 - Other.'
+- column_name: ReceiverID
+  column_description: 接受股权质押方ID
+  annotation_zh: 接受股权质押方ID(ReceiverID)：当接受股权质押方所属性质(ReceiverAttribute)=2时，与企业码表（EP_CompanyMain）中的企业编号（CompanyCode）关联
+  annotation: 'Receiver ID (ReceiverID): When the attribute of the party accepting
+    equity pledge (ReceiverAttribute) equals 2, it is associated with the company
+    code (CompanyCode) in the enterprise code table (EP_CompanyMain).'
+- column_name: EventCode
+  column_description: 事项编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EventDate
+  column_description: 事项日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UnstintedTShare
+  column_description: 其中:无限售股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RestrainedTShare
+  column_description: 其中:有限售股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InitialInfoPublDate
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InitialPledgeSum
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EstimateReleaseDate
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan

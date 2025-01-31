@@ -1,0 +1,67 @@
+default: 1
+full_table_name: astockoperationsdb.lc_rewardstat.yaml
+database_name: astockoperationsdb
+database_name_zh: 上市公司产品供销/人力资源
+table_name: lc_rewardstat
+table_name_zh: 公司管理层报酬统计
+table_describe: 1.按报告期统计管理层的报酬情况，包括报酬总额、前三名董事报酬、前三名高管报酬、报酬区间统计分析等。2.数据范围：2001-12-31至今3.信息来源：定期报告、招股说明书等
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TotalYearPay
+  column_description: 报酬总额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: NumPayManagers
+  column_description: 领取报酬的管理层人数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: High3Directors
+  column_description: 前三名董事报酬(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: High3Managers
+  column_description: 前三名高管报酬(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TotalIndeSupeYearPay
+  column_description: 独立董事津贴(元/人)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Statement
+  column_description: 备注说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TotalIndeSubsidy
+  column_description: 独立董事津贴总额(元)
+  annotation_zh: .nan
+  annotation: .nan

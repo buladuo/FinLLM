@@ -1,0 +1,121 @@
+default: 1
+full_table_name: constantdb.qt_tradingdaynew.yaml
+database_name: constantdb
+database_name_zh: 常量库
+table_name: qt_tradingdaynew
+table_name_zh: 交易日表(新)
+table_describe: 本表收录各个市场的交易日信息，包括每个日期是否是交易日，是否周、月、季、年最后一个交易日
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TradingDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfTradingDay
+  column_description: 是否交易日
+  annotation_zh: 是否交易日（IfTradingDay）：该字段固定以下常量：1-是，2-否。
+  annotation: 'Whether it is a trading day (IfTradingDay): This field is fixed with
+    the following constants: 1-yes, 2-no.'
+- column_name: SecuMarket
+  column_description: 证券市场
+  annotation_zh: 证券市场(SecuMarket)：与(CT_SystemConst)表中的DM字段关联，令LB = 201 AND DM IN (14,18,49,68,70,71,72,76,77,78,80,81,83,85,86,87,89,90,94,210,620)，得到证券市场的具体描述：14-上海黄金交易所，18-北京证券交易所，49-澳大利亚证券交易所，68-东京证券交易所，70-台湾证券交易所，71-柜台交易市场，72-香港联交所，76-美国证券交易所，77-美国纳斯达克证券交易所，78-纽约证券交易所，80-加拿大多伦多证券交易所，81-三板市场，83-上海证券交易所，85-伦敦证券交易所，86-法国巴黎证券交易所，87-德国法兰克福证券交易所，89-银行间债券市场，90-深圳证券交易所，94-瑞士证券交易所，210-印度国家证券交易所，620-胡志明市证券交易所。
+  annotation: 'Securities Market (SecuMarket): Associated with the DM field in the
+    (CT_SystemConst) table, let LB = 201 AND DM IN (14,18,49,68,70,71,72,76,77,78,80,81,83,85,86,87,89,90,94,210,620),
+    obtaining the specific description of the securities market: 14-Shanghai Gold
+    Exchange, 18-Beijing Stock Exchange, 49-Australia Stock Exchange, 68-Tokyo Stock
+    Exchange, 70-Taiwan Stock Exchange, 71-OTC Market, 72-Hong Kong Stock Exchange,
+    76-American Stock Exchange, 77-NASDAQ Stock Exchange, 78-New York Stock Exchange,
+    80-Toronto Stock Exchange in Canada, 81-Third Board Market, 83-Shanghai Stock
+    Exchange, 85-London Stock Exchange, 86-Paris Stock Exchange in France, 87-Frankfurt
+    Stock Exchange in Germany, 89-Interbank Bond Market, 90-Shenzhen Stock Exchange,
+    94-Swiss Stock Exchange, 210-Indian National Stock Exchange, 620-Ho Chi Minh City
+    Stock Exchange.'
+- column_name: IfWeekEnd
+  column_description: 是否周最后交易日
+  annotation_zh: 是否周最后交易日（IfWeekEnd）：该字段固定以下常量：1-是，2-否。
+  annotation: 'Whether it is the last trading day of the week (IfWeekEnd): This field
+    is fixed with the following constants: 1-yes, 2-no.'
+- column_name: IfMonthEnd
+  column_description: 是否月最后交易日
+  annotation_zh: 是否月最后交易日（IfMonthEnd）：该字段固定以下常量：1-是，2-否。
+  annotation: 'Whether the last trading day of the month (IfMonthEnd): This field
+    is fixed with the following constants: 1-Yes, 2-No.'
+- column_name: IfQuarterEnd
+  column_description: 是否季最后交易日
+  annotation_zh: 是否季最后交易日（IfQuarterEnd）：该字段固定以下常量：1-是，2-否。
+  annotation: 'Whether it is the last trading day of the quarter (IfQuarterEnd): This
+    field is fixed with the following constants: 1-yes, 2-no.'
+- column_name: IfYearEnd
+  column_description: 是否年最后交易日
+  annotation_zh: 是否年最后交易日（IfYearEnd）：该字段固定以下常量：1-是，2-否。
+  annotation: 'Whether it is the last trading day of the year (IfYearEnd): This field
+    is fixed with the following constants: 1-yes, 2-no.'
+- column_name: XGRQ
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TradingDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfTradingDay
+  column_description: 是否交易日
+  annotation_zh: 是否交易日（IfTradingDay）：该字段固定以下常量：1-是，2-否。
+  annotation: 'Whether it is a trading day (IfTradingDay): This field is fixed with
+    the following constants: 1-yes, 2-no.'
+- column_name: SecuMarket
+  column_description: 证券市场
+  annotation_zh: 证券市场(SecuMarket)：与(CT_SystemConst)表中的DM字段关联，令LB = 201 AND DM IN (14,18,49,68,70,71,72,76,77,78,80,81,83,85,86,87,89,90,94,210,620)，得到证券市场的具体描述：14-上海黄金交易所，18-北京证券交易所，49-澳大利亚证券交易所，68-东京证券交易所，70-台湾证券交易所，71-柜台交易市场，72-香港联交所，76-美国证券交易所，77-美国纳斯达克证券交易所，78-纽约证券交易所，80-加拿大多伦多证券交易所，81-三板市场，83-上海证券交易所，85-伦敦证券交易所，86-法国巴黎证券交易所，87-德国法兰克福证券交易所，89-银行间债券市场，90-深圳证券交易所，94-瑞士证券交易所，210-印度国家证券交易所，620-胡志明市证券交易所。
+  annotation: 'Securities Market (SecuMarket): Associated with the DM field in the
+    (CT_SystemConst) table, let LB = 201 AND DM IN (14,18,49,68,70,71,72,76,77,78,80,81,83,85,86,87,89,90,94,210,620),
+    obtaining the specific description of the securities market: 14-Shanghai Gold
+    Exchange, 18-Beijing Stock Exchange, 49-Australia Stock Exchange, 68-Tokyo Stock
+    Exchange, 70-Taiwan Stock Exchange, 71-OTC Market, 72-Hong Kong Stock Exchange,
+    76-American Stock Exchange, 77-NASDAQ Stock Exchange, 78-New York Stock Exchange,
+    80-Toronto Stock Exchange in Canada, 81-Third Board Market, 83-Shanghai Stock
+    Exchange, 85-London Stock Exchange, 86-Paris Stock Exchange in France, 87-Frankfurt
+    Stock Exchange in Germany, 89-Interbank Bond Market, 90-Shenzhen Stock Exchange,
+    94-Swiss Stock Exchange, 210-Indian National Stock Exchange, 620-Ho Chi Minh City
+    Stock Exchange.'
+- column_name: IfWeekEnd
+  column_description: 是否周最后交易日
+  annotation_zh: 是否周最后交易日（IfWeekEnd）：该字段固定以下常量：1-是，2-否。
+  annotation: 'Whether it is the last trading day of the week (IfWeekEnd): This field
+    is fixed with the following constants: 1-yes, 2-no.'
+- column_name: IfMonthEnd
+  column_description: 是否月最后交易日
+  annotation_zh: 是否月最后交易日（IfMonthEnd）：该字段固定以下常量：1-是，2-否。
+  annotation: 'Whether the last trading day of the month (IfMonthEnd): This field
+    is fixed with the following constants: 1-Yes, 2-No.'
+- column_name: IfQuarterEnd
+  column_description: 是否季最后交易日
+  annotation_zh: 是否季最后交易日（IfQuarterEnd）：该字段固定以下常量：1-是，2-否。
+  annotation: 'Whether it is the last trading day of the quarter (IfQuarterEnd): This
+    field is fixed with the following constants: 1-yes, 2-no.'
+- column_name: IfYearEnd
+  column_description: 是否年最后交易日
+  annotation_zh: 是否年最后交易日（IfYearEnd）：该字段固定以下常量：1-是，2-否。
+  annotation: 'Whether it is the last trading day of the year (IfYearEnd): This field
+    is fixed with the following constants: 1-yes, 2-no.'
+- column_name: XGRQ
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

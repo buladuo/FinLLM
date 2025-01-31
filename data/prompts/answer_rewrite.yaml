@@ -1,0 +1,113 @@
+default: 1
+type: answer_rewrite
+
+prompts:
+  - id: 1
+    content: |
+      **答案整理大师提示**
+
+      您将担任答案整理大师。您的任务是将原始问题与子问题的SQL查询结果结合，最终给出完整的答案。请注意以下要点：
+
+      1. **问题理解**：您需要理解原始问题的内容，并确保子问题的答案能够完整提供所需信息。
+
+      2. **结果合并**：您会根据每个子问题的SQL结果，提取相关信息，并将其整合到原始问题的答案中。
+
+      3. **分析内容**：对于那些无法通过SQL查询获得的内容，您需要进行独立思考，并用适当的方式补充完整。
+
+      4. **输出格式**：请使用JSON格式，在提供的框架中填充答案。
+
+
+      **示例**:
+      - 原问题与其子问题：
+      ```json
+      [
+        {
+          "question": "600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？",
+          "subquestions": [
+            {
+              "id": 1,
+              "subquestion": "查询600872的全称。",
+              "sql_result": [
+                  {
+                      "ChiName": "中炬高新技术实业(集团)股份有限公司"
+                  }
+              ],
+              "sql_result_count": 1,
+              "sql": "SELECT ChiName FROM AStockBasicInfoDB.LC_StockArchives WHERE CompanyCode = 1805;"
+            },
+            {
+              "id": 2,
+              "subquestion": "查询600872的A股简称。",
+              "sql_result": [
+                  {
+                      "AShareAbbr": "中炬高新"
+                  }
+              ],
+              "sql_result_count": 1,
+              "sql": "SELECT AShareAbbr FROM AStockBasicInfoDB.LC_StockArchives WHERE CompanyCode = 1805;"
+            },
+            {
+              "id": 3,
+              "subquestion": "查询600872的法人。",
+              "sql_result": [
+                  {
+                      "LegalRepr": "余健华"
+                  }
+              ],
+              "sql_result_count": 1,
+              "sql": "SELECT LegalRepr FROM AStockBasicInfoDB.LC_StockArchives WHERE CompanyCode = 1805;"
+            },
+            {
+              "id": 4,
+              "subquestion": "查询600872的法律顾问。",
+              "sql_result": [
+                  {
+                      "LegalConsultant": "广东卓建(中山)律师事务所"
+                  }
+              ],
+              "sql_result_count": 1,
+              "sql": "SELECT LegalConsultant FROM AStockBasicInfoDB.LC_StockArchives WHERE CompanyCode = 1805;"
+            },
+            {
+              "id": 5,
+              "subquestion": "查询600872的会计师事务所。",
+              "sql_result": [
+                  {
+                      "AccountingFirm": "天职国际会计师事务所（特殊普通合伙）"
+                  }
+              ],
+              "sql_result_count": 1,
+              "sql": "SELECT AccountingFirm FROM AStockBasicInfoDB.LC_StockArchives WHERE CompanyCode = 1805;"
+            },
+            {
+              "id": 6,
+              "subquestion": "查询600872的董秘。",
+              "sql_result": [
+                  {
+                      "SecretaryBD": "郭毅航"
+                  }
+              ],
+              "sql_result_count": 1,
+              "sql": "SELECT SecretaryBD FROM AStockBasicInfoDB.LC_StockArchives WHERE CompanyCode = 1805;"
+            }
+          ]
+        }
+      ]
+      ```
+
+      - 整合后的输出:
+      ```json
+      [{
+        "question": "600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？",
+        "answer": {
+          "全称": "中炬高新技术实业(集团)股份有限公司",
+          "A股简称": "中炬高新",
+          "法人": "余健华",
+          "法律顾问": "广东卓建(中山)律师事务所",
+          "会计师事务所": "天职国际会计师事务所（特殊普通合伙）",
+          "董秘": "郭毅航"
+        }
+      }]
+      ```
+
+      在上述示例中，各子问题的答案都已经精确地整合到原始问题的回答中。务必确保最后的回答既全面又清晰。

@@ -1,0 +1,263 @@
+default: 1
+full_table_name: astockshareholderdb.lc_smattendinfo.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: lc_smattendinfo
+table_name_zh: 股东大会出席信息
+table_describe: 1.收录股东大会召开时间，地点，类别；投票方式；见证律师事务所及经办律师；全体股东出席情况；非流通股东出席情况；流通股东出席情况。2.数据范围：1999-1-28至今
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: InitialInfoPublDate
+  column_description: 首次信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LatestInfoPublDate
+  column_description: 最新信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MeetingDate
+  column_description: 股东大会召开日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHMeetingTime
+  column_description: 股东大会召开时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SMRegDate
+  column_description: 股东大会股权登记日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MeetingRegStartDate
+  column_description: 会议登记起始日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MeetingRegEndDate
+  column_description: 会议登记截止日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AnounceDate
+  column_description: 股东大会公告日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ProposalContent
+  column_description: 议案内容
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CancelDate
+  column_description: 股东大会取消日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Address
+  column_description: 股东大会召开地址
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfEffected
+  column_description: 是否有效
+  annotation_zh: 是否有效(IfEffected)与(CT_SystemConst)表中的DM字段关联，令LB = 999 AND DM IN (1,2)，得到是否有效的具体描述：1-是，2-否。
+  annotation: 'Whether "IfEffected" is associated with the "DM" field in the "CT_SystemConst"
+    table, let LB = 999 AND DM IN (1,2), to obtain the specific description of whether
+    it is effective: 1-Yes, 2-No.'
+- column_name: SerialNumber
+  column_description: 序号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MeetingType
+  column_description: 股东大会类别
+  annotation_zh: 股东大会类别(MeetingType)与(CT_SystemConst)表中的DM字段关联，令LB = 1299 AND DM IN
+    (1,3,5)，得到股东大会类别的具体描述：1-年度股东大会，3-临时股东大会，5-出资人组会议。
+  annotation: 'The "MeetingType" of the shareholders'' meeting is associated with
+    the DM field in the "CT_SystemConst" table, with LB = 1299 AND DM IN (1,3,5),
+    resulting in the specific description of the shareholders'' meeting type: 1-Annual
+    General Meeting, 3-Extraordinary General Meeting, 5-Investors'' Meeting.'
+- column_name: VotingMeans
+  column_description: 投票表决方式
+  annotation_zh: 投票表决方式(VotingMeans)与(CT_SystemConst)表中的DM字段关联，令LB = 1300，得到投票表决方式的具体描述：1-网络投票，2-现场投票，3-网络和通讯，5-现场和网络投票，9-通讯表决，15-现场投票和通讯表决，16-现场投票、通讯表决和网络投票。
+  annotation: 'The voting means (VotingMeans) is associated with the DM field in the
+    (CT_SystemConst) table, with LB set to 1300, the specific description of the voting
+    means is as follows: 1-Internet voting, 2-Onsite voting, 3-Internet and communication,
+    5-Onsite and Internet voting, 9-Communication voting, 15-Onsite voting and communication
+    voting, 16-Onsite voting, communication voting, and Internet voting.'
+- column_name: Year
+  column_description: 年度
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Series
+  column_description: 届次
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: NetVotingPlatform
+  column_description: 网络投票通道
+  annotation_zh: 网络投票通道(NetVotingPlatform)与(CT_SystemConst)表中的DM字段关联，令LB = 2521，得到网络投票通道的具体描述：1-中国证券登记结算有限责任公司网络系统，2-上海证券交易所交易系统，3-深圳证券交易所交易系统，4-互联网投票系统，5-中国证券登记结算有限责任公司网络系统、互联网投票系统，6-上海证券交易所交易系统、互联网投票系统，7-深圳证券交易所交易系统、互联网投票系统，999-其他。
+  annotation: 'The NetVotingPlatform is associated with the DM field in the CT_SystemConst
+    table, with LB set to 2521, the specific description of the NetVotingPlatform
+    is as follows: 1-China Securities Registration and Settlement Corporation Network
+    System, 2-Shanghai Stock Exchange Trading System, 3-Shenzhen Stock Exchange Trading
+    System, 4-Internet Voting System, 5-China Securities Registration and Settlement
+    Corporation Network System, Internet Voting System, 6-Shanghai Stock Exchange
+    Trading System, Internet Voting System, 7-Shenzhen Stock Exchange Trading System,
+    Internet Voting System, 999-Other.'
+- column_name: NetVotingCode
+  column_description: 网络投票代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VotingAbbr
+  column_description: 投票简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: NetVotingStartDate
+  column_description: 网络投票起始日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: NetVotingEndDate
+  column_description: 网络投票截止日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Presider
+  column_description: 大会主持人
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PresiderOfficialPost
+  column_description: 主持人职务(多选)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TestmonyLawOffice
+  column_description: 见证律师事务所
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LawOfficeCode
+  column_description: 律师事务所企业编号
+  annotation_zh: 律师事务所企业编号(LawOfficeCode)：与机构基本资料表(LC_InstiArchive)中公司代码(CompanyCode)关联，得到预测机构的具体信息。
+  annotation: 'Law Office Code: Correlated with the Company Code in the Institutional
+    Basic Information Form (LC_InstiArchive), to obtain specific information of the
+    predicted institution.'
+- column_name: Lawyer
+  column_description: 经办律师
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AttendanceType
+  column_description: 股东出席类别
+  annotation_zh: 股东出席类别(AttendanceType)与(CT_SystemConst)表中的DM字段关联，令LB = 1301，得到股东出席类别的具体描述：1-总体出席，2-现场投票出席，3-网络投票出席。
+  annotation: 'Shareholders'' attendance type (AttendanceType) is associated with
+    the DM field in the (CT_SystemConst) table, setting LB = 1301, yields the specific
+    description of the shareholders'' attendance type: 1 - Overall attendance, 2 -
+    On-site voting attendance, 3 - Online voting attendance.'
+- column_name: AttendanceNumber
+  column_description: 出席总体股东及代表人数(人)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ASharesNumber
+  column_description: '#A股股东人数(人)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HSharesNumber
+  column_description: '#H股股东人数(人)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OtherSharesNumber
+  column_description: '#其他基础股票股东人数(人)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ShareANumber
+  column_description: '#A类普通股股东人数'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ShareBNumber
+  column_description: '#B类普通股股东人数'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ShareReprensented
+  column_description: 出席总体股东代表股份(股)/(票)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ASharesReprensented
+  column_description: '#A股股东代表股份(股)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HSharesReprensented
+  column_description: '#H股股东代表股份(股)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OSharesReprensented
+  column_description: '#其他基础股票股东代表股份占比(%)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ShareAReprensented
+  column_description: '#A类普通股股东代表股份(票)(以股计)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ShareBReprensented
+  column_description: '#B类普通股股东代表股份(票)(以股计)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RatioInTotalShare
+  column_description: 出席总体股东股份占总股份比例(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ASharesRatio
+  column_description: '#A股股东代表股份占比(%)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HSharesRatio
+  column_description: '#H股股东代表股份占比(%)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OtherSharesRatio
+  column_description: '#其他基础股票股东代表股份占比(%)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ShareARatio
+  column_description: '#A类普通股股东代表股份比例(%)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ShareBRatio
+  column_description: '#B类普通股股东代表股份比例(%)'
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MSharesNumber
+  column_description: 出席中小股东及代表人数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MShareReprensented
+  column_description: 出席中小股东代表股份(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MSharesRatio
+  column_description: 出席中小股东股份占总股份比例(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PSharesNumber
+  column_description: 出席优先股股东及代表人数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PSharesReprensented
+  column_description: 出席优先股股东代表股份(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PSharesRatio
+  column_description: 出席优先股股东股份占总股份比例(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

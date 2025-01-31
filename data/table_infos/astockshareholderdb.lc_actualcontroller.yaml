@@ -1,0 +1,74 @@
+default: 1
+full_table_name: astockshareholderdb.lc_actualcontroller.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: lc_actualcontroller
+table_name_zh: 公司实际控制人
+table_describe: 1.收录根据上市公司在招投说明书、定期报告、及临时公告中披露的实际控制人结构图判断的上市公司实际控制人信息。_x000D_2.目前只处理实际控制人有变动的数据，下期和本期相比如无变化，则不做处理。3.数据范围：2004-12-31至今4.信息来源：招股说明书、上市公告书、定报、临时公告等。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 代码（CompanyCode）is associated with the "CompanyCode" in "SecuMain", obtaining
+    the trading code, abbreviation, etc. of the listed company.
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ControllerCode
+  column_description: 实际控制人代码
+  annotation_zh: 实际控制人代码（ControllerCode）：与“机构基本资料（LC_InstiArchive）”中的“企业编号（CompanyCode）”关联，得到实际控制人的名称，企业性质等信息。
+  annotation: 'Controller Code: Associated with the "Company Code" in "LC_InstiArchive"
+    to obtain information such as the name of the actual controller and the nature
+    of the enterprise.'
+- column_name: ControllerName
+  column_description: 实际控制人
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EconomicNature
+  column_description: 经济性质
+  annotation_zh: 实际控制人经济性质(EconomicNature)与(CT_SystemConst)表中的DM字段关联，令LB = 1581，得到实际控制人经济性质的具体描述：1-中央企业，2-地方国有企业，3-民营企业，4-集体企业，5-大学，6-外资，7-工会，99-其它。
+  annotation: 'The economic nature of the actual controller (EconomicNature) is associated
+    with the DM field in the (CT_SystemConst) table, setting LB = 1581, to obtain
+    the specific description of the economic nature of the actual controller: 1-Central
+    Enterprise, 2-Local State-owned Enterprise, 3-Private Enterprise, 4-Collective
+    Enterprise, 5-University, 6-Foreign Capital, 7-Trade Union, 99-Other.'
+- column_name: NationalityCode
+  column_description: 国籍代码
+  annotation_zh: 国籍代码（NationalityCode）：与“系统常量表”中的“代码（DM）”关联，令“LB=1023”，得到实际控制人的国籍编码。
+  annotation: 'Nationality Code: Associated with the "Code (DM)" in the "System Constants
+    Table", setting "LB=1023" yields the actual controller''s nationality code.'
+- column_name: NationalityDesc
+  column_description: 国籍描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PermanentResidency
+  column_description: 永久境外居留权
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ControllerNature
+  column_description: 实际控制人所属性质
+  annotation_zh: 实际控制人所属性质(ControllerNature)与(CT_SystemConst)表中的DM字段关联，令LB = 1783，得到实际控制人所属性质的具体描述：1-自然人，2-企业，3-证券品种，99-其他。
+  annotation: 'The nature of the actual controller (ControllerNature) is associated
+    with the DM field in the (CT_SystemConst) table, setting LB = 1783, to obtain
+    the specific description of the nature of the actual controller: 1-natural person,
+    2-enterprise, 3-security type, 99-others.'

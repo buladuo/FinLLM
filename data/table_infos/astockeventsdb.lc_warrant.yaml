@@ -1,0 +1,332 @@
+default: 1
+full_table_name: astockeventsdb.lc_warrant.yaml
+database_name: astockeventsdb
+database_name_zh: 上市公司公告资讯/重大事项
+table_name: lc_warrant
+table_name_zh: 公司担保明细
+table_describe: 1.收录上市公司公告中披露的担保等重大事项，包括时间内容、最新进展、事件主体/交易对象名称、企业编号、与上市公司关联关系、担保原因等指标。2.数据范围：2001年-至今3.信息来源：上市公司公告
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: InitialInfoPublDate
+  column_description: 首次信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AnnouncementType
+  column_description: 公告类型
+  annotation_zh: 公告类型(AnnouncementType)与(CT_SystemConst)表中的DM字段关联，令LB = 1109，得到公告类型的具体描述：1-董事会公告，2-股东大会公告，3-监事会公告，4-公司公告，5-法律意见书，6-财务报告，7-中国证监会公告，8-交易所公告，9-中介机构公告，10-基金投资组合公告，11-回访报告，12-独立董事声明，13-债券公告，14-三板市场公司公告，15-基金公告，18-收购报告书，30-新股发行公告，31-增发发行公告，32-债券发行公告，33-基金发行公告，34-配股发行公告，40-增发股本变动公告，41-配股股本变动公告，43-债券上市公告，50-分红公告，60-期货公告，61-股权分置改革说明书，99-其它。
+  annotation: 'The announcement type (AnnouncementType) is associated with the DM
+    field in the (CT_SystemConst) table, with LB set to 1109, the specific description
+    of the announcement type is as follows: 1 - Board of Directors announcement, 2
+    - Shareholders'' Meeting announcement, 3 - Board of Supervisors announcement,
+    4 - Company announcement, 5 - Legal opinion letter, 6 - Financial report, 7 -
+    China Securities Regulatory Commission announcement, 8 - Stock exchange announcement,
+    9 - Intermediary agency announcement, 10 - Fund investment portfolio announcement,
+    11 - Follow-up report, 12 - Independent director''s statement, 13 - Bond announcement,
+    14 - Third Board market company announcement, 15 - Fund announcement, 18 - Acquisition
+    report, 30 - New share issuance announcement, 31 - Additional issuance announcement,
+    32 - Bond issuance announcement, 33 - Fund issuance announcement, 34 - Rights
+    issue announcement, 40 - Additional capital change announcement, 41 - Rights issue
+    capital change announcement, 43 - Bond listing announcement, 50 - Dividend announcement,
+    60 - Futures announcement, 61 - Equity separation reform prospectus, 99 - Other.'
+- column_name: DisclosureMethod
+  column_description: 披露方式
+  annotation_zh: 披露方式(DisclosureMethod)与(CT_SystemConst)表中的DM字段关联，令LB = 1221，得到披露方式的具体描述：1-正常披露，2-事后披露。
+  annotation: 'The disclosure method (DisclosureMethod) is associated with the DM
+    field in the (CT_SystemConst) table, with LB set to 1221, resulting in the specific
+    description of the disclosure method: 1 - Normal Disclosure, 2 - Post-Disclosure.'
+- column_name: EventContent
+  column_description: 事件内容
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ActionDesc
+  column_description: 行为描述
+  annotation_zh: 行为描述(ActionDesc)：本字段因字符长度限制，有被截断的情况。担保事件的完整文字描述请查看text字段“事件内容(EventContent)”。
+  annotation: 'Action Description: This field may be truncated due to character length
+    limitations. For the complete text description of the guarantee event, please
+    refer to the "Event Content (EventContent)" field.'
+- column_name: NewestAdvance
+  column_description: 最新进展状态描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EventSubject
+  column_description: 事件主体
+  annotation_zh: 事件主体与CT_SystemConst表中的DM字段关联，令LB = 1246，得到事件主体的具体描述：1-上市公司，2-下属公司，3-公司股东，4-债券发行人
+  annotation: 'The event subject is associated with the DM field in the CT_SystemConst
+    table, with LB = 1246, obtaining the specific description of the event subject:
+    1-corporate, 2subsidiary, 3-shareholder, 4-bond issuer.'
+- column_name: EventProcedure
+  column_description: 事件进程
+  annotation_zh: 事件进程与CT_SystemConst表中的DM字段关联，令LB = 1059 AND DM IN (1001,1004,1007,1016,1019,1025,1028,1041,1053,3099)，得到事件进程的具体描述：1001-预案，1004-决案，1007-否决，1016-未实施终止，1019-实施中，1025-解除，1028-到期，1041-续签，1053-可能涉诉
+  annotation: 'The event process is associated with the DM field in the CT_SystemConst
+    table, let LB = 1059 AND DM IN (1001,1004,1007,1016,1019,1025,1028,1041,1053,3099),
+    the specific description of the event process is obtained: 1001-Plan, 1004-Decision,
+    1007-Rejection, 1016-Not Implemented Termination, 1019-In Implementation, 1025-Release,
+    1028-Expiry, 1041-Renewal, 1053-Potentially Litigious.'
+- column_name: ActionWays
+  column_description: 行为方式
+  annotation_zh: 行为方式与CT_SystemConst表中的DM字段关联，令LB = 1063 AND DM IN (1201,1203,1204,1205,1207,1209,1299)，得到行为方式的具体描述：1201-提供担保，1203-接受担保，1204-提供反担保，1205-提供担保协议，1207-接受担保协议，1209-互保协议，1299-其他
+  annotation: 'The behavior pattern is associated with the DM field in the CT_SystemConst
+    table, let LB = 1063 AND DM IN (1201,1203,1204,1205,1207,1209,1299), resulting
+    in the specific description of the behavior pattern: 1201 - Provide guarantee,
+    1203 - Accept guarantee, 1204 - Provide counter-guarantee, 1205 - Provide guarantee
+    agreement, 1207 - Accept guarantee agreement, 1209 - Mutual guarantee agreement,
+    1299 - Other.'
+- column_name: CurrencyUnit
+  column_description: 货币单位
+  annotation_zh: 货币单位与CT_SystemConst表中的DM字段关联，令LB = 1068，得到货币单位的具体描述：1000-美元，1001-美分，1002-美元(次日)，1003-美元(同日)，1100-港元，1110-印度卢比，1120-印度尼西亚卢比，1130-伊朗里亚尔，1140-波兰兹罗提，1150-匈牙利福林，1160-日本元，1161-欧洲日元(离岸)，1170-约旦第纳尔，1180-科威特第纳尔，1190-阿联酋迪拉姆，1200-亚美尼亚德拉姆，1210-澳门元，1220-马来西亚林吉特，1230-安第列斯群岛盾，1240-安哥拉宽扎，1250-尼泊尔卢比，1260-哈萨克斯坦坚戈，1270-巴基斯坦卢比，1280-阿鲁巴岛弗罗林，1290-菲律宾比索，1300-阿塞拜疆马纳特，1310-波斯尼亚马克，1320-新加坡元，1330-韩国元，1340-孟加拉塔卡，1350-百慕大元，1360-泰国铢，1370-沙特里亚尔，1380-文莱林吉特，1390-不丹努尔特鲁姆，1400-博茨瓦纳普拉，1410-白俄罗斯卢布，1420-人民币元，1430-台湾元，1440-伯利兹元，1450-南苏丹镑，1460-世界投资报告法郎，1470-佛得角埃斯库多，1480-厄立特里亚纳克法，1490-埃塞俄比亚比尔，1500-福克兰群岛镑，1510-格鲁吉亚拉里，1520-直布罗陀镑，1530-克罗地亚库纳，1540-以色列新谢克尔，1550-吉尔吉斯斯坦索姆，1560-开曼群岛元，1570-莱索托马洛蒂，1580-摩尔多瓦列伊，1590-马其顿第纳尔，1600-蒙古图格里克，1610-马拉维克瓦查，1620-梅蒂卡尔，1630-纳米比亚元，1640-巴布亚新几内亚基那，1650-塞尔维亚第纳尔，1660-圣赫勒拿群岛磅，1670-圣多美和普林西比多布拉，1680-太平洋法郎，1690-非共体法郎，1700-斯威士兰里兰吉尼，1710-塔吉克斯坦索莫尼，1720-土库曼斯坦马纳特，1730-汤加潘加，1740-乌克兰格里夫纳，1750-乌兹别克斯坦苏姆，1760-瓦努阿图瓦图，1770-萨摩亚塔拉，1780-中非金融合作法郎，1790-东加勒比元，1810-人民币(离岸)，2470-坦桑尼亚先令，3000-欧元，3010-比利时法郎，3020-丹麦克朗，3030-英镑，3031-便士，3040-德国马克，3050-法国法郎，3070-意大利里拉，3090-荷兰盾，3100-葡萄牙埃斯库多，3110-立陶宛立特，3120-西班牙比塞塔，3130-拉脱维亚立特，3140-斯洛文尼亚托拉尔，3150-奥地利先令，3160-斯洛伐克克朗，3170-爱沙尼亚克朗，3180-芬兰马克，3190-安道尔比塞塔(废弃)，3260-挪威克朗，3300-瑞典克朗，3310-瑞士法郎，3311-记帐瑞士法郎，3313-清算瑞士法郎，3430-苏联卢布(废弃)，3440-俄国卢布，3450-俄罗斯卢布，4000-巴西雷亚尔(废弃)，4100-巴西里亚尔，4290-墨西哥比索，5010-加拿大元，6010-澳大利亚元，6090-新西兰元，7101-刚果法郎，7103-尼日利亚奈拉，7105-越南盾，7107-肯尼亚先令，7109-卢森堡法郎，7111-摩洛哥迪拉姆，7113-南非兰特，7115-斯里兰卡卢比，7117-苏丹第纳尔，7119-也门里亚尔(废弃)，7120-苏丹镑，7121-爱尔兰镑，7123-土耳其里拉(废弃)，7125-捷克克朗(废弃)，...
+  annotation: 'The currency unit is associated with the DM field in the CT_SystemConst
+    table. With LB = 1068, the specific description of the currency unit is: 1000-USD,
+    1001-Cents, 1002-USD (next day), 1003-USD (same day), 1100-HKD, 1110-INR, 1120-IDR,
+    1130-IRR, 1140-PLN, 1150-HUF, 1160-JPY, 1161-EUR (offshore), 1170-JOD, 1180-KWD,
+    1190-AED, 1200-AMD, 1210-MOP, 1220-MYR, 1230-ANG, 1240-AOA, 1250-NPR, 1260-KZT,
+    1270-PKR, 1280-AFL, 1290-PHP, 1300-AZM, 1310-BAM, 1320-SGD, 1330-KRW, 1340-BDT,
+    1350-BMD, 1360-THB, 1370-SAR, 1380-BRN, 1390-BT, 1400-BWP, 1410-BYR, 1420-CNY,
+    1430-TWD, 1440-BZD, 1450-SSP, 1460-FRF, 1470-CVE, 1480-ERN, 1490-ETB, 1500-FKP,
+    1510-GE, 1520-GIP, 1530-HRK, 1540-ILS, 1550-KGS, 1560-KYD, 1570-LSL, 1580-MDL,
+    1590-MKD, 1600-MNT, 1610-MWK, 1620-MET, 1630-NAD, 1640-PGK, 1650-RSD, 1660-SHP,
+    1670-STD, 1680-PF, 1690-FCFA, 1700-SZL, 1710-TJS, 1720-TMT, 1730-TTD, 1740-UAH,
+    1750-UZS, 1760-VES, 1770-Tala, 1780-CFAF, 1790-XCD, 1810-CNY (offshore), 2470-TZS,
+    3000-EUR, 3010-BEL, 3020-DKK, 3030-GBP, 3031-Pence, 3040-DEM, 3050-FRF, 3070-ITL,
+    3090-NLG, 3100-PTE, 3110-LTL, 3120-ESP, 3130-LVL, 3140-SIT, 3150-ATS, 3160-SK,
+    3170-EEK, 3180-FIM, 3190-ADP (abolished), 3260-NOK, 3300-SEK, 3310-CHF, 3311-CHF
+    (nostro), 3313-CHF (clearing), 3430-SUR (abolished), 3440-RUR, 3450-RUB, 4000-BRL
+    (abolished), 4100-BRZ, 4290-MXN, 5010-CAD, 6010-AUD, 6090-NZD, 7101-CDF, 7103-NGN,
+    7105-VND, 7107-KES, 7109-LUF, 7111-MAD, 7113-ZAR, 7115-LKR, 7117-SDN, 7119-YER
+    (abolished), 7120-SDP, 7121-IEP, 7123-TRY (abolished), 7125-CZK (abolished), ...'
+- column_name: SubjectName
+  column_description: 事件主体名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SubjectCode
+  column_description: 事件主体企业编号
+  annotation_zh: 事件主体企业编号(SubjectCode)：与“机构基本资料（LC_InstiArchive）”中的“企业编号（CompanyCode）”关联，得到相关企业的基本信息。
+  annotation: 'SubjectCode: Correlated with the "CompanyCode" in "LC_InstiArchive"
+    to obtain the basic information of the related enterprise.'
+- column_name: SubjectAssociation
+  column_description: 与上市公司关联关系
+  annotation_zh: 与上市公司关联关系(SubjectAssociation)与(CT_SystemConst)表中的DM字段关联，令LB = 1036，得到与上市公司关联关系的具体描述：1-本公司，2-母公司，3-控股股东，4-非控股股东，5-兄弟企业，8-间接非控股股东，9-同一领导人、亲属关系，10-下属子公司、参股公司，11-项目合作合资方，12-其他关联关系，51-间接兄弟企业，80-间接控股股东，83-潜在控股股东，84-潜在非控股股东，86-转让前控股股东，87-转让前非控股股东，121-股权受托管理人，122-受同一方控制，999-无关联关系。
+  annotation: 'The relationship with listed companies (SubjectAssociation) is associated
+    with the DM field in the (CT_SystemConst) table, with LB = 1036, obtaining the
+    specific description of the relationship with listed companies: 1 - This company,
+    2 - Parent company, 3 - Controlling shareholder, 4 - Non-controlling shareholder,
+    5 - Sister company, 8 - Indirect non-controlling shareholder, 9 - Same leader,
+    family relationship, 10 - Subsidiary company, equity participation company, 11
+    - Project cooperation joint venture, 12 - Other related relationships, 51 - Indirect
+    sister company, 80 - Indirect controlling shareholder, 83 - Potential controlling
+    shareholder, 84 - Potential non-controlling shareholder, 86 - Previous controlling
+    shareholder before transfer, 87 - Previous non-controlling shareholder before
+    transfer, 121 - Equity trustee manager, 122 - Controlled by the same party, 999
+    - No related relationship.'
+- column_name: ObjectName
+  column_description: 交易对象名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ObjectCode
+  column_description: 信息对象
+  annotation_zh: 交易对象企业编号(ObjectCode)：与“机构基本资料（LC_InstiArchive）”中的“企业编号（CompanyCode）”关联，得到相关企业的基本信息。
+  annotation: 'Transaction object enterprise code (ObjectCode): associated with the
+    "Company Code (CompanyCode)" in "Institution Basic Information (LC_InstiArchive)",
+    to obtain the basic information of the related enterprise.'
+- column_name: ObjectAssociation
+  column_description: 与上市公司关联关系
+  annotation_zh: 与上市公司关联关系(ObjectAssociation)与(CT_SystemConst)表中的DM字段关联，令LB = 1036，得到与上市公司关联关系的具体描述：1-本公司，2-母公司，3-控股股东，4-非控股股东，5-兄弟企业，8-间接非控股股东，9-同一领导人、亲属关系，10-下属子公司、参股公司，11-项目合作合资方，12-其他关联关系，51-间接兄弟企业，80-间接控股股东，83-潜在控股股东，84-潜在非控股股东，86-转让前控股股东，87-转让前非控股股东，121-股权受托管理人，122-受同一方控制，999-无关联关系。
+  annotation: 'The relationship with listed companies (ObjectAssociation) is associated
+    with the DM field in the (CT_SystemConst) table, with LB = 1036, obtaining the
+    specific description of the relationship with listed companies: 1 - This company,
+    2 - Parent company, 3 - Controlling shareholder, 4 - Non-controlling shareholder,
+    5 - Sister company, 8 - Indirect non-controlling shareholder, 9 - Same leader,
+    family relationship, 10 - Subsidiary, equity joint venture, 11 - Project cooperation
+    joint venture, 12 - Other related parties, 51 - Indirect sister company, 80 -
+    Indirect controlling shareholder, 83 - Potential controlling shareholder, 84 -
+    Potential non-controlling shareholder, 86 - Previous controlling shareholder before
+    transfer, 87 - Previous non-controlling shareholder before transfer, 121 - Trustee
+    of equity, 122 - Controlled by the same party, 999 - No related relationship.'
+- column_name: AgreementDate
+  column_description: 协议签署日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfEnded
+  column_description: 是否终止
+  annotation_zh: 是否终止（IfEnded），该字段固定以下常量：0-否；1-是
+  annotation: 'Whether to terminate (IfEnded), this field is fixed with the following
+    constants: 0-No; 1-Yes.'
+- column_name: Note
+  column_description: 附注(如适用)
+  annotation_zh: 担保原因(GuaranteeReason)与(CT_SystemConst)表中的DM字段关联，令LB = 1056，得到担保原因的具体描述：1001-借贷，1003-银行授信，1005-借贷计划额度，1007-承兑汇票，1009-票据贴现，1011-进出口押汇，1013-续借，1015-续授信，1017-借贷延期，1019-借贷展期，1099-其他。
+  annotation: 'The Guarantee Reason (GuaranteeReason) is associated with the DM field
+    in the CT_SystemConst table. When LB equals 1056, the specific description of
+    the guarantee reason is obtained: 1001-Loan, 1003-Bank Credit, 1005-Loan Plan
+    Quota, 1007-Acceptance Bill, 1009-Bill Discounting, 1011-Import and Export Bill
+    of Exchange, 1013-Renewal of Loan, 1015-Renewal of Credit, 1017-Loan Extension,
+    1019-Loan Deferral, 1099-Other.'
+- column_name: GuaranteeReason
+  column_description: 担保原因
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FirstGuaranteeSum
+  column_description: 首次担保金额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LatestGuaranteeSum
+  column_description: 最新担保金额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GuarantorCompany
+  column_description: 提供担保企业
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GuarantorAssociation
+  column_description: 与上市公司关联关系
+  annotation_zh: 与上市公司关联关系(GuarantorAssociation)与(CT_SystemConst)表中的DM字段关联，令LB = 1036，得到与上市公司关联关系的具体描述：1-本公司，2-母公司，3-控股股东，4-非控股股东，5-兄弟企业，8-间接非控股股东，9-同一领导人、亲属关系，10-下属子公司、参股公司，11-项目合作合资方，12-其他关联关系，51-间接兄弟企业，80-间接控股股东，83-潜在控股股东，84-潜在非控股股东，86-转让前控股股东，87-转让前非控股股东，121-股权受托管理人，122-受同一方控制，999-无关联关系。
+  annotation: 'The relationship with listed companies (GuarantorAssociation) is associated
+    with the DM field in the (CT_SystemConst) table, with LB = 1036, obtaining the
+    specific description of the relationship with listed companies: 1 - This company,
+    2 - Parent company, 3 - Controlling shareholder, 4 - Non-controlling shareholder,
+    5 - Sister company, 8 - Indirect non-controlling shareholder, 9 - Same leader,
+    family relationship, 10 - Subsidiary company, equity joint venture, 11 - Project
+    cooperation joint venture, 12 - Other related parties, 51 - Indirect sister company,
+    80 - Indirect controlling shareholder, 83 - Potential controlling shareholder,
+    84 - Potential non-controlling shareholder, 86 - Previous controlling shareholder
+    before transfer, 87 - Previous non-controlling shareholder before transfer, 121
+    - Equity trustee manager, 122 - Controlled by the same party, 999 - No related
+    relationship.'
+- column_name: GuaranteeAsset
+  column_description: 担保资产
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuredParty
+  column_description: 接受担保企业
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuredPartyAssociation
+  column_description: 与上市公司关联关系
+  annotation_zh: 与上市公司关联关系(SecuredPartyAssociation)与(CT_SystemConst)表中的DM字段关联，令LB
+    = 1036，得到与上市公司关联关系的具体描述：1-本公司，2-母公司，3-控股股东，4-非控股股东，5-兄弟企业，8-间接非控股股东，9-同一领导人、亲属关系，10-下属子公司、参股公司，11-项目合作合资方，12-其他关联关系，51-间接兄弟企业，80-间接控股股东，83-潜在控股股东，84-潜在非控股股东，86-转让前控股股东，87-转让前非控股股东，121-股权受托管理人，122-受同一方控制，999-无关联关系。
+  annotation: 'The relationship with listed companies (SecuredPartyAssociation) is
+    associated with the DM field in the (CT_SystemConst) table, with LB set to 1036,
+    obtaining the specific description of the relationship with listed companies:
+    1 - This company, 2 - Parent company, 3 - Controlling shareholder, 4 - Non-controlling
+    shareholder, 5 - Sister company, 8 - Indirect non-controlling shareholder, 9 -
+    Same leader, family relationship, 10 - Subsidiary, equity joint venture, 11 -
+    Project cooperation joint venture, 12 - Other related parties, 51 - Indirect sister
+    company, 80 - Indirect controlling shareholder, 83 - Potential controlling shareholder,
+    84 - Potential non-controlling shareholder, 86 - Previous controlling shareholder
+    before transfer, 87 - Previous non-controlling shareholder before transfer, 121
+    - Equity trustee manager, 122 - Controlled by the same party, 999 - No related
+    relationship.'
+- column_name: CounterGuarantor
+  column_description: 提供反担保企业
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CGuarantorAssociation
+  column_description: 与上市公司关联关系
+  annotation_zh: 与上市公司关联关系(CGuarantorAssociation)与(CT_SystemConst)表中的DM字段关联，令LB =
+    1036，得到与上市公司关联关系的具体描述：1-本公司，2-母公司，3-控股股东，4-非控股股东，5-兄弟企业，8-间接非控股股东，9-同一领导人、亲属关系，10-下属子公司、参股公司，11-项目合作合资方，12-其他关联关系，51-间接兄弟企业，80-间接控股股东，83-潜在控股股东，84-潜在非控股股东，86-转让前控股股东，87-转让前非控股股东，121-股权受托管理人，122-受同一方控制，999-无关联关系。
+  annotation: 'The CGuarantorAssociation with listed companies is associated with
+    the DM field in the CT_SystemConst table, with LB set to 1036, resulting in the
+    specific description of the关联 relationship: 1 - This company, 2 - Parent company,
+    3 - Controlling shareholder, 4 - Non-controlling shareholder, 5 - Sister company,
+    8 - Indirect non-controlling shareholder, 9 - Same leader, family relationship,
+    10 - Subsidiary, equity joint venture, 11 - Project cooperation joint venture,
+    12 - Other associated relationships, 51 - Indirect sister company, 80 - Indirect
+    controlling shareholder, 83 - Potential controlling shareholder, 84 - Potential
+    non-controlling shareholder, 86 - Transfer former controlling shareholder, 87
+    - Transfer former non-controlling shareholder, 121 - Equity trustee manager, 122
+    - Controlled by the same party, 999 - No associated relationship.'
+- column_name: CGuaranteeAsset
+  column_description: 反担保资产
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LendBank
+  column_description: 借款银行(资金出借方)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LendTerm
+  column_description: 借款期限(月)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RenewalTerm
+  column_description: 其中：续借期限(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LendBeginDate
+  column_description: 借贷起始日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LendEndDate
+  column_description: 借贷截止日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GuaranteeTerm
+  column_description: 担保期限(月)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RenewalGuaranteeTerm
+  column_description: 其中：续保期限(月)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GuaranteeBeginDate
+  column_description: 担保起始日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GuaranteeEndDate
+  column_description: 担保截止日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DischargeGuaranteeDate
+  column_description: 担保解除日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DischargeGuaranteeWays
+  column_description: 担保解除方式
+  annotation_zh: 担保解除方式(DischargeGuaranteeWays)与(CT_SystemConst)表中的DM字段关联，令LB = 1055，得到担保解除方式的具体描述：1001-正常解除，1003-担保转移解除，1005-代部分还款解除，1007-代全额还款解除。
+  annotation: 'The ways of guarantee discharge (Discharge Guarantee Ways) are associated
+    with the DM field in the (CT_SystemConst) table. When LB equals 1055, the specific
+    description of the guarantee discharge methods are as follows: 1001 - Normal discharge,
+    1003 - Transfer of guarantee discharge, 1005 - Discharge by substituting partial
+    repayment, 1007 - Discharge by substituting full repayment.'
+- column_name: IfIllegality
+  column_description: 担保是否违规
+  annotation_zh: 担保是否违规(IfIllegality)与(CT_SystemConst)表中的DM字段关联，令LB = 999 AND DM IN
+    (1,2)，得到担保是否违规的具体描述：1-是，2-否。
+  annotation: 'Whether the guarantee is illegal (IfIllegality) is associated with
+    the DM field in the (CT_SystemConst) table, let LB = 999 AND DM IN (1,2), to obtain
+    the specific description of whether the guarantee is illegal: 1-yes, 2-no.'
+- column_name: IfOverdue
+  column_description: 借贷是否逾期
+  annotation_zh: 借贷是否逾期(IfOverdue)与(CT_SystemConst)表中的DM字段关联，令LB = 999 AND DM IN (1,2)，得到借贷是否逾期的具体描述：1-是，2-否。
+  annotation: 'Whether the loan is overdue (IfOverdue) is associated with the DM field
+    in the (CT_SystemConst) table, let LB = 999 AND DM IN (1,2), to obtain the specific
+    description of whether the loan is overdue: 1-Yes, 2-No.'
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EventCode
+  column_description: 事项编码
+  annotation_zh: .nan
+  annotation: .nan

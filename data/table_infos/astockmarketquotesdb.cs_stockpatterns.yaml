@@ -1,0 +1,376 @@
+default: 1
+full_table_name: astockmarketquotesdb.cs_stockpatterns.yaml
+database_name: astockmarketquotesdb
+database_name_zh: 上市公司股票行情
+table_name: cs_stockpatterns
+table_name_zh: 股票技术形态表
+table_describe: 内容说明：收录股票从最近一个交易日往前追溯一段时期的行情表现和技术形态表现，包括近1周、近1月、近3月、近半年、近1年、上市以来的表现情况，以及连涨跌天数、连续放量缩量天数、向上向下有效突破均线、N天M板、均线多空头排列看涨看跌等技术形态指标。
+  本表覆盖的证券品种有A股、B股、中国存托凭证(CDR), 覆盖的上市标志有主板、三板、创业板、科创板。 数据范围：股票上市或挂牌起-至今信息来源：基于沪深京交易所及股转系统行情数据衍生计算
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: 证券内部编码（InnerCode）：与“证券主表(SecuMain)”中的“证券内部编码(InnerCode)”关联，得到股票的证券代码、简称等其他详细信息。
+  annotation: 'Security Internal Code (InnerCode): Associated with the "Security Internal
+    Code (InnerCode)" in the "Security Main Table (SecuMain)", to obtain the stock''s
+    security code, abbreviation, and other detailed information.'
+- column_name: TradingDay
+  column_description: 交易日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GilCode
+  column_description: 聚源代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuMarket
+  column_description: 证券市场
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestHPriceRW
+  column_description: 是否创近一周的新高
+  annotation_zh: 指定日期最高价是否大于指定日期最近N天最高价，是返回1， 否返回2。 N分别为：近1周、近1月、近3月、近半年、近1年、上市以来。
+  annotation: 'Whether the highest price on the specified date is greater than the
+    highest price of the recent N days on the specified date, return 1 if yes, otherwise
+    return 2. N is respectively: the past 1 week, the past 1 month, the past 3 months,
+    the past half year, the past 1 year, and since the listing.'
+- column_name: IfHighestHPriceRM
+  column_description: 是否创近一月的新高
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestHPriceRMThree
+  column_description: 是否创近一季度的新高
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestHPriceRMSix
+  column_description: 是否创近半年的新高
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestHPriceRY
+  column_description: 是否创近一年的新高
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestHPriceSL
+  column_description: 是否创上市以来的新高
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestCPriceRW
+  column_description: 是否创近一周的新高收盘价
+  annotation_zh: 指定日期收盘价是否大于指定日期最近N天收盘价，是返回1， 否返回2。 N分别为：近1周、近1月、近3月、近半年、近1年、上市以来。
+  annotation: 'Whether the closing price on the specified date is higher than the
+    closing price of the nearest N days on the specified date, return 1 if yes, and
+    2 if no. N is respectively: the past 1 week, the past 1 month, the past 3 months,
+    the past half year, the past 1 year, and since the listing.'
+- column_name: IfHighestCPriceRM
+  column_description: 是否创近一月的新高收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestCPriceRMThree
+  column_description: 是否创近一季度的新高收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestCPriceRMSix
+  column_description: 是否创近半年的新高收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestCPriceRY
+  column_description: 是否创近一年的新高收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestCPriceSL
+  column_description: 是否创上市以来的新高收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestTVolumeRW
+  column_description: 是否创近一周的新高成交量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestTVolumeRM
+  column_description: 是否创近一月的新高成交量
+  annotation_zh: 指定日期成交量是否大于指定日期最近N天成交量，是返回1， 否返回2。 N分别为：近1周、近1月、近3月、近半年、近1年、上市以来。
+  annotation: Whether the trading volume on the specified date is greater than that
+    of the nearest N days before the specified date, return 1 if yes, otherwise return
+    2. N is for the past 1 week, 1 month, 3 months, half a year, 1 year, and since
+    the listing.
+- column_name: IfHighestTVRMThree
+  column_description: 是否创近一季度的新高成交量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestTVolumeRMSix
+  column_description: 是否创近半年的新高成交量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestTVolumeRY
+  column_description: 是否创近一年的新高成交量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestTVolumeSL
+  column_description: 是否创上市以来的新高成交量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestTValueRW
+  column_description: 是否创近一周的新高成交金额
+  annotation_zh: 指定日期成交金额是否大于指定日期最近N天成交金额，是返回1， 否返回2。N分别为：近1周、近1月、近3月、近半年、近1年、上市以来。
+  annotation: Whether the transaction amount on the specified date is greater than
+    that of the nearest N days before the specified date, return 1 if yes, otherwise
+    return 2. N is for the past 1 week, 1 month, 3 months, half a year, 1 year, and
+    since the listing.
+- column_name: IfHighestTValueRM
+  column_description: 是否创近一月的新高成交金额
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestTValueRMThree
+  column_description: 是否创近一季度的新高成交金额
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestTValueRMSix
+  column_description: 是否创近半年的新高成交金额
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestTValueRY
+  column_description: 是否创近一年的新高成交金额
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHighestTValueSL
+  column_description: 是否创上市以来的新高成交金额
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HighestHPTimesSL
+  column_description: 最新交易日创历史新高次数
+  annotation_zh: '指定日期最近N天内大于指定日期之前的历史交易日最高价的次数。 N: 最新交易日、近1周、近1月、近3月、近半年、近1年'
+  annotation: 'The number of times the closing price in the last N days is higher
+    than the highest historical trading price before the specified date. N: the most
+    recent trading day, the past 1 week, the past 1 month, the past 3 months, the
+    past half year, the past 1 year.'
+- column_name: HighestHPTimesRW
+  column_description: 最近一周创历史新高次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HighestHPTimesRM
+  column_description: 最近一月创历史新高次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HighestHPTimesRMThree
+  column_description: 最近一季度创历史新高次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HighestHPTimesRMSix
+  column_description: 最近半年创历史新高次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HighestHPTimesRY
+  column_description: 最近一年创历史新高次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestLPriceRW
+  column_description: 是否创近一周的新低
+  annotation_zh: 指定日期最低价是否小于指定日期最近N天最低价，是返回1， 否返回2。 N分别为：近1周、近1月、近3月、近半年、近1年、上市以来。
+  annotation: 'Whether the lowest price on the specified date is less than the lowest
+    price of the nearest N days on the specified date, return 1 if yes, otherwise
+    return 2. N is respectively: the past 1 week, the past 1 month, the past 3 months,
+    the past half year, the past 1 year, and since the listing.'
+- column_name: IfLowestLPriceRM
+  column_description: 是否创近一个月的新低
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestLPRMThree
+  column_description: 是否创近一季度的新低
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestLPriceRMSix
+  column_description: 是否创近半年的新低
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestLPriceRY
+  column_description: 是否创近一年的新低
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestLPriceSL
+  column_description: 是否创上市以来的新低
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestClosePriceRW
+  column_description: 是否创近一周的新低收盘价
+  annotation_zh: 指定日期收盘价是否小于指定日期最近N天收盘价，是返回1， 否返回2。 N分别为：近1周、近1月、近3月、近半年、近1年、上市以来。
+  annotation: 'Whether the closing price on the specified date is less than the closing
+    price of the nearest N days from the specified date, return 1 if yes, otherwise
+    return 2. N is respectively: the past 1 week, the past 1 month, the past 3 months,
+    the past half year, the past 1 year, and since the listing.'
+- column_name: IfLowestClosePriceRM
+  column_description: 是否创近一月的新低收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestCPriceRMThree
+  column_description: 是否创近一季度的新低收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestCPriceRMSix
+  column_description: 是否创近半年的新低收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestClosePriceRY
+  column_description: 是否创近一年的新低收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestClosePriceSL
+  column_description: 是否创上市以来的新低收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestTVolumeRW
+  column_description: 是否创近一周的新低成交量
+  annotation_zh: 指定日期成交量是否小于指定日期最近N天成交量，是返回1， 否返回2。 N分别为：近1周、近1月、近3月、近半年、近1年、上市以来。
+  annotation: 'Whether the trading volume on the specified date is less than the trading
+    volume of the nearest N days on the specified date, return 1 if yes, otherwise
+    return 2. N is respectively: the past 1 week, the past 1 month, the past 3 months,
+    the past half year, the past 1 year, and since the listing.'
+- column_name: IfLowestTVolumeRM
+  column_description: 是否创近一月的新低成交量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestTVolumeRMThree
+  column_description: 是否创近一季度的新低成交量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestVolumeRMSix
+  column_description: 是否创近半年的新低成交量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestTVolumeRY
+  column_description: 是否创近一年的新低成交量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestTVolumeSL
+  column_description: 是否创上市以来的新低成交量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestTValueRW
+  column_description: 是否创近一周的新低成交金额
+  annotation_zh: 指定日期成交金额是否小于指定日期最近N天成交金额，是返回1， 否返回2。N分别为：近1周、近1月、近3月、近半年、近1年、上市以来。
+  annotation: 'Whether the transaction amount on the specified date is less than the
+    transaction amount of the nearest N days from the specified date, return 1 if
+    yes, otherwise return 2. N is: the past 1 week, the past 1 month, the past 3 months,
+    the past half year, the past 1 year, and since the listing.'
+- column_name: IfLowestTValueRM
+  column_description: 是否创近一月的新低成交金额
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestTValueRMThree
+  column_description: 是否创近一季度的新低成交金额
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestTValueRMSix
+  column_description: 是否创近半年的新低成交金额
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestTValueRY
+  column_description: 是否创近一年的新低成交金额
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfLowestTValueSL
+  column_description: 是否创上市以来的新低成交金额
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LowestLowPriceTimesSL
+  column_description: 最新交易日创历史新低次数
+  annotation_zh: '指定日期最近N天内小于指定日期之前的历史交易日最低价的次数， N: 最新交易日、近1周、近1月、近3月、近半年、近1年。'
+  annotation: The number of times the closing price in the last N days is lower than
+    the lowest historical trading price before the specified date, where N is the
+    most recent trading day, the past 1 week, the past 1 month, the past 3 months,
+    the past half year, and the past 1 year.
+- column_name: LowestLowPriceTimesRW
+  column_description: 最近一周创历史新低次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LowestLowPriceTimesRM
+  column_description: 最近一个月创历史新低次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LowestLPTimesRMThree
+  column_description: 最近一季度创历史新低次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LowestLPTimesRMSix
+  column_description: 最近半年创历史新低次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LowestLPTimesRY
+  column_description: 最近一年创历史新低次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RisingUpDays
+  column_description: 连涨天数
+  annotation_zh: 统计个股在指定交易日期往前推连续上涨的天数。
+  annotation: Count the number of consecutive rising days for a specific stock leading
+    up to a given trading date.
+- column_name: FallingDownDays
+  column_description: 连跌天数
+  annotation_zh: 统计个股在指定交易日期往前推连续下跌的天数。
+  annotation: Count the number of consecutive losing days for a specific stock leading
+    up to a given trading date.
+- column_name: VolumeRisingUpDays
+  column_description: 连续放量天数
+  annotation_zh: 统计个股在指定交易日期往前推成交量连续上升的天数。
+  annotation: Count the number of consecutive days with increasing trading volume
+    for a specific stock leading up to a given trading date.
+- column_name: VolumeFallingDownDays
+  column_description: 连续缩量天数
+  annotation_zh: 统计个股在指定交易日期往前推成交量连续下降的天数。
+  annotation: Count the number of consecutive days with decreasing trading volume
+    for a specific stock leading up to a given trading date.
+- column_name: BreakingMAverageFive
+  column_description: 向上向下有效突破5日均线
+  annotation_zh: 向上有效突破： 最近N天的收盘价>n日均线，且距今N+1天的收盘价<=n日均线。 向下有效突破： 最近N天的收盘价<n日均线，且距今N+1天的收盘价>=n日均线。
+    1-向上有效突破, 2-向下有效突破, 0-其他。 均线计算：n日均线=n日收盘价之和/n。 向上向下有效突破字段按照N=3 计算。
+  annotation: 'An upward effective breakthrough: The closing price of the recent N
+    days is greater than the N-day moving average, and the closing price of N+1 days
+    ago is less than or equal to the N-day moving average. A downward effective breakthrough:
+    The closing price of the recent N days is less than the N-day moving average,
+    and the closing price of N+1 days ago is greater than or equal to the N-day moving
+    average. 1-Upward effective breakthrough, 2-Downward effective breakthrough, 0-Other.
+    Moving average calculation: N-day moving average = Sum of N-day closing prices
+    / n. The field for upward and downward effective breakthrough is calculated with
+    N=3.'
+- column_name: BreakingMAverageTen
+  column_description: 向上向下有效突破10日均线
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BreakingMAverageTwenty
+  column_description: 向上向下有效突破20日均线
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BreakingMAverageSixty
+  column_description: 向上向下有效突破60日均线
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RaisingLimitInNDays
+  column_description: N天M板
+  annotation_zh: N天： 指定交易日往前取到连续三个非涨停的交易日的最后一个交易日的后一个交易日且该交易日涨停作为起始日期，指定交易日作为截至日期，N天即为起始日期到截至日期区间内的天数。
+    M板：上述N天内的涨停数。
+  annotation: 'N days: The starting date is the day after the last trading day of
+    the consecutive three non-limit-up trading days before the specified trading day,
+    and the trading day with a limit-up is chosen as the starting date, with the specified
+    trading day as the ending date. N days refer to the number of days from the starting
+    date to the ending date. M board: The number of limit-up days within the aforementioned
+    N days.'
+- column_name: MAverageArrangements
+  column_description: 均线多空头排列看涨看跌
+  annotation_zh: 看涨：5日均线>10日均线>20日均线>60日均线，看涨返回1。 看跌：5日均线<10日均线<20日均线<60日均线，看跌返回2。
+  annotation: 'Bullish: 5-day MA > 10-day MA > 20-day MA > 60-day MA, return 1 for
+    bullish. Bearish: 5-day MA < 10-day MA < 20-day MA < 60-day MA, return 2 for bearish.'
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

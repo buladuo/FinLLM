@@ -1,0 +1,116 @@
+default: 1
+full_table_name: astockindustrydb.lc_industryvaluation.yaml
+database_name: astockindustrydb
+database_name_zh: 上市公司行业板块
+table_name: lc_industryvaluation
+table_name_zh: 行业估值指标
+table_describe: 内容说明：本表记录不同行业标准下的的衍生指标，包括行业静态市盈率、滚动市盈率、市净率、股息率等指标。数据范围：2014-01-01至今信息来源：聚源计算
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndustryNum
+  column_description: 行业内部编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TradingDay
+  column_description: 交易日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: StatType
+  column_description: 统计类型
+  annotation_zh: 统计类型(StatType)，该字段固定以下常量：2-整体法不剔除负值
+  annotation: 'StatType, this field is fixed with the following constants: 2 - the
+    overall method does not exclude negative values'
+- column_name: SectorCode
+  column_description: 统计板块
+  annotation_zh: 统计板块(SectorCode)，该字段固定以下常量：5-沪、深及北交所市场
+  annotation: '"SectorCode (statistical sector), this field is fixed with the following
+    constants: 5-Shanghai, Shenzhen and Beijing Stock Exchange markets"'
+- column_name: Standard
+  column_description: 行业分类标准
+  annotation_zh: 行业分类标准(Standard)与(CT_SystemConst)表中的DM字段关联，令LB = 1081 AND DM IN (24,41)，得到行业分类标准的具体描述：24-申万行业分类2014版，41-申万行业分类2021版。
+  annotation: 'The industry classification standard (Standard) is associated with
+    the DM field in the (CT_SystemConst) table, with LB = 1081 AND DM IN (24,41),
+    yielding the specific description of the industry classification standard: 24-Shenwan
+    Industry Classification 2014 Edition, 41-Shenwan Industry Classification 2021
+    Edition.'
+- column_name: IndustryCode
+  column_description: 行业代码
+  annotation_zh: 行业代码（IndustryCode）：当Standard=24时，与“系统常量表”的“代码（DM）”关联，“LB=1804”，得到行业名称；当Standard=41时，与“行业类别表”的“行业代码（IndustryCode）”关联，“Standard=41”，得到行业名称
+  annotation: 'Industry Code: When Standard equals 24, it is associated with the "Code
+    (DM)" in the "System Constants Table", "LB=1804" to obtain the industry name;
+    when Standard equals 41, it is associated with the "Industry Code (IndustryCode)"
+    in the "Industry Category Table", "Standard=41" to obtain the industry name.'
+- column_name: TotalMV
+  column_description: 总市值(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: NegotiableMV
+  column_description: A股流通市值(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FreeFloatMV
+  column_description: A股自由流通市值(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PE_TTM
+  column_description: 滚动市盈率1
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PE_LYR
+  column_description: 静态市盈率(LYR)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PB_LF
+  column_description: 市净率(LF)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DividendRatio
+  column_description: 滚动股息率(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCF_TTM
+  column_description: 滚动市现率
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCF_LYR
+  column_description: 静态市现率(LYR)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PS_TTM
+  column_description: 滚动市销率1
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PS_LYR
+  column_description: 静态市销率(LYR)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 修改时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndustryName
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Classification
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ListedSecuNum
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan

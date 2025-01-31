@@ -1,0 +1,125 @@
+default: 1
+full_table_name: constantdb.lc_areacode.yaml
+database_name: constantdb
+database_name_zh: 常量库
+table_name: lc_areacode
+table_name_zh: 国家城市代码表
+table_describe: 本表收录世界所有国家层面的数据信息和我国不同层级行政区域的划分信息。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AreaInnerCode
+  column_description: 地区内部编码
+  annotation_zh: 地区内部编码（AreaInnerCode）：聚源内部设置的地区代码，共9位数。
+  annotation: 'Internal area coding (AreaInnerCode): The internal area code set by
+    Juyuan, consisting of 9 digits.'
+- column_name: AreaCode
+  column_description: 地区行政编码
+  annotation_zh: 地区行政编码（AreaCode）：国家层级代码来自ISO全球国家代码标准；我国代码来自于国家行政区划网。
+  annotation: 'Area Code: The national level code is from the ISO global country code
+    standard; the code for our country is from the National Administrative Division
+    Network.'
+- column_name: FirstLevelCode
+  column_description: 一级区划代码
+  annotation_zh: 一级区划代码(FirstLevelCode)：与(CT_SystemConst)表中的DM字段关联，令LB = 1961 and
+    DM LIKE '%000'，得到一级区划代码的具体描述：1000-中国省级行政区划，2000-中国地级行政区划，3000-中国县级行政区划，4000-其他，5000-中国乡镇级行政区划，9000-国家，10000-大洲与海洋，11000-美国州级行政区划，12000-海外国家城市，100000000-国家级经济区域，200000000-中国海关，300000000-海关经济区划。
+  annotation: 'First-level division code (FirstLevelCode): associated with the DM
+    field in the (CT_SystemConst) table, let LB = 1961 and DM LIKE ''%000'', the specific
+    description of the first-level division code is obtained: 1000-China provincial
+    administrative division, 2000-China prefectural administrative division, 3000-China
+    county-level administrative division, 4000-others, 5000-China township-level administrative
+    division, 9000-country, 10000-continent and ocean, 11000-U.S. state-level administrative
+    division, 12000-overseas national cities, 100000000-national economic region,
+    200000000-China customs, 300000000-customs economic division.'
+- column_name: SecondLevelCode
+  column_description: 二级区划代码
+  annotation_zh: 二级区划代码(SecondLevelCode)：与(CT_SystemConst)表中的DM字段关联，令LB = 1961，得到二级区划代码的具体描述：1000-中国省级行政区划，1001-直辖市，1002-省，1003-自治区，1004-特别行政区，2000-中国地级行政区划，2001-省会，2002-地级市，2003-盟，2004-自治州，2005-地区，2006-直辖市市辖区，2007-直辖市市辖县，3000-中国县级行政区划，3001-市辖区，3002-县，3003-县级市，3004-自治县，3005-旗，3006-自治旗，3007-林区，3008-特区，3009-县级乡镇，3010-县级街道，3011-县级经济开发区，3012-县级其他，4000-其他，4001-中国地理划分(按自然地理)，4002-中国地理划分(按经济区域)，4010-中国国家级城市群，4011-中国经济合作城市群，4100-欧洲地理划分(按自然地理)，4150-非洲地理划分(按自然地理)，4800-非标准地区，4900-其他地区划分(按自然地理)，4950-政治类联合体、联盟或组织，4951-经济类联合体、联盟或组织，4999-其他划分，5000-中国乡镇级行政区划，5001-乡镇，5002-街道，5003-乡镇级经济开发区，5004-乡镇其他，9000-国家，10000-大洲与海洋，10001-大洲，10002-海洋，11000-美国州级行政区划，11001-特区，11002-州，12000-海外国家城市，100000000-国家级经济区域，100000001-国家级经济特区，100000002-国家级新区，100000003-国家综合配套改革试验区，100000004-高新技术产业开发区，100000005-经济技术开发区，100000006-海关特殊监管区域，100000007-边境/跨境经济合作区，100000008-其他类型开发区，200000000-中国海关，200000001-海关总署，200000002-直属海关，200000003-隶属海关，300000000-海关经济区划，300000001-保税港区/综合保税区，300000002-保税区，300000003-保税物流园区，300000004-保税物流中心，300000005-出口加工区/珠澳跨境工业园区，300000006-高新技术产业开发区，300000007-国际边境合作中心，300000008-经济技术开发区，300000009-经济特区，300000010-一般经济区域，300000011-综合实验区，300000099-其他经济区划。
+  annotation: 'SecondLevelCode: Associated with the DM field in the CT_SystemConst
+    table, setting LB = 1961, the specific description of the SecondLevelCode is as
+    follows: 1000-China provincial-level administrative divisions, 1001-municipality
+    directly under the central government, 1002-province, 1003-autonomous region,
+    1004-special administrative region, 2000-China prefectural-level administrative
+    divisions, 2001-provincial capital, 2002-prefecture-level city, 2003-league, 2004-autonomous
+    prefecture, 2005-district, 2006-municipality division, 2007-county under municipality,
+    3000-China county-level administrative divisions, 3001-city district, 3002-county,
+    3003-county-level city, 3004-autonomous county, 3005-banner, 3006-autonomous banner,
+    3007-forest area, 3008-special zone, 3009-county-level township, 3010-county-level
+    street, 3011-county-level economic development zone, 3012-county-level others,
+    4000-others, 4001-China geographical division (by physical geography), 4002-China
+    geographical division (by economic region), 4010-China national-level city clusters,
+    4011-China economic cooperation city clusters, 4100-European geographical division
+    (by physical geography), 4150-African geographical division (by physical geography),
+    4800-non-standard area, 4900-other area division (by physical geography), 4950-political
+    union, alliance, or organization, 4951-economic union, alliance, or organization,
+    4999-other divisions, 5000-China township-level administrative divisions, 5001-township,
+    5002-street, 5003-township-level economic development zone, 5004-township others,
+    9000-country, 10000-continent and ocean, 10001-continent, 10002-ocean, 11000-U.S.
+    state-level administrative divisions, 11001-special district, 11002-state, 12000-overseas
+    national city, 100000000-national-level economic region, 100000001-national-level
+    special economic zone, 100000002-national-level new area, 100000003-national comprehensive
+    supporting reform pilot zone, 100000004-high-tech industrial development zone,
+    100000005-economic and technological development zone, 100000006-customs special
+    supervision area, 100000007-border/cross-border economic cooperation zone, 100000008-other
+    types of development zones, 200000000-China customs, 200000001-customs headquarters,
+    200000002-directly affiliated customs, 200000003-subordinate customs, 300000000-customs
+    economic division, 300000001-bonded port area/comprehensive bonded area, 300000002-bonded
+    area, 300000003-bonded logistics park, 300000004-bonded logistics center, 300000005-export
+    processing zone/Zhuhai澳 cross-border industrial park, 300000006-high-tech industrial
+    development zone, 300000007-international border cooperation center, 300000008-economic
+    and technological development zone, 300000009-economic special zone, 300000010-general
+    economic region, 300000011-comprehensive experimental zone, 300000099-other economic
+    divisions.'
+- column_name: AreaChiName
+  column_description: 地区中文名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AreaEngName
+  column_description: 地区英文名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AreaEngNameAbbr
+  column_description: 地区英文名称缩写
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ParentNode
+  column_description: 父节点代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ParentName
+  column_description: 父节点名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfEffected
+  column_description: 是否有效
+  annotation_zh: 是否有效（IfEffected）：该字段固定以下常量：1-是 2-否。
+  annotation: 'Whether effective (IfEffected): This field is fixed with the following
+    constants: 1-Yes 2-No.'
+- column_name: CancelDate
+  column_description: 取消日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChangeNote
+  column_description: 变更内容
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Remark
+  column_description: 备注
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

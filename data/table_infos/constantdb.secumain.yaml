@@ -1,0 +1,163 @@
+default: 1
+full_table_name: constantdb.secumain.yaml
+database_name: constantdb
+database_name_zh: 常量库
+table_name: secumain
+table_name_zh: 证券主表
+table_describe: 本表收录单个证券品种（股票、基金、债券）的代码、简称、上市交易所等基础信息。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码(CompanyCode)：当本表SecuCategory IN (8,13)即基金相关时，对应的基金管理人代码可通过本表InnerCode关联MF_FundArchives.InnerCode，取MF_FundArchives.InvestAdvisorCode
+  annotation: 'Company code (CompanyCode): When the SecuCategory in this table is
+    IN (8,13), i.e., related to funds, the corresponding fund manager code can be
+    associated with MF_FundArchives.InnerCode through this table''s InnerCode, and
+    the MF_FundArchives.InvestAdvisorCode is obtained.'
+- column_name: SecuCode
+  column_description: 证券代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChiName
+  column_description: 中文名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChiNameAbbr
+  column_description: 中文名称缩写
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EngName
+  column_description: 英文名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EngNameAbbr
+  column_description: 英文名称缩写
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuAbbr
+  column_description: 证券简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChiSpelling
+  column_description: 拼音证券简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ExtendedAbbr
+  column_description: 扩位简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ExtendedSpelling
+  column_description: 拼音扩位简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuMarket
+  column_description: 证券市场
+  annotation_zh: 证券市场(SecuMarket)与(CT_SystemConst)表中的DM字段关联，令LB = 201 AND DM IN (10,12,13,14,15,16,18,40,49,50,52,54,55,56,65,66,67,68,69,70,71,72,73,75,76,77,78,79,80,81,83,84,85,86,87,88,89,90,93,94,95,96,99,100,101,102,103,104,105,106,107,110,161,162,180,200,202,210,230,240,260,280,310,320,390,400,620,630,631,640,641,650,653,654,655,657,658,659,660,661,662,663,664,666,667,66302,66303,66305)，得到证券市场的具体描述：10-上海期货交易所，12-中国银行间外汇市场，13-大连商品交易所，14-上海黄金交易所，15-郑州商品交易所，16-上海票据交易所，18-北京证券交易所，40-芝加哥商业交易所，49-澳大利亚证券交易所，50-新西兰证券交易所，52-埃及开罗及亚历山大证券交易所，54-阿根廷布宜诺斯艾利斯证券交易所，55-巴西圣保罗证券交易所，56-墨西哥证券交易所，65-印度尼西亚证券交易所，66-泰国证券交易所，67-韩国首尔证券交易所，68-东京证券交易所，69-新加坡证券交易所，70-台湾证券交易所，71-柜台交易市场，72-香港联交所，73-一级市场，75-亚洲其他交易所，76-美国证券交易所，77-美国纳斯达克证券交易所，78-纽约证券交易所，79-美国其他交易市场，80-加拿大多伦多证券交易所，81-三板市场，83-上海证券交易所，84-其他市场，85-伦敦证券交易所，86-法国巴黎证券交易所，87-德国法兰克福证券交易所，88-欧洲其他交易所，89-银行间债券市场，90-深圳证券交易所，93-上海银行间同业拆借市场，94-瑞士证券交易所，95-荷兰阿姆斯特丹证券交易所，96-约翰内斯堡证券交易所，99-东京同业拆借市场，100-美国国债回购市场，101-伦敦银行同业拆借市场，102-香港银行同业拆借市场，103-新加坡银行同业拆借市场，104-中国银行同业拆借市场，105-欧元银行同业拆借市场，106-布鲁塞尔证券交易所，107-雅加达证券交易所，110-以色列特拉维夫证券交易所，161-意大利证券交易所，162-哥本哈根证券交易所，180-挪威奥斯陆证券交易所，200-斯德哥尔摩证券交易所，202-伊斯坦布尔证券交易所，210-印度国家证券交易所，230-奥地利维也纳证券交易所，240-西班牙马德里证券交易所，260-爱尔兰证券交易所，280-菲律宾证券交易所，310-机构间私募产品报价与服务系统，320-俄罗斯莫斯科证券交易所，390-里斯本证券交易所，400-芝加哥期权交易所，620-胡志明市证券交易所，630-沪市代理深市市场，631-沪市代理港交所市场，640-深市代理沪市市场，641-深市代理港交所市场，650-国际外汇市场(晨星)，653-上海环境能源交易所，654-北京绿色交易所，655-天津碳排放权交易中心，657-湖北碳排放权交易中心，658-重庆碳排放权交易中心，659-四川联合环境交易所，660-广州碳排放权交易所，661-海峡股权交易中心，662-深圳排放权交易所，663-欧洲能源交易所，664-全国碳排放权交易，666-布达佩斯证券交易所，667-全国温室气体自愿减排交易市场，66302-韩国ETS，66303-加拿大魁北克Cap-and-Trade(CaT)，66305-美国区域温室气体倡议（RGGI）。
+  annotation: 'The securities market (SecuMarket) is associated with the DM field
+    in the (CT_SystemConst) table, where LB = 201 AND DM IN (10,12,13,14,15,16,18,40,49,50,52,54,55,56,65,66,67,68,69,70,71,72,73,75,76,77,78,79,80,81,83,84,85,86,87,88,89,90,93,94,95,96,99,100,101,102,103,104,105,106,107,110,161,162,180,200,202,210,230,240,260,280,310,320,390,400,620,630,631,640,641,650,653,654,655,657,658,659,660,661,662,663,664,666,667,66302,66303,66305),
+    resulting in the specific description of the securities market: 10-Shanghai Futures
+    Exchange, 12-China Interbank Foreign Exchange Market, 13-Dalian Commodity Exchange,
+    14-Shanghai Gold Exchange, 15-Zhengzhou Commodity Exchange, 16-Shanghai Bill Exchange,
+    18-Beijing Stock Exchange, 40-Chicago Mercantile Exchange, 49-Australia Stock
+    Exchange, 50-New Zealand Stock Exchange, 52-Cairo and Alexandria Stock Exchange
+    of Egypt, 54-Buenos Aires Stock Exchange of Argentina, 55-São Paulo Stock Exchange
+    of Brazil, 56-Mexico Stock Exchange, 65-Indonesia Stock Exchange, 66-Thailand
+    Stock Exchange, 67-Seoul Stock Exchange of South Korea, 68-Tokyo Stock Exchange,
+    69-Singapore Stock Exchange, 70-Taiwan Stock Exchange, 71-OTC Market, 72-Hong
+    Kong Stock Exchange, 73-Primary Market, 75-Other Asian Exchanges, 76-American
+    Stock Exchange, 77-NASDAQ Stock Market of the United States, 78-New York Stock
+    Exchange, 79-Other US Trading Markets, 80-Toronto Stock Exchange of Canada, 81-Third
+    Board Market, 83-Shanghai Stock Exchange, 84-Other Markets, 85-London Stock Exchange,
+    86-Paris Stock Exchange of France, 87-Frankfurt Stock Exchange of Germany, 88-Other
+    European Exchanges, 89-Interbank Bond Market, 90-Shenzhen Stock Exchange, 93-Shanghai
+    Interbank Offered Rate Market, 94-Swiss Stock Exchange, 95-Amsterdam Stock Exchange
+    of the Netherlands, 96-Johannesburg Stock Exchange, 99-Tokyo Interbank Offered
+    Rate Market, 100-US Treasury Repo Market, 101-London Interbank Offered Rate Market,
+    102-Hong Kong Interbank Offered Rate Market, 103-Singapore Interbank Offered Rate
+    Market, 104-China Interbank Offered Rate Market, 105-Euro Interbank Offered Rate
+    Market, 106-Brussels Stock Exchange, 107-Jakarta Stock Exchange, 110-Tel Aviv
+    Stock Exchange of Israel, 161-Italian Stock Exchange, 162-Copenhagen Stock Exchange,
+    180-Oslo Stock Exchange of Norway, 200-Stockholm Stock Exchange, 202-Istanbul
+    Stock Exchange, 210-Indian National Stock Exchange, 230-Vienna Stock Exchange
+    of Austria, 240-Madrid Stock Exchange of Spain, 260-Ireland Stock Exchange, 280-Philippine
+    Stock Exchange, 310-Inter-institutional Private Placement Product Quotation and
+    Service System, 320-Moscow Stock Exchange of Russia, 390-Lisbon Stock Exchange,
+    400-Chicago Board Options Exchange, 620-Ho Chi Minh City Stock Exchange, 630-Shanghai
+    Market Acting for Shenzhen Market, 631-Shanghai Market Acting for Hong Kong Stock
+    Exchange Market, 640-Shenzhen Market Acting for Shanghai Market, 641-Shenzhen
+    Market Acting for Hong Kong Stock Exchange Market, 650-International Foreign Exchange
+    Market (Morning Star), 653-Shanghai Environmental Energy Exchange, 654-Beijing
+    Green Exchange, 655-Tianjin Carbon Emission Rights Trading Center, 657-Hubei Carbon
+    Emission Rights Trading Center, 658-Chongqing Carbon Emission Rights Trading Center,
+    659-Sichuan United Environmental Exchange, 660-Guangzhou Carbon Emission Rights
+    Exchange, 661-Strait Equity Trading Center, 662-Shenzhen Emission Rights Exchange,
+    663-European Energy Exchange, 664-National Carbon Emission Rights Trading, 666-Budapest
+    Stock Exchange, 667-National Voluntary Greenhouse Gas'
+- column_name: SecuCategory
+  column_description: 证券类别
+  annotation_zh: 证券类别(SecuCategory)与(CT_SystemConst)表中的DM字段关联，令LB = 1177 AND DM IN
+    (1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,26,27,28,29,30,31,32,33,35,36,37,38,39,40,41,42,43,44,45,46,47,55,79,80,211)，得到证券类别的具体描述：1-A股，2-B股，4-大盘，5-国债回购，6-国债现货，7-金融债券，8-开放式基金，9-可转换债券，10-其他，11-企业债券，12-企业债券回购，13-投资基金，14-央行票据，15-深市代理沪市股票，16-沪市代理深市股票，17-资产支持证券，18-资产证券化产品，19-买断式回购，20-衍生权证，21-股本权证，23-商业银行定期存款，26-收益增长线，27-新质押式回购，28-地方政府债，29-可交换公司债，30-拆借，31-信用风险缓释工具，32-浮息债计息基准利率，33-定期存款凭证，35-大额存款凭证，36-债券借贷，37-存款类机构质押式回购，38-存款类机构信用拆借，39-现货，40-货币对，41-中国存托凭证，42-协议回购，43-三方回购，44-利率互换品种，45-标准利率互换合约，46-报价回购，47-标准化票据，55-优先股，79-深市代理港交所股票，80-沪市代理港交所股票，211-自贸区债。
+  annotation: 'The security category (SecuCategory) is associated with the DM field
+    in the (CT_SystemConst) table, with LB = 1177 AND DM IN (1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,26,27,28,29,30,31,32,33,35,36,37,38,39,40,41,42,43,44,45,46,47,55,79,80,211),
+    obtaining the specific description of the security category: 1 - A shares, 2 -
+    B shares, 4 - Large-cap, 5 - Treasury bond repurchase, 6 - Treasury bond spot,
+    7 - Financial bond, 8 - Open-end fund, 9 - Convertible bond, 10 - Other, 11 -
+    Corporate bond, 12 - Corporate bond repurchase, 13 - Investment fund, 14 - Central
+    bank bill, 15 - Shenzhen market acting for Shanghai market stocks, 16 - Shanghai
+    market acting for Shenzhen market stocks, 17 - Asset-backed securities, 18 - Securitization
+    products, 19 - Buyout repurchase, 20 - Derivative warrants, 21 - Equity warrants,
+    23 - Commercial bank time deposits, 26 - Yield growth line, 27 - New pledge-style
+    repurchase, 28 - Local government bonds, 29 - Exchangeable corporate bonds, 30
+    - Borrowing, 31 - Credit risk mitigation tools, 32 - Floating rate bond interest
+    benchmark rate, 33 - Time deposit certificate, 35 - Large deposit certificate,
+    36 - Bond lending, 37 - Deposit-taking institution pledge-style repurchase, 38
+    - Deposit-taking institution credit borrowing, 39 - Spot, 40 - Currency pair,
+    41 - Chinese depository receipt, 42 - Agreement repurchase, 43 - Tri-party repurchase,
+    44 - Interest rate swap variety, 45 - Standardized interest rate swap contract,
+    46 - Quotation repurchase, 47 - Standardized bill, 55 - Preferred stock, 79 -
+    Shenzhen market acting for Hong Kong Stock Exchange stocks, 80 - Shanghai market
+    acting for Hong Kong Stock Exchange stocks, 211 - Free trade zone bond.'
+- column_name: ListedDate
+  column_description: 上市日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ListedSector
+  column_description: 上市板块
+  annotation_zh: 上市板块(ListedSector)与(CT_SystemConst)表中的DM字段关联，令LB = 207 AND DM IN
+    (1,2,3,4,5,6,7,8)，得到上市板块的具体描述：1-主板，2-中小企业板，3-三板，4-其他，5-大宗交易系统，6-创业板，7-科创板，8-北交所股票。
+  annotation: 'The listed sector (ListedSector) is associated with the DM field in
+    the (CT_SystemConst) table, with LB = 207 AND DM IN (1,2,3,4,5,6,7,8), yielding
+    the specific description of the listed sector: 1 - Main Board, 2 - Small and Medium-sized
+    Enterprise Board, 3 - Third Board, 4 - Others, 5 - Block Trading System, 6 - Growth
+    Enterprise Market, 7 - Science and Technology Innovation Board, 8 - Beijing Stock
+    Exchange.'
+- column_name: ListedState
+  column_description: 上市状态
+  annotation_zh: 上市状态(ListedState)与(CT_SystemConst)表中的DM字段关联，令LB = 1176 AND DM IN
+    (1,3,5,9)，得到上市状态的具体描述：1-上市，3-暂停，5-终止，9-其他。
+  annotation: 'The listing status (ListedState) is associated with the DM field in
+    the (CT_SystemConst) table, with LB = 1176 AND DM IN (1,3,5,9), yielding the specific
+    description of the listing status: 1 - Listed, 3 - Suspended, 5 - Terminated,
+    9 - Other.'
+- column_name: ISIN
+  column_description: ISIN代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

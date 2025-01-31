@@ -1,0 +1,95 @@
+default: 1
+full_table_name: astockeventsdb.lc_investorra.yaml
+database_name: astockeventsdb
+database_name_zh: 上市公司公告资讯/重大事项
+table_name: lc_investorra
+table_name_zh: 投资者关系活动
+table_describe: 1.收录各调研机构对上市公司调研的详情，包括调研日期、参与单位、调研人员、调研主要内容等信息。2.数据范围：2012-至今3.信息来源：巨潮，上交所互动易和深交所互动易
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: 证券内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到证券的交易代码、简称等。
+  annotation: 'Security Internal Code (InnerCode): Associated with the "Security Main
+    Table (SecuMain)" "Security Internal Code (InnerCode)", to obtain the security''s
+    trading code, abbreviation, etc.'
+- column_name: Nbcode
+  column_description: 编号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ReceptionDate
+  column_description: 接待日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ReceptionDaTime
+  column_description: 接待时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SerialNb
+  column_description: 序号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ActivitiesCate
+  column_description: 活动类别
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Participant
+  column_description: 参与单位及人员
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Place
+  column_description: 地点
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ListingCreper
+  column_description: 上市公司接待人员
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TmainContent
+  column_description: 主要内容
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ArticleFile
+  column_description: 附件
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FileType
+  column_description: 附件格式
+  annotation_zh: 附件格式(FileType)与(CT_SystemConst)表中的DM字段关联，令LB = 1309，得到附件格式的具体描述：1-PDF，2-DOC，3-TXT，4-XLS，5-HTML，6-RTF，7-MHT，8-RAR，9-PPT，10-JPG，11-DOCX，12-XLSX，13-PPTX，14-EML，15-ZIP，16-DOCM，17-XLSM，18-XLSB，19-DOTX，20-XML，21-GIF，22-PAPER，23-FIL，24-XSD，25-HTM，26-BMP，27-SWF，28-PNG，29-JSON，30-TIFF，31-TIF，32-WPS，33-GD，34-ET，35-SHTML，36-WEBP，37-7Z，38-CUR，39-SVG，40-ETT，41-OFD，42-JPEG，43-MP3，44-MP4，45-CEB。
+  annotation: 'The attachment format is associated with the DM field in the CT_SystemConst
+    table, with LB set to 1309, the specific description of the attachment format
+    is: 1-PDF, 2-DOC, 3-TXT, 4-XLS, 5-HTML, 6-RTF, 7-MHT, 8-RAR, 9-PPT, 10-JPG, 11-DOCX,
+    12-XLSX, 13-PPTX, 14-EML, 15-ZIP, 16-DOCM, 17-XLSM, 18-XLSB, 19-DOTX, 20-XML,
+    21-GIF, 22-PAPER, 23-FIL, 24-XSD, 25-HTM, 26-BMP, 27-SWF, 28-PNG, 29-JSON, 30-TIFF,
+    31-TIF, 32-WPS, 33-GD, 34-ET, 35-SHTML, 36-WEBP, 37-7Z, 38-CUR, 39-SVG, 40-ETT,
+    41-OFD, 42-JPEG, 43-MP3, 44-MP4, 45-CEB.'
+- column_name: InfoTitle
+  column_description: 信息标题
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LinkAddress
+  column_description: 链接地址
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ReceptionDateE
+  column_description: 接待日期截止日
+  annotation_zh: .nan
+  annotation: .nan

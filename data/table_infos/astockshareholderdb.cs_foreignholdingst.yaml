@@ -1,0 +1,45 @@
+default: 1
+full_table_name: astockshareholderdb.cs_foreignholdingst.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: cs_foreignholdingst
+table_name_zh: 外资持股统计
+table_describe: 内容说明：境外投资者持股统计，包含持股总数、持股比例，境外投资者指QFII/RQFII/深股通/全球存托凭证跨境转换机构/全球存托凭证存托人。数据范围：2007年至今信息来源：深交所、上交所
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: 证券内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到证券的交易代码、简称等。
+  annotation: 'Security Internal Code (InnerCode): Associated with the "Security Main
+    Table (SecuMain)" "Security Internal Code (InnerCode)", to obtain the security''s
+    trading code, abbreviation, etc.'
+- column_name: TradingDay
+  column_description: 交易日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ForeignHoldings
+  column_description: 外资持股总数(万股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ForeignHoldProp
+  column_description: 外资持股比例(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

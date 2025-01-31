@@ -1,0 +1,380 @@
+default: 1
+full_table_name: astockfinancedb.lc_ashareplacement.yaml
+database_name: astockfinancedb
+database_name_zh: 上市公司财务指标/财务报表/融资与分红
+table_name: lc_ashareplacement
+table_name_zh: A股配股
+table_describe: 1.收录A股历次配股预案及实施进展明细，包括预案有效期、配股价格区间、配股说明书、募集资金和配股交款日等内容。2.数据范围：1991-03-06至今
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InitialInfoPublDate
+  column_description: 首次信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaYear
+  column_description: 配股年度
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: StockType
+  column_description: 发行股票类型
+  annotation_zh: 发行股票类型(StockType)与(CT_SystemConst)表中的DM字段关联，令LB = 1177 AND DM IN
+    (1,3)，得到发行股票类型的具体描述：1-A股，3-H股。
+  annotation: 'The stock type (StockType) is associated with the DM field in the (CT_SystemConst)
+    table, with LB = 1177 AND DM IN (1,3), resulting in the specific description of
+    the stock type: 1 - A shares, 3 - H shares.'
+- column_name: AdvanceDate
+  column_description: 预案发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SMDeciPublDate
+  column_description: 股东大会决议公告日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PricingModel
+  column_description: 定价方式
+  annotation_zh: 配股价格确定方式(PricingModel)与(CT_SystemConst)表中的DM字段关联，令LB = 1113，得到配股价格确定方式的具体描述：1-设定区间，2-市价折扣。
+  annotation: 'The method for determining the right issue price (PricingModel) is
+    associated with the DM field in the (CT_SystemConst) table. When LB equals 1113,
+    the specific description of the method for determining the right issue price is
+    obtained: 1 - Set range, 2 - Market discount.'
+- column_name: PricingDescription
+  column_description: 配股价格确定方式说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AdvanceValidStartDate
+  column_description: 预案有效期起始日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AdvanceValidEndDate
+  column_description: 预案有效期截止日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaRatioPlanned
+  column_description: 计划配股比例(10配X)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaPriceCeiling
+  column_description: 配股价格上限(最高价)(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaPriceFloor
+  column_description: 配股价格下限(最低价)(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DeciPublDate
+  column_description: 决案公布日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaProspectusPublDate
+  column_description: 配股说明书刊登日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaAbbrName
+  column_description: 配股简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaCode
+  column_description: 配股代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BaseShares
+  column_description: 配股股本基数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlannedPlaVol
+  column_description: 计划配股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ActualPlaRatio
+  column_description: 实际配股比例(10配X)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ActualPlaVol
+  column_description: 实际配股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaObject
+  column_description: 配股对象
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ParValue
+  column_description: 面值(人民币)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaPrice
+  column_description: 每股配股价格(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TransferPlaRatio
+  column_description: 转配比(10转配X)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TransferPlaVol
+  column_description: 转配股(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TransferFeePerShare
+  column_description: 每股转配费(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OddLotsTreatment
+  column_description: 零股处理方法
+  annotation_zh: 零股处理方法(OddLotsTreatment)与(CT_SystemConst)表中的DM字段关联，令LB = 1218，得到零股处理方法的具体描述：1-不足一股不予配售，2-不足一股四舍五入，3-不足一股累计后随机配售，4-不足一股依据精确算法处理。
+  annotation: 'The Odd Lots Treatment method is associated with the DM field in the
+    CT_SystemConst table, with LB set to 1218, the specific description of the Odd
+    Lots Treatment method is as follows: 1 - No allocation for less than one share,
+    2 - Round up for less than one share, 3 - Accumulate less than one share and allocate
+    randomly, 4 - Handle less than one share based on precise algorithm.'
+- column_name: PlaProceeds
+  column_description: 实际募集资金(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaCost
+  column_description: 发行费用总额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UnderwritingFee
+  column_description: 承销费用(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CPAFee
+  column_description: 注册会计师费用(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AssetAppraisalFee
+  column_description: 资产评估费用(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LandEvaluationFee
+  column_description: 土地评估费用(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AttorneyFee
+  column_description: 律师费用(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TotalAgentFee
+  column_description: 中介机构费合计(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OnlineIssueFee
+  column_description: 上网发行费用(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ScripFee
+  column_description: 股票登记费用(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SponsorFee
+  column_description: 上市推荐费用(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OtherFee
+  column_description: 其他费用(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaNetProceeds
+  column_description: 募集资金净额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RightRegDate
+  column_description: 股权登记日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ExRightDate
+  column_description: 除权日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PayStartDate
+  column_description: 缴费起始
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PayEndDate
+  column_description: 缴费截止
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DateToAccount
+  column_description: 募集资金到帐时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MoneyToAccount
+  column_description: 募集资金到帐金额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaListDate
+  column_description: 配股上市日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LargeSHSubsStatement
+  column_description: 大股东认配说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SchemeChange
+  column_description: 方案是否变更
+  annotation_zh: 方案是否变更(SchemeChange)与(CT_SystemConst)表中的DM字段关联，令LB = 1194，得到方案是否变更的具体描述：1-否，2-是，3-放弃或股东大会否决，4-可转债改增发，5-可转债改配股，6-增发改配股，7-增发改可转债，8-配股改可转债，9-配股改增发，10-未核准，11-更改发行规模，12-延长有效期，13-其他，14-回拨后发行未成功，15-推迟未发行，16-分红调整行使价，17-重新发行，18-未发行，19-宣布发行不成功。
+  annotation: 'Whether the scheme changes (SchemeChange) is associated with the DM
+    field in the (CT_SystemConst) table, let LB = 1194, to obtain the specific description
+    of whether the scheme changes: 1 - No, 2 - Yes, 3 - Abandoned or defeated by the
+    shareholders'' meeting, 4 - Convertible bonds changed to public offering, 5 -
+    Convertible bonds changed to rights issue, 6 - Public offering changed to rights
+    issue, 7 - Public offering changed to convertible bonds, 8 - Rights issue changed
+    to convertible bonds, 9 - Rights issue changed to public offering, 10 - Not approved,
+    11 - Change in offering size, 12 - Extend the validity period, 13 - Others, 14
+    - Issuance unsuccessful after recall, 15 - Delayed and not issued, 16 - Dividend
+    adjustment of exercise price, 17 - Reissue, 18 - Not issued, 19 - Announced issuance
+    unsuccessful.'
+- column_name: ChangeStatement
+  column_description: 方案变动说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UnderwritingMode
+  column_description: 承销方式
+  annotation_zh: 承销方式(UnderwritingMode)与(CT_SystemConst)表中的DM字段关联，令LB = 1017，得到承销方式的具体描述：1-全额包销，2-余额包销，3-代销，4-自销，5-限额包销，8-非包销，9-余额包销及代销相结合，10-自销及代销相结合。
+  annotation: 'The underwriting mode (UnderwritingMode) is associated with the DM
+    field in the CT_SystemConst table. When LB equals 1017, the specific description
+    of the underwriting mode is obtained: 1-Full underwriting, 2-Balance underwriting,
+    3-Agent underwriting, 4-Self-underwriting, 5-Quota underwriting, 8-Non-underwriting,
+    9-Combination of balance underwriting and agent underwriting, 10-Combination of
+    self-underwriting and agent underwriting.'
+- column_name: UnderwriterBoughtVol
+  column_description: 余股包销数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PublicSHSubscriptionEsti
+  column_description: 公众股东预计认配股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PublicSHSubscriptionActu
+  column_description: 公众股东实际认配股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlannedPlaProceeds
+  column_description: 计划募集资金总额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AdjustedPlaRatioPl
+  column_description: 最新计划配股比例(10配X)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AdjustedPlaVolPl
+  column_description: 最新计划配股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UWSponFee
+  column_description: 1)承销保荐费用合计(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CPAAppraisalFee
+  column_description: 2)审计验资及评估费用合计(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CSRCIACApprovalDate
+  column_description: 证监会发审委通过公告日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SASACApprovalPublDate
+  column_description: 国资委通过公告日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CSRCApprovalPublDate
+  column_description: 证监会批准公告日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ExApprovalPublDate
+  column_description: 交易所审核通过日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IssueMethod
+  column_description: 发行方式
+  annotation_zh: 发行方式(IssueMethod)与(CT_SystemConst)表中的DM字段关联，令LB = 2375，得到发行方式的具体描述：1-网上定价，2-无限售流通股网上定价、有限售流通股网下定价，3-其他。
+  annotation: 'The issue method (IssueMethod) is associated with the DM field in the
+    (CT_SystemConst) table, setting LB to 2375 yields the specific description of
+    the issue method: 1 - Online pricing, 2 - Online pricing for unrestricted tradable
+    shares, and offline pricing for restricted tradable shares, 3 - Other.'
+- column_name: EventProcedureCode
+  column_description: 事件进程
+  annotation_zh: 事件进程(EventProcedureCode)与(CT_SystemConst)表中的DM字段关联，令LB = 1640，得到事件进程的具体描述：1-意向，10-董事会预案，20-股东大会通过，21-国资委通过，22-发审委通过，23-证监会通过，24-上市委通过，25-银保监会通过，26-证监会受理，29-实施中，30-实施完成，40-国资委否决，41-股东大会否决，42-证监会否决，43-发审委否决，44-上市委否决，45-董事会否决，50-延期实施，60-停止实施，61-发行前终止，62-发行后终止，70-暂缓发行，80-注册中，90-实施失败。
+  annotation: 'The event process (EventProcedureCode) is associated with the DM field
+    in the (CT_SystemConst) table, setting LB = 1640, the specific description of
+    the event process is as follows: 1-Intention, 10-Board Resolution, 20-Shareholders''
+    Meeting Approval, 21-SASAC Approval, 22-CSRC Approval, 23-CSRC Approval, 24-Listing
+    Committee Approval, 25-CBRC Approval, 26-CSRC Acceptance, 29-Implementation in
+    Progress, 30-Implementation Completed, 40-SASAC Rejection, 41-Shareholders'' Meeting
+    Rejection, 42-CSRC Rejection, 43-CSRC Rejection, 44-Listing Committee Rejection,
+    45-Board Rejection, 50-Deferred Implementation, 60-Stop Implementation, 61-Terminated
+    Before Issuance, 62-Terminated After Issuance, 70-Suspended Issuance, 80-Registration
+    in Process, 90-Implementation Failed.'
+- column_name: LatestInfoPublDate
+  column_description: 最新公告日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaProspectus
+  column_description: 配股说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ResultPulbDate
+  column_description: 配股结果公告日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ListAnnounceDate
+  column_description: 配股上市公告日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlannedBaseShares
+  column_description: 计划配股股本基数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PlaObjectCategory
+  column_description: 配股对象类别
+  annotation_zh: 配股对象类别(PlaObjectCategory)与(CT_SystemConst)表中的DM字段关联，令LB=1197 and
+    DM in (1,7,10) ，得到配股对象类别的具体描述：1-全体股东，7-无限售股东，10-流通股东。
+  annotation: 'The "PlaObjectCategory" is associated with the "DM" field in the "CT_SystemConst"
+    table. With LB=1197 and DM in (1,7,10), the specific description of the share
+    allocation object category is obtained: 1-All shareholders, 7-Shareholders without
+    restriction, 10-Circulating shareholders.'
+- column_name: PlaBaseDate
+  column_description: 配股基准日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LargeSHHoldSum
+  column_description: 持股5%以上大股东持股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LargeSHSubscripEsti
+  column_description: 持股5%以上大股东计划认配股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LargeSHSubscripActu
+  column_description: 持股5%以上大股东实际认配股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: NAPSAfterAllotment
+  column_description: 配股完成后预计每股净资产(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EPSAfterAllotment
+  column_description: 配股完成后预计每股收益(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan

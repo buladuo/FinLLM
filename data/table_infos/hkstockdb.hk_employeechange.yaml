@@ -1,0 +1,83 @@
+default: 1
+full_table_name: hkstockdb.hk_employeechange.yaml
+database_name: hkstockdb
+database_name_zh: 港股数据库
+table_name: hk_employeechange
+table_name_zh: 港股公司员工数量变动表
+table_describe: '1.记录港股公司员工数量的变动历史记录数据，包括信息发布日期、信息来源、生效日期、变更前员工数量、变更后员工数量等。               2.数据范围：2001年至今。                     3.信息来源：港交所。  '
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部代码
+  annotation_zh: 证券内部编码（InnerCode）：与“港股证券主表（HK_SecuMain）”中的“证券内部编码（InnerCode）”关联，得到港股的交易代码、简称等。
+  annotation: 'Security Internal Code (InnerCode): Associated with the "Security Internal
+    Code (InnerCode)" in the "HK_SecuMain" table, to obtain the trading code, abbreviation,
+    etc. of Hong Kong stocks.'
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: 信息来源(InfoSource)与(CT_SystemConst)表中的DM字段关联，令LB = 1926，得到信息来源的具体描述：1-审计报告，2-第一季报，3-中期报告，4-第三季报，5-年度报告，6-第二季报，7-第四季报，8-第五季报，9-定期报告，10-申请版本，11-聆讯后资料集，12-招股章程，13-临时公告，14-审计报告(申报稿)，15-公开转让说明书，16-发行情况报告书，17-审计报告（更正后），18-第一季报（更正后），19-中期报告（更正后），20-第三季报（更正后），21-年度报告（更正后），22-公开转让说明书（更正后），23-招股说明书（申报稿），24-招股说明书，25-招股意向书，26-A股上市公告书，27-配发结果，28-修改已刊发的财务报表及报告，29-修正重大错误而做出的前期调整，30-修订已刊发初步业绩的资料，31-初步业绩公告，32-内幕消息-年度报告，33-内幕消息-第一季报，34-内幕消息-第二季报，35-内幕消息-第三季报，36-内幕消息-第四季报，37-内幕消息-中期报告，38-内幕消息-申请版本，39-内幕消息-招股章程，40-内幕消息-聆讯后资料集，41-内幕消息-其他，42-审阅报告，43-审阅报告(更正），99-其他。收起
+  annotation: 'The InfoSource is associated with the DM field in the CT_SystemConst
+    table. With LB = 1926, the specific description of the InfoSource is as follows:
+    1-Auditor''s Report, 2-First Quarter Report, 3-Mid-term Report, 4-Third Quarter
+    Report, 5-Annual Report, 6-Second Quarter Report, 7-Fourth Quarter Report, 8-Fifth
+    Quarter Report, 9-Regular Report, 10-Application Version, 11-Information Set after
+    Hearing, 12-Prospectus, 13-Interim Announcement, 14-Auditor''s Report (Draft),
+    15-Public Transfer Statement, 16-Issue Report, 17-Auditor''s Report (Corrected),
+    18-First Quarter Report (Corrected), 19-Mid-term Report (Corrected), 20-Third
+    Quarter Report (Corrected), 21-Annual Report (Corrected), 22-Public Transfer Statement
+    (Corrected), 23-Prospectus (Draft), 24-Prospectus, 25-Prospectus Intent, 26-A
+    Share Listing Notice, 27-Allocation Results, 28-Amendment to Published Financial
+    Statements and Reports, 29-Adjustments for Material Errors, 30-Amendment to Published
+    Preliminary Results, 31-Preliminary Results Announcement, 32-Inside Information
+    - Annual Report, 33-Inside Information - First Quarter Report, 34-Inside Information
+    - Second Quarter Report, 35-Inside Information - Third Quarter Report, 36-Inside
+    Information - Fourth Quarter Report, 37-Inside Information - Mid-term Report,
+    38-Inside Information - Application Version, 39-Inside Information - Prospectus,
+    40-Inside Information - Information Set after Hearing, 41-Inside Information -
+    Others, 42-Review Report, 43-Review Report (Corrected), 99-Other. Collapse'
+- column_name: SMAnnounceDate
+  column_description: 股东大会公告日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfEffected
+  column_description: 是否有效
+  annotation_zh: '是否有效(IfEffected)与(CT_SystemConst)表中的DM字段关联，令LB = 999 and DM in (1,2)，得到是否有效的具体描述：1-是，2-否。
+
+    '
+  annotation: 'Whether "IfEffected" is associated with the "DM" field in the "CT_SystemConst"
+    table, set LB = 999 and DM in (1,2), to obtain the specific description of whether
+    it is effective: 1-Yes, 2-No.'
+- column_name: EffectiveDate
+  column_description: 生效日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: QuaBeforeChange
+  column_description: 变更前员工数量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: QuaAfterChange
+  column_description: 变更后员工数量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ExpiryDate
+  column_description: 失效日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

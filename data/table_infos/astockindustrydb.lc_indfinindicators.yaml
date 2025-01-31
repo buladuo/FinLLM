@@ -1,0 +1,332 @@
+default: 1
+full_table_name: astockindustrydb.lc_indfinindicators.yaml
+database_name: astockindustrydb
+database_name_zh: 上市公司行业板块
+table_name: lc_indfinindicators
+table_name_zh: 行业财务指标表
+table_describe: 1.内容说明：本表存储行业衍生指标相关数据，反映不同行业分类标准下，各行业的成长能力、偿债能力、盈利能力和现金获取能力等。本表数据多采用整体法进行计算（如计算增长率时，采用（行业内所有公司的当期总值-上期总值）/上期总值，而非行业内公司增长率的算术平均值），且部分比例类指标对金融类公司不适用（流动比例、速动比例、毛利率等），该类指标未计算金融类公司。2.数据范围：A股财报、业绩快报、股本结构、分红等数据，2014年至今。3.信息来源：公告披露，聚源计算。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndustryNum
+  column_description: 行业内部编码
+  annotation_zh: 与(CT_IndustryType)表中的IndustryNum字段关联，令IndustryNum=IndustryNum，得到行业内部编码的具体描述。
+  annotation: Associate with the IndustryNum field in the (CT_IndustryType) table,
+    set IndustryNum=IndustryNum, to obtain the specific description of the industry
+    internal code.
+- column_name: IndustryName
+  column_description: 行业名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Classification
+  column_description: 行业级别
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndustryCode
+  column_description: 行业代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Standard
+  column_description: 行业划分标准
+  annotation_zh: 行业划分标准(Standard)与(CT_SystemConst)表中的DM字段关联，令LB = 1081 AND DM IN (41)，得到行业划分标准的具体描述：41-申万行业分类2021版。
+  annotation: 'The industry classification standard (Standard) is associated with
+    the DM field in the (CT_SystemConst) table, with LB = 1081 AND DM IN (41), yielding
+    the specific description of the industry classification standard: 41-Shenwan Industry
+    Classification 2021 Edition.'
+- column_name: StatType
+  column_description: 统计类型
+  annotation_zh: " \n统计类型(StatType)，该字段固定以下常量：1-整体法不剔除负值。"
+  annotation: 'Statistical type (StatType), this field is fixed with the following
+    constants: 1 - the overall method does not exclude negative values.'
+- column_name: SectorCode
+  column_description: 统计板块
+  annotation_zh: " \n统计板块(SectorCode)，该字段固定以下常量：5-沪、深及北交所市场。"
+  annotation: 'Statistics section (SectorCode), this field is fixed with the following
+    constants: 5-Shanghai, Shenzhen and Beijing Stock Exchange markets.'
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EndDate
+  column_description: 截止日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DataMark
+  column_description: 数据标志
+  annotation_zh: 数据标志(DataMark)，该字段固定以下常量：1-完整财报期，2-最新财报期，9-财报更正。
+  annotation: 'DataMark, this field is fixed with the following constants: 1-Complete
+    financial reporting period, 2-Latest financial reporting period, 9-Financial report
+    correction.'
+- column_name: ListedSecuNum
+  column_description: 上市证券数量(只)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndOperatingRevenueTTM
+  column_description: 行业营业收入TTM(万元)
+  annotation_zh: 为行业内公司营业收入TTM总值，行业均值可用该值除以上市证券数量。
+  annotation: For the total value of TTM operating revenue of companies in the industry,
+    the industry average can be obtained by dividing this value by the number of listed
+    securities.
+- column_name: IndOperatingRevenue
+  column_description: 行业营业收入(万元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndOperatingCost
+  column_description: 行业营业成本(万元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndOperatingProfitTTM
+  column_description: 行业营业利润TTM(万元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndOperatingProfit
+  column_description: 行业营业利润(万元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndNetProfitTTM
+  column_description: 行业净利润TTM(万元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndNetProfit
+  column_description: 行业净利润(万元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndNPCOwnersTTM
+  column_description: 行业归属母公司的净利润TTM(万元)
+  annotation_zh: 为行业内归属母公司的净利润TTM总值，行业均值可用该值除以上市证券数量。
+  annotation: The total value of net profit attributable to the parent company in
+    the industry TTM, the industry average can be obtained by dividing this value
+    by the number of listed securities.
+- column_name: IndNPParentComOwners
+  column_description: 行业归属母公司的净利润(万元)
+  annotation_zh: 采用整体法进行计算：（行业内所有公司当期归母净利润总值-其上期归母净利润总值）/其上期归母净利润总值。（若有公司未披露当期或上期归母净利润，则剔除该样本）。
+  annotation: 'Calculate using the overall method: (The total value of the net profit
+    attributable to the parent company of all companies in the industry during the
+    current period - the total value of the net profit attributable to the parent
+    company in the previous period) / the total value of the net profit attributable
+    to the parent company in the previous period. (If a company has not disclosed
+    the net profit attributable to the parent company for the current or previous
+    period, exclude that sample.)'
+- column_name: IndNetAssets
+  column_description: 行业净资产(万元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndTotalAssets
+  column_description: 行业总资产(万元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IndTotalShares
+  column_description: 行业总股本(万股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EPSAvg
+  column_description: 每股收益_均值(元)
+  annotation_zh: ∑(个股归母净利润 /个股期末总股本)/证券数。
+  annotation: The sum of (net profit attributable to shareholders of listed companies
+    / total equity of listed companies at the end of the period) divided by the number
+    of securities.
+- column_name: ROEAvg
+  column_description: 净资产收益率_平均(%)
+  annotation_zh: ∑归母净利润*2 / ∑（归母股东权益MRQ+期初归母股东权益）。
+  annotation: Sum of net profit attributable to shareholders * 2 / Sum (equity attributable
+    to shareholders MRQ + beginning equity attributable to shareholders).
+- column_name: ROE
+  column_description: 净资产收益率_摊薄(%)
+  annotation_zh: ∑归母净利润 / ∑归母股东权益MRQ。
+  annotation: Sum of net profit attributable to shareholders / Sum of equity attributable
+    to shareholders MRQ.
+- column_name: ROETTM
+  column_description: 净资产收益率_TTM(%)
+  annotation_zh: ∑归母净利润TTM / ∑归母股东权益MRQ。
+  annotation: Sum of net profit attributable to shareholders TTM / Sum of equity attributable
+    to shareholders MRQ.
+- column_name: WROECut
+  column_description: 净资产收益率_扣除,平均(%)
+  annotation_zh: ∑扣非归母净利润*2 / ∑（归母股东权益MRQ+期初归母股东权益）。
+  annotation: Sum of non-net profit attributable to shareholders * 2 / Sum (net assets
+    of shareholders MRQ + beginning net assets of shareholders).
+- column_name: ROECut
+  column_description: 净资产收益率_扣除,摊薄(%)
+  annotation_zh: ∑扣非归母净利润 / ∑归母股东权益MRQ。
+  annotation: Sum of non-GAAP net profit attributable to shareholders / Sum of equity
+    attributable to shareholders MRQ.
+- column_name: ROAAvg
+  column_description: 总资产净利率_平均(%)
+  annotation_zh: ∑净利润*2 / ∑（总资产+期初总资产）。
+  annotation: Total net profit * 2 / Sum (total assets + beginning total assets).
+- column_name: DilutedROA
+  column_description: 总资产净利率_摊薄(%)
+  annotation_zh: ∑净利润 / ∑期末总资产。
+  annotation: Total net profit / Total total assets at the end of the period.
+- column_name: ROATTM
+  column_description: 总资产净利率_TTM(%)
+  annotation_zh: ∑净利润TTM / ∑期末总资产。
+  annotation: Sum of net profit TTM / Sum of total assets at the end of the period.
+- column_name: GrossIncomeRatio
+  column_description: 销售毛利率(%)
+  annotation_zh: ∑毛利润 / ∑营业收入，金融企业不适用。
+  annotation: Gross profit margin / Total operating revenue, not applicable to financial
+    enterprises.
+- column_name: GrossIncomeRatioTTM
+  column_description: 销售毛利率_TTM(%)
+  annotation_zh: ∑毛利润TTM / ∑营业收入TTM，金融企业不适用。
+  annotation: Gross Profit TTM / Operating Revenue TTM, not applicable for financial
+    enterprises.
+- column_name: NetProfitRatio
+  column_description: 销售净利率(%)
+  annotation_zh: ∑净利润 / ∑营业收入。
+  annotation: Total net profit / Total operating revenue.
+- column_name: NetProfitRatioTTM
+  column_description: 销售净利率_TTM(%)
+  annotation_zh: ∑净利润TTM / ∑营业收入TTM。
+  annotation: Sum of net profit TTM / Sum of operating revenue TTM.
+- column_name: NetProfitRatioCut
+  column_description: 销售净利率_扣除(%)
+  annotation_zh: ∑扣非净利润 / ∑营业收入。
+  annotation: Sum of non-net profit / Sum of operating revenue.
+- column_name: FinExpenseRateTTM
+  column_description: 财务费用/营业收入TTM(%)
+  annotation_zh: ∑财务费用 TTM/ ∑营业收入TTM，金融企业不适用。
+  annotation: The ratio of total financial expenses TTM to total operating revenue
+    TTM, not applicable to financial enterprises.
+- column_name: OperatingExpenseRate
+  column_description: 销售费用/营业总收入(%)
+  annotation_zh: ∑销售费用 / ∑营业总收入，金融企业不适用。
+  annotation: The sum of selling expenses divided by the sum of total operating income,
+    not applicable to financial enterprises.
+- column_name: OperatExpenseRateTTM
+  column_description: 销售费用/营业总收入_TTM(%)
+  annotation_zh: ∑销售费用TTM / ∑营业总收入TTM，金融企业不适用。
+  annotation: The ratio of total selling expenses TTM to total operating revenue TTM,
+    not applicable to financial enterprises.
+- column_name: PeriodCostsRate
+  column_description: 销售期间费用率(%)
+  annotation_zh: ∑销售期间费用 / ∑营业收入，销售期间费用=销售费用+管理费用+财务费用+研发费用，金融企业不适用。
+  annotation: The ratio of total selling period expenses to total operating revenue,
+    where total selling period expenses equals the sum of selling expenses, administrative
+    expenses, financial expenses, and research and development expenses, not applicable
+    to financial enterprises.
+- column_name: TOperatingCostToTOR
+  column_description: 营业总成本/营业总收入(%)
+  annotation_zh: ∑营业总成本 / ∑营业总收入，金融企业不适用。
+  annotation: The sum of total operating costs divided by the sum of total operating
+    revenue, not applicable to financial enterprises.
+- column_name: ROIC
+  column_description: 投入资本回报率(%)
+  annotation_zh: ∑息税前利润（1-有效税率）2 / ∑（期末全部投入资本+期初全部投入资本），金融企业不适用。
+  annotation: Pre-tax profit (1 - effective tax rate)^2 / ∑ (total investment at the
+    end of the period + total investment at the beginning of the period), not applicable
+    to financial enterprises.
+- column_name: CurrentRatio
+  column_description: 流动比率(%)
+  annotation_zh: ∑流动资产 / ∑流动负债，金融企业不适用。
+  annotation: The ratio of total current assets to total current liabilities, not
+    applicable to financial enterprises.
+- column_name: QuickRatio
+  column_description: 速动比率(%)
+  annotation_zh: ∑(流动资产-存货)/∑利息费用，金融企业不适用
+  annotation: The sum of (current assets - inventory) divided by the sum of interest
+    expenses, not applicable to financial enterprises.
+- column_name: InterestCover
+  column_description: 利息保障倍数(倍)
+  annotation_zh: ∑息税前利润 / ∑利息费用，金融企业不适用
+  annotation: Pre-tax profit / Interest expenses, not applicable to financial enterprises.
+- column_name: NOCFInterestCover
+  column_description: 经营现金流利息保障倍数(倍)
+  annotation_zh: ∑经营活动产生的现金流量净额 / ∑利息费用，金融企业不适用
+  annotation: Net cash flow generated by operating activities / Total interest expenses,
+    not applicable to financial enterprises
+- column_name: NPParentCompanyYOY
+  column_description: 归属母公司股东的净利润同比增长(%)
+  annotation_zh: （∑归母净利润-∑上年同期归母净利润） /|∑上年同期归母净利润|
+  annotation: (Σ net profit attributable to shareholders of the parent company - Σ
+    net profit attributable to shareholders of the parent company in the same period
+    of the previous year) / |Σ net profit attributable to shareholders of the parent
+    company in the same period of the previous year|
+- column_name: GrossProfitYOY
+  column_description: 毛利润同比增长率(%)
+  annotation_zh: （∑毛利润-∑上年同期毛利润） // |∑上年同期毛利润|，金融企业不适用
+  annotation: (Σ gross profit - Σ gross profit of the same period last year) // |Σ
+    gross profit of the same period last year|, not applicable to financial enterprises
+- column_name: InventoryTRate
+  column_description: 存货周转率(次)
+  annotation_zh: ∑营业成本*2 / ∑（存货+期初存货），金融企业不适用
+  annotation: The sum of operating costs multiplied by 2 divided by the sum of (inventory
+    + beginning inventory), not applicable to financial enterprises.
+- column_name: InventoryTDays
+  column_description: 存货周转天数(天)
+  annotation_zh: 周期天数 / 存货周转率，存货周转率=∑营业成本*2 / ∑（存货+期初存货），金融企业不适用
+  annotation: Number of days in period / Inventory turnover rate, Inventory turnover
+    rate = ∑Operating cost * 2 / ∑(Inventory + Beginning inventory), Not applicable
+    for financial enterprises
+- column_name: ARTRate
+  column_description: 应收账款周转率(次)
+  annotation_zh: ∑营业收入*2 / ∑（应收账款+期初应收账款），金融企业不适用
+  annotation: The sum of operating revenue multiplied by 2 divided by the sum of accounts
+    receivable plus initial accounts receivable, not applicable to financial enterprises.
+- column_name: ARTDays
+  column_description: 应收账款周转天数(天)
+  annotation_zh: 周期天数 / 应收账款周转率，应收账款周转率=∑营业收入*2 / ∑（应收账款+期初应收账款），金融企业不适用
+  annotation: Number of days in the period / Accounts Receivable Turnover Rate, Accounts
+    Receivable Turnover Rate = ∑Operating Revenue * 2 / ∑(Accounts Receivable + Beginning
+    Accounts Receivable), not applicable to financial enterprises.
+- column_name: ReceivableTRate
+  column_description: 应收款项周转率(次)
+  annotation_zh: ∑营业收入*2 / ∑（应收款项+期初应收款项），应收款项=应收账款及应收票据+其他应收款合计+应收款项融资，金融企业不适用
+  annotation: Total operating revenue * 2 / Total (accounts receivable + beginning
+    accounts receivable), accounts receivable = accounts receivable and bills receivable
+    + other receivables + accounts receivable financing, not applicable to financial
+    enterprises.
+- column_name: TotalAssetTRate
+  column_description: 总资产周转率(次)
+  annotation_zh: ∑营业总收入*2 / ∑（总资产+期初总资产），金融企业用营业收入
+  annotation: Total operating revenue * 2 / Sum (total assets + beginning total assets),
+    financial enterprises use business revenue
+- column_name: NetOperCFToToOperReve
+  column_description: 经营现金净流量/营业总收入(%)
+  annotation_zh: ∑经营现金净流量 / ∑营业总收入，金融企业用营业收入
+  annotation: Net operating cash flow / Total operating revenue, financial enterprises
+    use business revenue
+- column_name: DebtAssetsRatio
+  column_description: 资产负债率(%)
+  annotation_zh: ∑期末总负债 / ∑期末总资产
+  annotation: Total liabilities at the end of the period / Total assets at the end
+    of the period
+- column_name: NetTangibleAssetsTA
+  column_description: 有形资产净值/总资产(%)
+  annotation_zh: （归母股东权益-（无形资产+开发支出+商誉+长期待摊费用+递延所得税资产）） / 总资产，金融企业不适用
+  annotation: (Mother company's shareholders' equity - (intangible assets + development
+    expenses + goodwill + long-term deferred expenses + deferred tax assets)) / total
+    assets, not applicable to financial enterprises
+- column_name: OutInvestOwnersEquity
+  column_description: 对外投资/所有者权益(%)
+  annotation_zh: ∑（交易性金融资产+可供出售金融资产+持有至到期投资+长期股权投资+债权投资+其他债权投资+其他权益工具投资） / ∑所有者权益合计
+  annotation: The sum of (trading financial assets + available-for-sale financial
+    assets + held-to-maturity investments + long-term equity investments + debt investments
+    + other debt investments + other equity instrument investments) divided by the
+    sum of total owners' equity.
+- column_name: AdvanceReceToTOR
+  column_description: 预收账款/营业收入TTM(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AccountReceToTOR
+  column_description: 应收账款/营业收入TTM(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 修改时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

@@ -1,0 +1,124 @@
+default: 1
+full_table_name: publicfunddb.mf_investadvisoroutline.yaml
+database_name: publicfunddb
+database_name_zh: 公募基金数据库
+table_name: mf_investadvisoroutline
+table_name_zh: 公募基金管理人概况
+table_describe: 1.本表记录了基金管理人的基本情况介绍，包括成立日期、注册资本、法人代表、联系方式、背景简介等。2.历史数据：1998年3月起-至今。3.信息来源：基金公司官网。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InvestAdvisorCode
+  column_description: 基金公司代码
+  annotation_zh: 基金管理人编码(InvestAdvisorCode)：与机构基本资料(LC_InstiArchive)表的企业编号(CompanyCode)字段关联，可查询基金管理人中文名称、英文名称、组织机构代码等基本信息。
+  annotation: 'Fund manager code (InvestAdvisorCode): associated with the company
+    code (CompanyCode) field in the institutional basic information (LC_InstiArchive)
+    table, it can query the Chinese name, English name, and organization code of the
+    fund manager and other basic information.'
+- column_name: InvestAdvisorName
+  column_description: 基金管理人名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InvestAdvisorAbbrName
+  column_description: 基金管理人简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LegalRepr
+  column_description: 法人代表
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GeneralManager
+  column_description: 总经理
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EstablishmentDate
+  column_description: 公司成立日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OrganizationForm
+  column_description: 组织形式
+  annotation_zh: 组织形式(OrganizationForm)与(CT_SystemConst)表中的DM字段关联，令LB = 1133 and DM
+    in (100,150,159,160,210,310,900)，得到组织形式的具体描述：100-内资企业，150-有限责任公司，159-其他有限责任公司，160-股份有限公司，210-港澳台合资经营企业，310-中外合资经营企业，900-其他性质。
+  annotation: 'The organization form is associated with the DM field in the CT_SystemConst
+    table, with LB = 1133 and DM in (100, 150, 159, 160, 210, 310, 900), resulting
+    in the specific description of the organization form: 100-Investment Enterprise,
+    150-Limited Liability Company, 159-Other Limited Liability Company, 160-Joint
+    Stock Company, 210-Hong Kong, Macau, Taiwan Joint Venture, 310-Sino-Foreign Joint
+    Venture, 900-Other Nature.'
+- column_name: RegCapital
+  column_description: 注册资本(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RegAddr
+  column_description: 公司注册地址
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OfficeAddr
+  column_description: 公司办公地址
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ZipCode
+  column_description: 邮编
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Email
+  column_description: 邮箱
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ContactAddr
+  column_description: 公司联系地址
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Tel
+  column_description: 电话
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Fax
+  column_description: 传真
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: WebSite
+  column_description: 公司网址
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LinkMan
+  column_description: 联系人
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Background
+  column_description: 简历
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Region
+  column_description: 所属地区
+  annotation_zh: 注1
+  annotation: Annotation1
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ServiceLine
+  column_description: 客服热线
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MaturityEndDate
+  column_description: 存续截止日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TACode
+  column_description: 注册登记代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CSRCCode
+  column_description: 证监会标识码
+  annotation_zh: .nan
+  annotation: .nan

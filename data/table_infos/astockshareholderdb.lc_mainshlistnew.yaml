@@ -1,0 +1,267 @@
+default: 1
+full_table_name: astockshareholderdb.lc_mainshlistnew.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: lc_mainshlistnew
+table_name_zh: 股东名单(新)
+table_describe: 1.收录公司主要股东构成及持股数量比例、持股性质等明细资料，包括发行前和上市后的历次变动记录。2.数据范围：1992-06-30至今3.信息来源：招股说明书、上市公告书、定报、临时公告等。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoTypeCode
+  column_description: 信息类别编码
+  annotation_zh: 信息类别编码(InfoTypeCode)与(CT_SystemConst)表中的DM字段关联，令LB = 1025 AND DM
+    IN (1,2,4,5,6)，得到信息类别编码的具体描述：1-前十大股东，2-前十流通股东，4-十大有限售条件股东，5-发行前股东，6-前十大表决权数量股东。
+  annotation: 'The InfoTypeCode is associated with the DM field in the CT_SystemConst
+    table, with LB = 1025 AND DM IN (1,2,4,5,6), the specific description of the InfoTypeCode
+    is: 1 - Top ten shareholders, 2 - Top ten tradable shareholders, 4 - Top ten shareholders
+    with restricted sale conditions, 5 - Shareholders before issuance, 6 - Top ten
+    shareholders by voting rights quantity.'
+- column_name: SHNo
+  column_description: 股东排名
+  annotation_zh: 股东排名（SHNo）：当“信息类别代码（InfoTypeCode）”=1时，“股东排名（SHNo）”表示股东排名；当“信息类别代码（InfoTypeCode）”=2时，“股东排名（SHNo）”表示流通股东排名。
+  annotation: 'Shareholder Ranking (SHNo): When "Information Type Code (InfoTypeCode)"
+    equals 1, "Shareholder Ranking (SHNo)" indicates the ranking of shareholders;
+    when "Information Type Code (InfoTypeCode)" equals 2, "Shareholder Ranking (SHNo)"
+    indicates the ranking of circulating shareholders.'
+- column_name: SHSerial
+  column_description: 股东序号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHList
+  column_description: 股东名称
+  annotation_zh: 股东名称（SHList）：此字段为股东名称公告原始披露值；如期望获取股东标准名称，可使用股东ID与相关表单关联，具体关联方式详见注4
+  annotation: 'Shareholder Name (SHList): This field is the original disclosure value
+    of the shareholder name announcement; if you expect to obtain the standard shareholder
+    name, you can use the shareholder ID to associate with the relevant forms, and
+    the specific association method is detailed in Note 4.'
+- column_name: SHKind
+  column_description: 股东性质
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHTypeCode
+  column_description: 股东类别编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHType
+  column_description: 股东类别
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuCoBelongedCode
+  column_description: 所属券商编号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuCoBelongedName
+  column_description: 归属机构名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuCode
+  column_description: 证券代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuAbbr
+  column_description: 证券简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldSum
+  column_description: 持股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTOfTotalShares
+  column_description: 占总股本比例
+  annotation_zh: 占总股本比例（%）（PCTOfTotalShares）：当“信息类别代码（InfoTypeCode）”=1时，持股数(股)/总股本*100当“信息类别代码（InfoTypeCode）”=2时，无限售股数(股)/总股本*100
+  annotation: 'Percentage of Total Shares (PCTOfTotalShares): When "Information Type
+    Code (InfoTypeCode)" equals 1, the number of shares held / total issued shares
+    * 100; when "Information Type Code (InfoTypeCode)" equals 2, the number of unrestricted
+    shares / total issued shares * 100.'
+- column_name: RestrainedTShare
+  column_description: 其中：有限售股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UnstintedTShare
+  column_description: 其中：无限售股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldSumChange
+  column_description: 持股数量增减(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldSumChangeRate
+  column_description: 持股数量增减幅度(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldAShareSum
+  column_description: 持有A股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTOfFloatShares
+  column_description: 占流通A股比例(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldBShareSum
+  column_description: 持有B股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldHShareSum
+  column_description: 持有H股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldOthterShareSum
+  column_description: 持有其他股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ShareCharacterStatement
+  column_description: 股本性质描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PledgeInvolvedSum
+  column_description: 股权质押涉及股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FreezeInvolvedSum
+  column_description: 股权冻结涉及股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PFStatement
+  column_description: 股权质押冻结情况说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ConnectionRelation
+  column_description: 股东关联关系
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ConnectionStatement
+  column_description: 与其他股东关联关系说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ActInConcertStatement
+  column_description: 与其他股东同属一致行动人说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Notes
+  column_description: 备注说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuInnerCode
+  column_description: 证券代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHKindCode
+  column_description: 股东性质编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GDID
+  column_description: 股东ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHAttribute
+  column_description: 股东属性
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RestrainedAShare
+  column_description: 其中:有限售A股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UnstintedAShare
+  column_description: 其中:无限售A股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldShareASum
+  column_description: 持有A类普通股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RestrainedShareA
+  column_description: 其中:有限售A类普通股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UnstintedShareA
+  column_description: 其中:无限售A类普通股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldShareBSum
+  column_description: 持有B类普通股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RestrainedShareB
+  column_description: 其中:有限售B类普通股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UnstintedShareB
+  column_description: 其中:无限售B类普通股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldShareCSum
+  column_description: 持有C类普通股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldShareDSum
+  column_description: 持有D类普通股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldOtherComShareSum
+  column_description: 持有其他类普通股数量(股)1
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HoldChangeType
+  column_description: 持股变动类型
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PrefShareWithVotRight
+  column_description: 有投票权的优先股数量(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VotingRightsVol
+  column_description: 表决权总数(票)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VotingRightsRatio
+  column_description: 表决权比例(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SpecialVotingRightsVol
+  column_description: 特别表决权数量(票)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PCTOfNRShares
+  column_description: 占无限售股份比例(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RefinanceLoanShare
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan

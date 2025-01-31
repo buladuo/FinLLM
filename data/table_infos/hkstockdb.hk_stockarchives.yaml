@@ -1,0 +1,182 @@
+default: 1
+full_table_name: hkstockdb.hk_stockarchives.yaml
+database_name: hkstockdb
+database_name_zh: 港股数据库
+table_name: hk_stockarchives
+table_name_zh: 港股公司概况
+table_describe: 1.收录港股上市公司的基础信息，包括名称、成立日期、注册地点、注册资本、公司业务、所属行业分类、主席、公司秘书、联系方式等信息。2.信息来源：港交所等。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EstablishmentDate
+  column_description: 公司成立日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RegAbbr
+  column_description: 注册地
+  annotation_zh: 注册地点(RegAbbr)与(CT_SystemConst)表中的DM字段关联，令LB = 1023，得到注册地点的具体描述：3-中国港澳台，4-中东地区，7-国际，100-亚洲，101-阿富汗，102-巴林，103-孟加拉国，104-不丹，105-文莱，106-缅甸，107-柬埔寨，108-塞浦路斯，109-朝鲜，110-中国香港，111-印度，112-印度尼西亚，113-伊朗，114-伊拉克，115-以色列，116-日本，117-约旦，118-科威特，119-老挝，120-黎巴嫩，121-中国澳门，122-马来西亚，123-马尔代夫，124-蒙古，125-尼泊尔，126-阿曼，127-巴基斯坦，128-巴勒斯坦，129-菲律宾，130-卡塔尔，131-沙特阿拉伯，132-新加坡，133-韩国，134-斯里兰卡，135-叙利亚，136-泰国，137-土耳其，138-阿拉伯联合酋长国，139-也门共和国，141-越南，142-中国，143-中国台湾，144-东帝汶，199-亚洲其他，200-非洲，201-阿尔及利亚，202-安哥拉，203-贝宁，204-博茨瓦那，205-布隆迪，206-喀麦隆，207-加那利群岛，208-佛得角，209-中非，210-塞卜泰(休达)，211-乍得，212-科摩罗，213-刚果，214-吉布提，215-埃及，216-赤道几内亚，217-埃塞俄比亚，218-加蓬，219-冈比亚，220-加纳，221-几内亚，222-几内亚(比绍)，223-科特迪瓦，224-肯尼亚，225-利比里亚，226-利比亚，227-马达加斯加，228-马拉维，229-马里，230-毛里塔尼亚，231-毛里求斯，232-摩洛哥，233-莫桑比克，234-纳米比亚，235-尼日尔，236-尼日利亚，237-留尼汪，238-卢旺达，239-圣多美和普林西比，240-塞内加尔，241-塞舌尔，242-塞拉利昂，243-索马里，244-南非，245-西撒哈拉，246-苏丹，247-坦桑尼亚，248-多哥，249-突尼斯，250-乌干达，251-布基纳法索，252-扎伊尔，253-赞比亚，254-津巴布韦，255-莱索托，256-梅利利亚，257-斯威士兰，258-厄立特里亚，259-马约特岛，260-刚果民主共和国，299-非洲其他，300-欧洲，301-比利时，302-丹麦，303-英国，304-德国，305-法国，306-爱尔兰，307-意大利，308-卢森堡，309-荷兰，310-希腊，311-葡萄牙，312-西班牙，313-阿尔巴尼亚，314-安道尔，315-奥地利，316-保加利亚，318-芬兰，320-直布罗陀，321-匈牙利，322-冰岛，323-列支敦士登，324-马耳他，325-摩纳哥，326-挪威，327-波兰，328-罗马尼亚，329-圣马力诺，330-瑞典，331-瑞士，334-爱沙尼亚，335-拉脱维亚，336-立陶宛，337-格鲁吉亚，338-亚美尼亚，339-阿塞拜疆，340-白俄罗斯，341-哈萨克斯坦，342-吉尔吉斯，343-摩尔多瓦，344-俄罗斯，345-塔吉克斯坦，346-土库曼斯坦，347-乌克兰，348-乌兹别克斯坦，349-南斯拉夫联盟共和国，350-斯洛文尼亚共和国，351-克罗地亚共和国，352-捷克共和国，353-斯洛伐克共和国，354-前南斯拉夫马其顿共和国，355-波斯尼亚-黑塞哥维那共和国，356-法罗群岛，357-梵蒂冈城国，358-塞尔维亚和黑山，359-塞尔维亚共和国，360-黑山共和国，361-苏联，399-欧洲其他，400-拉丁美洲，401-安提瓜和巴布达，402-阿根廷，403-阿鲁巴岛，404-巴哈马，405-巴巴多斯，406-伯利兹，408-玻利维亚，409-博内尔，410-巴西，411-开曼群岛，412-智利，413-哥伦比亚，414-多米尼克，415-哥斯达黎加，416-古巴，417-库腊索岛，418-多米尼加共和国，419-厄瓜多尔，420-法属圭亚那，421-格林纳达，422-瓜德罗普，423-危地马拉，424-圭亚那，425-海地，426-洪都拉斯，427-牙买加，428-马提尼克，429-墨西哥，430-蒙特塞拉特，431-尼加拉瓜，432-巴拿马，433-巴拉圭，434-秘鲁，435-波多黎各，436-萨巴，437-圣卢西亚，438-圣马丁岛，439-圣文森特和格林纳丁斯，440-萨尔瓦多，441-苏里南，442-特立尼达和多巴哥，443-特克斯和凯科斯群岛，444-乌拉圭，445-委内瑞拉，446-英属维尔京群岛，447-圣其茨--尼维斯，448-荷属安地列斯群岛，499-拉丁美洲其他，500-北美洲，501-加拿大，502-美国，503-格陵兰，504-百慕大，505-泽西岛，599-北美洲其他，600-大洋洲，601-澳大利亚，602-库克群岛，603-斐济，604-盖比群岛，605-马克萨斯群岛，606-瑙鲁，607-新喀里多尼亚，608-瓦努阿图，609-新西兰，610-诺福克岛，611-巴布亚新几内亚，612-社会群岛，613-所罗门群岛，614-汤加，615-土阿莫土群岛，616-土布艾群岛，617-萨摩亚，618-基里巴斯，619-图瓦卢，620-密克罗尼西亚联邦，621-马绍尔群岛共和国，622-贝劳共和国，623-帕劳共和国，624-瓦利斯和浮图纳，625-法属波利尼西亚，626-圣皮埃尔和密克隆，699-大洋洲其他，701-国(地)别不详的，702-联合国和其他国际组织，703-亚太经济合作组织，704-东南亚国家联盟，705-欧洲联盟，706-独立国家联合体，707-经济合作与发展组织(OECD)，708-经合组织北美，709-经合组织亚洲大洋洲，710-经合组织欧洲，711-欧英EFTA，901-欧元区，903-欧盟15国，905-欧盟25国，906-欧盟27国，907-欧盟其他，909-全球。
+  annotation: 'The registration location (RegAbbr) is associated with the DM field
+    in the (CT_SystemConst) table, setting LB = 1023, the specific description of
+    the registration location is as follows: 3-Hong Kong, Macau, and Taiwan, China,
+    4-Middle East, 7-International, 100-Asia, 101-Afghanistan, 102-Bahrain, 103-Bangladesh,
+    104-Bhutan, 105-Brunei, 106-Myanmar, 107-Cambodia, 108-Cyprus, 109-North Korea,
+    110-Hong Kong, China, 111-India, 112-Indonesia, 113-Iran, 114-Iraq, 115-Israel,
+    116-Japan, 117-Jordan, 118-Kuwait, 119-Laos, 120-Lebanon, 121-Macau, China, 122-Malaysia,
+    123-Maldives, 124-Mongolia, 125-Nepal, 126-Oman, 127-Pakistan, 128-Palestine,
+    129-Philippines, 130-Qatar, 131-Saudi Arabia, 132-Singapore, 133-South Korea,
+    134-Sri Lanka, 135-Syria, 136-Thailand, 137-Turkey, 138-United Arab Emirates,
+    139-Yemen Republic, 141-Vietnam, 142-China, 143-Taiwan, China, 144-East Timor,
+    199-Other Asia, 200-Africa, 201-Algeria, 202-Angola, 203-Benin, 204-Botswana,
+    205-Burundi, 206-Cameroon, 207-Canary Islands, 208-Cape Verde, 209-Central Africa,
+    210-Septa (Xueta), 211-Chad, 212-Comoros, 213-Congo, 214-Djibouti, 215-Egypt,
+    216-Equatorial Guinea, 217-Ethiopia, 218-Gabon, 219-Gambia, 220-Ghana, 221-Guinea,
+    222-Guinea-Bissau, 223-Côte d''Ivoire, 224-Kenya, 225-Liberia, 226-Libya, 227-Madagascar,
+    228-Malawi, 229-Mali, 230-Mauritania, 231-Mauritius, 232-Morocco, 233-Mozambique,
+    234-Namibia, 235-Niger, 236-Nigeria, 237-Reunion, 238-Rwanda, 239-São Tomé and
+    Príncipe, 240-Senegal, 241-Seychelles, 242-Sierra Leone, 243-Somalia, 244-South
+    Africa, 245-Western Sahara, 246-Sudan, 247-Tanzania, 248-Togo, 249-Tunisia, 250-Uganda,
+    251-Burkina Faso, 252-Zaire, 253-Zambia, 254-Zimbabwe, 255-Lesotho, 256-Melilla,
+    257-Swaziland, 258-Eritrea, 259-Mayotte, 260-Democratic Republic of the Congo,
+    299-Other Africa, 300-Europe, 301-Belgium, 302-Denmark, 303-United Kingdom, 304-Germany,
+    305-France, 306-Ireland, 307-Italy, 308-Luxembourg, 309-Netherlands, 310-Greece,
+    311-Portugal, 312-Spain, 313-Albania, 314-Andorra, 315-Austria, 316-Bulgaria,
+    318-Finland, 320-Gibraltar, 321-Hungary, 322-Iceland, 323-Liechtenstein, 324-Malta,
+    325-Monaco, 326-Norway, 327-Poland, 328-Romania, 329-San Marino, 330-Sweden, 331-Switzerland,
+    334-Estonia, 335-Latvia, 336-Lithuania, 337-Georgia, 338-Armenia, 339-Azerbaijan,
+    340-Belarus, 341-Kazakhstan, 342-Kyrgyzstan, 343-Moldova, 344-Russia, 345-Tajikistan,
+    346'
+- column_name: Business
+  column_description: 公司业务
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InduCHKE
+  column_description: 所属行业-港交所
+  annotation_zh: 所属行业-港交所（InduCHKE）:目前字段在该表已经不维护。
+  annotation: 'Industry - HKEX (InduCHKE): The current field is no longer maintained
+    in this table.'
+- column_name: InduCHS
+  column_description: 所属行业-恒生
+  annotation_zh: 所属行业-恒生（InduCHS）：目前字段在该表已经不维护，可以在 港股公司行业划分表HK_ExgIndustry获取到对应的行业分类。
+  annotation: 'Industry - Hang Seng (InduCHS): The current field is no longer maintained
+    in this table and the corresponding industry classification can be obtained from
+    the HK_ExgIndustry table for stock companies in Hong Kong.'
+- column_name: Chairman
+  column_description: 主席
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanySecretary
+  column_description: 公司秘书
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CertifiedAccountant
+  column_description: 合资格会计师
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RegisteredOffice
+  column_description: 注册办事处
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GeneralOffice
+  column_description: 总办事处及主要营业地点
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Registrars
+  column_description: 股份过户处(香港)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Tel
+  column_description: 电话
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Fax
+  column_description: 传真
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Eail
+  column_description: 邮箱
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Website
+  column_description: 公司网址
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BriefIntroduction
+  column_description: 公司简介
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyType
+  column_description: 企业类别
+  annotation_zh: 公司类别(CompanyType)与(CT_SystemConst)表中的DM字段关联，令LB = 1501，得到公司类别的具体描述：1-境内注册内地国资控制，2-境内注册内地个人控制，5-境外注册内地国资控制，6-境外注册内地个人控制，9-其他。
+  annotation: 'The company category (CompanyType) is associated with the DM field
+    in the (CT_SystemConst) table, with LB set to 1501, the specific description of
+    the company category is as follows: 1-Inland registered, controlled by inland
+    state-owned assets, 2-Inland registered, controlled by inland individuals, 5-Overseas
+    registered, controlled by inland state-owned assets, 6-Overseas registered, controlled
+    by inland individuals, 9-Other.'
+- column_name: CompanyTypeDesc
+  column_description: 公司类别描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChiName
+  column_description: 中文名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AuditInstitution
+  column_description: 审计机构
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RegCapital
+  column_description: 注册资本(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RegCapitalCurrency
+  column_description: 注册资本货币单位
+  annotation_zh: 注册资本货币单位(RegCapitalCurrency)与(CT_SystemConst)表中的DM字段关联，令LB = 1548，得到注册资本货币单位的具体描述：1000-美元，1100-港元，1110-印度卢比，1120-印度尼西亚卢比，1130-伊朗里亚尔，1140-波兰兹罗提，1150-匈牙利福林，1160-日本元，1161-欧洲日元(离岸)，1170-约旦第纳尔，1180-科威特第纳尔，1190-阿联酋迪拉姆，1200-亚美尼亚德拉姆，1210-澳门元，1220-马来西亚林吉特，1230-安第列斯群岛盾，1240-安哥拉宽扎，1250-尼泊尔卢比，1260-哈萨克斯坦坚戈，1270-巴基斯坦卢比，1280-阿鲁巴岛弗罗林，1290-菲律宾比索，1300-阿塞拜疆马纳特，1310-波斯尼亚马克，1320-新加坡元，1330-韩国元，1340-孟加拉塔卡，1350-百慕大元，1360-泰国铢，1370-沙特里亚尔，1380-文莱林吉特，1390-不丹努尔特鲁姆，1400-博茨瓦纳普拉，1410-白俄罗斯卢布，1420-人民币元，1430-台湾元，1440-伯利兹元，1450-南苏丹镑，1460-世界投资报告法郎，1470-佛得角埃斯库多，1480-厄立特里亚纳克法，1490-埃塞俄比亚比尔，1500-福克兰群岛镑，1510-格鲁吉亚拉里，1520-直布罗陀镑，1530-克罗地亚库纳，1540-以色列新谢克尔，1550-吉尔吉斯斯坦索姆，1560-开曼群岛元，1570-莱索托马洛蒂，1580-摩尔多瓦列伊，1590-马其顿第纳尔，1600-蒙古图格里克，1610-马拉维克瓦查，1620-梅蒂卡尔，1630-纳米比亚元，1640-巴布亚新几内亚基那，1650-塞尔维亚第纳尔，1660-圣赫勒拿群岛磅，1670-圣多美和普林西比多布拉，1680-太平洋法郎，1690-非共体法郎，1700-斯威士兰里兰吉尼，1710-塔吉克斯坦索莫尼，1720-土库曼斯坦马纳特，1730-汤加潘加，1740-乌克兰格里夫纳，1750-乌兹别克斯坦苏姆，1760-瓦努阿图瓦图，1770-萨摩亚塔拉，1780-中非金融合作法郎，1790-东加勒比元，1800-哈萨克斯坦腾格(废弃)，1810-人民币(离岸)，2470-坦桑尼亚先令，3000-欧元，3010-比利时法郎，3020-丹麦克朗，3030-英镑，3040-德国马克，3050-法国法郎，3070-意大利里拉，3090-荷兰盾，3120-西班牙比塞塔，3150-奥地利先令，3180-芬兰马克，3260-挪威克朗，3300-瑞典克朗，3310-瑞士法郎，3311-记帐瑞士法郎，3313-清算瑞士法郎，3440-俄罗斯卢布，4100-巴西雷亚尔，4290-墨西哥比索，5010-加拿大元，6010-澳大利亚元，6090-新西兰元，7101-刚果法郎，7103-尼日利亚奈拉，7105-越南盾，7107-肯尼亚先令，7109-卢森堡法郎，7111-摩洛哥迪拉姆，7113-南非兰特，7115-斯里兰卡卢比，7117-新苏丹磅，7119-也门里亚尔(废弃)，7121-爱尔兰镑，8000-阿尔巴尼亚列克，8010-阿尔及利亚第纳尔，8020-阿富汗尼，8030-阿根廷比索，8040-也门里亚尔，8050-阿曼里亚尔，8060-埃及镑，8070-巴巴多斯元，8080-巴哈马元，8090-巴拉圭瓜拉尼，8100-巴林第纳尔，8110-巴拿马巴波亚，8120-保加利亚列弗，8130-冰岛克朗，8140-波兰兹罗提(废弃)，8150-玻利维亚诺，8160-布隆迪法郎，8170-朝鲜圆，8180-赤道几内亚埃奎勒，8190-多米尼加比索，8200-厄瓜多尔苏克雷，8210-斐济元，8220-冈比亚法拉西，8230-哥伦比亚比索，8240-哥斯达黎加科朗，8250-古巴比索，8260-圭亚那元，8270-海地古德，8280-洪都拉斯伦皮拉，8290-吉布提法郎，8300-几内亚法郎，8310-几内亚比索，8320-加纳塞地，8330-柬埔寨瑞尔，8340-捷克克朗，8350-津巴布韦元，8360-卡塔尔里亚尔，8370-科摩罗法郎，8380-老挝基普，8390-黎巴嫩镑，8400-利比里亚元，8410-利比亚第纳尔，8420-卢旺达法郎，8430-罗马尼亚列伊，8440-马达加斯加阿里亚里，8450-马尔代夫卢比，8460-马耳他镑，8470-毛里求斯卢比，8480-毛里塔尼亚乌吉亚，8490-秘鲁新索尔，8500-缅甸元，8510-也门第纳尔，8520-南斯拉夫新第纳尔，8530-尼加拉瓜科多巴，8540-埃斯库多，8550-萨尔瓦多科朗，8560-塞拉里昂利昂，8570-塞浦路斯镑，8580-塞舌尔卢比，8590-沙特阿拉伯亚尔(废弃)，8600-苏里南元，8610-所罗门元，8620-索马里先令，8630-特立尼达多巴哥元，8640-突尼斯第纳尔，8650-土耳其里拉，8660-危地马拉格查尔，8670-委内瑞拉玻利瓦尔，8680-乌干达先令，8690-乌拉圭新比索，8700-希腊德拉马克，8710-匈牙利福林(废弃)，8720-叙利亚镑，8730-牙买加元，8740-伊拉克第纳尔，8750-赞比亚克瓦查，8760-扎伊尔，8770-智利比索，8780-玻利维亚Mvdol基金，8790-智利CUF基金，8800-哥伦比亚实际价值单位，8810-古巴可兑换比索，8820-墨西哥UDI基金，8830-莫桑比克梅蒂卡尔(废弃)，8840-东帝汶埃斯库多，9000-本币(废弃)，9900-其他货币，9901-本地货币，9990-特别提款权，9999-各币种折合美元。
+  annotation: 'The registered capital currency unit (RegCapitalCurrency) is associated
+    with the DM field in the CT_SystemConst table. When LB = 1548, the specific description
+    of the registered capital currency unit is as follows: 1000-USD, 1100-HKD, 1110-Indian
+    Rupee, 1120-Indonesian Rupiah, 1130-Iranian Rial, 1140-Polish Zloty, 1150-Hungarian
+    Forint, 1160-Japanese Yen, 1161-European Yen (offshore), 1170-Jordanian Dinar,
+    1180-Kuwaiti Dinar, 1190-Emirati Dirham, 1200-Armenian Dram, 1210-Macao Pataca,
+    1220-Malaysian Ringgit, 1230-Netherlands Antillean Guilder, 1240-Angolan Kwanza,
+    1250-Nepalese Rupee, 1260-Kazakhstani Tenge, 1270-Pakistani Rupee, 1280-Aruba
+    Florin, 1290-Philippine Peso, 1300-Azerbaijani Manat, 1310-Bosnia and Herzegovina
+    Convertible Mark, 1320-Singapore Dollar, 1330-Korean Won, 1340-Bangladeshi Taka,
+    1350-Bermuda Dollar, 1360-Thai Baht, 1370-Saudi Riyal, 1380-Brunei Dollar, 1390-Bhutanese
+    Ngultrum, 1400-Botswana Pula, 1410-Belarusian Ruble, 1420-Chinese Yuan, 1430-Taiwan
+    Dollar, 1440-Belize Dollar, 1450-South Sudan Pound, 1460-World Investment Report
+    Franc, 1470-Cape Verdean Escudo, 1480-Eritrean Nakfa, 1490-Ethiopian Birr, 1500-Falkland
+    Islands Pound, 1510-Georgian Lari, 1520-Gibraltar Pound, 1530-Croatian Kuna, 1540-Israeli
+    New Shekel, 1550-Kyrgyzstani Som, 1560-Cayman Islands Dollar, 1570-Lesotho Loti,
+    1580-Moldovan Leu, 1590-Macedonian Denar, 1600-Mongolian Tugrik, 1610-Malawian
+    Kwacha, 1620-Metical, 1630-Namibian Dollar, 1640-Papua New Guinea Kina, 1650-Serbian
+    Dinar, 1660-St. Helena Pound, 1670-São Tomé and Príncipe Dobra, 1680-Pacific Franc,
+    1690-CFA Franc BCEAO, 1700-Swaziland Lilangeni, 1710-Tajikistani Somoni, 1720-Turkmenistani
+    Manat, 1730-Tongan Pa''anga, 1740-Ukrainian Hryvnia, 1750-Uzbekistani Sum, 1760-Vanuatu
+    Vatu, 1770-Samoan Tala, 1780-CFA Franc BEAC, 1790-East Caribbean Dollar, 1800-Kazakhstani
+    Tenge (abolished), 1810-Offshore Chinese Yuan, 2470-Tanzanian Shilling, 3000-Euro,
+    3010-Belgian Franc, 3020-Danish Krone, 3030-British Pound, 3040-German Mark, 3050-French
+    Franc, 3070-Italian Lira, 3090-Dutch Guilder, 3120-Spanish Peseta, 3150-Austrian
+    Schilling, 3180-Finnish Markka, 3260-Norwegian Krone, 3300-Swedish Krona, 3310-Swiss
+    Franc, 3311-Swiss Franc (accounting), 3313-Swiss Franc (clearing), 3440-Russian
+    Ruble, 4100-Brazilian Real, 4290-Mexican Peso, 5010-Canadian Dollar, 6010-Australian
+    Dollar, 6090-New Zealand Dollar, 7101-Congolese Franc, 7103-Nigerian Naira, 7105-Vietnamese
+    Dong, 7107-Kenyan Shilling, 7109-Luxembourg Franc, 7111-Moroccan Dirham, 7113-South
+    African Rand, 7115-Sri Lankan Rupee, 7117-New Sudanese Pound,'

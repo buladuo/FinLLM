@@ -1,0 +1,426 @@
+default: 1
+full_table_name: publicfunddb.mf_fundarchives.yaml
+database_name: publicfunddb
+database_name_zh: 公募基金数据库
+table_name: mf_fundarchives
+table_name_zh: 公募基金概况
+table_describe: 1.本表记录了基金基本情况，包括基金规模、成立日期、投资类型、管理人、托管人、存续期、历史简介等。_x000D_2.历史数据：1998年3月起-至今。3.信息来源：基金公司官网披露的产品说明书。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 基金内部编码
+  annotation_zh: 基金内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到基金的交易代码、简称等。
+  annotation: 'Fund internal code (InnerCode): associated with the "security internal
+    code (InnerCode)" in the "security main table (SecuMain)", to obtain the fund''s
+    trading code, abbreviation, etc.'
+- column_name: TransCode
+  column_description: 基金转型统一编码
+  annotation_zh: 基金转型统一编码(TransCode)是转型后的基金内码(InnerCode)，若发生多次转型，则为最新的基金内码。
+  annotation: The Fund Transformation Unified Code (TransCode) is the post-transformation
+    Fund Inner Code (InnerCode), and in the event of multiple transformations, it
+    is the latest Fund Inner Code.
+- column_name: ApplyingCodeFront
+  column_description: 前端申购代码
+  annotation_zh: 前端申购代码（ApplyingCodeFront）：取值为场外前端申购代码>场内申赎代码（场内基金）。
+  annotation: 'Front-end application code (ApplyingCodeFront): The value is the off-market
+    front-end application code > on-market redemption code (on-market fund).'
+- column_name: ApplyingCodeBack
+  column_description: 后端申购代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecurityCode
+  column_description: 基金代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecuCode
+  column_description: 证券代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MainCode
+  column_description: 基金主代码
+  annotation_zh: 基金主代码（MainCode）：该字段记录基金季报中公布的基金主代码信息，当基金为非分级基金或分级基金主代码时，该字段与基金代码（SecurityCode）一致。
+  annotation: 'Fund Main Code (MainCode): This field records the main code information
+    of the fund published in the quarterly report of the fund. When the fund is a
+    non-classified fund or the main code of a classified fund, this field is consistent
+    with the fund code (SecurityCode).'
+- column_name: ExApplyingMarket
+  column_description: 场内申购赎回场所
+  annotation_zh: 场内申购赎回场所(ExApplyingMarket)与(CT_SystemConst)表中的DM字段关联，令LB = 201 AND
+    DM IN (90,83)，得到场内申购赎回场所的具体描述：83-上海证券交易所，90-深圳证券交易所。
+  annotation: 'The on-site subscription and redemption location (ExApplyingMarket)
+    is associated with the DM field in the (CT_SystemConst) table, with LB = 201 AND
+    DM IN (90,83), yielding the specific description of the on-site subscription and
+    redemption location: 83-Shanghai Stock Exchange, 90-Shenzhen Stock Exchange.'
+- column_name: ExApplyingCode
+  column_description: 场内申购赎回代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ExApplyingAbbr
+  column_description: 场内申购赎回简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Type
+  column_description: 基金运作方式
+  annotation_zh: 基金运作方式(Type)与(CT_SystemConst)表中的DM字段关联，令LB = 1210 AND DM IN(1,2,3,4,6,7,8)，得到基金运作方式的具体描述：1-契约型封闭式，2-开放式，3-LOF，4-ETF，6-创新型封闭式，7-开放式(带固定封闭期)，8-ETF联接基金。
+  annotation: 'The fund operation mode (Type) is associated with the DM field in the
+    (CT_SystemConst) table, let LB = 1210 AND DM IN (1,2,3,4,6,7,8), to obtain the
+    specific description of the fund operation mode: 1-Contractual closed-end, 2-Open-end,
+    3-LOF, 4-ETF, 6-Innovative closed-end, 7-Open-end (with fixed closed period),
+    8-ETF Linked Fund.'
+- column_name: FundNature
+  column_description: 基金性质
+  annotation_zh: 基金性质(FundNature)与(CT_SystemConst)表中的DM字段关联，令LB = 1485，得到基金性质的具体描述：1-常规基金，2-QDII基金，3-互认基金。
+  annotation: 'The Fund Nature (FundNature) is associated with the DM field in the
+    (CT_SystemConst) table, setting LB to 1485, yields the specific description of
+    the Fund Nature: 1-Regular Fund, 2-QDII Fund, 3-Mutual Recognition Fund.'
+- column_name: InvestmentType
+  column_description: 是否指数型
+  annotation_zh: 是否指数型(InvestmentType)与(CT_SystemConst)表中的DM字段关联，令LB = 1094 AND DM
+    IN (7,8,16)，得到是否指数型的具体描述：7-指数型，8-优化指数型，16-非指数型。
+  annotation: 'Whether the DM field is associated with the InvestmentType and CT_SystemConst
+    tables, let LB = 1094 AND DM IN (7,8,16), to obtain the specific description of
+    whether it is exponential: 7-Exponential, 8-Optimized Exponential, 16-Non-exponential.'
+- column_name: InvestStyle
+  column_description: 基金投资风格
+  annotation_zh: 基金投资风格(InvestStyle)与(CT_SystemConst)表中的DM字段关联，令LB = 1093，得到基金投资风格的具体描述：1-普通股票型，2-指数型，3-配置型，4-货币市场，5-积极债券型，6-债券型，7-普通债券型，8-短债型，9-保本型，10-积极配置型，11-保守混合型，12-偏股型，13-偏债型，14-中短债型，15-特殊策略型，16-标准混合型，17-QDII，20-封闭式基金，21-大规模封闭式基金，22-小规模封闭式基金，23-普通股票型(封闭)，24-标准混合型基金(封闭)，25-积极债券型(封闭)，26-普通债券型基金(封闭)，27-积极配置型(封闭)，29-其它(封闭)，30-亚太区不包括日本股票，31-大中华区股票，32-新兴市场股票，33-环球股票，34-行业股票，35-美国股票，36-环球股债混合，37-环球债券，38-商品(QDII)，39-可转债型，40-纯债型，41-纯债型(封闭)，42-混合型，43-混合型(封闭)，44-可转债型(封闭)，45-债券型(封闭)，46-股票型(QDII)，47-混合型(QDII)，48-债券型(QDII)，49-保守混合型(封闭)，50-商品基金(QDII)，51-货币型，52-短债型(封闭)，53-市场中性策略，54-市场中性策略(封闭)，55-商品，56-另类，57-另类(封闭)，58-其它(QDII)，59-灵活配置型，60-灵活配置型(封闭)，61-亚洲股债混合，62-大中华区股债混合，63-全球新兴市场股债混合，64-行业股票-医药，65-行业股票-科技、传媒及通讯，66-沪港深股票型，67-沪港深混合型，68-沪港深混合型(封闭)，69-债券型QDII(封闭)，70-FOF，71-其他债券，72-亚洲不包括日本股票-货币对冲，73-中国股票，74-亚太区股票，75-环球债券(封闭)，76-亚洲债券，77-股票型基金，78-可转债基金，79-保本基金，80-商品基金，81-其它，82-其它基金(QDII)，83-债券型基金，84-香港股票型基金，85-行业股票-消费，86-行业股票-金融地产，87-行业混合-消费，88-行业混合-医药，89-行业混合-科技、传媒及通讯，90-沪港深积极配置型，91-沪港深保守混合型，92-沪港深灵活配置型，93-目标日期，94-商品-贵金属，95-商品-其它，96-沪港深积极配置型(封闭)，97-沪港深保守混合型(封闭)，98-沪港深灵活配置型(封闭)，99-其他型，100-环球债券
+    - 美元对冲，101-行业混合 - 科技、传媒及通讯（封闭式），102-美元积极型股债混合，103-科技股票，104-新兴市场债券，105-大中华股票，106-亚洲高收益债券，107-其他行业股票，108-大中华高收益债券，109-亚洲不包括日本股票，110-其他股债混合，111-美元灵活配置型，112-信用债(封闭)，113-信用债，114-行业股票-其它，115-行业混合-医药(封闭)，116-利率债，117-利率债(封闭)，118-香港股票型基金(封闭式)，119-大盘成长股票，120-大盘平衡股票，121-大盘价值股票，122-中盘成长股票，123-中盘平衡股票，124-积极配置-大盘成长，125-积极配置-大盘平衡，126-积极配置-中小盘，127-沪港深积极配置，128-港股积极配置，129-基础设施REITs（废弃），130-积极配置-大盘平衡(封闭式)，131-大盘平衡股票(封闭式)，132-大盘成长股票(封闭式)，133-积极配置-大盘成长(封闭式)，134-积极配置-中小盘(封闭式)，135-QDII环球股票，136-QDII环球债券，137-QDII行业股票，138-QDII美国股票，139-QDII大中华区股票，140-QDII全球新兴市场股债混合，141-QDII亚洲股债混合，142-QDII新兴市场股票，143-环球新兴市场债券，144-美元激进配置型，145-QDII环球股债混合，146-QDII大中华区股债混合，147-QDII亚太区不包括日本股票，148-QDII环球债券(封闭式)，149-QDII其它，150-QDII商品，151-沪港深股票(封闭)，152-基础设施REITs(封闭)，155-行业混合-消费(封闭式)。
+  annotation: 'The fund investment style (InvestStyle) is associated with the DM field
+    in the (CT_SystemConst) table. When LB = 1093, the specific description of the
+    fund investment style is obtained: 1-Ordinary Stock Type, 2-Index Type, 3-Configuration
+    Type, 4-Money Market, 5-Active Bond Type, 6-Bond Type, 7-Ordinary Bond Type, 8-Short-term
+    Bond Type, 9-Principal Guaranteed Type, 10-Active Configuration Type, 11-Conservative
+    Mixed Type, 12-Bias Stock Type, 13-Bias Bond Type, 14-Medium and Short-term Bond
+    Type, 15-Special Strategy Type, 16-Standard Mixed Type, 17-QDII, 20-Closed-end
+    Fund, 21-Large-scale Closed-end Fund, 22-Small-scale Closed-end Fund, 23-Ordinary
+    Stock Type (Closed), 24-Standard Mixed Fund (Closed), 25-Active Bond Type (Closed),
+    26-Ordinary Bond Fund (Closed), 27-Active Configuration Type (Closed), 29-Other
+    (Closed), 30-Asia-Pacific Region Excluding Japan Stocks, 31-Greater China Region
+    Stocks, 32-Emerging Market Stocks, 33-Global Stocks, 34-Industry Stocks, 35-U.S.
+    Stocks, 36-Global Stock and Bond Mix, 37-Global Bonds, 38-Commodities (QDII),
+    39-Convertible Bond Type, 40-Pure Bond Type, 41-Pure Bond Type (Closed), 42-Mixed
+    Type, 43-Mixed Type (Closed), 44-Convertible Bond Type (Closed), 45-Bond Type
+    (Closed), 46-Stock Type (QDII), 47-Mixed Type (QDII), 48-Bond Type (QDII), 49-Conservative
+    Mixed Type (Closed), 50-Commodity Fund (QDII), 51-Money Market Type, 52-Short-term
+    Bond Type (Closed), 53-Market Neutral Strategy, 54-Market Neutral Strategy (Closed),
+    55-Commodities, 56-Alternative, 57-Alternative (Closed), 58-Other (QDII), 59-Flexible
+    Configuration Type, 60-Flexible Configuration Type (Closed), 61-Asia-Pacific Stock
+    and Bond Mix, 62-Greater China Region Stock and Bond Mix, 63-Global Emerging Market
+    Stock and Bond Mix, 64-Industry Stocks-Pharmaceuticals, 65-Industry Stocks-Technology,
+    Media, and Telecommunications, 66-Shanghai-Hong Kong-Shenzhen Stock Type, 67-Shanghai-Hong
+    Kong-Shenzhen Mixed Type, 68-Shanghai-Hong Kong-Shenzhen Mixed Type (Closed),
+    69-Bond Type QDII (Closed), 70-FOF, 71-Other Bonds, 72-Asia Excluding Japan Stocks-Currency
+    Hedged, 73-China Stocks, 74-Asia-Pacific Region Stocks, 75-Global Bonds (Closed),
+    76-Asia Bonds, 77-Stock Type Fund, 78-Convertible Bond Fund, 79-Principal Guaranteed
+    Fund, 80-Commodity Fund, 81-Other, 82-Other Fund (QDII), 83-Bond Type Fund, 84-Hong
+    Kong Stock Type Fund, 85-Industry Stocks-Consumer, 86-Industry Stocks-Finance
+    and Real Estate, 87-Industry Mixed-Consumer, 88-Industry Mixed-Pharmaceuticals,
+    89-Industry Mixed-Technology, Media, and Telecommunications, 90-Shanghai-Hong
+    Kong-Shenzhen Active Configuration Type, 91-Shanghai-Hong Kong-Shenzhen Conservative
+    Mixed Type, 92-Shanghai-Hong Kong-Shenzhen Flexible Configuration Type, 93-Target
+    Date, 94-Commodities-Precious Metals, 95-Commodities-Other, 96-Shanghai-Hong Kong-Shenzhen
+    Active Configuration Type (Closed), 97-Shanghai-Hong Kong-Shenzhen Conservative
+    Mixed Type (Closed), 98-Shanghai-Hong Kong-Shenzhen Flexible Configuration Type
+    (Closed), 99-Other Type, 100-Global Bonds - U.S. Dollar Hedged, 101-Industry Mixed
+    - Technology, Media, and Telecommunications (Closed), 102-U.S. Dollar Active Stock
+    and Bond Mix, 103-Technology Stocks, 104-Emerging Market Bonds, 105-Greater China
+    Stocks, 106-Asia High Yield Bonds, 107-Other Industry Stocks, 108-Greater China
+    High Yield Bonds, 109-Asia Excluding Japan Stocks, 110-Other Stock and Bond Mix,
+    111-U.S. Dollar Flexible Configuration Type, 112-Credit Bond (Closed), 113-Credit
+    Bond, 114-Industry Stocks-Other, 115-Industry Mixed-Ph'
+- column_name: FundType
+  column_description: 基金类别
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FundTypeCode
+  column_description: 基金类别代码
+  annotation_zh: 基金类别代码(FundTypeCode)与(CT_SystemConst)表中的DM字段关联，令LB = 1249 AND DM
+    NOT IN (1110,1111,1112)，得到基金类别代码的具体描述：1101-股票型，1103-混合型，1105-债券型，1107-保本型，1109-货币型，1199-其他型，1200-基础设施证券投资基金。
+  annotation: 'The FundTypeCode is associated with the DM field in the CT_SystemConst
+    table, with LB = 1249 and DM NOT IN (1110,1111,1112), the specific description
+    of the FundTypeCode is: 1101-Equity Fund, 1103-Mixed Fund, 1105-Bond Fund, 1107-Guaranteed
+    Fund, 1109-Money Market Fund, 1199-Other Fund, 1200-Infrastructure Securities
+    Investment Fund.'
+- column_name: InvestOrientation
+  column_description: 基金投资方向
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InvestTarget
+  column_description: 基金投资目标
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InvestField
+  column_description: 基金投资范围
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PerformanceBenchMark
+  column_description: 业绩比较基准
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RiskReturncharacter
+  column_description: 风险收益特征
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ProfitDistributionRule
+  column_description: 收益分配原则
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ExProfitDistri
+  column_description: 场内收益分配方式
+  annotation_zh: 场内收益分配方式(ExProfitDistri)与(CT_SystemConst)表中的DM字段关联，令LB = 1989，得到场内收益分配方式的具体描述：1-现金分红，2-红利再投资，3-现金分红或红利再投资，4-不分配。
+  annotation: 'The in-house profit distribution method (ExProfitDistri) is associated
+    with the DM field in the (CT_SystemConst) table. Setting LB = 1989, the specific
+    description of the in-house profit distribution method is obtained: 1-cash dividend,
+    2-reinvestment of dividends, 3-cash dividend or reinvestment of dividends, 4-no
+    distribution.'
+- column_name: OTCProfitDistri
+  column_description: 场外收益分配方式
+  annotation_zh: 场外收益分配方式(OTCProfitDistri)与(CT_SystemConst)表中的DM字段关联，令LB = 1989，得到场外收益分配方式的具体描述：1-现金分红，2-红利再投资，3-现金分红或红利再投资，4-不分配。
+  annotation: 'The method of OTC profit distribution (OTCProfitDistri) is associated
+    with the DM field in the (CT_SystemConst) table. Setting LB = 1989, the specific
+    description of the OTC profit distribution method is obtained: 1-cash dividend,
+    2-reinvestment of dividends, 3-cash dividend or reinvestment of dividends, 4-no
+    distribution.'
+- column_name: BriefIntro
+  column_description: 基金简介
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FloatType
+  column_description: 发售方式
+  annotation_zh: 发售方式(FloatType)与(CT_SystemConst)表中的DM字段关联，令LB = 1652，得到发售方式的具体描述：1-场内，2-场外，3-场内和场外。
+  annotation: 'The distribution method (FloatType) is associated with the DM field
+    in the (CT_SystemConst) table, with LB = 1652, obtaining the specific description
+    of the distribution method: 1-Intraday, 2-Extraday, 3-Intraday and Extraday.'
+- column_name: FoundedSize
+  column_description: 基金设立规模(份)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EstablishmentDate
+  column_description: 设立日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EstablishmentDateII
+  column_description: 转型前设立日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ListedDate
+  column_description: 上市日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Duration
+  column_description: 存续年限(年)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: StartDate
+  column_description: 存续期起始日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ExpireDate
+  column_description: 存续期截止日
+  annotation_zh: 存续期截止日（ExpireDate）：优先取契约型封闭式基金的存续期截止日，其次取基金的清算日>合同失效日。
+  annotation: 'Expiration Date: Prefer the expiration date of the contractual closed-end
+    fund, and secondly, take the fund''s liquidation date > contract termination date.'
+- column_name: LastOperationDate
+  column_description: 最后运作日
+  annotation_zh: 最后运作日（LastOperationDate）：指基金的最后运作日，一般是净值的最后披露日，是清算日的前一个工作日。
+  annotation: 'Last Operation Date: Refers to the last operation day of the fund,
+    which is generally the last disclosure day of the net value, and is the working
+    day before the settlement day.'
+- column_name: StClearingDate
+  column_description: 清算起始日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EnClearingDate
+  column_description: 清算截止日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: GuaranteedPeriod
+  column_description: 保本型基金保本期(月)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CarryOverDate
+  column_description: 货币基金结转日
+  annotation_zh: 货币基金结转日(CarryOverDate)与(CT_SystemConst)表中的DM字段关联，令LB = 1250，得到货币基金结转日的具体描述：1-每月1日，2-每月2日，3-每月3日，4-每月4日，5-每月5日，6-每月6日，7-每月7日，8-每月8日，9-每月9日，10-每月10日，11-每月11日，12-每月12日，13-每月13日，14-每月14日，15-每月15日，16-每月16日，17-每月17日，18-每月18日，19-每月19日，20-每月20日，21-每月21日，22-每月22日，23-每月23日，24-每月24日，25-每月25日，26-每月26日，27-每月27日，28-每月28日，29-每月29日，30-每月30日，31-每月31日，400-每月，401-每月第一个工作日，402-每月初，429-每月倒数第二个工作日，430-每月最后一个工作日，431-每月末，441-运作期到期日（遇节假日顺延），442-运作期最后一个工作日，443-运作期满下一个工作日，500-运作期内每7个自然日，600-每季，601-每季度末月21号，999-每日。
+  annotation: 'The carry-over date for the money market fund is associated with the
+    DM field in the CT_SystemConst table. Setting LB = 1250, the specific description
+    of the carry-over date for the money market fund is obtained: 1 - the 1st of each
+    month, 2 - the 2nd of each month, 3 - the 3rd of each month, 4 - the 4th of each
+    month, 5 - the 5th of each month, 6 - the 6th of each month, 7 - the 7th of each
+    month, 8 - the 8th of each month, 9 - the 9th of each month, 10 - the 10th of
+    each month, 11 - the 11th of each month, 12 - the 12th of each month, 13 - the
+    13th of each month, 14 - the 14th of each month, 15 - the 15th of each month,
+    16 - the 16th of each month, 17 - the 17th of each month, 18 - the 18th of each
+    month, 19 - the 19th of each month, 20 - the 20th of each month, 21 - the 21st
+    of each month, 22 - the 22nd of each month, 23 - the 23rd of each month, 24 -
+    the 24th of each month, 25 - the 25th of each month, 26 - the 26th of each month,
+    27 - the 27th of each month, 28 - the 28th of each month, 29 - the 29th of each
+    month, 30 - the 30th of each month, 31 - the 31st of each month, 400 - each month,
+    401 - the first working day of each month, 402 - the beginning of each month,
+    429 - the second to last working day of each month, 430 - the last working day
+    of each month, 431 - the end of each month, 441 - the maturity date of the operation
+    period (postponed in case of holidays), 442 - the last working day of the operation
+    period, 443 - the next working day after the operation period ends, 500 - every
+    7 natural days during the operation period, 600 - each quarter, 601 - the 21st
+    of the last month of each quarter, 999 - every day.'
+- column_name: CarryOverDateRemark
+  column_description: 货币基金结转日说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CarryOverType
+  column_description: 货币基金收益分配方式(份额结转方式)
+  annotation_zh: 货币基金收益分配方式(份额结转方式)(CarryOverType)与(CT_SystemConst)表中的DM字段关联，令LB =
+    1273，得到货币基金收益分配方式(份额结转方式)的具体描述：1-按日结转，30-按月结转，99-按期结转。
+  annotation: 'The distribution method of money fund income (share transfer method)
+    (CarryOverType) is associated with the DM field in the (CT_SystemConst) table.
+    Setting LB = 1273, the specific description of the distribution method of money
+    fund income (share transfer method) is obtained: 1 - Daily transfer, 30 - Monthly
+    transfer, 99 - Periodic transfer.'
+- column_name: AgrBenchmkRateOfShareA
+  column_description: A份额约定年基准收益率表达式
+  annotation_zh: A份额约定年基准收益率表达式（AgrBenchmkRateOfShareA）：本表该字段已停止维护，此信息在分级基金主表（MF_GradedFund）中“A份额约定年基准收益表达式（AnnualEarningExp）”字段维护。
+  annotation: 'The expression for the annual benchmark yield of Share A (AgrBenchmkRateOfShareA):
+    Maintenance of this field in the table has been stopped, and this information
+    is maintained in the "Annual Earning Expression of Share A (AnnualEarningExp)"
+    field in the main table of graded funds (MF_GradedFund).'
+- column_name: AgrBenchmkRateOfShareANotes
+  column_description: A份额约定年基准收益率表达式备注
+  annotation_zh: A份额约定年基准收益率表达式备注（AgrBenchmkRateOfShareANotes）：本表该字段已停止维护，此信息在分级基金主表（MF_GradedFund）中“A份额约定年基准收益表达式备注（AnnualEarningRemark）”字段维护。
+  annotation: 'Share A agreed annual benchmark yield expression remarks (AgrBenchmkRateOfShareANotes):
+    The maintenance of this field in the table has been stopped, and this information
+    is maintained in the "Share A agreed annual benchmark yield expression remarks
+    (AnnualEarningRemark)" field in the main table of graded funds (MF_GradedFund).'
+- column_name: ShareProperties
+  column_description: 份额属性
+  annotation_zh: 份额属性(ShareProperties)与(CT_SystemConst)表中的DM字段关联，令LB = 1651，得到份额属性的具体描述：1-稳健型，2-进取型。
+  annotation: 'The share properties (ShareProperties) are associated with the DM field
+    in the (CT_SystemConst) table, with LB set to 1651, resulting in the specific
+    description of share properties: 1 -稳健型, 2 - 进取型.'
+- column_name: RegularShareConversionNotes
+  column_description: 定期份额折算说明
+  annotation_zh: 定期份额折算说明（RegularShareConversionNotes）：本表该字段已停止维护，此信息在分级基金主表（MF_GradedFund）中“定期份额折算说明（RegularShareCon）”字段维护。
+  annotation: 'Regular Share Conversion Notes: The field in this table has been discontinued,
+    and this information is maintained in the "Regular Share Conversion Notes (RegularShareCon)"
+    field in the main table of graded funds (MF_GradedFund).'
+- column_name: NonRegularShareConversionNotes
+  column_description: 不定期份额折算说明
+  annotation_zh: 不定期份额折算说明（NonRegularShareConversionNotes）：本表该字段已停止维护，此信息在分级基金主表（MF_GradedFund）中“不定份额折算说明（TrampShareCon）”字段维护。
+  annotation: 'Irregular Share Conversion Notes: This field in the table has been
+    discontinued, and this information is maintained in the "Tramp Share Conversion"
+    field in the main table of graded funds (MF_GradedFund).'
+- column_name: Manager
+  column_description: 基金经理
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InvestAdvisorCode
+  column_description: 基金管理人
+  annotation_zh: 基金管理人代码（InvestAdvisorCode）：与“基金管理人概况表（MF_InvestAdvisorOutline）”中的“基金管理人名称编号（InvestAdvisorCode）”关联，得到基金管理人的具体名称。
+  annotation: 'Fund Manager Code (InvestAdvisorCode): Correlated with the "Fund Manager
+    Name Code (InvestAdvisorCode)" in the "Fund Manager Profile Table (MF_InvestAdvisorOutline)"
+    to obtain the specific name of the fund manager.'
+- column_name: TrusteeCode
+  column_description: 基金托管人
+  annotation_zh: 基金托管人代码（TrusteeCode）：与“基金托管人概况表（MF_TrusteeOutline）”中的“基金托管人名称编号（TrusteeCode）”关联，得到基金托管人的具体名称。
+  annotation: 'Trustee Code: Correlated with the "Trustee Name Code (TrusteeCode)"
+    in the "Fund Trustee Outline (MF_TrusteeOutline)" to obtain the specific name
+    of the fund trustee.'
+- column_name: Warrantor
+  column_description: 保本担保机构
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RegInstCode
+  column_description: 注册登记机构
+  annotation_zh: 注册登记机构（RegInstCode）：与“机构基本资料（LC_InstiArchive）”中“企业编号（CompanyCode）”关联，得到注册登记机构基本信息。
+  annotation: 'Registration and Registration Agency (RegInstCode): Associated with
+    the "Institution Basic Information (LC_InstiArchive)" "Company Code (CompanyCode)",
+    to obtain the basic information of the registration and registration agency.'
+- column_name: LowestSumSubscribing
+  column_description: 最低认购申购金额描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LowestSumSubLL
+  column_description: 最低认购金额下限(元)
+  annotation_zh: 最低认购金额下限（元）（LowestSumSubLL）：取值为不同认购平台最低认购金额的最小值。
+  annotation: 'Lowest subscription amount limit (yuan) (LowestSumSubLL): The value
+    is the minimum of the lowest subscription amounts on different subscription platforms.'
+- column_name: LowestSumPurLL
+  column_description: 最低申购金额下限(元)
+  annotation_zh: 申赎确认日(PRconfirmationdate)：该字段的数值含义指的是T+n，1代表T+1,2代表T+2，以此类推。针对ETF基金，维护现金差额清算或者现金替代日。
+  annotation: 'Redemption Confirmation Date (PR confirmation date): The value of this
+    field refers to T+n, where 1 represents T+1, 2 represents T+2, and so on. For
+    ETF funds, it is for maintaining cash difference settlement or cash substitution
+    date.'
+- column_name: LowestSumRedemption
+  column_description: 最低赎回份额(份)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LSFRDescription
+  column_description: 最低赎回份额描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LowestSumForHolding
+  column_description: 最低持有份额(份)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LSFHDescription
+  column_description: 最低持有份额描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LargeRedemptionRatio
+  column_description: 巨额赎回认定比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PRconfirmationdate
+  column_description: 申赎确认日
+  annotation_zh: 赎回款到账天数(DeliveryDays)：指一般基金的赎回款到账日。针对ETF基金，维护现金差额交收日。
+  annotation: 'Redemption payment arrival days (DeliveryDays): Refers to the day when
+    the redemption payment of a general fund arrives in the account. For ETF funds,
+    it is the settlement day for maintaining cash difference.'
+- column_name: DeliveryDays
+  column_description: 赎回款到账天数
+  annotation_zh: 风险收益特征代码(RiskReturnCode)与(CT_SystemConst)表中的DM字段关联，令LB = 1651，得到风险收益特征代码的具体描述：1-稳健型，2-进取型。
+  annotation: 'The risk return characteristic code (RiskReturnCode) is associated
+    with the DM field in the (CT_SystemConst) table, setting LB = 1651, the specific
+    description of the risk return characteristic code is obtained: 1 -稳健型, 2 - aggressive
+    type.'
+- column_name: CustodyMarket
+  column_description: 转托管市场
+  annotation_zh: 转托管市场(CustodyMarket)与(CT_SystemConst)表中的DM字段关联，令LB = 201 AND DM IN
+    (83, 90)，得到转托管市场的具体描述：83-上海证券交易所，90-深圳证券交易所。
+  annotation: 'The Custody Market (CustodyMarket) is associated with the DM field
+    in the (CT_SystemConst) table, with LB = 201 AND DM IN (83, 90), resulting in
+    the specific description of the Custody Market: 83-Shanghai Stock Exchange, 90-Shenzhen
+    Stock Exchange.'
+- column_name: IfInitiatingFund
+  column_description: 是否发起式基金
+  annotation_zh: 是否发起式基金(IfInitiatingFund)：1-否，2-是。
+  annotation: 'Whether to initiate a fund (IfInitiatingFund): 1-No, 2-Yes.'
+- column_name: IfPensionTarget
+  column_description: 是否养老目标基金
+  annotation_zh: 是否养老目标基金(IfPensionTarget)与(CT_SystemConst)表中的DM字段关联，令LB = 999 AND
+    DM IN (1,2)，得到是否养老目标基金的具体描述：1-是，2-否。
+  annotation: 'Whether the "PensionTarget" field is associated with the "DM" field
+    in the "CT_SystemConst" table, with LB = 999 AND DM IN (1,2), to obtain the specific
+    description of the "PensionTarget": 1-Yes, 2-No.'
+- column_name: IfFOF
+  column_description: 是否FOF
+  annotation_zh: 是否FOF(IfFOF)与(CT_SystemConst)表中的DM字段关联，令LB = 999 AND DM IN(1,2)，得到是否FOF的具体描述：1-是，2-否。
+  annotation: 'Whether the "IfFOF" is associated with the "DM" field in the "CT_SystemConst"
+    table, where LB = 999 AND DM IN (1,2), to obtain the specific description of "IfFOF":
+    1 - Yes, 2 - No.'
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

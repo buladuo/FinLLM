@@ -1,0 +1,135 @@
+default: 1
+full_table_name: usstockdb.us_companyinfo.yaml
+database_name: usstockdb
+database_name_zh: 美股数据库
+table_name: us_companyinfo
+table_name_zh: 美股公司概况
+table_describe: 本表主要收录美国市场上市公司的基本情况，包括公司名称、地址、电话、所属国家、公司简介等信息。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EngName
+  column_description: 英文名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EngNameAbbr
+  column_description: 英文名称缩写
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChiName
+  column_description: 中文名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PEOAddress
+  column_description: 公司地址
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PEOCity
+  column_description: 城市
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PEOState
+  column_description: 省份
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PEOZip
+  column_description: 邮编
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PEOStatus
+  column_description: 国家
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PEOTel
+  column_description: 电话
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BusinessDcrp
+  column_description: 公司简介
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BriefIntroText
+  column_description: 公司简介
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EstablishmentDate
+  column_description: 成立日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyType
+  column_description: 公司类型
+  annotation_zh: 公司类型(CompanyType)与(CT_SystemConst)表中的DM字段关联，令LB = 2261，得到公司类型的具体描述：1-美国联邦存款保险公司(FDIC)的银行分支，2-高等院校，3-融资子公司，4-政府，5-控股公司，6-合营企业，7-非盈利性组织，8-上市公司，9-非上市公司，10-子公司，11-已停止经营解散的实体。
+  annotation: 'The company type (CompanyType) is associated with the DM field in the
+    (CT_SystemConst) table, with LB set to 2261, the specific description of the company
+    type is as follows: 1 - Branch of the Federal Deposit Insurance Corporation (FDIC)
+    in the United States, 2 - Higher education institution, 3 - Financing subsidiary,
+    4 - Government, 5 - Holding company, 6 - Joint venture, 7 - Non-profit organization,
+    8 - Publicly listed company, 9 - Privately held company, 10 - Subsidiary, 11 -
+    Entity that has ceased operations and been dissolved.'
+- column_name: BriefIntroTextEng
+  column_description: 英文公司简介
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Fax
+  column_description: 传真
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RegCountry
+  column_description: 注册地国家
+  annotation_zh: 注册地国家（RegCountry）：与“国家城市代码表(LC_AreaCode)”中的“地区内部编码(AreaInnerCode)”关联，得到注册地国家的相关信息。
+  annotation: The registered country (RegCountry) is associated with the "AreaInnerCode"
+    in the "LC_AreaCode" table to obtain the relevant information of the registered
+    country.
+- column_name: RegState
+  column_description: 注册地省份/州
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BusinessDcrpEng
+  column_description: 英文业务简介
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfHeadOffice
+  column_description: 是否公司总部
+  annotation_zh: 是否公司总部(IfHeadOffice)与(CT_SystemConst)表中的DM字段关联，令LB=999 AND DM IN
+    (1,2)，得到是否公司总部的具体描述：1-是，2-否。
+  annotation: 'Whether the "IfHeadOffice" field is associated with the "DM" field
+    in the "CT_SystemConst" table, with LB=999 AND DM IN (1,2), to obtain the specific
+    description of whether it is the company headquarters: 1-yes, 2-no.'
+- column_name: LinkAddress
+  column_description: 链接地址
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CountryCode
+  column_description: 国家代码
+  annotation_zh: 与“国家城市代码表(LC_AreaCode)”中的“地区内部编码(AreaInnerCode)”关联，得到国家的相关信息。
+  annotation: Associated with the "AreaInnerCode" in the "LC_AreaCode" table to obtain
+    the relevant information of the country.
+- column_name: EstablishmentDatePreci
+  column_description: 成立日期精度
+  annotation_zh: 成立日期精度(EstablishmentDatePreci)与(CT_SystemConst)表中的DM字段关联，令LB=102
+    AND DM in (27,28,29)，得到成立日期精度的具体描述：27-年，28-月，29-日。
+  annotation: 'The precision of the establishment date (EstablishmentDatePreci) is
+    associated with the DM field in the CT_SystemConst table. When LB=102 and DM is
+    in (27,28,29), the specific description of the precision of the establishment
+    date is obtained: 27 - year, 28 - month, 29 - day.'
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan

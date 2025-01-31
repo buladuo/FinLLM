@@ -1,0 +1,83 @@
+default: 1
+full_table_name: astockshareholderdb.lc_sharefpsta.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: lc_sharefpsta
+table_name_zh: 股东股权冻结和质押统计
+table_describe: 1.收录股东股权的质押冻结统计数据，包括股东股权累计冻结质押股数、累计占冻结质押方持股数比例和累计占总股本比例等情况。2.指标计算公式：1)累计占冻结质押方持股数比例=股东累计冻结质押股数(股)/股东持股数2)累计占总股本比例
+  =股东累计冻结质押股数(股)/公司总股本3)累计占总股本比例(计算) =股东累计冻结质押股数(股)/公司总股本3.数据范围：2006-05-15至今4.信息来源：股权质押公告、股权冻结公告、解除质押冻结公告等。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FPCode
+  column_description: 冻结质押编号
+  annotation_zh: 冻结质押编号(FPCode)：与“股东股权冻结和质押（LC_ShareFP）”中的ID关联，得到股东股权冻结和质押进展情况。
+  annotation: 'Frozen Pledge Code (FPCode): Associated with the ID in "Shareholder
+    Equity Freezing and Pledge (LC_ShareFP)" to obtain the progress of shareholder
+    equity freezing and pledge.'
+- column_name: EndDate
+  column_description: 截止日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Category
+  column_description: 类别选择
+  annotation_zh: 类别选择(Category)与(CT_SystemConst)表中的DM字段关联，令LB = 1201，得到类别选择的具体描述：1-股权变动，2-股权冻结，3-股权质押，4-股权授权经营，5-股票质押式回购，21-债券增减持。
+  annotation: 'The category selection (Category) is associated with the DM field in
+    the (CT_SystemConst) table, with LB set to 1201, the specific description of the
+    category selection is: 1-Equity Change, 2-Equity Freezing, 3-Equity Pledge, 4-Equity
+    Authorization Operation, 5-Stock Repurchase by Pledge, 21-Bond Increase and Decrease.'
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FPSHName
+  column_description: 股权被冻结质押股东名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AccuFPShares
+  column_description: 累计冻结质押股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AccuPCTOfPled
+  column_description: 累计占冻结质押方持股数比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AccuProportion
+  column_description: 累计占总股本比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AccuProportionCalc
+  column_description: 累计占总股本比例(计算)
+  annotation_zh: 累计冻结质押股数(股)(计算)（AccuFPSharesCalc）：股东股权冻结和质押LC_ShareFP中该股东未解押的股数之和。
+  annotation: 'Cumulative frozen pledged shares (shares) (calculation) (AccuFPSharesCalc):
+    The sum of the number of shares not released by the shareholder in LC_ShareFP
+    due to the shareholder''s equity freeze and pledge.'
+- column_name: SHAttribute
+  column_description: 股权被冻结质押股东所属性质
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHID
+  column_description: 股权被冻结质押股东ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AccuFPSharesCalc
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan

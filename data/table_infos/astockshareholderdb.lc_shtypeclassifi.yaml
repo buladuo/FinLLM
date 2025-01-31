@@ -1,0 +1,181 @@
+default: 1
+full_table_name: astockshareholderdb.lc_shtypeclassifi.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: lc_shtypeclassifi
+table_name_zh: 股东类型分类表
+table_describe: 本表记录聚源股东类型分类数据
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHID
+  column_description: 股东代码
+  annotation_zh: 当SHAttribute=2时，关联“企业码表（EP_CompanyMain）”的“企业编号（CompanyCode）”关联，获取企业的基本信息；
+    当SHAttribute=3时，关联“证券码表总表(SecuMainAll)”的“证券内部编码 (InnerCode)”关联，获取证券的基本信息
+  annotation: When SHAttribute equals 2, associate with "Enterprise Code Table (EP_CompanyMain)"
+    and "Enterprise Code (CompanyCode)" to obtain the basic information of the enterprise;
+    when SHAttribute equals 3, associate with "Security Code Table (SecuMainAll)"
+    and "Inner Code (InnerCode)" to obtain the basic information of the security.
+- column_name: SHCode
+  column_description: 股东编码
+  annotation_zh: 当SHAttribute=2时，关联“企业码表（EP_CompanyMain）”的“企业编码（EnterpriseCode）”关联，获取企业的基本信息；
+    当SHAttribute=3时，关联“证券码表总表(SecuMainAll)”的“聚源代码 (GilCode)”关联，获取证券的基本信息
+  annotation: When SHAttribute equals 2, associate with "Enterprise Code Table (EP_CompanyMain)"
+    and "Enterprise Code (EnterpriseCode)" to obtain the basic information of the
+    enterprise; when SHAttribute equals 3, associate with "Securities Code Table (SecuMainAll)"
+    and "Juyuan Code (GilCode)" to obtain the basic information of the securities.
+- column_name: SHName
+  column_description: 股东名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SHAttribute
+  column_description: 股东所属性质
+  annotation_zh: 股东所属性质(SHAttribute)与(CT_SystemConst)表中的DM字段关联，令LB = 1783，得到股东所属性质的具体描述：1-自然人，2-企业，3-证券品种，99-其他。
+  annotation: 'The nature of the shareholder (SHAttribute) is associated with the
+    DM field in the (CT_SystemConst) table, setting LB = 1783, the specific description
+    of the nature of the shareholder is obtained: 1-natural person, 2-enterprise,
+    3-securities variety, 99-others.'
+- column_name: Standard
+  column_description: 分类标准
+  annotation_zh: 1-聚源股东类型分类2022版
+  annotation: 1-JuYuan shareholder type classification 2022 edition
+- column_name: FirstLvCode
+  column_description: 一级分类代码
+  annotation_zh: 一级分类代码(FirstLvCode)与(CT_SystemConst)表中的DM字段关联，令LB = 2503，得到一级分类代码的具体描述：1000000-自然人，2000000-境内机构投资者，2010000-证券，2010100-证券公司，2010200-券商理财，2010201-券商集合理财，2010202-券商定向理财，2020000-银行类，2020100-银行，2020200-银行理财子公司，2020300-银行理财，2030000-保险，2030100-保险公司，2030200-保险组合，2030201-保险资管，2030202-保险理财，2030203-保险产品账户，2040000-信托，2040100-信托公司，2040200-信托产品，2040201-单一信托计划，2040202-集合信托计划，2050000-基金，2050100-公募基金，2050200-私募基金，2050201-私募股权投资基金，2050202-私募证券投资基金，2050203-私募创业投资基金，2050299-其他私募基金，2050300-基金资管计划，2050400-公募基金管理公司，2050500-私募基金管理公司，2050600-基金资管子公司，2060000-期货，2060100-期货公司，2060200-期货资管，2070000-财务公司，2080000-金融租赁公司，2090000-资产管理公司，2090100-金融资产管理公司，2090200-地方资产管理公司，2100000-金融资产投资公司，2110000-社保基金及社保机构，2120000-养老金，2120100-年金，2120200-基本养老保险基金，2120300-养老金产品，2130000-政府机构，2130100-国资机构，2130200-财政部门，2139900-其他政府机构，2140000-社会组织，2140100-慈善组织（基金会），2140200-职工工会，2140300-院校，2140400-研究所，2149900-其他社会组织，2990000-一般法人，3000000-境外机构投资者，3010000-专业境外机构，3020000-其他境外机构
+  annotation: 'The first-level classification code (FirstLvCode) is associated with
+    the DM field in the CT_SystemConst table. Setting LB = 2503, the specific description
+    of the first-level classification code is as follows: 1000000 - Natural Person,
+    2000000 - Domestic Institutional Investor, 2010000 - Securities, 2010100 - Securities
+    Company, 2010200 - Brokerage Firm''s Financial Management, 2010201 - Brokerage
+    Firm''s Collective Financial Management, 2010202 - Brokerage Firm''s Directed
+    Financial Management, 2020000 - Bank Category, 2020100 - Bank, 2020200 - Bank''s
+    Financial Management Subsidiary, 2020300 - Bank''s Financial Management, 2030000
+    - Insurance, 2030100 - Insurance Company, 2030200 - Insurance Portfolio, 2030201
+    - Insurance Asset Management, 2030202 - Insurance Financial Management, 2030203
+    - Insurance Product Account, 2040000 - Trust, 2040100 - Trust Company, 2040200
+    - Trust Product, 2040201 - Single Trust Plan, 2040202 - Collective Trust Plan,
+    2050000 - Fund, 2050100 - Publicly Offered Fund, 2050200 - Private Equity Fund,
+    2050201 - Private Securities Investment Fund, 2050202 - Private Venture Capital
+    Fund, 2050299 - Other Private Funds, 2050300 - Fund Asset Management Plan, 2050400
+    - Publicly Offered Fund Management Company, 2050500 - Private Fund Management
+    Company, 2050600 - Fund Asset Management Subsidiary, 2060000 - Futures, 2060100
+    - Futures Company, 2060200 - Futures Asset Management, 2070000 - Financial Company,
+    2080000 - Financial Leasing Company, 2090000 - Asset Management Company, 2090100
+    - Financial Asset Management Company, 2090200 - Local Asset Management Company,
+    2100000 - Financial Asset Investment Company, 2110000 - Social Security Fund and
+    Social Security Institution, 2120000 - Pension Fund, 2120100 - Annuity, 2120200
+    - Basic Pension Insurance Fund, 2120300 - Pension Product, 2130000 - Government
+    Agency, 2130100 - State-owned Assets Institution, 2130200 - Financial Department,
+    2139900 - Other Government Agencies, 2140000 - Social Organization, 2140100 -
+    Charity Organization (Foundation), 2140200 - Trade Union, 2140300 - Educational
+    Institution, 2140400 - Research Institute, 2149900 - Other Social Organizations,
+    2990000 - General Corporation, 3000000 - Overseas Institutional Investor, 3010000
+    - Professional Overseas Institution, 3020000 - Other Overseas Institutions.'
+- column_name: SecondLvCode
+  column_description: 二级分类代码
+  annotation_zh: 二级分类代码(SecondLvCode)与(CT_SystemConst)表中的DM字段关联，令LB = 2503，得到二级分类代码的具体描述：1000000-自然人，2000000-境内机构投资者，2010000-证券，2010100-证券公司，2010200-券商理财，2010201-券商集合理财，2010202-券商定向理财，2020000-银行类，2020100-银行，2020200-银行理财子公司，2020300-银行理财，2030000-保险，2030100-保险公司，2030200-保险组合，2030201-保险资管，2030202-保险理财，2030203-保险产品账户，2040000-信托，2040100-信托公司，2040200-信托产品，2040201-单一信托计划，2040202-集合信托计划，2050000-基金，2050100-公募基金，2050200-私募基金，2050201-私募股权投资基金，2050202-私募证券投资基金，2050203-私募创业投资基金，2050299-其他私募基金，2050300-基金资管计划，2050400-公募基金管理公司，2050500-私募基金管理公司，2050600-基金资管子公司，2060000-期货，2060100-期货公司，2060200-期货资管，2070000-财务公司，2080000-金融租赁公司，2090000-资产管理公司，2090100-金融资产管理公司，2090200-地方资产管理公司，2100000-金融资产投资公司，2110000-社保基金及社保机构，2120000-养老金，2120100-年金，2120200-基本养老保险基金，2120300-养老金产品，2130000-政府机构，2130100-国资机构，2130200-财政部门，2139900-其他政府机构，2140000-社会组织，2140100-慈善组织（基金会），2140200-职工工会，2140300-院校，2140400-研究所，2149900-其他社会组织，2990000-一般法人，3000000-境外机构投资者，3010000-专业境外机构，3020000-其他境外机构
+  annotation: 'The secondary classification code (SecondLvCode) is associated with
+    the DM field in the CT_SystemConst table. Setting LB = 2503, the specific description
+    of the secondary classification code is as follows: 1000000 - Natural Person,
+    2000000 - Domestic Institutional Investor, 2010000 - Securities, 2010100 - Securities
+    Company, 2010200 - Brokerage Firm''s Financial Management, 2010201 - Brokerage
+    Firm''s Collective Financial Management, 2010202 - Brokerage Firm''s Directed
+    Financial Management, 2020000 - Bank Category, 2020100 - Bank, 2020200 - Bank''s
+    Financial Management Subsidiary, 2020300 - Bank''s Financial Management, 2030000
+    - Insurance, 2030100 - Insurance Company, 2030200 - Insurance Portfolio, 2030201
+    - Insurance Asset Management, 2030202 - Insurance Financial Management, 2030203
+    - Insurance Product Account, 2040000 - Trust, 2040100 - Trust Company, 2040200
+    - Trust Product, 2040201 - Single Trust Plan, 2040202 - Collective Trust Plan,
+    2050000 - Fund, 2050100 - Publicly Offered Fund, 2050200 - Private Equity Fund,
+    2050201 - Private Securities Investment Fund, 2050202 - Private Venture Capital
+    Fund, 2050299 - Other Private Funds, 2050300 - Fund Asset Management Plan, 2050400
+    - Publicly Offered Fund Management Company, 2050500 - Private Fund Management
+    Company, 2050600 - Fund Asset Management Subsidiary, 2060000 - Futures, 2060100
+    - Futures Company, 2060200 - Futures Asset Management, 2070000 - Financial Company,
+    2080000 - Financial Leasing Company, 2090000 - Asset Management Company, 2090100
+    - Financial Asset Management Company, 2090200 - Local Asset Management Company,
+    2100000 - Financial Asset Investment Company, 2110000 - Social Security Fund and
+    Social Security Institution, 2120000 - Pension Fund, 2120100 - Annuity, 2120200
+    - Basic Pension Insurance Fund, 2120300 - Pension Product, 2130000 - Government
+    Agency, 2130100 - State-owned Assets Institution, 2130200 - Financial Department,
+    2139900 - Other Government Agencies, 2140000 - Social Organization, 2140100 -
+    Charity Organization (Foundation), 2140200 - Trade Union, 2140300 - Educational
+    Institution, 2140400 - Research Institute, 2149900 - Other Social Organizations,
+    2990000 - General Corporation, 3000000 - Overseas Institutional Investor, 3010000
+    - Professional Overseas Institution, 3020000 - Other Overseas Institutions.'
+- column_name: ThirdLvCode
+  column_description: 三级分类代码
+  annotation_zh: 三级分类代码(ThirdLvCode)与(CT_SystemConst)表中的DM字段关联，令LB = 2503，得到三级分类代码的具体描述：1000000-自然人，2000000-境内机构投资者，2010000-证券，2010100-证券公司，2010200-券商理财，2010201-券商集合理财，2010202-券商定向理财，2020000-银行类，2020100-银行，2020200-银行理财子公司，2020300-银行理财，2030000-保险，2030100-保险公司，2030200-保险组合，2030201-保险资管，2030202-保险理财，2030203-保险产品账户，2040000-信托，2040100-信托公司，2040200-信托产品，2040201-单一信托计划，2040202-集合信托计划，2050000-基金，2050100-公募基金，2050200-私募基金，2050201-私募股权投资基金，2050202-私募证券投资基金，2050203-私募创业投资基金，2050299-其他私募基金，2050300-基金资管计划，2050400-公募基金管理公司，2050500-私募基金管理公司，2050600-基金资管子公司，2060000-期货，2060100-期货公司，2060200-期货资管，2070000-财务公司，2080000-金融租赁公司，2090000-资产管理公司，2090100-金融资产管理公司，2090200-地方资产管理公司，2100000-金融资产投资公司，2110000-社保基金及社保机构，2120000-养老金，2120100-年金，2120200-基本养老保险基金，2120300-养老金产品，2130000-政府机构，2130100-国资机构，2130200-财政部门，2139900-其他政府机构，2140000-社会组织，2140100-慈善组织（基金会），2140200-职工工会，2140300-院校，2140400-研究所，2149900-其他社会组织，2990000-一般法人，3000000-境外机构投资者，3010000-专业境外机构，3020000-其他境外机构
+  annotation: 'The third-level classification code (ThirdLvCode) is associated with
+    the DM field in the CT_SystemConst table. When LB = 2503, the specific description
+    of the third-level classification code is obtained: 1000000-Natural Person, 2000000-Domestic
+    Institutional Investor, 2010000-Security, 2010100-Security Company, 2010200-Brokerage
+    Firm''s Financial Management, 2010201-Brokerage Firm''s Collective Financial Management,
+    2010202-Brokerage Firm''s Directed Financial Management, 2020000-Bank Category,
+    2020100-Bank, 2020200-Bank''s Financial Management Subsidiary, 2020300-Bank''s
+    Financial Management, 2030000-Insurance, 2030100-Insurance Company, 2030200-Insurance
+    Portfolio, 2030201-Insurance Asset Management, 2030202-Insurance Financial Management,
+    2030203-Insurance Product Account, 2040000-Trust, 2040100-Trust Company, 2040200-Trust
+    Product, 2040201-Single Trust Plan, 2040202-Collective Trust Plan, 2050000-Fund,
+    2050100-Publicly Offered Fund, 2050200-Private Equity Fund, 2050201-Private Equity
+    Investment Fund, 2050202-Private Securities Investment Fund, 2050203-Private Venture
+    Capital Fund, 2050299-Other Private Funds, 2050300-Fund Asset Management Plan,
+    2050400-Publicly Offered Fund Management Company, 2050500-Private Fund Management
+    Company, 2050600-Fund Asset Management Subsidiary, 2060000-Futures, 2060100-Futures
+    Company, 2060200-Futures Asset Management, 2070000-Financial Company, 2080000-Financial
+    Leasing Company, 2090000-Asset Management Company, 2090100-Financial Asset Management
+    Company, 2090200-Local Asset Management Company, 2100000-Financial Asset Investment
+    Company, 2110000-Social Security Fund and Social Security Institution, 2120000-Pension,
+    2120100-Annuity, 2120200-Basic Pension Insurance Fund, 2120300-Pension Product,
+    2130000-Government Agency, 2130100-State-owned Institution, 2130200-Financial
+    Department, 2139900-Other Government Agencies, 2140000-Social Organization, 2140100-Charitable
+    Organization (Foundation), 2140200-Labor Union, 2140300-Educational Institution,
+    2140400-Research Institute, 2149900-Other Social Organizations, 2990000-General
+    Corporation, 3000000-Overseas Institutional Investor, 3010000-Professional Overseas
+    Institution, 3020000-Other Overseas Institutions.'
+- column_name: FourthLvCode
+  column_description: 四级分类代码
+  annotation_zh: 四级分类代码(FourthLvCode)与(CT_SystemConst)表中的DM字段关联，令LB = 2503，得到四级分类代码的具体描述：1000000-自然人，2000000-境内机构投资者，2010000-证券，2010100-证券公司，2010200-券商理财，2010201-券商集合理财，2010202-券商定向理财，2020000-银行类，2020100-银行，2020200-银行理财子公司，2020300-银行理财，2030000-保险，2030100-保险公司，2030200-保险组合，2030201-保险资管，2030202-保险理财，2030203-保险产品账户，2040000-信托，2040100-信托公司，2040200-信托产品，2040201-单一信托计划，2040202-集合信托计划，2050000-基金，2050100-公募基金，2050200-私募基金，2050201-私募股权投资基金，2050202-私募证券投资基金，2050203-私募创业投资基金，2050299-其他私募基金，2050300-基金资管计划，2050400-公募基金管理公司，2050500-私募基金管理公司，2050600-基金资管子公司，2060000-期货，2060100-期货公司，2060200-期货资管，2070000-财务公司，2080000-金融租赁公司，2090000-资产管理公司，2090100-金融资产管理公司，2090200-地方资产管理公司，2100000-金融资产投资公司，2110000-社保基金及社保机构，2120000-养老金，2120100-年金，2120200-基本养老保险基金，2120300-养老金产品，2130000-政府机构，2130100-国资机构，2130200-财政部门，2139900-其他政府机构，2140000-社会组织，2140100-慈善组织（基金会），2140200-职工工会，2140300-院校，2140400-研究所，2149900-其他社会组织，2990000-一般法人，3000000-境外机构投资者，3010000-专业境外机构，3020000-其他境外机构。
+  annotation: 'The FourthLvCode is associated with the DM field in the CT_SystemConst
+    table. With LB = 2503, the specific description of the FourthLvCode is: 1000000-Natural
+    Person, 2000000-Domestic Institutional Investor, 2010000-Security, 2010100-Securities
+    Company, 2010200-Brokerage Firm''s Financial Management, 2010201-Brokerage Firm''s
+    Collective Financial Management, 2010202-Brokerage Firm''s Directed Financial
+    Management, 2020000-Bank Category, 2020100-Bank, 2020200-Bank''s Financial Management
+    Subsidiary, 2020300-Bank''s Financial Management, 2030000-Insurance, 2030100-Insurance
+    Company, 2030200-Insurance Portfolio, 2030201-Insurance Asset Management, 2030202-Insurance
+    Financial Management, 2030203-Insurance Product Account, 2040000-Trust, 2040100-Trust
+    Company, 2040200-Trust Product, 2040201-Single Trust Plan, 2040202-Collective
+    Trust Plan, 2050000-Fund, 2050100-Publicly Offered Fund, 2050200-Private Equity
+    Fund, 2050201-Private Equity Investment Fund, 2050202-Private Securities Investment
+    Fund, 2050203-Private Venture Capital Fund, 2050299-Other Private Funds, 2050300-Fund
+    Asset Management Plan, 2050400-Publicly Offered Fund Management Company, 2050500-Private
+    Fund Management Company, 2050600-Fund Asset Management Subsidiary, 2060000-Futures,
+    2060100-Futures Company, 2060200-Futures Asset Management, 2070000-Financial Company,
+    2080000-Financial Leasing Company, 2090000-Asset Management Company, 2090100-Financial
+    Asset Management Company, 2090200-Local Asset Management Company, 2100000-Financial
+    Asset Investment Company, 2110000-Social Security Fund and Social Security Institution,
+    2120000-Pension, 2120100-Annuity, 2120200-Basic Pension Insurance Fund, 2120300-Pension
+    Product, 2130000-Government Agency, 2130100-State-owned Institution, 2130200-Financial
+    Department, 2139900-Other Government Agencies, 2140000-Social Organization, 2140100-Charitable
+    Organization (Foundation), 2140200-Trade Union, 2140300-Educational Institution,
+    2140400-Research Institute, 2149900-Other Social Organizations, 2990000-General
+    Corporation, 3000000-Overseas Institutional Investor, 3010000-Professional Overseas
+    Institution, 3020000-Other Overseas Institutions.'
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

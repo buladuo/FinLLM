@@ -1,0 +1,99 @@
+default: 1
+full_table_name: creditdb.lc_violatiparty.yaml
+database_name: creditdb
+database_name_zh: 诚信数据库
+table_name: lc_violatiparty
+table_name_zh: 违规当事人处罚
+table_describe: 1.该表以事件+当事人+处罚为维度，记录单个事件下单个当事人的每一个处罚，包括当事人及其性质、当事人编码、开始日期、截止日期、违规类型、关联关系、关联上市公司、处罚机构编码、处罚机构、涉及金额、处罚说明等指标。2.数据范围：2014年-至今3.信息来源：交易所、上市公司公告、证监会等
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RID
+  column_description: RID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EventCode
+  column_description: 事件代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PartyName
+  column_description: 当事人
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PartyType
+  column_description: 当事人性质
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PartyCode
+  column_description: 当事人编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BeginDate
+  column_description: 起始日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ViolationClause
+  column_description: 违规条款
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PenalOrg
+  column_description: 处罚机构
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PenalType
+  column_description: 处罚类型
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AmountInvolved
+  column_description: 涉及金额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CurrencyCode
+  column_description: 计价货币
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PenalStatement
+  column_description: 处罚说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PenalOrgCode
+  column_description: 处罚机构编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RelataCompany
+  column_description: 关联上市公司
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PenalTypeNew
+  column_description: 处罚类型(新)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ViolationStatement
+  column_description: 违规说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AnnID
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan

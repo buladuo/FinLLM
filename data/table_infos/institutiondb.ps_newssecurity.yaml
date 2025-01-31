@@ -1,0 +1,71 @@
+default: 1
+full_table_name: institutiondb.ps_newssecurity.yaml
+database_name: institutiondb
+database_name_zh: 机构数据库
+table_name: ps_newssecurity
+table_name_zh: 证券舆情表
+table_describe: 收录了全网披露的舆情信息涉及的相关证券，对对应的事件信息，并对相应的事件的正负面情感及情感重要性进行等级划分。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RID
+  column_description: RID
+  annotation_zh: RID：与舆情资讯主表（PS_NewsMain）表ID字段关联。
+  annotation: 'RID: Associated with the ID field of the Public Opinion Information
+    Main Table (PS_NewsMain).'
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: 证券内部编码(InnerCode)：与证券码表总表（SecuMainAll）中内部编码（InnerCode）关联，获得涉及证券的详细信息。
+  annotation: 'Security Internal Code (InnerCode): Associated with the internal code
+    (InnerCode) in the master table of security codes (SecuMainAll), to obtain detailed
+    information about the securities involved.'
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码(CompanyCode)：与“企业基本信息（EP_CompanyMain）”中的“企业编号CompanyCode）”关联，得到涉及公司的具体说明。
+  annotation: 'Company Code: Associated with "Company Code" in "Enterprise Basic Information
+    (EP_CompanyMain)", to obtain specific descriptions of the involved company.'
+- column_name: EventType
+  column_description: 事件类别
+  annotation_zh: 事件类别（EventType）：根据事件体系指引表（PS_EventStru）中的事件代码（EventCode）关联，获取涉及事件类别的详细信息。
+  annotation: 'Event Category (EventType): Obtain detailed information about the event
+    categories involved by associating with the event code (EventCode) in the event
+    system guidance table (PS_EventStru).'
+- column_name: EventName
+  column_description: 事件名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EventDate
+  column_description: 事件时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EmotionDirection
+  column_description: 情感方向
+  annotation_zh: 情感方向（EmotionDirection）：该字段固定以下常量：FCC0000002QA — 负面、FCC0000002QF —
+    中性、FCC0000002Q9 — 正面。
+  annotation: 'Emotion Direction (EmotionDirection): This field is fixed with the
+    following constants: FCC0000002QA - Negative, FCC0000002QF - Neutral, FCC0000002Q9
+    - Positive.'
+- column_name: EmotionImportance
+  column_description: 情感重要度
+  annotation_zh: 情感重要度（EmotionImportance）：该字段固定以下常量：FCC0000002QB — 零星、FCC0000002QC—
+    一星、FCC0000002QD — 二星、FCC0000002QE — 三星。
+  annotation: 'Emotion Importance: This field is fixed with the following constants:
+    FCC0000002QB - Sporadic, FCC0000002QC - One Star, FCC0000002QD - Two Stars, FCC0000002QE
+    - Three Stars.'
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

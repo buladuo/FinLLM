@@ -1,0 +1,79 @@
+default: 1
+full_table_name: publicfunddb.mf_fundprodname.yaml
+database_name: publicfunddb
+database_name_zh: 公募基金数据库
+table_name: mf_fundprodname
+table_name_zh: 公募基金产品名称
+table_describe: 1.本表记录基金的交易所披露简称、集中申购简称、ETF申购赎回简称等基金相关的名称类信息。2.历史数据：1998年3月起-至今。3.信息来源：基金公司官网披露的产品说明书。其中，4-证监会简称处理的是资本市场电子化信息披露平台-公募基金净值日报的简称；6-公告披露简称处理的是基金产品资料概要和定报披露的简称；8-基金全称处理的是发售公告或是资本市场电子化信息披露平台-基金概况的全称，是将基金的多个份额合并的基金全称。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 基金内部编码
+  annotation_zh: 基金内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到基金的交易代码、简称等。
+  annotation: 'Fund internal code (InnerCode): associated with the "security internal
+    code (InnerCode)" in the "security main table (SecuMain)", to obtain the fund''s
+    trading code, abbreviation, etc.'
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoType
+  column_description: 信息类别
+  annotation_zh: 信息类别(InfoType)与(CT_SystemConst)表中的DM字段关联，令LB = 1850，得到信息类别的具体描述：1-证券交易所简称，2-集中申购简称，3-ETF申购赎回简称，4-证监会简称，5-扩位证券简称，6-公告披露简称，8-基金全称。
+  annotation: 'The InfoType is associated with the DM field in the CT_SystemConst
+    table, setting LB to 1850 yields the specific description of the InfoType: 1-Stock
+    Exchange Abbreviation, 2-Central Subscription Abbreviation, 3-ETF Subscription
+    and Redemption Abbreviation, 4-CSRC Abbreviation, 5-Extended Security Abbreviation,
+    6-Announcement Disclosure Abbreviation, 8-Fund Full Name.'
+- column_name: DisclName
+  column_description: 披露名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EffectiveDate
+  column_description: 生效日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ExpiryDate
+  column_description: 失效日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfEffected
+  column_description: 是否有效
+  annotation_zh: 是否有效(IfEffected)与(CT_SystemConst)表中的DM字段关联，令LB = 999 AND DM IN (1,2)，得到是否有效的具体描述：1-是，2-否。
+  annotation: 'Whether "IfEffected" is associated with the "DM" field in the "CT_SystemConst"
+    table, let LB = 999 AND DM IN (1,2), to obtain the specific description of whether
+    it is effective: 1-Yes, 2-No.'
+- column_name: Remark
+  column_description: 备注
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChiSpelling
+  column_description: 拼音证券简称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TransCode
+  column_description: 基金转型统一编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 插入时间
+  annotation_zh: .nan
+  annotation: .nan

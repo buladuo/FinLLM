@@ -1,0 +1,143 @@
+default: 1
+full_table_name: astockindustrydb.lc_exgindustry.yaml
+database_name: astockindustrydb
+database_name_zh: 上市公司行业板块
+table_name: lc_exgindustry
+table_name_zh: 公司行业划分表
+table_describe: 收录上市公司在证监会行业划分、中信行业划分、GICS行业划分、申万行业划分、中信建投、中银(BOCI)行业分类、中证指数行业分类、聚源行业划分等各种划分标准下的所属行业情况。
+externtion_annotation:
+- id: 1
+  content: |
+    **注意**
+    1. 对于一个行业而言，其对应的行业编码、一级、二级、三级、四级行业编码和行业名称不会改变，例如对于行业编码为123456,那么所有股票为行业编码为123456,对应的一级、二级、三级、四级行业编码都是相同的。
+    2. 请详细思考选取的时间限制：
+      - InfoPublDate：信息发布日期，是说明相关股票发布信息的时间不是发布股票的时间
+      - InsertTime：对应股票的发布时间，与信息发布时间不同
+    **案例**
+    1. 查询xxx三级行业在2019年信息发布的数量：
+      SELECT COUNT(*) AS WindPowerEquipmentStockCount
+        FROM astockindustrydb.lc_exgindustry
+        WHERE ThirdIndustryName LIKE '%xxx%'
+        AND DATE(STR_TO_DATE(InfoPublDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31';
+    2. 查询xxx三级行业在2019年发布并执行的股票的数量：
+      SELECT COUNT(*) AS WindPowerEquipmentStockCount
+        FROM astockindustrydb.lc_exgindustry
+        WHERE ThirdIndustryName LIKE '%xxx%'
+        AND DATE(STR_TO_DATE(InsertTime, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31'
+        AND IfPerformed = 1;
+      因为查询的发布的股票的数量，不是信息发布的时间。InsertTime对应的是发布股票时间。IfPerformed在指定必须处于执行状态的前提下才可以
+
+
+
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Standard
+  column_description: 行业划分标准
+  annotation_zh: 行业划分标准（Standard）：与“系统常量表”中的“代码（DM）”关联，令“LB=1081”，得到行业划分的具体标准：1-CSRC行业分类2001版(不更新)，3-中信行业分类2010版(不更新)，5-上交所行业分类(不更新)，6-聚源行业分类(旧)(不更新)，7-SSE-GICS行业分类(不更新)，8-聚源行业分类(不更新)，9-申万行业分类2011版(不更新)，11-中银(BOCI)行业分类(不更新)，12-中证指数行业分类2007版(不更新)，13-中信标普GICS行业分类(不更新)，18-证监会行业分类(中证)(不更新)，19-银华自定义行业分类(不更新)，20-国证行业分类，21-新聚源行业分类(不更新)，22-证监会行业分类2012版，23-证监会行业分类2012版(中证披露)，24-申万行业分类2014版(不更新)，28-中证指数行业分类2016版(不更新)，30-聚源行业分类2016版，32-国民经济行业分类(2017)，37-中信行业2019分类，38-申万行业分类(新)，40-中证指数行业分类(2021版)，42-AMAC行业分类，44-中国上市公司协会行业分类。
+  annotation: 'Industry classification standard (Standard): associated with the "Code
+    (DM)" in the "System Constants Table", setting "LB=1081" yields the specific standards
+    for industry classification: 1-CSRC industry classification 2001 version (not
+    updated), 3-CITIC industry classification 2010 version (not updated), 5-SSE industry
+    classification (not updated), 6-Juyuan industry classification (old) (not updated),
+    7-SSE-GICS industry classification (not updated), 8-Juyuan industry classification
+    (not updated), 9-Shenwan industry classification 2011 version (not updated), 11-CBCI
+    industry classification (not updated), 12-CSI industry classification index 2007
+    version (not updated), 13-CITIC S&P GICS industry classification (not updated),
+    18-CSRC industry classification (CSI) (not updated), 19-Yinhua custom industry
+    classification (not updated), 20-Guozheng industry classification, 21-New Juyuan
+    industry classification (not updated), 22-CSRC industry classification 2012 version,
+    23-CSRC industry classification 2012 version (CSI disclosure), 24-Shenwan industry
+    classification 2014 version (not updated), 28-CSI industry classification index
+    2016 version (not updated), 30-Juyuan industry classification 2016 version, 32-National
+    Economic Industry Classification (2017), 37-CITIC industry classification 2019,
+    38-Shenwan industry classification (new), 40-CSI industry classification index
+    (2021 version), 42-AMAC industry classification, 44-China Association for Public
+    Companies industry classification.'
+- column_name: Industry
+  column_description: 所属行业
+  annotation_zh: 所属行业（Industry）：当Standard=1、8、18时，与“行业表”中的“行业编码（IndustryNum）”关联；当Standard=3、5时，与“系统常量表”的“代码（DM）”关联，“LB=1082”；当Standard=6、13时，与“系统常量表”的“代码（DM）”关联，“LB=1460”；当Standard=7时，与“系统常量表”的“代码（DM）”关联，“LB=1294”；当Standard=9时，与“系统常量表”的“代码（DM）”关联，“LB=1465”；当Standard=24时，与“系统常量表”的“代码（DM）”关联，“LB=1804”；当Standard=19、20、30、32、37、38、40、42、44时，与“行业类别表”的“行业内部编码（IndustryNum）”关联；当Standard=11时，与“系统常量表”的“代码（DM）”关联，“LB=1477”；当Standard=12时，与“系统常量表”的“代码（DM）”关联，“LB=1478”；当Standard=21时，与“系统常量表”的“代码（DM）”关联，“LB=1753”；当Standard=22时，与“系统常量表”的“代码（DM）”关联，“LB=1755”；当Standard=23时，与“系统常量表”的“代码（DM）”关联，“LB=1755”；当Standard=28时，与“系统常量表”的“代码（DM）”关联，“LB=1984”。
+  annotation: 'Industry: When Standard=1, 8, 18, it is associated with "IndustryNum"
+    in the "Industry Table"; when Standard=3, 5, it is associated with "DM" in the
+    "System Constants Table", "LB=1082"; when Standard=6, 13, it is associated with
+    "DM" in the "System Constants Table", "LB=1460"; when Standard=7, it is associated
+    with "DM" in the "System Constants Table", "LB=1294"; when Standard=9, it is associated
+    with "DM" in the "System Constants Table", "LB=1465"; when Standard=24, it is
+    associated with "DM" in the "System Constants Table", "LB=1804"; when Standard=19,
+    20, 30, 32, 37, 38, 40, 42, 44, it is associated with "IndustryNum" in the "Industry
+    Category Table"; when Standard=11, it is associated with "DM" in the "System Constants
+    Table", "LB=1477"; when Standard=12, it is associated with "DM" in the "System
+    Constants Table", "LB=1478"; when Standard=21, it is associated with "DM" in the
+    "System Constants Table", "LB=1753"; when Standard=22, it is associated with "DM"
+    in the "System Constants Table", "LB=1755"; when Standard=23, it is associated
+    with "DM" in the "System Constants Table", "LB=1755"; when Standard=28, it is
+    associated with "DM" in the "System Constants Table", "LB=1984".'
+- column_name: IfPerformed
+  column_description: 是否执行
+  annotation_zh: 是否执行（IfPerformed），该字段固定以下常量：1-是；2-否
+  annotation: 'Whether to execute (IfPerformed), this field is fixed with the following
+    constants: 1-Yes; 2-No.'
+- column_name: CancelDate
+  column_description: 取消日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FirstIndustryCode
+  column_description: 对应一级行业代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FirstIndustryName
+  column_description: 对应一级行业名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecondIndustryCode
+  column_description: 对应二级行业代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecondIndustryName
+  column_description: 对应二级行业名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ThirdIndustryCode
+  column_description: 对应三级行业代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ThirdIndustryName
+  column_description: 对应三级行业名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FourthIndustryCode
+  column_description: 四级行业代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FourthIndustryName
+  column_description: 四级行业名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布股票的时间
+  annotation_zh: .nan
+  annotation: .nan

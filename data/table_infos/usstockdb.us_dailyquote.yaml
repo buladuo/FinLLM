@@ -1,0 +1,86 @@
+default: 1
+full_table_name: usstockdb.us_dailyquote.yaml
+database_name: usstockdb
+database_name_zh: 美股数据库
+table_name: us_dailyquote
+table_name_zh: 美股日行情
+table_describe: 1.本表收录美国市场证券的日收盘行情2.数据范围：2000年2月至今
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TradingDay
+  column_description: 交易日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部代码
+  annotation_zh: 证券内部代码（InnerCode）：与”美股证券主表(US_SecuMain)“表的” 证券内部代码 (InnerCode)字段
+    “关联，得到相关的交易代码、简称等。
+  annotation: 'Security Internal Code (InnerCode): Associated with the "Security Internal
+    Code (InnerCode)" field of the "US_SecuMain" table, obtaining related trading
+    codes, abbreviations, etc.'
+- column_name: Open
+  column_description: 开盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: High
+  column_description: 最高价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Low
+  column_description: 最低价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Close
+  column_description: 收盘价
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Volume
+  column_description: 成交量(手)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EPSTTM
+  column_description: 每股收益TTM(元/股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MarketCap
+  column_description: 证券总市值
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ShareOST
+  column_description: 证券总股本
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PrevClosePrice
+  column_description: 昨收盘
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChangePCT
+  column_description: 涨跌幅(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: AvgPrice
+  column_description: 均价
+  annotation_zh: 均价（AvgPrice）：成交额/成交量
+  annotation: 'Average Price (AvgPrice): Transaction Amount / Transaction Volume'
+- column_name: TurnoverValue
+  column_description: 成交额(万)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChangeOF
+  column_description: 日涨跌
+  annotation_zh: .nan
+  annotation: .nan

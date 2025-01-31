@@ -1,0 +1,66 @@
+default: 1
+full_table_name: astockmarketquotesdb.qt_dailyquote.yaml
+database_name: astockmarketquotesdb
+database_name_zh: 上市公司股票行情
+table_name: qt_dailyquote
+table_name_zh: 日行情表
+table_describe: 1.收录股票、债券（不包含银行间交易的债券）、基金、指数每个交易日收盘行情数据，包括昨收盘、今开盘、最高价、最低价、收盘价、成交量、成交金额、成交笔数等行情指标。2.数据范围：证券上市起-至今3.信息来源：上交所/深交所/北交所每日行情收盘文件
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: 证券内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到证券的交易代码、简称等。
+  annotation: 'Security Internal Code (InnerCode): Associated with the "Security Main
+    Table (SecuMain)" "Security Internal Code (InnerCode)", to obtain the security''s
+    trading code, abbreviation, etc.'
+- column_name: TradingDay
+  column_description: 交易日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PrevClosePrice
+  column_description: 昨收盘(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OpenPrice
+  column_description: 今开盘(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: HighPrice
+  column_description: 最高价(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LowPrice
+  column_description: 最低价(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ClosePrice
+  column_description: 收盘价(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TurnoverVolume
+  column_description: 成交量(股)
+  annotation_zh: 当证券类别为指数时，股票指数成交量单位是股，基金指数成交量单位是份，债券指数成交量单位是元。
+  annotation: When the security category is an index, the unit of trading volume for
+    stock index is shares, for fund index is units, and for bond index is yuan.
+- column_name: TurnoverValue
+  column_description: 成交金额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TurnoverDeals
+  column_description: 成交笔数(笔)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

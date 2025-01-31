@@ -1,0 +1,87 @@
+default: 1
+full_table_name: astockindustrydb.lc_exgindchange.yaml
+database_name: astockindustrydb
+database_name_zh: 上市公司行业板块
+table_name: lc_exgindchange
+table_name_zh: 公司行业变更表
+table_describe: 内容说明：本表记录上市公司从上市至今，由于主营业务变更导致的所属行业变化情况，采用同一行业分类标准，对其历史变更进行人为追溯，以便投资者进行公司数据回测，或开展行业估值、财务等数据的计算。本表对公司所属行业的变更情况尽量参照原行业分类发布公司的披露数据，并对其新旧分类标准的不同之处加以判断，结合公司实际业务的变化，逐一进行人工比对，用最新的行业标准反映公司历史上的行业变更情况。数据范围：A股上市公司信息来源：公司公告、聚源整理。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Standard
+  column_description: 行业划分标准
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Industry
+  column_description: 所属行业
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfExecuted
+  column_description: 是否执行
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CancelDate
+  column_description: 取消日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FirstIndustryCode
+  column_description: 一级行业代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FirstIndustryName
+  column_description: 一级行业名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecondIndustryCode
+  column_description: 二级行业代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SecondIndustryName
+  column_description: 二级行业名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ThirdIndustryCode
+  column_description: 三级行业代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ThirdIndustryName
+  column_description: 三级行业名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FourthIndustryCode
+  column_description: 四级行业代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FourthIndustryName
+  column_description: 四级行业名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 修改日期1
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

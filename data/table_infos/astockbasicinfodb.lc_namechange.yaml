@@ -1,0 +1,64 @@
+default: 1
+full_table_name: astockbasicinfodb.lc_namechange.yaml
+database_name: astockbasicinfodb
+database_name_zh: 上市公司基本资料
+table_name: lc_namechange
+table_name_zh: 公司名称更改状况
+table_describe: 收录公司名称历次变更情况，包括：中英文名称、中英文缩写名称、更改日期等内容。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SMDeciPublDate
+  column_description: 股东大会决议公告日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfPassed
+  column_description: 是否否决
+  annotation_zh: 是否否决(IfPassed)，该字段固定以下常量：1-是；0-否
+  annotation: 'Whether to veto (IfPassed), this field is fixed with the following
+    constants: 1-yes; 0-no.'
+- column_name: ChangeDate
+  column_description: 全称更改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChiName
+  column_description: 中文名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChiNameAbbr
+  column_description: 中文名称缩写
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EngName
+  column_description: 英文名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EngNameAbbr
+  column_description: 英文名称缩写
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

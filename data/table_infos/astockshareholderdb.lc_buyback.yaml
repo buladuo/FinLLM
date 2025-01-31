@@ -1,0 +1,211 @@
+default: 1
+full_table_name: astockshareholderdb.lc_buyback.yaml
+database_name: astockshareholderdb
+database_name_zh: 上市公司股东与股本/公司治理
+table_name: lc_buyback
+table_name_zh: 股份回购
+table_describe: 1.介绍上市公司(包含科创板)发生股份回购的相关方案信息，包括股份类别、首次信息发布日期、回购协议签署日、股份被回购方、回购数量上限与下限、回购价格上限与下限、回购期限起始与截止日等内容。2.数据范围：1994-06-23至今3.信息来源：回购公告、董事会公告等。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: FirstPublDate
+  column_description: 首次信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSource
+  column_description: 信息来源
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ShareType
+  column_description: 股份类别
+  annotation_zh: 股份类别(ShareType)与(CT_SystemConst)表中的DM字段关联，令LB = 1040，得到股份类别的具体描述：1-国家股，2-国有法人股，3-外资法人股，4-其他法人股，5-流通A股，6-B股，7-H股，8-转配股，9-专项资产管理计划转让，10-资产支持证券转让，11-中小企业私募债转让，12-中国存托凭证，13-可转换公司债券。
+  annotation: 'The share type (ShareType) is associated with the DM field in the (CT_SystemConst)
+    table, setting LB = 1040, the specific description of the share type is obtained:
+    1 - State-owned shares, 2 - State-owned legal person shares, 3 - Foreign-funded
+    legal person shares, 4 - Other legal person shares, 5 - Tradable A shares, 6 -
+    B shares, 7 - H shares, 8 - Transferable subscription shares, 9 - Special asset
+    management plan transfer, 10 - Asset-backed securities transfer, 11 - Small and
+    medium-sized enterprise private debt transfer, 12 - Chinese depository receipts,
+    13 - Convertible corporate bonds.'
+- column_name: AdvanceDate
+  column_description: 预案发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MeetPassDate
+  column_description: 股东大会通过日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: WriteOffPublDate
+  column_description: 回购并注销股份公告书发布日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ContractDate
+  column_description: 回购协议签署日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Seller
+  column_description: 股份被回购方
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BuybackSum
+  column_description: 回购股数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Percentage
+  column_description: 占总股本比例
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PricingStatement
+  column_description: 回购定价方式说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BuybackPrice
+  column_description: 回购价格(元/股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BuybackMoney
+  column_description: 回购总金额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: StartDate
+  column_description: 起始日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PayMode
+  column_description: 回购支付方式
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChangeDate
+  column_description: 全称更改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PayDate
+  column_description: 回购资金划出日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChangeRegDate
+  column_description: 工商变更登记日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VolumeFloor
+  column_description: 回购数量下限(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: VolumeCeiling
+  column_description: 回购数量上限(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PriceFloor
+  column_description: 回购价格下限(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PriceCeiling
+  column_description: 回购价格上限(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ValueFloor
+  column_description: 拟回购资金总额下限(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ValueCeiling
+  column_description: 拟回购资金总额上限(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MaturityDesc
+  column_description: 待偿期限_指数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EventProcedure
+  column_description: 事件进程
+  annotation_zh: 事件进程代码(EventProcedure)与(CT_SystemConst)表中的DM字段关联，令LB = 1059，得到事件进程代码的具体描述：1000-意向，1001-预案，1004-决案，1007-否决，1010-申请，1013-批准，1016-未实施终止，1019-实施中，1022-实施完成，1025-解除，1028-到期，1041-续签，1043-部分续签，1051-涉诉，1053-可能涉诉，1055-预估，1303-收到，1305-部分收到，2001-逾期，2003-还款，2005-延期，2007-展期，2501-诉前，2504-诉中，2507-诉后，3001-提前回收，3002-提前部分回收，3003-到期后协议延期，3004-到期回收，3005-到期待回收，3006-到期部分待回收，3007-到期无法回收，3008-到期部分无法回收，3101-改革意向，3103-股改动议取消，3105-董事会改革方案，3108-沟通确认方案，3111-上级部门批准，3115-上级部门驳回，3120-董事会否决，3121-股东大会通过，3125-股东大会否决，3126-有效期内未实施，3131-方案实施，3201-证监会审核通过，3202-证监会审核否决，3203-证监会核准，3204-证监会未核准，3212-方案部分实施，3301-已注册未发行，3302-已发行有额度，3303-已发行无额度，3304-提前终止，3305-放弃，3399-其他。
+  annotation: 'The event procedure code (EventProcedure) is associated with the DM
+    field in the (CT_SystemConst) table. Set LB = 1059, and obtain the specific description
+    of the event procedure code: 1000 - Intent, 1001 - Plan, 1004 - Decision, 1007
+    - Veto, 1010 - Application, 1013 - Approval, 1016 - Unimplemented Termination,
+    1019 - In Implementation, 1022 - Implementation Completed, 1025 - Release, 1028
+    - Expiration, 1041 - Renewal, 1043 - Partial Renewal, 1051 - Involved in Lawsuit,
+    1053 - Possible Lawsuit, 1055 - Estimate, 1303 - Received, 1305 - Partially Received,
+    2001 - Overdue, 2003 - Repayment, 2005 - Extension, 2007 - Deferral, 2501 - Pre-litigation,
+    2504 - During Litigation, 2507 - Post-litigation, 3001 - Early Recovery, 3002
+    - Early Partial Recovery, 3003 - Post-maturity Agreement Extension, 3004 - Maturity
+    Recovery, 3005 - Maturity Pending Recovery, 3006 - Maturity Partial Pending Recovery,
+    3007 - Maturity Unable to Recover, 3008 - Maturity Partially Unable to Recover,
+    3101 - Reform Intent, 3103 - Shareholding Change Proposal Cancellation, 3105 -
+    Board Reform Plan, 3108 - Communication Confirmation Plan, 3111 - Approval by
+    Higher Authority, 3115 - Rejection by Higher Authority, 3120 - Board Veto, 3121
+    - Shareholders'' Meeting Approval, 3125 - Shareholders'' Meeting Veto, 3126 -
+    Not Implemented Within Validity Period, 3131 - Plan Implementation, 3201 - CSRC
+    Approval, 3202 - CSRC Rejection, 3203 - CSRC Approval, 3204 - CSRC Non-approval,
+    3212 - Partial Implementation of Plan, 3301 - Registered but Not Issued, 3302
+    - Issued with Quota, 3303 - Issued without Quota, 3304 - Early Termination, 3305
+    - Waiver, 3399 - Other.'
+- column_name: EventProceDesc
+  column_description: 事件进程描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BuybackModeCode
+  column_description: 股份回购方式代码
+  annotation_zh: 股份回购方式代码(BuybackModeCode)与(CT_SystemConst)表中的DM字段关联，令LB = 1523，得到股份回购方式代码的具体描述：10-集中竞价，20-协议回购，30-其他，40-要约回购。
+  annotation: 'The share buyback method code (BuybackModeCode) is associated with
+    the DM field in the (CT_SystemConst) table. Setting LB = 1523, the specific description
+    of the share buyback method code is obtained: 10 - centralized bidding, 20 - agreement
+    buyback, 30 - others, 40 - tender offer buyback.'
+- column_name: BuybackModeDesc
+  column_description: 股份回购方式描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FundsSourceDesc
+  column_description: 资金总额及来源说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PurposeDesc
+  column_description: 回购目的说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BuybackPurpose
+  column_description: No description available
+  annotation_zh: '回购目的(BuybackPurpose)与(CT_SystemConst)表中的DM字段关联，令LB=2560，得到回购目的的具体描述：1-实施股权激励，2-实施员工持股计划，3-实施股权激励或员工持股计划，4-发行可转债，5-未达激励计划条件，6-市值管理，7-资产重组，8-吸收合并，9-业绩补偿，10-大股东资金占用，11-对价购买。
+
+    '
+  annotation: 'The buyback purpose (BuybackPurpose) is associated with the DM field
+    in the (CT_SystemConst) table. Setting LB=2560, the specific description of the
+    buyback purpose is obtained: 1-Implement equity incentive, 2-Implement employee
+    stock ownership plan, 3-Implement equity incentive or employee stock ownership
+    plan, 4-Issue convertible bonds, 5-Conditions for incentive plan not met, 6-Manage
+    market value, 7-Asset restructuring, 8-Acquisition merger, 9-Performance compensation,
+    10-Major shareholder''s fund occupation, 11-Purchase with consideration.'
+- column_name: CurrencyUnit
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: OverruledDate
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan

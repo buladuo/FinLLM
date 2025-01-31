@@ -1,0 +1,72 @@
+default: 1
+full_table_name: astockindustrydb.lc_conceptlist.yaml
+database_name: astockindustrydb
+database_name_zh: 上市公司行业板块
+table_name: lc_conceptlist
+table_name_zh: 概念板块常量表
+table_describe: 记录A股市场中热点概念的相关信息
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ClassCode
+  column_description: 所属1级概念代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ClassName
+  column_description: 所属1级概念名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SubclassCode
+  column_description: 所属2级概念代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SubclassName
+  column_description: 所属2级概念名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ConceptCode
+  column_description: 所属概念板块编码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ConceptName
+  column_description: 概念名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BeginDate
+  column_description: 起始日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ConceptState
+  column_description: 所属状态
+  annotation_zh: 所属状态(ConceptState)，该字段固定以下常量：1-正常，0-终止。
+  annotation: 'Belonging state (ConceptState), this field is fixed with the following
+    constants: 1-normal, 0-termination.'
+- column_name: Remark
+  column_description: 备注
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ConceptEngName
+  column_description: 概念英文名称
+  annotation_zh: .nan
+  annotation: .nan

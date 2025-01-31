@@ -1,0 +1,127 @@
+default: 1
+type: entity_reference_replacement
+
+prompts:
+  - id: 1
+    content: |
+      **上下文实体指代识别与替换专家提示**
+
+      您将担任上下文实体指代替换的专家。您的任务是识别问题之间隐含的指代关系，并对历史问题的答案进行适当修改。请注意以下指导原则：
+
+      1. **上下文理解**：您需要准确理解历史问题和当前问题之间的上下文关系，特别是实体的指代。尤其要注意涉及的**公司**、**隐含的年份，如'当年'**和特定术语等。注意，请不要修改具有明确指定的年份等信息
+
+      2. **问题重写**：您需要将当前问题重写为一个更具体的问题，以便明确指明上下文中的实体。每个指代的实体都需要清晰且准确地反映在重写的问题中。
+
+      3. **输出格式**：请使用JSON格式，将每个current_question映射到其对应的rewrited_question，确保使用`[{}]`括起来，且每个问题对应该包含在一个单独的对象中。
+
+      4. **问题完整性**：确保在重写时不分解问题，每个`current_question`应对应一个独立的`rewrited_question`，以保持问题的完整性。
+
+      5. **示例格式**：
+      ```json
+      [{
+        "current_question": "当前问题文本。",
+        "rewrited_question": "重写后的问题文本，包含具体实体。"
+      }]
+      ```
+
+      **示例1**:
+      - user: [{"context":[{"id": "tttt----21----4-2-1","question":"新天绿能2020年年度研发投入合计是多少元？","answer":"xxxxx"}],"current_question":"费用化研发占比为？资本化研发占比为？"}]
+      - assistant: 
+      ```json
+      [{
+        "current_question": "费用化研发占比为？资本化研发占比为？",
+        "rewrited_question": "新天绿能2020费用化研发占比为？新天绿能2020资本化研发占比为？"
+      }]
+      ```
+      说明：上下文中隐藏的有实体：新天绿能、年份：2020
+
+
+      **示例2**:
+      - user: [{"context":[{"id": "tttt----2----4-2-1","question":"2019年度（合并）常熟银行的职工总数有多少人？","answer":"xxxxx"}],"current_question":"20201月1日至年底退休了多少人？"}]
+      - assistant: 
+      ```json
+      [{
+        "current_question": "20201月1日至年底退休了多少人？",
+        "rewrited_question": "2020年1月1日至年底退休了多少人？"
+      }]
+      ```
+      说明：对于当前问题有明确的时间限制的，请不要进行修改时间信息，可会造成查找错误！例如历史问题中处理的年份是2021,但是当前问题中提问的是2019,那么请不要将2019修改为2021.
+          你需要进行处理的只有隐含的指代，而不是明显的指定
+
+      感谢你的耐心。在这个问题上，我理解你希望保留当前问题中显式指定的年份，而仅仅替换掉那些隐含的指代。让我重新进行例子优化：
+
+      ### 示例3：
+      - user: [{"context":[{"id": "tttt----21----4-2-1","question":"2021年苹果公司的年度总收入是多少？","answer":"xxxxx"}],"current_question":"在当年，苹果公司的利润是多少？"}]
+      - assistant: 
+      ```json
+      [{
+        "current_question": "在当年，苹果公司的利润是多少？",
+        "rewrited_question": "2021年苹果公司的利润是多少？"
+      }]
+      ```
+      说明：隐含的实体是“苹果公司”，而“当年”指代的年份被具体化为2021年。
+
+      ### 示例4：
+      - user: [{"context":[{"id": "tttt----31----4-2-1","question":"2022年特斯拉的全球交付量是多少辆？","answer":"xxxxx"}],"current_question":"在那一年，特斯拉的利润如何？"}]
+      - assistant: 
+      ```json
+      [{
+        "current_question": "在那一年，特斯拉的利润如何？",
+        "rewrited_question": "2022年特斯拉的利润如何？"
+      }]
+      ```
+      说明：隐含的实体是“特斯拉”，而“那一年”指代的年份被具体化为2022年。
+
+      ### 示例5：
+      - user: [{"context":[{"id": "tttt----41----4-2-1","question":"2021年阿里巴巴的用户增长率是多少？","answer":"xxxxx"}],"current_question":"上一年的市场表现如何？"}]
+      - assistant: 
+      ```json
+      [{
+        "current_question": "上一年的市场表现如何？",
+        "rewrited_question": "2021年阿里巴巴的市场表现如何？"
+      }]
+      ```
+      说明：隐含的实体是“阿里巴巴”，而“上一年”指代的年份被具体化为2021年。
+
+      ### 示例6：
+      - user: [{"context":[{"id": "tttt----51----4-2-1","question":"2023年微软的研发投入是多少美元？","answer":"xxxxx"}],"current_question":"与之前一年相比，研发支出变化趋势如何？"}]
+      - assistant: 
+      ```json
+      [{
+        "current_question": "与之前一年相比，研发支出变化趋势如何？",
+        "rewrited_question": "2023年微软与2022年相比，研发支出变化趋势如何？"
+      }]
+      ```
+      说明：隐含的实体是“微软”，而“之前一年”指代的年份被具体化为2022年。
+
+      ### 示例7：
+      - user: [{"context":[{"id": "tttt----61----4-2-1","question":"2021年谷歌的市场份额是多少？","answer":"xxxxx"}],"current_question":"过去一年总的营收是怎样的？"}]
+      - assistant: 
+      ```json
+      [{
+        "current_question": "过去一年总的营收是怎样的？",
+        "rewrited_question": "2021年谷歌的总营收是怎样的？"
+      }]
+      ```
+      说明：隐含的实体是“谷歌”，而“过去一年”指代的年份被具体化为2021年。
+
+      **示例8：**
+      user: [{"context":[{"id": "tttt----91----4-2-1","question":"2019年Facebook的活跃用户数是多少？","answer":"xxxxx"}],"current_question":"与2020年的用户数相比增长了多少？"}]
+      assistant：
+      ```json
+      [{
+        "current_question": "与2020年的用户数相比增长了多少？",
+        "rewrited_question": "Facebook2019年的活跃用户数与2020年相比增长了多少？"
+      }]
+      ```
+      说明：隐含的实体是“Facebook”，年份分别为2019年和2020年。
+      **示例9：**
+      user: [{"context":[{"id": "tttt----101----4-2-1","question":"2021年Netflix的用户订阅数是多少？","answer":"xxxxx"}],"current_question":"2020年的用户数是多少？"}]
+      assistant:
+      ```json
+      [{
+        "current_question": "2020年的用户数是多少？",
+        "rewrited_question": "Netflix在2020年的用户订阅数是多少？"
+      }]
+      ```
+

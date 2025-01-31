@@ -1,0 +1,53 @@
+default: 1
+full_table_name: institutiondb.ps_eventstru.yaml
+database_name: institutiondb
+database_name_zh: 机构数据库
+table_name: ps_eventstru
+table_name_zh: 事件体系指引表
+table_describe: 收录聚源最新制定的事件分类体系。
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EventName
+  column_description: 事件名称
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EventCode
+  column_description: 事件代码
+  annotation_zh: 事件代码（EventCode）：与机构舆情表（PS_NewsCompany）的事件类别（EventType）关联，与证券舆情表（PS_NewsSecurity）的事件类别（EventType）关联，与宏观舆情表（PS_NewsMacro）的事件类别（EventType）关联，可得功能表单对应事件名称以及所属父级事件
+  annotation: 'Event Code: Associated with the event type (EventType) of the institutional
+    public opinion table (PS_NewsCompany), associated with the event type (EventType)
+    of the securities public opinion table (PS_NewsSecurity), associated with the
+    event type (EventType) of the macro public opinion table (PS_NewsMacro), and can
+    obtain the corresponding event name and parent event to which it belongs in the
+    functional form.'
+- column_name: FEventCode
+  column_description: 父级事件代码
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EventLevel
+  column_description: 事件级别
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfEffected
+  column_description: 是否有效
+  annotation_zh: 是否有效（IfEffected）：该字段固定以下常量：FCC000000005-是，FCC000000006-否
+  annotation: 'Whether Effective (IfEffected): This field is fixed with the following
+    constants: FCC000000005-Yes, FCC000000006-No.'
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 更新时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan

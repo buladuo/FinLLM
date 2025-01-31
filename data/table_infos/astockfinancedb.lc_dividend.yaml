@@ -1,0 +1,294 @@
+default: 1
+full_table_name: astockfinancedb.lc_dividend.yaml
+database_name: astockfinancedb
+database_name_zh: 上市公司财务指标/财务报表/融资与分红
+table_name: lc_dividend
+table_name_zh: 公司分红
+table_describe: 1.该表包括上市公司历次分红预案及实施进展，以及下年分配次数、方式等，以分红事件为维度，一次分红做一条记录。2.数据范围：证券上市起-至今3.信息来源：上市公司公告
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 证券内部编码
+  annotation_zh: 证券内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到证券的交易代码、简称等。
+  annotation: 'Security Internal Code (InnerCode): Associated with the "Security Main
+    Table (SecuMain)" "Security Internal Code (InnerCode)", to obtain the security''s
+    trading code, abbreviation, etc.'
+- column_name: EndDate
+  column_description: 日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfDividend
+  column_description: 是否分红
+  annotation_zh: 是否分红(IfDividend)固定以下常量：0-否，1-是，8-对价，24-重整计划，25-特殊分红，26-面值拆分，99-其他分红。
+  annotation: 'Whether to distribute dividends (IfDividend) fixed the following constants:
+    0 - No, 1 - Yes, 8 - Consideration, 24 - Restructuring Plan, 25 - Special Dividend,
+    26 - Par Value Split, 99 - Other Dividends.'
+- column_name: AdvanceDate
+  column_description: 预案发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SMDeciPublDate
+  column_description: 股东大会决议公告日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EPS
+  column_description: 每股收益(摊薄)(元/股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BonusShareRatio
+  column_description: 送股比例(10送X)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TranAddShareRaio
+  column_description: 转增股比例(10转增X)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: PriceUnit
+  column_description: 期货单位
+  annotation_zh: 派现外币单位（PriceUnit）：与“系统常量表（CT_SystemConst）”中的“常量代码（DM）”关联，令“LB=1068”，得到派现外币单位的具体描述。1000-美元，1100-港元。该字段主要记录B股分红涉及的外币单位，A股分红因通常单位都是人民币，故派现外币单位为NULL。
+  annotation: 'Distribution currency unit (PriceUnit): associated with "constant code
+    (DM)" in "System Constants Table (CT_SystemConst)", set "LB=1068" to obtain the
+    specific description of the distribution currency unit. 1000-USD, 1100-HKD. This
+    field mainly records the foreign currency unit involved in B-share dividends,
+    as A-share dividends are usually in RMB, the distribution currency unit is NULL.'
+- column_name: CashDiviRMB
+  column_description: 派现(含税/人民币元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ActualCashDiviRMB
+  column_description: 实派(税后/人民币元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CashDiviFC
+  column_description: 派现(含税/外币)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ActualCashDiviFC
+  column_description: 实派(税后/外币)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RightRegDate
+  column_description: 股权登记日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ExDiviDate
+  column_description: 除权除息日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BonusShareListDate
+  column_description: 送转股上市日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ToAccountDate
+  column_description: 红利到账日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FinalTradingDay
+  column_description: 最后交易日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DiviBase
+  column_description: 分红股本基数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SharesAfterDivi
+  column_description: 送转后总股本(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DiviObject
+  column_description: 分红对象
+  annotation_zh: 分红对象(DiviObject)与(CT_SystemConst)表中的DM字段关联，令LB = 1197 AND DM IN (1,2,3)，得到分红对象的具体描述：1-全体股东，2-发行前股东，3-部分股东。
+  annotation: 'The dividend object (DiviObject) is associated with the DM field in
+    the (CT_SystemConst) table, with LB = 1197 AND DM IN (1,2,3), resulting in the
+    specific description of the dividend object: 1 - all shareholders, 2 - shareholders
+    before issuance, 3 - partial shareholders.'
+- column_name: TotalCashDiviComRMB
+  column_description: 公司合计派现金额(人民币元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TotalCashDiviComFC
+  column_description: 公司合计派现金额(外币元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CashDiviAShare
+  column_description: 其中:A股派现金额(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CashDiviBShareRMB
+  column_description: B股派现金额(人民币元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CashDiviBShareFC
+  column_description: B股派现金额(外币元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DiviStartDate
+  column_description: 红利发放起始日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IFSchemeChange
+  column_description: 方案是否变更
+  annotation_zh: 方案是否变更（IFSchemeChange），该字段固定以下常量：1-是；0-否
+  annotation: 'Whether the scheme changes (IFSchemeChange), this field is fixed with
+    the following constants: 1-yes; 0-no.'
+- column_name: ChangeStatement
+  column_description: 方案变动说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ChangeType
+  column_description: 变动原因
+  annotation_zh: 方案变更类型(ChangeType)与(CT_SystemConst)表中的DM字段关联，令LB = 1013，得到方案变更类型的具体描述：1-总量变更，2-总量不变，3-基数变更，4-基数不变，5-其他。
+  annotation: 'The "ChangeType" scheme change type is associated with the "DM" field
+    in the "CT_SystemConst" table, with LB = 1013, the specific description of the
+    scheme change type is obtained: 1-Total amount change, 2-Total amount unchanged,
+    3-Base change, 4-Base unchanged, 5-Other.'
+- column_name: IfDiviBeforeChange
+  column_description: 变更前是否分红
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BonusShareRatioBeforeChange
+  column_description: 变更前送股比例(10送X)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TranAddShareRatioBeforeChange
+  column_description: 变更前转增股比例(10转增X)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CashDiviBeforeChangeRMB
+  column_description: 变更前派现(含税/人民币元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CashDiviBeforeChangeFC
+  column_description: 变更前派现(含税/外币)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DiviBaseBeforeChange
+  column_description: 变更前分红股本基数(股)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Notes
+  column_description: 备注说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UndistributeStatement
+  column_description: 利润不分配说明
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DistributeTimes
+  column_description: 利润分配次数
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CeilingNext
+  column_description: 下限
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: FloorNext
+  column_description: 上限
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Ceiling
+  column_description: 下限
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: Floor
+  column_description: 上限
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: MainForm
+  column_description: 主要分配形式
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CashDiviCeiling
+  column_description: 下限
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CashDiviFloor
+  column_description: 上限
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: XGRQ
+  column_description: 修改日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DiviEndDate
+  column_description: 红利发放截止日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DividendImplementDate
+  column_description: 分红实施公告日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: EventProcedure
+  column_description: 事件进程
+  annotation_zh: 事件进程(EventProcedure)与(CT_SystemConst)表中的DM字段关联，令LB = 1059 AND DM
+    IN (1000,1001,1004,3120,3125,3131,3305)，得到事件进程的具体描述：1000-意向，1001-预案，1004-决案，3120-董事会否决，3125-股东大会否决，3131-方案实施，3305-放弃。
+  annotation: 'The event process (EventProcedure) is associated with the DM field
+    in the (CT_SystemConst) table, let LB = 1059 AND DM IN (1000,1001,1004,3120,3125,3131,3305),
+    to obtain the specific description of the event process: 1000 - Intention, 1001
+    - Plan, 1004 - Decision, 3120 - Board Rejection, 3125 - Shareholder Rejection,
+    3131 - Implementation of Plan, 3305 - Abandonment.'
+- column_name: EventProcedureDesc
+  column_description: 事件进程描述
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BonusSHRatioAdjusted
+  column_description: 送股比例(10送X)(计算除权价用)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TranAddRatioAdjusted
+  column_description: 转增比例(10转增X)(计算除权价用)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CashDiviRMBAdjusted
+  column_description: 派现(含税10派X元)(计算除权价用)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DiviObjectNew
+  column_description: 分红对象(新)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: BonusShareArrivalDate
+  column_description: 送转股到账日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SchemeType
+  column_description: 方案类型
+  annotation_zh: 方案类型(SchemeType)与(CT_SystemConst)表中的DM字段关联，令LB = 1739，得到方案类型的具体描述：10-公司提出方案，20-股东提出方案，99-其它。
+  annotation: 'The scheme type (SchemeType) is associated with the DM field in the
+    (CT_SystemConst) table, with LB set to 1739, the specific description of the scheme
+    type is obtained: 10 - Company proposed scheme, 20 - Shareholder proposed scheme,
+    99 - Other.'
+- column_name: ExDiviRefPrice
+  column_description: 除权除息参考价(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DiviIntentPublDate
+  column_description: 分红意向公布日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: DividendBaseDate
+  column_description: 分红派息股本基准日
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: ProposalSN
+  column_description: 议案编号
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: LatestInfoPublDate
+  column_description: 最新信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: SchemeStatement
+  column_description: No description available
+  annotation_zh: .nan
+  annotation: .nan

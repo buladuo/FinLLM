@@ -1,0 +1,111 @@
+default: 1
+full_table_name: astockfinancedb.lc_intassetsdetail.yaml
+database_name: astockfinancedb
+database_name_zh: 上市公司财务指标/财务报表/融资与分红
+table_name: lc_intassetsdetail
+table_name_zh: 公司研发投入与产出
+table_describe: 1.内容说明：收录上市公司研发投入相关数据，主要包括研发费用投入总额、占比，研发人员构成、占比等信息。2.数据范围：2014年至今3.信息来源：定期报告
+externtion_annotation:
+- id: 1
+  content: ''
+fields:
+- column_name: ID
+  column_description: ID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InnerCode
+  column_description: 内部编码
+  annotation_zh: 内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到证券的交易代码、简称等。
+  annotation: 'Internal Code: Associated with the "InnerCode" in the "SecuMain" table,
+    obtaining the security''s trading code, abbreviation, etc.'
+- column_name: CompanyCode
+  column_description: 公司代码
+  annotation_zh: 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。
+  annotation: 'Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)"
+    in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation,
+    etc. of the listed company.'
+- column_name: InfoPublDate
+  column_description: 信息发布日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InfoSourceCode
+  column_description: 信息来源编码
+  annotation_zh: 信息来源编码(InfoSourceCode)与(CT_SystemConst)表中的DM字段关联，令LB = 2181 AND DM
+    IN (110101,110102,110103,110104,110105,120102,120103,120104,120105)，得到信息来源编码的具体描述：110101-定期报告:年度报告，110102-定期报告:半年度报告，110103-定期报告:第一季报，110104-定期报告:第三季报，110105-定期报告:审计报告，120102-临时公告:年度报告(更正后)，120103-临时公告:半年度报告(更正后)，120104-临时公告:第一季报(更正后)，120105-临时公告:第三季报(更正后)。
+  annotation: 'The InfoSourceCode is associated with the DM field in the CT_SystemConst
+    table, where LB = 2181 AND DM IN (110101,110102,110103,110104,110105,120102,120103,120104,120105),
+    resulting in the specific description of the InfoSourceCode: 110101-Periodic Report:
+    Annual Report, 110102-Periodic Report: Semi-annual Report, 110103-Periodic Report:
+    First Quarter Report, 110104-Periodic Report: Third Quarter Report, 110105-Periodic
+    Report: Audit Report, 120102-Interim Announcement: Annual Report (Corrected),
+    120103-Interim Announcement: Semi-annual Report (Corrected), 120104-Interim Announcement:
+    First Quarter Report (Corrected), 120105-Interim Announcement: Third Quarter Report
+    (Corrected).'
+- column_name: EndDate
+  column_description: 截止日期
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: IfMerged
+  column_description: 是否合并
+  annotation_zh: 是否合并（IfMerged）固定常量：1-合并，2-母公司
+  annotation: 'Whether to merge (IfMerged) constant: 1-merge, 2-parent company'
+- column_name: IfAdjusted
+  column_description: 是否调整
+  annotation_zh: 是否调整(IfAdjusted)固定常量：2-否，1-是
+  annotation: 'Whether to adjust (IfAdjusted) constant: 2 - No, 1 - Yes'
+- column_name: ExpensedRDInput
+  column_description: 费用化研发投入(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CapitalizedRDInput
+  column_description: 资本化研发投入(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: TotalRDInput
+  column_description: 研发投入合计(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RDInputRatio
+  column_description: 研发投入占营业收入比例(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CapitalizedRDInputR
+  column_description: 资本化研发投入占比(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RDStaffNum
+  column_description: 研发人员数量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: RDStaffNumRatio
+  column_description: 研发人员数量占比(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: InsertTime
+  column_description: 发布时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: UpdateTime
+  column_description: 修改时间
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: JSID
+  column_description: JSID
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CoreTechnicalStaffNum
+  column_description: 核心技术人员数量
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CoreTechnicalStaffR
+  column_description: 核心技术人员数量占比(%)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CoreTechnologyOutput
+  column_description: 核心技术营业收入(元)
+  annotation_zh: .nan
+  annotation: .nan
+- column_name: CoreTechnologyOutputR
+  column_description: 核心技术营业收入占比(%)
+  annotation_zh: .nan
+  annotation: .nan
