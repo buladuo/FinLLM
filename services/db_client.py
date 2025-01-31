@@ -1,4 +1,5 @@
 import requests
+from sqlalchemy import false
 import yaml
 import logging
 import os
@@ -42,7 +43,10 @@ class DBClient:
             return None
         except requests.exceptions.HTTPError as http_err:
             self.logger.error(f"HTTP error occurred: {http_err}")
-            return None
+            result = response.json()
+            result['success'] = False
+            self.logger.error(f"SQL query result: {result}")
+            return result
         except requests.exceptions.RequestException as err:
             self.logger.error(f"An error occurred: {err}")
             return None

@@ -1,14 +1,18 @@
+from sre_constants import SUCCESS
 from venv import logger
+from core import question_manager
 from services.llm_client import LLMServiceFactory
 from services.db_client import DBClient
 from utils.logging_utils import LoggingUtils
 from core.prompt_manager import PromptManager
 from core.entity_processor import EntityProcessor
+from core.question_manager import QuestionManager
 import core.agents as Agents
 from core.table_locator import TableLocator
 from core.database_table_manager import DatabaseTableManager
+from core.yaml_table_manager import YamlTableManager
 
-from paths import CONFIG_PATH,PROMPTS_PATH
+from paths import CONFIG_PATH,PROMPTS_PATH,QUESTION_PATH,YAML_DB_INFO_PATH
 
 import yaml
 import json
@@ -22,45 +26,190 @@ with open(config_path, "r") as file:
 logging_config = config.get("logging", {})
 LoggingUtils.setup_logging(logging_config)
 
-excel_path = './data/DataDict.xlsx'
-db_table_manager = DatabaseTableManager(excel_path)
+# excel_path = './data/DataDict.xlsx'
+# db_table_manager = DatabaseTableManager(excel_path)
+db_table_manager = YamlTableManager(YAML_DB_INFO_PATH)
 
 db_client = DBClient()
 
 
 prompt_manager = PromptManager(PROMPTS_PATH)
-model_config = config["models"]['gpt-4o-mini']
-global_config = config["global"]
-agents_config_manager = Agents.AgentsConfigManager(model_config,global_config,prompt_manager)
+question_manager = QuestionManager(QUESTION_PATH)
 
-question = "600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？"
-
-entity_processor = EntityProcessor()
-
+model_config = config["models"]['glm-4']
 print(f"\n测试模型: {model_config['name']}")
-result = entity_processor.process_items(question)
-data = []
-for entry in result:
-    response, db_name = entry
-    if response['count'] >0:
-        data.append(response['data'])
-    print(json.dumps({"Database": db_name, "Response": response}, ensure_ascii=False, indent=4))
+global_config = config["global"]
 
+agents_config_manager = Agents.AgentsConfigManager(model_config,global_config,prompt_manager)
+entity_reference_replacement_agent = Agents.EntityReferenceReplacementAgent()
+answer_rewrite_agent = Agents.AnswerRewriteAgent()
 cot_agent = Agents.CotAgent()
 table_locator = TableLocator()
 sql_generator = Agents.SQLGeneratorAgent()
+sql_regenerator = Agents.SQLReGeneratorAgent()
 
-for subquestion in cot_agent.query(question)[0]['subquestions']:
 
-    result = table_locator.get_table(subquestion)[0]
-    table_description = db_table_manager.get_table_description_by_name(result['table_name'])
-    logger.info(f"Processing subquestion:{subquestion}")
-    table_info = db_table_manager.get_table_info_by_name(result['table_name'])
-    result = sql_generator.query(subquestion,data=data,table_desc=table_description,table_info=table_info)
+
+QUESTION_ID = 9
+
+question_team = question_manager.get_question(QUESTION_ID-1)
+
+entity_processor = EntityProcessor()
+entity_result = entity_processor.process_items(question_team.get_all_question())
+for entry in entity_result:
+    response, db_name = entry
+    if response['count'] == 0:
+        continue
+
+    print(json.dumps({"Database": db_name, "Response": response}, ensure_ascii=False, indent=4))
+    entity_data = response['data']
+
+    db_name_lower = db_name.lower()
+    if 'hk' in db_name_lower:
+            
+        context = {
+            "context":[],
+            "current_question":""
+        }
+        
+        for question in question_team:
+            original_question = question
+            
+            if len(context['context']) > 0:
+                context['current_question'] = question
+                entity_reference_replacement_result = entity_reference_replacement_agent.query(context)
+                if isinstance(entity_reference_replacement_result,list) and len(entity_reference_replacement_result)>0:
+                    question = entity_reference_replacement_result[0].get("rewrited_question",question)
+            cot_result = cot_agent.query(question.get_question())[0]
+
+            answers = {}
+            answers['question'] = cot_result['question']
+            answers['subquestions'] = []
+            for subquestion in cot_result['subquestions']:
+                all_info = []
+                for result in table_locator.get_hk_table(subquestion):
+                    table_description = db_table_manager.get_table_description_by_name(result['table_name'])
+                    table_info = db_table_manager.get_table_info_by_name(result['table_name'])
+                    result['table_description'] = table_description
+                    result['table_info'] = table_info
+                all_info.append(result)
+                logger.info(f"查询到的表的信息:{all_info}")
+                sql = sql_generator.query(subquestion,data=response['data'],info=all_info)
+                result = db_client.query(sql)
+                subquestion['sql_result'] = result['data'] if result['success'] else []
+                subquestion['sql_result_count'] = result['count'] if result['success'] else 0
+                subquestion['sql'] = sql if result['success'] else ""
+                answers['subquestions'].append(subquestion)
+            final_result = answer_rewrite_agent.query([answers])
+            print(final_result)
+            break
+        
+        pass
+    elif 'us' in db_name_lower:
+        context = {
+            "context":[],
+            "current_question":""
+        }
+        
+        for question in question_team:
+            original_question = question
+            
+            if len(context['context']) > 0:
+                context['current_question'] = question
+                entity_reference_replacement_result = entity_reference_replacement_agent.query(context)
+                if isinstance(entity_reference_replacement_result,list) and len(entity_reference_replacement_result)>0:
+                    question = entity_reference_replacement_result[0].get("rewrited_question",question)
+            cot_result = cot_agent.query(question.get_question())[0]
+
+            answers = {}
+            answers['question'] = cot_result['question']
+            answers['subquestions'] = []
+            for subquestion in cot_result['subquestions']:
+                all_info = []
+                for result in table_locator.get_us_table(subquestion):
+                    table_description = db_table_manager.get_table_description_by_name(result['table_name'])
+                    table_info = db_table_manager.get_table_info_by_name(result['table_name'])
+                    result['table_description'] = table_description
+                    result['table_info'] = table_info
+                all_info.append(result)
+                logger.info(f"查询到的表的信息:{all_info}")
+                sql = sql_generator.query(subquestion,data=response['data'],info=all_info)
+                result = db_client.query(sql)
+                subquestion['sql_result'] = result['data'] if result['success'] else []
+                subquestion['sql_result_count'] = result['count'] if result['success'] else 0
+                subquestion['sql'] = sql if result['success'] else ""
+                answers['subquestions'].append(subquestion)
+            final_result = answer_rewrite_agent.query([answers])
+            print(final_result)
+            break
+        pass
+    else:
+        context = {
+            "context":[],
+            "current_question":""
+        }
+        
+        for question in question_team:
+            original_question = question
+            question_str = question.get_question()
+            
+            if len(context['context']) > 0:
+                context['current_question'] = question_str
+                entity_reference_replacement_result = entity_reference_replacement_agent.query(context)
+                if isinstance(entity_reference_replacement_result,list) and len(entity_reference_replacement_result)>0:
+                    question_str = entity_reference_replacement_result[0].get("rewrited_question",question_str)
+            cot_result = cot_agent.query(question_str)[0]
+
+            answers = {}
+            answers['question'] = cot_result['question']
+            answers['subquestions'] = []
+            for subquestion in cot_result['subquestions']:
+                all_info = []
+                for result in table_locator.get_table(subquestion):
+                    table_info = db_table_manager.get_table_info(result['table_name'].lower())
+                all_info.append(table_info)
+                logger.info(f"查询到的表的信息:{all_info}")
+                sql = sql_generator.query(subquestion,data=response['data'],info=all_info)
+                sql_result = db_client.query(sql)
+                
+                while sql_result['success'] == False:
+                    sql=  sql_regenerator.query(subquestion,data=response['data'],info=all_info,SQL=sql,error_detail=sql_result['detail'])
+                    sql_result = db_client.query(sql)
+                    
+                subquestion['sql_result'] = sql_result['data'] if sql_result['success'] else []
+                subquestion['sql_result_count'] = sql_result['count'] if sql_result['success'] else 0
+                subquestion['sql'] = sql if sql_result['success'] else ""
+                answers['subquestions'].append(subquestion)
+            final_result = answer_rewrite_agent.query([answers])
+            print(json.dumps(final_result, indent=4,ensure_ascii=False))
+            context['context'].append({
+                "id": original_question.get_id(),
+                "question": original_question.get_question(),
+                "answer": final_result[0]['answer'] if len(final_result)>0 else ""
+            })
+            
+        pass
     
-    result = db_client.query(result)
-    
-    print(result)
 
-# TODO
-# 重大事项相关需要涉及到多个表格
+
+
+# for subquestion in cot_agent.query(question)[0]['subquestions']:
+# question
+#     all_info = []
+#     for result in table_locator.get_table(subquestion):
+#         table_description = db_table_manager.get_table_description_by_name(result['table_name'])
+#         logger.info(f"Processing subquestion:{subquestion}")
+#         table_info = db_table_manager.get_table_info_by_name(result['table_name'])
+#         result['table_description'] = table_description
+#         result['table_info'] = table_info
+#         all_info.append(result)
+#     logger.info(f"查询到的表的信息:{all_info}")
+#     sql = sql_generator.query(subquestion,data=data,info=all_info)
+#     result = db_client.query(sql)
+#     if result['success']:
+#         result['subquestion'] = subquestion['subquestion']
+#         result['sql'] = sql
+#     print(json.dumps(result, indent=4,ensure_ascii=False))
+
+# # TODO
+# # 重大事项相关需要涉及到多个表格

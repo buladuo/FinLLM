@@ -16,6 +16,12 @@ class Question:
             return self.team[index]
         else:
             raise IndexError("Index out of range for sub-questions.")
+        
+    def get_all_question(self) -> str:
+        all_question = ""
+        for subquestion in self.team:
+            all_question += subquestion.question
+        return all_question
     
     def __iter__(self):
         """使 Question 实例可迭代。这里迭代的是其子问题。"""
@@ -48,7 +54,7 @@ class QuestionManager:
         else:
             print(f"文件 {self.file_path} 不存在。")
 
-    def get_question(self, index):
+    def get_question(self, index) -> Question:
         """获取指定索引的问题。"""
         if index < len(self.questions):
             return self.questions[index]

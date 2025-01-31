@@ -1,7 +1,7 @@
 # 全局配置
 global:
   default_model: "glm-4-plus"  # 默认使用的模型名称
-  request_timeout: 10          # 请求超时时间（秒）
+  request_timeout: 30          # 请求超时时间（秒）
   retries: 3                   # 失败时的重试次数
   logs_path: "./logs/"         # 日志存储路径
 
@@ -47,21 +47,21 @@ models:
     api_base: "http://127.0.0.1:8011/v1" 
     api_key: "XATd9u91Ag5eKKe3Nufbazzp_8Gn1gsBy1ogROHqapzX0CcdoyjNa$rW04pVMVkcWSVq*3ZvwxOZ0"      # 模型后端的 API 密钥
     type: openai
-    rpm: 10
+    rpm: 5
 
   kimi:
     name: "kimi"          
     api_base: "http://127.0.0.1:8012/v1"  
     api_key: "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1c2VyLWNlbnRlciIsImV4cCI6MTc0MzcwMjUwNiwiaWF0IjoxNzM1OTI2NTA2LCJqdGkiOiJjdHMyNXFuZnRhZWU3aDAzOGtuMCIsInR5cCI6InJlZnJlc2giLCJhcHBfaWQiOiJraW1pIiwic3ViIjoiY3A5dnNjODNyMDdkcnU1dmNtbWciLCJzcGFjZV9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWwwIiwiYWJzdHJhY3RfdXNlcl9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWtnIiwicm9sZXMiOlsidmlkZW9fZ2VuX2FjY2VzcyJdLCJzc2lkIjoiMTczMDMxMDI0NDc0NzEwODEyMSIsImRldmljZV9pZCI6Ijc0NTU3NDcyNjIyOTE5MDU3OTIifQ.De8qRs90hz9PnokrKcppYswzKgGis2mvwqpT4RdOdweGqmAk4bvBySp5l6xeCzkBjyr_3zvGw7DavSN8Y4RGeA"    # 模型后端的 API 密钥
     type: openai
-    rpm: 10
+    rpm: 5
 
   glm-4:
     name: "glm-4"          
     api_base: "http://127.0.0.1:8014/v1"  
     api_key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ODIyYmY4NmZmZjc0ZDg2OTk2ZDU0NTVlOTE2ZDc2ZSIsImV4cCI6MTc1MTUyMzUzNiwibmJmIjoxNzM1OTcxNTM2LCJpYXQiOjE3MzU5NzE1MzYsImp0aSI6ImVhYjVjNjVmY2JiYjQ4NmJiMmI0NzMyMGNlMjg1MWYyIiwidWlkIjoiNjc3OGQyZDA4NmUyNGVmOGEwMzUzNGEwIiwidHlwZSI6InJlZnJlc2gifQ.wL0trV8aCAEGx5C4gAQQb6kAxE2HT9bobzFyNokLjWQ"    # 模型后端的 API 密钥
     type: openai
-    rpm: 10
+    rpm: 5
 
 
   glm-4-plus:
@@ -69,39 +69,39 @@ models:
     api_base: "http://127.0.0.1:8014/v1"  
     api_key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ODIyYmY4NmZmZjc0ZDg2OTk2ZDU0NTVlOTE2ZDc2ZSIsImV4cCI6MTc1MTUyMzUzNiwibmJmIjoxNzM1OTcxNTM2LCJpYXQiOjE3MzU5NzE1MzYsImp0aSI6ImVhYjVjNjVmY2JiYjQ4NmJiMmI0NzMyMGNlMjg1MWYyIiwidWlkIjoiNjc3OGQyZDA4NmUyNGVmOGEwMzUzNGEwIiwidHlwZSI6InJlZnJlc2gifQ.wL0trV8aCAEGx5C4gAQQb6kAxE2HT9bobzFyNokLjWQ"    # 模型后端的 API 密钥
     type: openai
-    rpm: 10
+    rpm: 5
 
   glm-4-zero:
     name: "glm-4-zero"          
     api_base: "http://127.0.0.1:8014/v1"  
     api_key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ODIyYmY4NmZmZjc0ZDg2OTk2ZDU0NTVlOTE2ZDc2ZSIsImV4cCI6MTc1MTUyMzUzNiwibmJmIjoxNzM1OTcxNTM2LCJpYXQiOjE3MzU5NzE1MzYsImp0aSI6ImVhYjVjNjVmY2JiYjQ4NmJiMmI0NzMyMGNlMjg1MWYyIiwidWlkIjoiNjc3OGQyZDA4NmUyNGVmOGEwMzUzNGEwIiwidHlwZSI6InJlZnJlc2gifQ.wL0trV8aCAEGx5C4gAQQb6kAxE2HT9bobzFyNokLjWQ"    # 模型后端的 API 密钥
     type: openai
-    rpm: 10
+    rpm: 5
 
   glm-4-think:
     name: "glm-4-think"          
     api_base: "http://127.0.0.1:8014/v1"  
     api_key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ODIyYmY4NmZmZjc0ZDg2OTk2ZDU0NTVlOTE2ZDc2ZSIsImV4cCI6MTc1MTUyMzUzNiwibmJmIjoxNzM1OTcxNTM2LCJpYXQiOjE3MzU5NzE1MzYsImp0aSI6ImVhYjVjNjVmY2JiYjQ4NmJiMmI0NzMyMGNlMjg1MWYyIiwidWlkIjoiNjc3OGQyZDA4NmUyNGVmOGEwMzUzNGEwIiwidHlwZSI6InJlZnJlc2gifQ.wL0trV8aCAEGx5C4gAQQb6kAxE2HT9bobzFyNokLjWQ"    # 模型后端的 API 密钥
     type: openai
-    rpm: 10
+    rpm: 5
 
   doubao:
     name: "doubao"            
     api_base: "http://127.0.0.1:8013/v1"  
     api_key: "59c23e5f7c59e74fe511cf99e4379115"    
     type: openai
-    rpm: 10
+    rpm: 5
   
   deepseek:
     name: "deepseek"
     api_base: "http://127.0.0.1:8015/v1"  
     api_key: "eUcQbrjW28xhK7sVkgF4VQgZ4W2W+hKkwnhIDtme4lQvcis6/xUgvxx5lEyBE1JA"  
     type: openai
-    rpm: 10
+    rpm: 5
 
 database:
   api_url: "https://comm.chatglm.cn/finglm2/api/query"  
-  api_key: "c623398b4b9a4f86a3bb766f158e77b5"             
+  api_key: "e7c2a500cdbb4550b3ea1bcf9ba1cbdc"             
   timeout: 15                                  
 
 logging:

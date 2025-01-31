@@ -30,37 +30,38 @@ class LLMService(ABC):
         self.logger = logging.getLogger(self.__class__.__name__)
 
         # 初始化 OpenAI 客户端
-        http_client = httpx.Client()
+        # http_client = httpx.Client()
+        http_client = self._get_proxy()
         self.client = OpenAI(
             base_url=self.base_url,
             api_key=self.api_key,
             http_client=http_client
         )
     
-    def _get_proxy(self):
-
-        # 检查环境变量
+    def _get_proxy(self) -> httpx.Client:
+        """获取并配置代理客户端"""
         proxy_url = os.getenv("ALL_PROXY") or os.getenv("HTTP_PROXY") or os.getenv("HTTPS_PROXY")
 
-        # 根据代理设置创建客户端
         if proxy_url:
             if proxy_url.startswith("socks://"):
                 # 更新代理 URL 为 socks5
                 proxy_url = proxy_url.replace("socks://", "socks5://", 1)
-                print(f"Updated proxy URL to use socks5: {proxy_url}")
+                self.logger.info(f"Updated proxy URL to use socks5: {proxy_url}")
 
             # 配置 HTTPX 客户端
             if proxy_url.startswith("socks5://"):
-                print(f"Detected SOCKS5 proxy: {proxy_url}")
+                self.logger.info(f"Detected SOCKS5 proxy: {proxy_url}")
                 transport = SyncProxyTransport.from_url(proxy_url)
                 httpx_client = httpx.Client(transport=transport)
             else:
                 # HTTP/HTTPS 代理
-                print(f"Detected HTTP/HTTPS proxy: {proxy_url}")
+                self.logger.info(f"Detected HTTP/HTTPS proxy: {proxy_url}")
                 httpx_client = httpx.Client(proxies=proxy_url)
         else:
-            print("No proxy detected, using direct connection")
+            self.logger.info("No proxy detected, using direct connection")
             httpx_client = httpx.Client()  # 默认使用直接连接
+        
+        return httpx_client
 
     def _rate_limit(self):
         """
