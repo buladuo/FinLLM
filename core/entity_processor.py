@@ -1,5 +1,6 @@
 # entity_processor.py
 
+from builtins import len
 import json
 import logging
 import core.agents as Agents
@@ -107,6 +108,15 @@ class EntityProcessor:
 
         # 过滤空值
         res_list = [i for i in res_list if i]
+        if len(res_list) == 0:
+            res_list.extend({
+                "Database": "ConstantDB.SecuMain",
+                "Response": {
+                    "success": True,
+                    "data": [],
+                    "count": 1
+                }
+            })
         
         self.logger.info(f'Processing completed with results from tables: {res_list}')
         return res_list

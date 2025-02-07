@@ -1,7 +1,7 @@
 # 全局配置
 global:
   default_model: "glm-4-plus"  # 默认使用的模型名称
-  request_timeout: 30          # 请求超时时间（秒）
+  request_timeout: 60          # 请求超时时间（秒）
   retries: 3                   # 失败时的重试次数
   logs_path: "./logs/"         # 日志存储路径
 
@@ -48,9 +48,30 @@ models:
     api_key: "XATd9u91Ag5eKKe3Nufbazzp_8Gn1gsBy1ogROHqapzX0CcdoyjNa$rW04pVMVkcWSVq*3ZvwxOZ0"      # 模型后端的 API 密钥
     type: openai
     rpm: 5
+  
+  qwen-7b:
+    name: "Qwen/Qwen2-7B-Instruct"          
+    api_base: "https://api.siliconflow.cn/v1"
+    api_key: "sk-pmpxekdgnabxqleqymrgsdijeprbmjvwhuatplnmftdmezpx"  
+    type: openai
+    rpm: 5
 
   kimi:
     name: "kimi"          
+    api_base: "http://127.0.0.1:8012/v1"  
+    api_key: "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1c2VyLWNlbnRlciIsImV4cCI6MTc0MzcwMjUwNiwiaWF0IjoxNzM1OTI2NTA2LCJqdGkiOiJjdHMyNXFuZnRhZWU3aDAzOGtuMCIsInR5cCI6InJlZnJlc2giLCJhcHBfaWQiOiJraW1pIiwic3ViIjoiY3A5dnNjODNyMDdkcnU1dmNtbWciLCJzcGFjZV9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWwwIiwiYWJzdHJhY3RfdXNlcl9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWtnIiwicm9sZXMiOlsidmlkZW9fZ2VuX2FjY2VzcyJdLCJzc2lkIjoiMTczMDMxMDI0NDc0NzEwODEyMSIsImRldmljZV9pZCI6Ijc0NTU3NDcyNjIyOTE5MDU3OTIifQ.De8qRs90hz9PnokrKcppYswzKgGis2mvwqpT4RdOdweGqmAk4bvBySp5l6xeCzkBjyr_3zvGw7DavSN8Y4RGeA"    # 模型后端的 API 密钥
+    type: openai
+    rpm: 5
+
+  kimi-research:
+    name: "kimi-research"          
+    api_base: "http://127.0.0.1:8012/v1"  
+    api_key: "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1c2VyLWNlbnRlciIsImV4cCI6MTc0MzcwMjUwNiwiaWF0IjoxNzM1OTI2NTA2LCJqdGkiOiJjdHMyNXFuZnRhZWU3aDAzOGtuMCIsInR5cCI6InJlZnJlc2giLCJhcHBfaWQiOiJraW1pIiwic3ViIjoiY3A5dnNjODNyMDdkcnU1dmNtbWciLCJzcGFjZV9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWwwIiwiYWJzdHJhY3RfdXNlcl9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWtnIiwicm9sZXMiOlsidmlkZW9fZ2VuX2FjY2VzcyJdLCJzc2lkIjoiMTczMDMxMDI0NDc0NzEwODEyMSIsImRldmljZV9pZCI6Ijc0NTU3NDcyNjIyOTE5MDU3OTIifQ.De8qRs90hz9PnokrKcppYswzKgGis2mvwqpT4RdOdweGqmAk4bvBySp5l6xeCzkBjyr_3zvGw7DavSN8Y4RGeA"    # 模型后端的 API 密钥
+    type: openai
+    rpm: 5
+
+  kimi-k1:
+    name: "kimi-k1"          
     api_base: "http://127.0.0.1:8012/v1"  
     api_key: "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1c2VyLWNlbnRlciIsImV4cCI6MTc0MzcwMjUwNiwiaWF0IjoxNzM1OTI2NTA2LCJqdGkiOiJjdHMyNXFuZnRhZWU3aDAzOGtuMCIsInR5cCI6InJlZnJlc2giLCJhcHBfaWQiOiJraW1pIiwic3ViIjoiY3A5dnNjODNyMDdkcnU1dmNtbWciLCJzcGFjZV9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWwwIiwiYWJzdHJhY3RfdXNlcl9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWtnIiwicm9sZXMiOlsidmlkZW9fZ2VuX2FjY2VzcyJdLCJzc2lkIjoiMTczMDMxMDI0NDc0NzEwODEyMSIsImRldmljZV9pZCI6Ijc0NTU3NDcyNjIyOTE5MDU3OTIifQ.De8qRs90hz9PnokrKcppYswzKgGis2mvwqpT4RdOdweGqmAk4bvBySp5l6xeCzkBjyr_3zvGw7DavSN8Y4RGeA"    # 模型后端的 API 密钥
     type: openai
@@ -92,16 +113,49 @@ models:
     type: openai
     rpm: 5
   
-  deepseek:
-    name: "deepseek"
+  # deepseek:
+  #   name: "deepseek"
+  #   api_base: "http://127.0.0.1:8015/v1"  
+  #   api_key: "eUcQbrjW28xhK7sVkgF4VQgZ4W2W+hKkwnhIDtme4lQvcis6/xUgvxx5lEyBE1JA"  
+  #   type: openai
+  #   rpm: 5
+  deepseek-chat:
+    name: "deepseek-chat"
+    api_base: "https://api.deepseek.com/v1"  
+    api_key: "sk-a14dd5cce0ef4119bb0d1cfde15742b9"  
+    type: openai
+    rpm: 256
+  
+  # deepseek-chat:
+  #   name: "deepseek-chat"
+  #   api_base: "https://api.deepseek.com/v1"  
+  #   api_key: "sk-a14dd5cce0ef4119bb0d1cfde15742b9"  
+  #   type: openai
+  #   rpm: 256
+
+
+  silicon-deepseek:
+    name: "deepseek-ai/DeepSeek-V3"
+    api_base: "https://api.siliconflow.cn/v1"
+    api_key: "sk-pmpxekdgnabxqleqymrgsdijeprbmjvwhuatplnmftdmezpx"  
+    type: openai
+    rpm: 5
+  deepseek-r1:
+    name: "deepseek-r1"
     api_base: "http://127.0.0.1:8015/v1"  
-    api_key: "eUcQbrjW28xhK7sVkgF4VQgZ4W2W+hKkwnhIDtme4lQvcis6/xUgvxx5lEyBE1JA"  
+    api_key: "eUcQbrjW28xhK7sVkgF4VQgZ4W2W+hKkwnhIDtme4lQvcis6/xUgvxx5lEyBE1JA"   
+    type: openai
+    rpm: 5
+  deepseek-v3:
+    name: "deepseek-v3"
+    api_base: "http://127.0.0.1:8015/v1"  
+    api_key: "eUcQbrjW28xhK7sVkgF4VQgZ4W2W+hKkwnhIDtme4lQvcis6/xUgvxx5lEyBE1JA"   
     type: openai
     rpm: 5
 
 database:
   api_url: "https://comm.chatglm.cn/finglm2/api/query"  
-  api_key: "e7c2a500cdbb4550b3ea1bcf9ba1cbdc"             
+  api_key: "7697655eec7a499b9a59faf1adf9ea10"             
   timeout: 15                                  
 
 logging:
