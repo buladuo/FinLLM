@@ -1,268 +1,169 @@
 from abc import ABC, abstractmethod
+from ast import List
 from tkinter import NO
+from unittest import result
+
+from tenacity import retry
 from services.llm_client import LLMServiceFactory
 from utils.json_extractor import JsonExtractor
 from utils.sql_extractor import SqlExtractor
 import logging
 
-# 配置管理类
-class AgentsConfigManager:
-    _instance = None
-    _initialized = False  # 用于标记是否已经初始化
-
-    def __new__(cls, *args, **kwargs):
-        # 确保只有一个实例被创建
-        if cls._instance is None:
-            cls._instance = super(AgentsConfigManager, cls).__new__(cls)
-        return cls._instance
-
-    def __init__(self, model_config=None, global_config=None, prompt_manager=None):
-        # 只在第一次创建实例时进行初始化
-        if not self._initialized:
-            if model_config is not None and global_config is not None and prompt_manager is not None:
-                self.model_name = model_config['name']
-                self.model_config = model_config
-                self.global_config = global_config
-                self.prompt_manager = prompt_manager
-                self._initialized = True
-            else:
-                raise ValueError("Insufficient parameters to initialize AgentsConfigManager")
-
-    @classmethod
-    def get_instance(cls):
-        return cls._instance
-
-
-
 class BaseAgent(ABC):
-    def __init__(self):
-        config = AgentsConfigManager()
-        self.model_name = config.model_name
-        self.model_config = config.model_config
-        self.prompt_manager = config.prompt_manager
-        self.global_config = config.global_config
+    def __init__(self, model_config, global_config, prompt_manager):
+        self.model_name = model_config['name']
+        self.model_config = model_config
+        self.global_config = global_config
+        self.prompt_manager = prompt_manager
         
         self.logger = logging.getLogger(self.__class__.__name__)
-
-    @abstractmethod
-    def query(self, question):
-        pass
-
-
-class EntityRecognitionAgent(BaseAgent):
-    def __init__(self):
-        super().__init__()
+        
         self.service = LLMServiceFactory.create_service(self.model_config, self.global_config)
         self.json_extractor = JsonExtractor()
-        self.json_repair_agent = JsonFormatRepairAgent()
+        self.sql_extractor = SqlExtractor()
+        
+        self.retries = 3
 
-    def query(self, question, prompt_id=None):
-        prompt = self.prompt_manager.get_prompt('entity_recognition', prompt_id)['content']
-        response = self.service.query(prompt, question)
-        self.logger.info(f"Received response: {response}.")
+    @abstractmethod
+    def query(self, question)->list:
+        pass
+
+    def _handle_json_response(self, response)->list:
         extract_response = self.json_extractor.extract_json(response, model_name=self.model_name)
-        # 如果返回的是空字典，则调用JsonFormatRepairAgent进行修复
-        self.logger.info(f"Your received is {extract_response}")
-        if not extract_response or isinstance(extract_response,list) == False:  # 如果 extract_response 为 []
-            self.logger.warning("Received empty JSON response, attempting to repair.")
-            extract_response = self.json_repair_agent.query(response)
-            
-            # 再次检查修复后的响应是否为空
-            if not extract_response or isinstance(extract_response,list) == False:  # 如果仍然为空
-                self.logger.error("Repair attempt also returned empty response.")
-                return []  # 或者根据需要返回一个合适的默认值
+        if not extract_response or not isinstance(extract_response, list):
+            self.logger.warning("Received empty or invalid JSON response, attempting to repair.")
+            system_prompt = self.prompt_manager.get_prompt('json_repair')['content']
+            messages = [{"role": "system", "content": str(system_prompt)},
+                        {"role": "user", "content": str(response)}]
+            extract_response = self.service.query(messages)
+            repaired_response = self.json_extractor.extract_json(extract_response, model_name=self.model_name)
+            if not repaired_response or not isinstance(repaired_response, list):
+                self.logger.warning("Repair attempt also returned empty or invalid response.")
+                return []
+            return repaired_response
+        
         return extract_response
 
+    def _query_and_extract_json(self, prompt_type, message, prompt_id=None):
+        system_prompt = self.prompt_manager.get_prompt(prompt_type, prompt_id)['content']
+        messages = [{"role": "system", "content": str(system_prompt)}]
+        messages.extend(message)
+        self.logger.debug(f"Send request: {messages}.")
+        
+        response = self.service.query(messages)
+        self.logger.info(f"Received response: {response}.")
+        return self._handle_json_response(response)
+
+    def _handle_sql_response(self, response):
+        extract_response = self.sql_extractor.extract_sql(response, model_name=self.model_name)
+
+        if not extract_response:
+            self.logger.warning("Received empty SQL response, attempting to repair.")
+            system_prompt = self.prompt_manager.get_prompt('sql_repair')['content']
+            messages = [{"role": "system", "content": str(system_prompt)},
+                        {"role": "user", "content": str(response)}]
+            extract_response = self.service.query(messages)
+            repaired_response = self.sql_extractor.extract_sql(extract_response, model_name=self.model_name)
+            if not repaired_response:
+                self.logger.warning("Repair attempt also returned empty response.")
+                return []
+            return repaired_response
+        
+        return extract_response
+
+    def _query_and_extract_sql(self, prompt_type, message, prompt_id=None):
+        system_prompt = self.prompt_manager.get_prompt(prompt_type, prompt_id)['content']
+        messages = [{"role": "system", "content": system_prompt}]
+        messages.extend(message)
+        self.logger.debug(f"Send request: {messages}.")
+        
+        response = self.service.query(messages)
+        self.logger.info(f"Received response: {response}.")
+        return self._handle_sql_response(response)
+    
+
+class EntityRecognitionAgent(BaseAgent):
+    def query(self, message, prompt_id=None):
+        return self._query_and_extract_json('entity_recognition', message, prompt_id)
 
 
 class QuestionClassificationAgent(BaseAgent):
-    def __init__(self):
-        super().__init__()
-        self.service = LLMServiceFactory.create_service(self.model_config, self.global_config)
-        self.json_extractor = JsonExtractor()
-        self.json_repair_agent = JsonFormatRepairAgent()
-
-    def query(self, question, prompt_id=None):
-        prompt = self.prompt_manager.get_prompt('db_cls', prompt_id)['content']
-        response = self.service.query(prompt, question)
-        self.logger.info(f"Received response: {response}.")
-        extract_response = self.json_extractor.extract_json(response, model_name=self.model_name)
-        # 检查提取的响应是否为空
-        if not extract_response:  # 如果 extract_response 为 []
-            self.logger.warning("Received empty JSON response, attempting to repair.")
-            extract_response = self.json_repair_agent.query(response)
-            
-            # 再次检查修复后的响应是否为空
-            if not extract_response:  # 如果仍然为空
-                self.logger.error("Repair attempt also returned empty response.")
-                return []  # 或者根据需要返回一个合适的默认值
-
-        return extract_response
-
-
+    def query(self, message, prompt_id=None):
+        return self._query_and_extract_json('db_cls', message, prompt_id)
+    
+    
 class JsonFormatRepairAgent(BaseAgent):
-    def __init__(self):
-        super().__init__()
-        self.service = LLMServiceFactory.create_service(self.model_config, self.global_config)
-        self.json_extractor = JsonExtractor()
+    def query(self, message, prompt_id=None):
+        return self._query_and_extract_json('json_repair', message, prompt_id)
 
-    def query(self, question,prompt_id=None):
-        prompt = self.prompt_manager.get_prompt('json_repair', prompt_id)['content']  # 提示说明
-        response = self.service.query(prompt, question)  # 根据问题生成修复响应
-        self.logger.info(f"Received repair response: {response}.")
-        repaired_response = self.json_extractor.extract_json(response, model_name=self.model_name)
-        return repaired_response
 
 class SQLFormatRepairAgent(BaseAgent):
-    def __init__(self):
-        super().__init__()
-        self.service = LLMServiceFactory.create_service(self.model_config, self.global_config)
-        self.sql_extractor = SqlExtractor()
+    def query(self, message, prompt_id=None):
+        return self._query_and_extract_sql('sql_repair', message, prompt_id)
 
-    def query(self, question,prompt_id=None):
-        prompt = self.prompt_manager.get_prompt('json_repair', prompt_id)['content']  # 提示说明
-        response = self.service.query(prompt, question)  # 根据问题生成修复响应
-        self.logger.info(f"Received repair response: {response}.")
-        repaired_response = self.sql_extractor.extract_sql(response, model_name=self.model_name)
-        return repaired_response
     
 class AnswerRewriteAgent(BaseAgent):
-    def __init__(self):
-        super().__init__()
-        self.service = LLMServiceFactory.create_service(self.model_config, self.global_config)
-        self.json_extractor = JsonExtractor()
-        self.json_repair_agent = JsonFormatRepairAgent()
-    
-    def query(self, question, prompt_id=None):
-        prompt = self.prompt_manager.get_prompt('answer_rewrite', prompt_id)['content']
-        response = self.service.query(prompt, question)
-        self.logger.info(f"Received response: {response}.")
-        extract_response = self.json_extractor.extract_json(response, model_name=self.model_name)
-        # 检查提取的响应是否为空
-        if not extract_response or isinstance(extract_response,list) == False:  # 如果 extract_response 为 []
-            self.logger.warning("Received error format response, attempting to repair.")
-            extract_response = self.json_repair_agent.query(response)
-            
-            # 再次检查修复后的响应是否为空
-            if not extract_response or isinstance(extract_response,list) == False:  # 如果仍然为空
-                self.logger.error("Repair attempt also returned error format.")
-                return []  # 或者根据需要返回一个合适的默认值
-        return extract_response
+    def query(self, message, prompt_id=None):
+        # self.logger.info(f"Your message:{message}")
+        
+        return self._query_and_extract_json('answer_rewrite', message, prompt_id)
     
     
 class EntityReferenceReplacementAgent(BaseAgent):
-    def __init__(self):
-        super().__init__()
-        self.service = LLMServiceFactory.create_service(self.model_config, self.global_config)
-        self.json_extractor = JsonExtractor()
-        self.json_repair_agent = JsonFormatRepairAgent()
-    
-    def query(self, question, prompt_id=None):
-        prompt = self.prompt_manager.get_prompt('entity_reference_replacement', prompt_id)['content']
-        response = self.service.query(prompt, question)
-        self.logger.info(f"Received response: {response}.")
-        extract_response = self.json_extractor.extract_json(response, model_name=self.model_name)
-        # 检查提取的响应是否为空
-        if not extract_response or isinstance(extract_response,list) == False:  # 如果 extract_response 为 []
-            self.logger.warning("Received empty JSON response, attempting to repair.")
-            extract_response = self.json_repair_agent.query(response)
-            
-            # 再次检查修复后的响应是否为空
-            if not extract_response or isinstance(extract_response,list) == False:  # 如果仍然为空
-                self.logger.error("Repair attempt also returned empty response.")
-                return []  # 或者根据需要返回一个合适的默认值
-        return extract_response
+    def query(self, message, prompt_id=None):
+        return self._query_and_extract_json('entity_reference_replacement', message, prompt_id)
 
 class TableLocatorAgent(BaseAgent):
-    def __init__(self):
-        super().__init__()
-        self.service = LLMServiceFactory.create_service(self.model_config, self.global_config)
-        self.json_extractor = JsonExtractor()
-        self.json_repair_agent = JsonFormatRepairAgent()
-
-    def query(self, question, type, prompt_id=None):
-        prompt = self.prompt_manager.get_prompt(type, prompt_id)['content']  # 提示说明
-        database_name = self.prompt_manager.get_prompt(type, prompt_id)['database_name']
-        response = self.service.query(prompt, question)
-        self.logger.info(f"Received response: {response}.")
+    def query(self, message, type, prompt_id=None):
         
-        # 提取 JSON 响应
-        extract_response = self.json_extractor.extract_json(response, model_name=self.model_name)
+        result = self._query_and_extract_json(type, message, prompt_id)
+        retry_times = 0
+        while not result and retry_times < self.retries:
+            result = self._query_and_extract_json(type, message, prompt_id)
+            retry_times += 1
         
-        # 检查提取的响应是否为空
-        if not extract_response or isinstance(extract_response,list) == False:  # 如果 extract_response 为 []
-            self.logger.warning("Received empty JSON response, attempting to repair.")
-            extract_response = self.json_repair_agent.query(response)
-            
-            # 再次检查修复后的响应是否为空
-            if not extract_response or isinstance(extract_response,list) == False:  # 如果仍然为空
-                self.logger.error("Repair attempt also returned empty response.")
-                return []  # 或者根据需要返回一个合适的默认值
-        return extract_response
+        return result
 
-    
+
 class SQLGeneratorAgent(BaseAgent):
-    def __init__(self):
-        super().__init__()
-        self.service = LLMServiceFactory.create_service(self.model_config, self.global_config)
-        self.sql_extractor = SqlExtractor()
-        self.sql_repair_agent = SQLFormatRepairAgent()
-
-    def query(self, question, prompt_id=None, data = None, info=None):
-        prompt = self.prompt_manager.get_prompt('sql_generator', prompt_id)['content']
+    def query(self, message, prompt_id=None):
+        return self._query_and_extract_sql('sql_generator', message, prompt_id)
+    def query_json_format(self, message, prompt_id='json_format'):
         
-        question =  f"{question['subquestion']}\n已知信息：\n{data}\n涉及的表的信息：\n{info}\n"
+        result = self._query_and_extract_json('sql_generator', message, prompt_id)
         
-        self.logger.info(question)
-        
-        response = self.service.query(prompt, question)
-        self.logger.info(f"Received response: {response}.")
-        extract_response = self.sql_extractor.extract_sql(response, model_name=self.model_name)
-        if not extract_response:  # response是{}
-            self.logger.warning("Received empty JSON response, attempting to repair.")
-            extract_response = self.sql_repair_agent.query(response)
-        return extract_response
+        if prompt_id == 'json_format':
+            if not isinstance(result,list):
+                self.logger.warning("Query result is not json format!")
+                return []
+        return result
     
-class SQLReGeneratorAgent(BaseAgent):
-    def __init__(self):
-        super().__init__()
-        self.service = LLMServiceFactory.create_service(self.model_config, self.global_config)
-        self.sql_extractor = SqlExtractor()
-        self.sql_repair_agent = SQLFormatRepairAgent()
 
-    def query(self, question, prompt_id=None, data = None, info=None,SQL="",error_detail=None):
-        prompt = self.prompt_manager.get_prompt('sql_regenerator', prompt_id)['content']
-        
-        question =  f"{question['subquestion']}\n已知信息：\n{data}\n涉及的表的信息：\n{info}\nSQL:\n{SQL}\n错误信息:\n{error_detail}"
-        
-        self.logger.info(question)
-        
-        response = self.service.query(prompt, question)
-        self.logger.info(f"Received response: {response}.")
-        extract_response = self.sql_extractor.extract_sql(response, model_name=self.model_name)
-        if not extract_response:  # response是{}
-            self.logger.warning("Received empty JSON response, attempting to repair.")
-            extract_response = self.sql_repair_agent.query(response)
-        return extract_response
+class SQLReGeneratorAgent(BaseAgent):
+    def query(self, message, prompt_id=None):
+        return self._query_and_extract_sql('sql_regenerator', message, prompt_id)
 
 class CotAgent(BaseAgent):
-    def __init__(self):
-        super().__init__()
-        self.service = LLMServiceFactory.create_service(self.model_config, self.global_config)
-        self.json_extractor = JsonExtractor()
-        self.json_repair_agent = JsonFormatRepairAgent()
+    def query(self, message, prompt_id=None):
+        
+        cot_result = self._query_and_extract_json('cot', message, prompt_id)
+        if not isinstance(cot_result,list):
+            return []
+        
+        id = 1
+        finall_cot  = {
+            "question": "",
+            "subquestions": []
+        }
+        
+        for cot_item in cot_result:
+            finall_cot["question"] += cot_item['question']
+            for subquestion in cot_item['subquestions']:
+                finall_cot['subquestions'].append({
+                    "id": id,
+                    "subquestion": subquestion['subquestion']
+                })
+                id += 1
+        
+        return [finall_cot]
 
-    def query(self, question, prompt_id=None):
-        prompt = self.prompt_manager.get_prompt('cot', prompt_id)['content']
-        response = self.service.query(prompt, question)
-        self.logger.info(f"Received response: {response}.")
-        extract_response = self.json_extractor.extract_json(response, model_name=self.model_name)
-        if not extract_response or isinstance(extract_response,list) == False:  # 如果 extract_response 为 []
-            self.logger.warning("Received empty JSON response, attempting to repair.")
-            extract_response = self.json_repair_agent.query(response)
-            
-            # 再次检查修复后的响应是否为空
-            if not extract_response or isinstance(extract_response,list) == False:  # 如果仍然为空
-                self.logger.error("Repair attempt also returned empty response.")
-                return []  # 或者根据需要返回一个合适的默认值
-        return extract_response

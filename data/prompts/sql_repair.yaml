@@ -1,5 +1,5 @@
 default: 1
-type: json_repair
+type: sql_repair
 
 prompts:
   - id: 1

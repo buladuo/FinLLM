@@ -1,3 +1,4 @@
+from ast import Dict
 import requests
 from sqlalchemy import false
 import yaml
@@ -7,17 +8,13 @@ import os
 from paths import CONFIG_PATH
 
 class DBClient:
-    def __init__(self, path=CONFIG_PATH):
-        self.config = self.load_config(path)
-        self.api_url = self.config['database']['api_url']
-        self.api_key = self.config['database']['api_key']
-        self.timeout = self.config['database']['timeout']
+    def __init__(self, db_client_config:Dict):
+        self.api_url = db_client_config.get('api_url')
+        self.api_key = db_client_config.get('api_key')
+        self.timeout = db_client_config.get('timeout')
 
         self.logger = logging.getLogger(self.__class__.__name__)
 
-    def load_config(self, path):
-        with open(path, 'r', encoding='utf-8') as file:
-            return yaml.safe_load(file)
 
     def query(self, sql_str,limit = 999):
         headers = {

@@ -19,7 +19,7 @@ class YamlTableManager:
                         data = yaml.safe_load(file)
                         if data:
                             database_info.append(data)
-                            self.logger.info(f"Loaded data from {filename}")
+                            self.logger.debug(f"Loaded data from {filename}")
         except Exception as e:
             self.logger.error(f"Failed to load YAML files: {e}")
         return database_info

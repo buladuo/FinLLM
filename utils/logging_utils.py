@@ -19,7 +19,7 @@ class LoggingUtils:
 
         logging.basicConfig(
             level=getattr(logging, log_level, logging.INFO),
-            format="%(asctime)s[%(levelname)s][%(filename)s:%(funcName)s:%(lineno)d] - %(message)s",
+            format="[%(levelname)s][%(filename)s:%(funcName)s:%(lineno)d] - %(message)s",
             handlers=[
                 logging.FileHandler(log_file, encoding="utf-8")
             ]

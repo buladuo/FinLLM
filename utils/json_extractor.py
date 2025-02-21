@@ -1,3 +1,4 @@
+from ast import List
 import re
 import json
 import logging
@@ -11,57 +12,62 @@ class JsonExtractor:
         self.fallback_pattern = r'\[.*?\]'
         self.logger = logging.getLogger(self.__class__.__name__)
 
-    def extract_json(self, text: str, model_name=None):
-        """从输入文本中提取 JSON 字符串"""
-        self.logger.debug(f"开始提取 JSON 数据，输入文本: {text}")
-        
-        text = text.replace('\n', ' ')
-        text = self.preprocess(text, model_name)
-        
-        # 尝试匹配 ```json [{xxx}] ``` 格式的 JSON 块
-        match = re.search(self.json_pattern, text, re.DOTALL)
+    def extract_json(self, text: str, model_name: str = None)->list:
+        """Extract JSON data from the input text."""
+        if not text or not isinstance(text, str):
+            self.logger.error("Invalid input: The input text must be a non-empty string.")
+            return None
+
+        self.logger.debug(f"Starting to extract JSON data from input text.")
+
+        # Replace newlines with spaces to simplify regex matching
+        sanitized_text = text.replace('\n', ' ')
+
+        # Try matching ```json [{xxx}] ``` format
+        match = re.search(self.json_pattern, sanitized_text, re.DOTALL)
         if match:
             json_str = match.group(1)
-            self.logger.info(f"找到 ```json [xxx] ``` 格式的 JSON 块，内容: {json_str}")
+            self.logger.debug(f"Found formatted JSON block, content: \n{json_str}")
             try:
-                # 尝试将匹配的字符串转换为 JSON
                 json_data = json.loads(json_str)
-                self.logger.info("成功解析 JSON 数据")
-                return json_data
+                self.logger.debug(f"Successfully parsed JSON data.:\n{json_data}")
+                return list(json_data)
             except json.JSONDecodeError as e:
-                self.logger.error(f"无法解析 JSON 数据: {e}")
+                self.logger.error(f"Failed to parse JSON data: {e}")
                 return None
-        
-        # 尝试匹配所有的 [xxx] 字符串
-        fallback_matches = re.findall(self.fallback_pattern, text)
+
+        # Try matching all [xxx] strings as a fallback
+        fallback_matches = re.findall(self.fallback_pattern, sanitized_text)
         if fallback_matches:
-            self.logger.info(f"找到备用的 JSON 数据块，内容: {fallback_matches}")
+            self.logger.debug(f"Found fallback JSON data blocks, content: {fallback_matches}")
             for fallback_json_str in fallback_matches:
+                # Validate the fallback string isn't empty
+                if not fallback_json_str.strip():
+                    self.logger.warning("Empty fallback JSON string encountered; skipping.")
+                    continue
+
                 try:
                     json_data = json.loads(fallback_json_str)
-                    self.logger.info("成功解析备用的 JSON 数据")
-                    return json_data
+                    self.logger.debug("Successfully parsed fallback JSON data.")
+                    return list(json_data)
                 except json.JSONDecodeError as e:
-                    self.logger.error(f"无法解析备用的 JSON 数据: {fallback_json_str}, 错误: {e}")
+                    self.logger.error(f"Failed to parse fallback JSON data: {fallback_json_str}, error: {e}")
                     continue
-        
-        # 未找到匹配的 JSON
-        self.logger.warning("未找到匹配的 JSON 数据")
-        return []
+
+        # If no matching JSON is found
+        self.logger.warning("No matching JSON data found.")
+        return None
+
+
+# Example of how to use the logger for debugging.
+if __name__ == "__main__":
+    extractor = JsonExtractor()
+    sample_text = """Here is some text with a JSON block:
+    ```json
+    {"key": "value"}
+    ```
+    And also some other data like [1, 2, 3]."""
     
-    def preprocess(self, text, model_name=None):
-        # 如果没有提供模型名称，直接返回原始文本
-        if model_name is None:
-            self.logger.debug("未提供模型名称，跳过预处理")
-            return text
-        
-        if model_name in ['glm-4-zero', 'glm-4-think']:
-            self.logger.debug(f"处理模型: {model_name}")
-            match = re.search(r'\[思考结束\](.*)', text, re.DOTALL)
-            if match:
-                processed_text = match.group(1).strip()
-                self.logger.debug(f"预处理后的文本: {processed_text}")
-                return processed_text
-        
-        self.logger.debug("未匹配到预处理规则，返回原始文本")
-        return text
+    json_output = extractor.extract_json(sample_text)
+    print(json_output)
+    

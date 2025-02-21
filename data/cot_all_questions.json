@@ -1,0 +1,3748 @@
+[
+    {
+        "question": "600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？ 该公司实控人是否发生改变？如果发生变化，什么时候变成了谁？是哪国人？是否有永久境外居留权？在实控人发生变化的当年股权发生了几次转让？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询600872的全称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询600872的A股简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询600872的法人。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询600872的法律顾问。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询600872的会计师事务所。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询600872的董秘。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询600872的实际控制人是否发生改变。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 8,
+                "subquestion": "如果600872的实际控制人发生改变，查询改变的时间和新实控人名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 9,
+                "subquestion": "查询600872新实际控制人的国籍。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 10,
+                "subquestion": "查询新实际控制人是否有永久境外居留权。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 11,
+                "subquestion": "查询600872在实控人发生变化的当年股权转让的次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "今天是2021年12月24日，创近半年新高的股票有几只？哪些股票股价大于75，且同时当天创一年新高的是？以上股票连续两日（今日与昨日）满足上述要求的是？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2021年12月24日创近半年新高的股票数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2021年12月24日股价大于75的股票。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2021年12月24日当天创一年新高的股票。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "从股价大于75的股票中，找到当天创一年新高的股票的名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询2021年12月23日创近半年新高的股票。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询2021年12月23日当天股价大于75且创一年新高的股票。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "找出2021年12月24日与2021年12月23日同时满足条件的股票名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2019年度（合并）常熟银行的职工总数有多少人？该公司披露的硕士或研究生学历（及以上）的有多少人？2021年1月1日至年底退休了多少人？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2019年度（合并）常熟银行的职工总数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询常熟银行在2019年披露的硕士或研究生学历（及以上）职工的数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询从2021年1月1日至年底常熟银行退休的职工总数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "互联网金融属于科技概念的什么分支？这个概念的英文名称是什么？截至2021年底，这个概念有多少只股票（不包含已经调出的）？调出了多少只股票？哪些是2020年纳入的，A股简称分别叫什么？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询互联网金融属于科技概念的具体分支。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询互联网金融的英文名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询截至2021年底互联网金融概念的股票数量（不包含已经调出的）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询互联网金融概念截至2021年底调出的股票数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询2020年纳入互联网金融概念的所有股票及其A股简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "化工纳入过多少个子类概念？ 2021年纳入过多少个？分别是？ 2021年纳入的这些概念的股票有多少只？分别属于哪些三级行业（仅考虑2021年新纳入的行业数据）？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询整体化工概念包含的子类概念数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2021年纳入的化工子类概念数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "列出2021年纳入的所有化工子类概念。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询2021年纳入的化工子类概念的相关股票数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询2021年纳入的化工子类概念对应的三级行业分类。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "天顺风能披露了多少次担保信息？ 他一共披露过多少次借贷信息？2021年披露了多少次？ 他一共披露了多少次重大资产重组信息？2021年披露了多少次？2020年披露了多少次？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询天顺风能披露的担保信息次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询天顺风能披露的借贷信息总次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询天顺风能在2021年披露的借贷信息次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询天顺风能披露的重大资产重组信息总次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询天顺风能在2021年披露的重大资产重组信息次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询天顺风能在2020年披露的重大资产重组信息次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "天顺风能属于哪个三级行业？ 2021年发布的该行业的股票有多少只？ 该行业8月公布的最高行业营业收入是多少万元？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询天顺风能所属的三级行业。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2021年属于该三级行业的股票数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询该三级行业在2021年8月公布的最高营业收入。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "首钢股份发布增发和配股次数分别是多少次？ 该股每次增发预计募集资金总额分别是？增发预计募集资金总额最高的公司中文全称是？金额是？ 该股每次配股发行费用总额分别是？配股发行费用总额最高的中文全称是？金额是？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询首钢股份发布的增发次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询首钢股份发布的配股次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询首钢股份每次增发预计募集资金总额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询增发预计募集资金总额最高的公司的中文全称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询增发预计募集资金总额最高的金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询首钢股份每次配股发行费用总额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询配股发行费用总额最高的公司的中文全称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 8,
+                "subquestion": "查询配股发行费用总额最高的金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "新天绿能2020年年度研发投入合计是多少元？研发人员数量为多少人？（合并报表调整后的，金额保留2位小数） 费用化研发占比为？资本化研发占比为？ 上一年度研发投入最高的三家公司是？（回答中文简称）",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询新天绿能2020年合并报表调整后的年度研发投入合计金额，保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询新天绿能2020年的研发人员数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询新天绿能2020年费用化研发投入占比。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询新天绿能2020年资本化研发投入占比。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询上一年度研发投入最高的三家公司，并提供它们的中文简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "000958公司2021年主营业务产品有哪些？（合并报表调整后的，金额保留2位小数） 公司2021年比2020年主营业务产品减少的有？ 公司2021年度经营情况的信息发布日期是（XXXX-XX-XX）？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询000958公司2021年合并报表调整后的主营业务产品及其金额（保留2位小数）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询000958公司2021年相比2020年主营业务产品减少的产品。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询000958公司2021年度经营情况的信息发布日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "工商银行的H股代码、中文名称及英文名称分别是？ 该公司的主席及公司邮箱是？ 该公司2020年12月底披露的变更前后的员工人数为多少人？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询工商银行的H股代码。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询工商银行的中文名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询工商银行的英文名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询工商银行的主席姓名。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询工商银行的公司邮箱。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询工商银行在2020年12月底披露的变更前后的员工人数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "今天是2020年6月24日，阅文集团近一个月最高价是（保留2位小数）？近一年最低价？差额是？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询阅文集团在2020年5月24日至2020年6月24日期间的最高股价，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询阅文集团在2020年6月24日期间的最低股价。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询阅文集团近一个月的最高价与近一年最低价的差额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "今天是2020年10月27日，当日收盘价第3高的港股是？成交量第3高的是？换手率第3高的是？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2020年10月27日当日收盘价并找到第3高的港股简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2020年10月27日的成交量并找到第3高的港股简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2020年10月27日的换手率并找到第3高的港股简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2019-09-02，当日收盘价最高的港股是？(以下都回答简称) 2019-09-02，当日成交量最高的是？ 2019-09-02，当日换手率最高的是？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2019-09-02当日收盘价最高的港股简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2019-09-02当日成交量最高的港股简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2019-09-02当日换手率最高的港股简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2020年之间 哪些公司进行公司名称全称变更，公司代码是什么？ 这些公司A股证券代码分别是什么？ 这些公司的证券内部编码是多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2020年期间进行公司名称全称变更的公司及其公司代码。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询上述公司对应的A股证券代码。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询上述公司对应的证券内部编码。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2021-12-31报告期内，查询总资产最高的公司是? 经营活动产生的现金流量净额最高的公司是？ 这两个公司净利润差额是？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2021-12-31报告期内总资产最高的公司。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2021-12-31报告期内经营活动产生的现金流量净额最高的公司。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询总资产最高公司的净利润。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询经营活动产生的现金流量净额最高公司的净利润。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "计算总资产最高公司与经营活动产生的现金流量净额最高公司的净利润差额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2020年4月涨幅前10的港股股票有哪些?2020年5月涨幅前10的港股股票有哪些?2020年4月涨幅前十的股票中，5月涨幅最小的是？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2020年4月涨幅前10的港股股票及其涨幅。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2020年5月涨幅前10的港股股票及其涨幅。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "从2020年4月涨幅前10的港股股票中，查询2020年5月的涨幅。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "确定2020年4月涨幅前10的港股股票中，5月涨幅最小的股票及其相关数据。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "东航物流的注册邮箱是什么？该公司的实控人是谁？该实控人名下一共有多少家公司？这些公司从事物流业务的有多少家？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询东航物流的注册邮箱。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询东航物流的实际控制人。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询该实控人名下的公司总数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询该实控人名下从事物流业务的公司数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "航锦科技股份有限公司是否变更过公司名称？该公司涉及回购的最大的一笔金额是多少？该年度前十大股东的持股比例变成了多少？当年公司的技术与生产人员一共有多少人？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询航锦科技股份有限公司的公司名称变更历史。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询航锦科技股份有限公司涉及回购的最大金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询航锦科技股份有限公司该年度前十大股东的持股比例。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询航锦科技股份有限公司当年技术与生产人员的总人数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "申万一级行业是交通运输的公司有多少家？ 这些公司中多少家是20年变更的行业？ 变更后又在21年取消的有哪些公司？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询申万一级行业中属于交通运输的公司数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询在20年变更行业的交通运输公司数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询在20年变更后于21年取消的交通运输公司名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "科达制造2021年8月4日当天的最高价与最低价分别是多少，该股票的概念板块当年多少次涨停？该股票所属的一级概念是什么？该公司所属二级行业当日行业总市值有多少?",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询科达制造在2021年8月4日当天的最高价。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询科达制造在2021年8月4日当天的最低价。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询科达制造在2021年发生的所有涨停次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询科达制造所属的一级概念。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询科达制造所属的二级行业在2021年8月4日的总市值。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "涪陵榨菜的注册地址在哪？ 该公司上市公告书中的前十大股东是哪些？ 这些股东里有几家是基金管理公司？ 存在资料的公司有几家，这些公司在2019年分别管理了多少种基金？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询涪陵榨菜的注册地址。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询涪陵榨菜上市公告书中的前十大股东名单。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "从涪陵榨菜的前十大股东中查询有几家是基金管理公司。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询前十大股东中存在资料的基金管理公司数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询这些存在资料的基金管理公司在2019年分别管理了多少种基金。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "唐山港集团股份有限公司是什么时间上市的（回答XXXX-XX-XX）当年一共上市了多少家企业？这些企业有多少是在北京注册的？哪些是注册和办公都在海淀的？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询唐山港集团股份有限公司的上市时间。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询唐山港集团股份有限公司上市的年份一共上市了多少家企业。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询该年份中，在北京注册的上市企业数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询在该年份中，注册和办公都在海淀的企业。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "山东药玻2020年发布的19年年报的大股东是谁？19年一共有多少户股东？他的流通股本有多少股？19年的股权变动中涉及股数量最大的一次非专场大宗交易是在哪天正式变动的？（时间回答XXXX-XX-XX）",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询山东药玻2020年发布的19年年报的大股东名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询山东药玻在2019年一共拥有多少户股东。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询山东药玻在2019年的流通股本数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询山东药玻在2019年股权变动中涉及股数量最大的一次非专场大宗交易的变动日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "中南出版传媒集团股份有限公司的证券代码是多少？ 该公司2019年母公司一季报中预付款项是多少？ 总营收呢？ 经营活动现金流入了多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询中南出版传媒集团股份有限公司的证券代码。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询中南出版传媒集团股份有限公司2019年母公司一季报中的预付款项。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询中南出版传媒集团股份有限公司2019年母公司一季报中的总营收。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询中南出版传媒集团股份有限公司2019年母公司一季报中的经营活动现金流入。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "000932的英文名称是什么？该公司20年的年报中前三高管薪资是多少？当年该公司是否成功资产重组？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询000932的英文名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询该公司在2020年年报中前三高管的薪资。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询该公司在2020年是否成功进行资产重组。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "RXW中文全称是什么？ 该公司上市时一共配售了多少张股？ 21年该公司的研发投入是多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询RXW的中文全称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询该公司上市时配售的总股数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询该公司在2021年的研发投入。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "Titan Wind Energy (Suzhou) Co.,Ltd.董秘是谁 20年首次信息发布中单笔回购资金总额上限最高的是多少？ 怎么管理？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询Titan Wind Energy (Suzhou) Co.,Ltd.的董秘是谁。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询Titan Wind Energy (Suzhou) Co.,Ltd.在2020年首次信息发布中单笔回购资金总额上限最高的金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询Titan Wind Energy (Suzhou) Co.,Ltd.对回购资金的管理方式。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "东兴证券2019年一共成功为多少家公司提供过担保？这些担保项目中担保最多的金额是多少？当年该公司有多少起合同纠纷？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询东兴证券在2019年成功为多少家公司提供担保。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2019年东兴证券所有担保项目中担保金额最多的一项。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询东兴证券在2019年的合同纠纷数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "李一硕一共管理了多少支基金，这些基金中规模最大的是哪一个？这支基金的管理人法人是谁？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询李一硕管理的基金数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询李一硕管理的各支基金及其规模，以确定规模最大的基金。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询李一硕管理的规模最大基金的名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询规模最大基金的管理人法人是谁。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2019年12月12日哪家证券公司受到了处罚？他是多少家公司的股东？哪家公司当年的借贷最多，共计多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2019年12月12日受到处罚的证券公司名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询该证券公司的股东数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2019年该证券公司当年借贷最多的公司名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询2019年该公司借贷的总金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "深桑达最近一次停牌是什么时候？（时间回答XXXX-XX-XX） 当日哪家公司收盘价最高，最高价是多少？ 是否创近一周的新高？（回答是或者否）",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询深桑达最近一次停牌的时间。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询深桑达停牌当天，哪家公司收盘价最高。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询当天收盘价最高的公司的最高价是多少。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询该公司收盘价是否创近一周的新高。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "深圳市桑达实业股份有限公司最近一次创上市以来的新高是在什么时候？（时间回答XXXX-XX-XX）当天涨幅超过10%股票有多少家？这些公司中有哪些是连板的？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询深圳市桑达实业股份有限公司上市以来的所有股价历史，找到最近一次创上市以来的新高的日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询在深圳市桑达实业股份有限公司创上市以来的新高当天，涨幅超过10%的所有股票数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询在深圳市桑达实业股份有限公司创上市以来的新高当天，涨幅超过10%的股票中有哪些是连板的。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "山东国瓷功能材料股份有限公司2021年9月23日开盘价是多少？当天，外资占股多少？当年及20年该公司的预案一共增发了多少股？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询山东国瓷功能材料股份有限公司2021年9月23日的开盘价。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询山东国瓷功能材料股份有限公司在2021年9月23日外资的持股比例。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询山东国瓷功能材料股份有限公司在2021年及2020年的增发股数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询山东国瓷功能材料股份有限公司2021年及2020年预案增发的总股数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "北京国枫律师事务所2020年见证多少家公司的年度股东大会？ 这些公司中有哪些当年股东减持了的？ 当年哪家公司的涨幅最大，达到了多少，保留4位小数？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询北京国枫律师事务所2020年见证的公司的年度股东大会数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2020年参加年度股东大会的公司中，哪些公司的股东进行了减持。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2020年参与股东大会的公司中，查找涨幅最大的公司。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询涨幅最大的公司在2020年的涨幅数值，并保留4位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2019-01-04哪家公司主力净流入最多？这家公司5日内平均成交额是多少，保留2位小数？当日该指标超过该公司的一共有多少家？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2019-01-04主力净流入最多的公司名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询该公司在2019-01-04的5日内平均成交额，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询当日主力净流入超过该公司的其他公司数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "波司登在港股的股票代码是什么？ 他的注册资本是多少？ 他的员工人数哪年变动最大，前后差距是多少人？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询波司登在港股的股票代码。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询波司登的注册资本。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询波司登每年的员工人数变化情况。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询波司登员工人数变动最大的一年及其前后差距。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "天弘沪深300ETF联接A基金的管理经理是谁？ 所在基金公司管理了多少支基金？ 哪只基金20年最后一次分红的税前分红最高，有多少，保留2位小数？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询天弘沪深300ETF联接A基金的管理经理。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询天弘基金公司管理的基金数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询过去20年各基金的最后一次分红金额，找到税前分红最高的基金。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询税前分红最高的基金的具体分红金额，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "JD.com, Inc.这家公司在美股英文名称是什么？他的证券简称是什么？20年该公司单日最高涨幅有多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询JD.com, Inc.在美股的英文名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询JD.com, Inc.在美股的证券简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2020年JD.com, Inc.单日最高涨幅。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "携程网这家公司电话是多少？ 他是什么时候成立的？（时间回答XXXX-XX-XX） 2020年9月18日这家公司的收盘价是多少",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询携程网这家公司的电话。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询携程网的成立时间。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2020年9月18日携程网的收盘价。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2020年成立的CN公司有多少家？哪家公司（证券简称）上市的时间最晚，是什么时候？（时间回答XXXX-XX-XX） 2019年的当天有多少家公司是上涨的？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2020年成立的CN公司的数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2020年成立的CN公司中，按照上市时间判断上市最晚的公司（证券简称）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2020年成立的CN公司中，上市最晚的公司的上市时间（格式为XXXX-XX-XX）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询2019年特定日期当天的上涨公司数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "比特矿业这家公司邮编多少？上市了多少年？这些年A股一共上市了多少家公司？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询比特矿业公司的邮编。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询比特矿业公司上市了多少年。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询这些年A股一共上市了多少家公司。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "TOUR他是否已经退市了？（是或者否）这家公司19年最高收盘价是多少当天有多少家公司退市了。",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询TOUR是否已经退市。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询TOUR在2019年的最高收盘价。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询在TOUR最高收盘价当天有多少家公司退市。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2021年08月哪支基金税后分红最高，这支基金是什么时候生效的（时间回答XXXX-XX-XX），基金所属公司的官网是什么？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2021年08月各基金的税后分红情况，找出税后分红最高的基金。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询税后分红最高的基金的生效时间（格式为XXXX-XX-XX）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询税后分红最高的基金所属公司的官网是什么。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "易方达基金管理有限公司在19年成立了多少支基金？哪支基金的规模最大？这支基金20年最后一次分红派现比例多少钱？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询易方达基金管理有限公司在2019年成立的基金数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询易方达基金管理有限公司在2019年成立的基金中规模最大的基金名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询规模最大基金在2020年最后一次分红的派现比例。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "南方基金管理股份有限公司在19年成立了多少支基金？哪支基金的规模最大？这支基金20年最后一次分红派现比例多少钱,保留2位小数？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询南方基金管理股份有限公司在2019年成立的基金数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询南方基金管理股份有限公司在2019年成立的基金中，规模最大的是哪一支基金？",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询规模最大的一支基金在2020年的最后一次分红派现比例，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "中证指数有限公司发布了多少种指数？ 这些指数包括了多少家公司？ 在2020年调入过的有多少家？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询中证指数有限公司发布的指数种类数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询中证指数有限公司发布的所有指数包含的公司总数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询在2020年调入的公司数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "铜陵有色金属集团股份有限公司的法人代表是谁？ 铜陵有色金属集团股份有限公司在什么时候成立的？回复时给我YYYY/MM/DD的格式 铜陵有色金属集团股份有限公司的总经理是谁？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询铜陵有色金属集团股份有限公司的法人代表。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询铜陵有色金属集团股份有限公司的成立日期，并以YYYY/MM/DD格式回复。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询铜陵有色金属集团股份有限公司的总经理。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "深科技的信披网址是哪个网站? 该公司在过去的进行了几次非公开增发 最近一次非公开增发的数量是多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询深科技的信披网址。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询深科技过去进行过多少次非公开增发。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询深科技最近一次非公开增发的数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "福建坤彩材料科技股份有限公司的注册地在哪个省份？该公司2020年年度报告中，未调整的合并资产负债表中提到的资产总计是多少？他的2020年年度报告中，未调整的母公司资产负债表显示的负债合计是多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询福建坤彩材料科技股份有限公司的注册地省份。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询福建坤彩材料科技股份有限公司在2020年年度报告中未调整的合并资产负债表的资产总计。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询福建坤彩材料科技股份有限公司在2020年年度报告中未调整的母公司资产负债表的负债合计。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "海信视像科技股份有限公司在什么时候成立的，XXXX-XX-XX？ 该公司在2021年的半年度报告中未调整的合并报表营业总成本是多少？该公司在2021年的半年度报告中未调整的合并报表净利润是多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询海信视像科技股份有限公司的成立时间。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询海信视像科技股份有限公司在2021年半年度报告中的未调整合并报表的营业总成本。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询海信视像科技股份有限公司在2021年半年度报告中的未调整合并报表的净利润。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "申能股份在过去一共接待了几次调研？最近一次调研是什么时候？最近一次调研的地点是哪里？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询申能股份过去接待的调研总次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询申能股份最近一次调研的时间。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询申能股份最近一次调研的地点。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "水晶光电实施完成的员工持股计划有几个？最近一次完成的员工持股计划，股票规模上限和资金总额上限是多少，该计划是否是分期实施的？如果实施回答A，没有实施回答B。",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询水晶光电实施完成的员工持股计划数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询最近一次完成的水晶光电员工持股计划的股票规模上限。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询最近一次完成的水晶光电员工持股计划的资金总额上限。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询最近一次完成的水晶光电员工持股计划是否是分期实施的。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "普洛药业在2020-11-25的最高价和最低价是多少？当天换手率是多少，保留2位小数？年化夏普比率和波动率（日步长）是多少，保留2位小数？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询普洛药业在2020-11-25的最高价。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询普洛药业在2020-11-25的最低价。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询普洛药业在2020-11-25的换手率，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询普洛药业的年化夏普比率，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询普洛药业的波动率（日步长），并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "截止2021-06-17上海建工的近一周成交金额（万元）是多少？近一个月的成交金额（万元）是多少？与月成交均价相比，近一周的成交均价是高还是低？这两者具体是多少？保留两位小数。",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询截止到2021-06-17上海建工的近一周成交金额（万元）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询截止到2021-06-17上海建工的近一个月成交金额（万元）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询截止到2021-06-17上海建工的近一个月的成交均价（万元）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询近一周的成交金额与近一个月的成交均价相比是高还是低，并分别提供这两者的具体数值，保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "建元信托股份有限公司十大股东的类型有哪些？ 2020年年度报告中，该公司的最大股东是谁，他持有多少股份？ 2020年年度报告中,该公司的国有股东持股总和是多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询建元信托股份有限公司十大股东的类型。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2020年年度报告中建元信托股份有限公司的最大股东的名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2020年年度报告中建元信托股份有限公司最大股东持有的股份数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询2020年年度报告中建元信托股份有限公司国有股东持股的总和。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2020年最后一个交易日是哪一天？鱼跃医疗在2020年末的总市值是多少元？鱼跃医疗在2020年末回看近12个月成交金额是多少元？鱼跃医疗在2020年末的12个月总成交金额占总市值的比值是多少？保留2位小数。",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2020年最后一个交易日的日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询鱼跃医疗在2020年末的总市值。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询鱼跃医疗在2020年末回看近12个月的成交金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "计算鱼跃医疗在2020年末的12个月总成交金额占总市值的比值，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2021年1月11日，正常交易且跳空低开的股票一共有几只？ 其中振幅最大的是哪个股票？ 这只股票主力净流入量是多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2021年1月11日正常交易且跳空低开的股票的数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2021年1月11日正常交易且跳空低开的股票中振幅最大的是哪只股票。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询振幅最大股票的主力净流入量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2019下半年，成交量创近一季度新高的证券数量最多的交易日是哪一天？那一天成交量创近一季度新高的证券数量有多少？那一天上涨和下跌的证券数量分别是？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2019下半年每日成交量创近一季度新高的证券数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "找出2019下半年成交量创近一季度新高的证券数量最多的交易日。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询在该交易日成交量创近一季度新高的证券数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询在该交易日上涨的证券数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询在该交易日下跌的证券数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2021下半年，成交量创近一季度新高的证券数量最多的交易日是哪一天，XXXX年XX月XX日？那一天成交量创近一季度新高的证券数量有多少？那一天上涨和下跌的证券数量分别是？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2021下半年每个交易日成交量创近一季度新高的证券数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "找出2021下半年成交量创近一季度新高的证券数量最多的交易日。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询成交量创近一季度新高的证券数量最多的交易日的成交量新高证券数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询成交量创近一季度新高的证券数量最多的交易日上涨的证券数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询成交量创近一季度新高的证券数量最多的交易日下跌的证券数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2020上半年共上市多少只基金？其中设立规模最大的基金是？其中数量最多的基金类别是什么，有多少只？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2020上半年共上市的基金数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2020上半年设立规模最大的基金名称（按证监会官网命名）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2020上半年数量最多的基金类别是什么。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询2020上半年数量最多的基金类别的基金数量有多少只。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "博时基金公司成立于（XXXX年XX月XX日）？比博时基金成立更早的基金公司(简称)有哪些？和博时基金属于同一地区的基金公司(简称)有哪些？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询博时基金公司的成立日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询成立日期早于博时基金公司的基金公司简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询与博时基金公司属于同一地区的基金公司简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "最新更新的2019年度报告中，机构持有无限售流通A股数量合计最多的公司简称是？在这份报告中，该公司机构持有无限售流通A股比例合计是多少，2位小数？该公司前十大股东持股比例合计是多少，2位小数？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2019年度报告中机构持有无限售流通A股数量合计最多的公司简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询该公司在2019年度报告中机构持有无限售流通A股的比例合计，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询该公司在2019年度报告中前十大股东持股比例合计，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "最新更新的2021年度报告中，机构持有无限售流通A股数量合计最多的公司简称是？ 在这份报告中，该公司机构持有无限售流通A股比例合计是多少，保留2位小数？ 该公司前十大股东持股比例合计是多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2021年度报告中机构持有无限售流通A股数量合计最多的公司简称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询该公司在2021年度报告中机构持有无限售流通A股的比例，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询该公司前十大股东持股比例合计。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "琪酵母在2020年全年的最高收盘价是多少，出现在哪一天（XXXX年XX月XX日）？当天成交量是否创近一月以来新高？连续放量天数为多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询琪酵母在2020年全年的最高收盘价及其对应的日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询琪酵母在最高收盘价当天的成交量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询琪酵母在最高收盘价当天的成交量是否创近一月以来新高。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询琪酵母的连续放量天数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "安琪酵母在2021年全年的最高收盘价是多少，出现在哪一天，XXXX年XX月XX日？当天成交量是否创近一月以来新高？连续放量天数为多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询安琪酵母在2021年全年的最高收盘价及其出现日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询在最高收盘价出现当天的成交量是否创近一月以来新高。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询安琪酵母在2021年全年的连续放量天数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "厦门钨业在2019年全年的最低收盘价是多少，出现在哪一天，日期格式为XXXX年XX月XX日？厦门钨业在当天的VRSI量相对强弱是多少，保留4位小数？厦门钨业已连跌几天？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询厦门钨业在2019年的最低收盘价及其出现日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询出现最低收盘价当天厦门钨业的VRSI量相对强弱，并保留4位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询厦门钨业在2019年连跌的天数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "厦门钨业在2021年全年的最低收盘价是多少，出现在哪一天，XXXX年XX月XX日？厦门钨业在当天的VRSI量相对强弱是多少，保留4位小数？厦门钨业已连跌几天？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询厦门钨业在2021年全年的最低收盘价及其出现日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询厦门钨业在最低收盘价出现当天的VRSI量相对强弱，并保留4位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询厦门钨业当前已连跌的天数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "芯片概念概念板块属于什么2级概念？截至2023年末，该2级概念下一共有几个未终止的概念板块？芯片概念概念板块的英文名称是什么？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询芯片概念概念板块所属的2级概念。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询截至2023年末，芯片概念所属的2级概念下未终止的概念板块数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询芯片概念概念板块的英文名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "按2021年末新版申万行业分类，现在杰瑞股份属于什么申万二级行业？ 2021年末，该申万二级行业中有几个股票？ 2021年末，该股票的总市值占二级行业总市值百分之多少（四舍五入保留2位小数）？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2021年末杰瑞股份所属的申万二级行业。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2021年末该申万二级行业中包含的股票数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询杰瑞股份在2021年末的总市值。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询该申万二级行业在2021年末的总市值。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "计算杰瑞股份的总市值占该申万二级行业总市值的百分比，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2021年末，按新版申万行业分类，现在均胜电子属于什么申万一级行业？ 2021年末，该一级行业中有几个股票？ 2021年末，该股票的A股流通市值占一级行业流通市值百分之多少（四舍五入保留2位小数）？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询均胜电子在2021年末按新版申万行业分类所属的一级行业。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2021年末该一级行业中包含的股票数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询均胜电子在2021年末的A股流通市值。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询2021年末该一级行业的总流通市值。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "计算均胜电子的A股流通市值占该一级行业流通市值的百分比，并四舍五入保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "2020-07-02风电零部件行业的总市值是多少(元)？其中A股流通市值是多少（元）？下一个交易日的A股流通市值是多少（元）？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2020-07-02风电零部件行业的总市值。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2020-07-02风电零部件行业的A股流通市值。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2020-07-03风电零部件行业的A股流通市值。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "软通动力在2019年报酬总额和领取报酬的管理层人数是多少？ 其中前三名董事的报酬是多少？ 该公司2020年报酬总额是多少？与2019年相比增加还是减少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询软通动力在2019年的报酬总额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询软通动力在2019年领取报酬的管理层人数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询软通动力在2019年报酬最高的前三名董事的报酬。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询软通动力在2020年的报酬总额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "比较软通动力2019年和2020年报酬总额，判断是增加还是减少。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "天弘增利短债C的基金管理人是谁？ 该基金的运作方式是什么？ 该基金的投资风格是什么？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询天弘增利短债C的基金管理人。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询天弘增利短债C的运作方式。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询天弘增利短债C的投资风格。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "截止至中国软件2021年Q4季度，研发投入总额是多少？（调整后的合并报表） 截止至中国软件2021年Q4季度，研发投入占营业收入比例是多少？ 请根据中国软件截止至2021年Q4季度的研发人员数量和占比推算公司总人数（计算方式：总人数 = 研发人员数量 ÷ (研发人员占比 ÷ 100)，结果取整）。",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询中国软件截止至2021年Q4季度的研发投入总额（调整后的合并报表）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询中国软件截止至2021年Q4季度的研发投入占营业收入的比例。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询中国软件截止至2021年Q4季度的研发人员数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询中国软件截止至2021年Q4季度的研发人员占比。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "根据查询到的研发人员数量和研发人员占比推算中国软件的总人数（按计算方式取整）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "陆家嘴在2019年的最大借贷金额是多少？ 陆家嘴在2019年的单次首次借贷金额最高的借款方是谁？其单次首次借贷金额是多少？ 陆家嘴在2019年最新的借贷事件是什么？给我的答案包括事件内容、借贷方、出借方和借贷金额等信息。",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询陆家嘴在2019年的最大借贷金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询陆家嘴在2019年单次首次借贷金额最高的借款方。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询陆家嘴在2019年单次首次借贷金额最高的借款方的单次首次借贷金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询陆家嘴在2019年最新的借贷事件，包括事件内容、借贷方、出借方和借贷金额等信息。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "亿帆医药在2020年的最大担保金额是多少？ 亿帆医药在2020年的最大担保金额涉及的担保方是谁？担保金额是多少？ 亿帆医药在2020年最新的担保事件是什么？答案包括事件内容、担保方、被担保方和担保金额信息。",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询亿帆医药在2020年的最大担保金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询亿帆医药在2020年最大担保金额涉及的担保方。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询亿帆医药在2020年最大担保金额的具体担保金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询亿帆医药在2020年最新的担保事件。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询亿帆医药在2020年最新担保事件的事件内容、担保方、被担保方和担保金额信息。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "许继电气在2021年发布了多少条重大事项公告？ 许继电气在2021年签订的涉及金额最大的合同标的是哪个？金额是多少？ 许继电气在2021年签订金额最大的合同是否发生在重大事项公告之后？签订的合同日期和重大事项公告日期分别是什么（XXXX-XX-XX）？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询许继电气在2021年发布的重大事项公告数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询许继电气在2021年签订的涉及金额最大的合同的标的。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询许继电气在2021年签订的金额最大的合同的金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询许继电气在2021年签订的金额最大的合同的签订日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询许继电气在2021年签订的金额最大的合同是否发生在重大事项公告之后。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询许继电气在2021年发布的重大事项公告的日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "美亚光电在2021年的减持计划中，最大可减持股份数量（减持股份数量上限(股)）与最小可减持股份数量（减持股份数量下限(股)）的差距是多少？ 美亚光电在2021年的减持计划中涉及了多少名股东？ 美亚光电在2021年的减持计划中，哪位股东的最大减持比例最高？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询美亚光电在2021年的减持计划中的最大可减持股份数量和最小可减持股份数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询美亚光电在2021年的减持计划中最大可减持股份数量与最小可减持股份数量的差距。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询美亚光电在2021年的减持计划中涉及的股东数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询美亚光电在2021年的减持计划中，哪位股东的最大减持比例最高。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "利亚德的证券代码和ISIN代码是什么？该公司最新的证监会行业代码是多少？该行业下有多少家上市公司？利亚德最近三次投资者调研的具体时间(xxxx-xx-xx的格式)、地点和参与机构数量分别是多少？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询利亚德的证券代码和ISIN代码。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询利亚德最新的证监会行业代码。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询利亚德所在行业下的上市公司总数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询利亚德最近三次投资者调研的具体时间。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询利亚德最近三次投资者调研的具体地点。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询利亚德最近三次投资者调研的参与机构数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "隧道股份在2021年底有多少个国家队持股股东？这些股东的持有A股总数是多少？在这些股东中，持股比例最高的是哪个股东？持股比例是多少？（保留2位小数）",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询隧道股份在2021年底的国家队持股股东数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询隧道股份在2021年底国家队持股股东持有的A股总数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询隧道股份在2021年底国家队持股股东中，持股比例最高的股东名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询持股比例最高的股东在隧道股份中持股的比例，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "中国宝安2021年底的员工总数是多少？其中技术人员占比是多少？（保留2位小数）在该公司的技术人员中，具有硕士及以上学历（硕士+博士）的人员占比是多少？（保留2位小数）该公司的人才结构是否合理？请分析技术人员、生产人员、销售人员的比例构成。",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询中国宝安2021年底的员工总数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询中国宝安2021年底技术人员的总数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询中国宝安2021年底技术人员在员工总数中的占比，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询中国宝安技术人员中具有硕士及以上学历（硕士+博士）的人员总数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询中国宝安技术人员中具有硕士及以上学历人员在技术人员中的占比，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询中国宝安的技术人员、生产人员、销售人员的总数及其比例构成。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "分析中国宝安的技术人员、生产人员、销售人员的比例是否合理。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "海信家电在2021-12-24这天，小单、中单和大单的净流入情况如何？净流入额分别是多少？(单位：元) 基于上述资金流向数据，大单对比小单的净买入率(额)差值是多少个百分点？这种资金流向组合反映了什么现象？请结合该股票所属的概念板块，2021-12-24当天其所属概念板块的大单小单净买入率差值是多少个百分点？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询海信家电在2021-12-24的小单净流入额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询海信家电在2021-12-24的中单净流入额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询海信家电在2021-12-24的大单净流入额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "计算大单和小单的净买入率差值，并保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "分析海信家电在2021-12-24的资金流向组合所反映的现象。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询海信家电所属概念板块在2021-12-24的大单小单净买入率差值。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "永泰能源在2020年发生了几次业务范围变更？请列出每次变更的具体日期（xxxx-xx-xx的格式）在2020年永泰能源的业务变更日期前后30天内，公司发生了多少次信用评级相关事件？请列出具体的事件日期。比较永泰能源在2019年和2020年的业务变更次数和信用事件次数，计算2020年相对于2019年的变化率。哪个指标的变化更大？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询永泰能源在2020年发生的业务范围变更次数及每次变更的具体日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询永泰能源在2020年业务变更日期前后30天内发生的信用评级相关事件次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "列出2020年业务变更日期前后30天内的所有信用评级相关事件的具体日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询永泰能源在2019年的业务变更次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询永泰能源在2019年的信用评级相关事件次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "计算永泰能源在2020年相对于2019年的业务变更次数的变化率。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "计算永泰能源在2020年相对于2019年的信用事件次数的变化率。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 8,
+                "subquestion": "比较永泰能源的业务变更次数变化率和信用事件次数变化率，确定哪个指标的变化更大。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "鹏华基金在2019年成立了多少只基金？这些基金的总募集规模是多少？(单位：元) 在上述成立的基金中，有多少只是股票型基金？这些股票型基金的平均募集规模是多少？(单位：元) 请分析该公司2019年新成立的股票型基金中，采用被动投资策略(指数型)的基金占比是多少？这一比例相比同期其他基金公司是高还是低？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询鹏华基金在2019年成立的基金数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询鹏华基金在2019年成立基金的总募集规模（单位：元）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询鹏华基金在2019年成立的股票型基金数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询鹏华基金在2019年成立的股票型基金的平均募集规模（单位：元）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询鹏华基金在2019年新成立的股票型基金中，采用被动投资策略(指数型)的基金数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "计算鹏华基金2019年新成立的股票型基金中，采用被动投资策略(指数型)的基金的占比。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询同期其他基金公司中，采用被动投资策略(指数型)的股票型基金的占比，并进行比较。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "安琪酵母在2021年12月31日的股东总户数是多少？其中A股股东户均持股数是多少股？基于上述股东数据，该公司A股户均持股数相比上一季度的变化率是多少(四舍五入到小数点后两位)？这种变化反映了什么现象？该公司2021年的管理层总薪酬是多少，所有公司平均水平是多少？该公司管理层薪酬与行业平均水平的差异率是多少？(四舍五入保留两位小数)",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询安琪酵母在2021年12月31日的股东总户数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询安琪酵母在2021年12月31日的A股股东户均持股数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询安琪酵母在上一季度的A股股东户均持股数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "根据安琪酵母A股户均持股数的数据，计算相较于上一季度的变化率，并四舍五入到小数点后两位。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "分析安琪酵母A股户均持股数变化率所反映的现象。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询安琪酵母2021年的管理层总薪酬。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询所有公司管理层的平均薪酬水平。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 8,
+                "subquestion": "根据安琪酵母的管理层总薪酬和行业平均水平，计算管理层薪酬与行业平均水平的差异率，并四舍五入保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "健康元药业集团股份有限公司在2020-2021年期间进行了几次股份回购？每次回购的金额(单位：万元，保留两位小数)和股数分别是多少？最近一次回购的主要目的是什么？是否涉及股权激励计划？该公司在2020-2021年期间的回购总金额在A股上市公司中排名如何？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询健康元药业集团股份有限公司在2020-2021年期间进行的股份回购次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询健康元药业集团股份有限公司在2020-2021年期间每次回购的金额和股数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询健康元药业集团股份有限公司最近一次回购的主要目的是什么。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询健康元药业集团股份有限公司是否涉及股权激励计划。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询健康元药业集团股份有限公司在2020-2021年期间的回购总金额在A股上市公司中的排名。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "伟明环保最近一期员工持股计划的参与总人数是多少？其中管理层参与人数占比(四舍五入精确到小数点后两位，并以百分比形式表示)是多少？该期员工持股计划的股票来源是什么？计划购买股票数量是多少股？对比伟明环保与在证券市场和证券类别相同的公司的员工持股计划,分析:(1)在证券市场和证券类别相同的公司的员工持股计划的数量(2)该公司的持股计划规模处于什么水平(精确到小数点后两位，并以百分比形式表示)? (3)管理层参与人数比例处于什么水平(精确到小数点后两位，并以百分比形式表示)? (4)锁定期长度处于什么水平(精确到小数点后两位，并以百分比形式表示)?",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询伟明环保最近一期员工持股计划的参与总人数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询伟明环保最近一期员工持股计划中管理层参与人数占比，并四舍五入精确到小数点后两位，以百分比形式表示。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询伟明环保最近一期员工持股计划的股票来源是什么。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询伟明环保最近一期员工持股计划的计划购买股票数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询在证券市场和证券类别相同的公司的员工持股计划的数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询伟明环保的员工持股计划规模相对于在证券市场和证券类别相同的公司的持股计划的规模，并精确到小数点后两位，以百分比形式表示。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询在证券市场和证券类别相同的公司的管理层参与人数比例，并精确到小数点后两位，以百分比形式表示。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 8,
+                "subquestion": "查询在证券市场和证券类别相同的公司的锁定期长度，并精确到小数点后两位，以百分比形式表示。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "光环新网(代码:300383)的年度报告中在2021年年末的机构持股比例是多少(四舍五入精确到小数点后两位，并以百分比形式表示)？其中基金持股比例是多少(四舍五入精确到小数点后两位，并以百分比形式表示)？非基金定报，以最后一次统计日期为准，该公司2021年全年(第一季度末到第四季度末)机构持股比例分别是多少(四舍五入精确到小数点后两位，并以百分比形式表示)？对比2020年末和2021年末的数据，该公司的机构持股比例和基金持股比例分别是多少(四舍五入精确到小数点后两位，并以百分比形式表示)，变化了多少(保留正负符号，四舍五入精确到小数点后两位，并以百分比形式表示)？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询光环新网(代码:300383)在2021年年末的机构持股比例，并以百分比形式表示，保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询光环新网(代码:300383)在2021年年末的基金持股比例，并以百分比形式表示，保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询光环新网(代码:300383)在2021年第一季度末、第二季度末、第三季度末和第四季度末的机构持股比例，并分别以百分比形式表示，保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询光环新网(代码:300383)在2020年年末的机构持股比例，并以百分比形式表示，保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询光环新网(代码:300383)在2020年年末的基金持股比例，并以百分比形式表示，保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "对比光环新网(代码:300383)2020年末和2021年年末的机构持股比例，计算变化值，并保留正负符号，四舍五入精确到小数点后两位。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "对比光环新网(代码:300383)2020年末和2021年年末的基金持股比例，计算变化值，并保留正负符号，四舍五入精确到小数点后两位。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "九州通在2020-2021年间实施了几次分红方案？每次分红的合计派现金额（四舍五入保留两位小数，单位元）和实施公告日期（xxxx-xx-xx的格式）分别是多少？从公司年报中，在2020-2021年间，该公司的机构持无限售流通A股比例是是否增长(输出是/否)，请列出具体数据，保留4位小数。在2020-2021年间，公司发生了多少重大借贷事件（单笔金额超过3000万元）？这些借贷事件最大金额和对应的借款方和贷款方是谁？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询九州通在2020-2021年间实施的分红方案次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询每次分红方案的合计派现金额（四舍五入保留两位小数，单位元）和实施公告日期（xxxx-xx-xx的格式）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询九州通在2020-2021年间机构持无限售流通A股比例的具体数据，并判断其是否增长，输出是/否，并保留4位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询九州通在2020-2021年间发生了多少笔重大借贷事件（单笔金额超过3000万元）。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询九州通在2020-2021年间重大借贷事件中的最大金额及其对应的借款方和贷款方。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "在2021-12-31这一天，A股市场中创出月度新高的公司有哪些（中文名称缩写即可）？他们的证券代码是多少？在这些创出新高的公司中，哪些公司的股东中包含企业资本？请列出公司名（中文名称缩写即可）和企业资本股东名称。对于同时具备企业资本背景和创新高的公司，请从以下维度深入分析：这些公司的行业代码是什么？行业相同的公司分别是什么（中文名称缩写即可）",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询2021年12月31日A股市场中创出月度新高的公司及其中文名称缩写。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询2021年12月31日A股市场中创出新高的公司的证券代码。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询创出新高的公司中，哪些公司的股东中包含企业资本，并列出这些公司的中文名称缩写和企业资本股东名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询同时具备企业资本背景和创出新高的公司的行业代码。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询行业相同的公司，并列出这些公司的中文名称缩写。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "华夏鼎康债券A在2019年的分红次数是多少？每次分红的派现比例是多少？基于上述分红数据，在2019年最后一次分红时，如果一位投资者持有1000份该基金，税后可以获得多少分红收益？请结合该基金所属的债券型基金分类，分析2019年同类基金的平均分红次数和平均派现比例（四舍五入保留4位小数）",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询华夏鼎康债券A在2019年的分红次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询华夏鼎康债券A在2019年的每次分红的派现比例。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "基于华夏鼎康债券A在2019年的分红数据，查询如果投资者持有1000份该基金，税后可以获得的分红收益。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询华夏鼎康债券A所属的债券型基金分类的所有同类基金在2019年的平均分红次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询华夏鼎康债券A所属的债券型基金分类的所有同类基金在2019年的平均派现比例，并保留4位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "中铁工业在2021年签订了哪些金额较大的重大合同？请列出前两大合同的发布日期(xxxx-xx-xx的格式)，合同标的和合同金额(四舍五入保留两位小数)。 中铁工业2021年重大合同的季度数量如何？ 分析2021年重大合同的交易对手特征：1. 重复交易的客户数量及其合同金额（保留两位小数）以及数量和金额占总量的占比（四舍五入保留两位小数，并以百分比形式表示）？ 2. 单一交易对手的合同总金额，最高是谁，总金额是多少（保留两位小数），全部交易对手合同总金额占比（四舍五入保留两位小数，并以百分比形式表示）？",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询中铁工业在2021年签订的金额较大的重大合同，列出前两大合同的发布日期、合同标的和合同金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询中铁工业在2021年的重大合同的季度数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询2021年中铁工业重复交易的客户数量及其合同金额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询2021年中铁工业重复交易客户的合同数量和金额占总量的占比，并以百分比形式表示。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询2021年中铁工业单一交易对手的合同总金额，找出合同金额最高的交易对手。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询合同金额最高的交易对手的总金额，并以保留两位小数表示。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询2021年中铁工业全部交易对手的合同总金额占比，并以百分比形式表示。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "华峰化学在2019年发生了哪些舆情事件？请列出事件发生时间(YYYY-MM-DD)、事件名称和情感方向。在上述重大事件发生期间，华峰化学是否出现过停牌？如有，请列出停牌起止日期(YYYY-MM-DD)和具体原因。2019年期间，华峰化学发生的最大比例股权变动是在哪一天（xxxx-xx-xx）？这次变动前后5个交易日的股价累计涨跌幅是多少？（保留2位小数）",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询华峰化学在2019年发生的所有舆情事件及其发生时间。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询华峰化学在2019年发生的舆情事件及其事件名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询华峰化学在2019年发生的舆情事件的情感方向。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询2019年华峰化学停牌的起止日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询2019年华峰化学停牌的具体原因。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询2019年华峰化学最大比例股权变动的具体日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询华峰化学在最大股权变动日前后5个交易日的股价信息。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 8,
+                "subquestion": "计算华峰化学在最大股权变动日前后5个交易日的股价累计涨跌幅，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "大北农在2019年第一季度末的资产负债率是多少？其中流动资产和非流动资产分别占总资产的比例是多少？（四舍五入保留2位小数）基于上述资产结构特征，该公司在2019年为其子公司提供担保的总金额是多少？(保留2位小数)最长担保期限为多少个月？（保留整数）针对上述担保事项，公司在2019年召开的股东大会的具体日期以及参会股东所持表决权占公司总股本的比例是多少？(可以使用最近一次可查总股本的数据)（四舍五入保留2位小数）",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询大北农在2019年第一季度末的资产负债率，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询大北农在2019年第一季度末的流动资产占总资产的比例，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询大北农在2019年第一季度末的非流动资产占总资产的比例，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询大北农基于2019年资产结构特征为其子公司提供的总担保金额，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询大北农为子公司提供担保的最长担保期限（以月份为单位），并保留整数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询大北农在2019年召开的股东大会的具体日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询2019年股东大会中参会股东所持表决权占公司总股本的比例，并保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "梅花生物在2019年进行了几次股票回购？回购金额合计是多少？(四舍五入保留2位小数) 在上述回购计划中，最大单笔回购的具体时间(xxxx-xx-xx的格式)和金额是多少？(四舍五入保留2位小数) 该公司2019年的平均回购时间跨度是多少？(天为单位，2位小数)平均回购金额是多少？(四舍五入保留2位小数)",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询梅花生物在2019年进行的股票回购次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询梅花生物在2019年股票回购的金额合计，并四舍五入保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询梅花生物在2019年最大单笔回购的具体时间(格式为xxxx-xx-xx)。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询梅花生物在2019年最大单笔回购的金额，并四舍五入保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询梅花生物2019年所有股票回购的时间，计算其平均回购时间跨度(天为单位)，保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询梅花生物2019年的平均回购金额，并四舍五入保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "深科技在2021年12月24日的交易数据如何?具体包括收盘价、成交量、换手率，保留2位小数。基于上述交易数据，该股当日是否创出了近一周、近一月的新高?如果不是,最高价分别是多少? 结合该股当日的MACD指标(考虑成交量)以及均线排列情况,从技术面分析其走势特征。",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询深科技在2021年12月24日的收盘价、成交量和换手率，保留2位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询深科技在2021年12月17日至2021年12月24日的最高价，并验证2021年12月24日是否为近一周的新高。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询深科技在2021年11月24日至2021年12月24日的最高价，并验证2021年12月24日是否为近一月的新高。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询深科技在2021年12月24日的MACD指标。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询深科技在2021年12月24日的均线排列情况并分析其技术面走势特征。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "安井食品在2019年第一季度的最高价、最低价分别是多少？成交量最大的一天是哪天（XXXX-XX-XX）？在上述成交量最大的那天，该股票是否创下了近一周、近一月或近一季度的新高？如果是，分别创下了哪些新高？分析该股票2019年1月份的成交量特征：哪几天的成交量超过月均量的2倍？具体是多少比例？这些放量日的收盘价相比前一日分别上涨/下跌了多少？(四舍五入保留两位小数)",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询安井食品在2019年第一季度的最高价。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询安井食品在2019年第一季度的最低价。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询安井食品在2019年第一季度成交量最大的交易日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询成交量最大的一天安井食品的收盘价是否创下近一周的新高。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询成交量最大的一天安井食品的收盘价是否创下近一月的新高。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询成交量最大的一天安井食品的收盘价是否创下近一季度的新高。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询安井食品2019年1月份的月均成交量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 8,
+                "subquestion": "查询2019年1月份安井食品成交量超过月均量2倍的日期及具体成交量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 9,
+                "subquestion": "查询放量日的收盘价和前一日的收盘价，计算相对涨跌幅。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "美年健康在2019年发生的股权质押中，质押比例最大的一笔是哪个股东质押给了谁？质押股数和占总股本比例是多少，保留4位小数？在上述最大比例质押发生时，该公司的短期借款余额是多少？(保留两位小数) 该公司2019年全年累计发生几笔股权质押？质押融资总额占其年末总资产的比例是多少？(保留两位小数)",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询美年健康在2019年发生的所有股权质押记录。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "从美年健康在2019年的股权质押记录中，找到质押比例最大的股权质押。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询美年健康在2019质押比例最大的一笔股权质押的股东名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询美年健康在2019质押比例最大的一笔股权质押的质押对象名称。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询美年健康在2019质押比例最大的一笔股权质押的质押股数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询质押比例最大的一笔股权质押的占总股本比例，并保留4位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询在质押比例最大的一笔股权质押发生时，美年健康的短期借款余额，并保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 8,
+                "subquestion": "查询美年健康在2019年全年累计发生的股权质押笔数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 9,
+                "subquestion": "查询美年健康2019年质押融资的总额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 10,
+                "subquestion": "查询美年健康2019年末的总资产。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 11,
+                "subquestion": "计算2019年质押融资总额占美年健康年末总资产的比例，并保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "横店东磁在2019年1月份进行了多少次投资者关系活动？这些活动中参与机构最多的一次活动发生在哪天(xxxx-xx-xx的格式)，有多少家机构参与？该公司高管的年度薪酬总额是多少？一年后呢？变化比例是(四舍五入保留到小数点两位)？请结合该公司所属的概念板块，列出2021年该公司所属的各个概念板块的平均高管薪酬和投资者关系活动频次是多少？（四舍五入保留两位小数）",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询横店东磁在2019年1月份进行的投资者关系活动次数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询横店东磁在2019年1月份投资者关系活动中参与机构最多的一次活动的日期。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询参与机构最多的一次投资者关系活动中参与的机构数量。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询横店东磁的年度高管薪酬总额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "查询横店东磁一年后的高管薪酬总额。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询横店东磁的年度高管薪酬总额与一年后的薪酬总额的变化比例，并四舍五入保留到小数点两位。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询横店东磁所属的概念板块的高管薪酬的平均值和投资者关系活动频次。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 8,
+                "subquestion": "列出2021年横店东磁所属的各个概念板块的平均高管薪酬和投资者关系活动频次，并四舍五入保留到小数点两位。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    },
+    {
+        "question": "中直股份在2021年12月31日的总股本是多少？其中有限售条件的流通股占比是多少？(保留两位小数) 在这个时间点，该股票的境内自然人持股和境外自然人持股比例分别是多少？两者相差多少个百分点？(保留两位小数) 该股票属于哪些概念板块？在这些概念板块中，其他公司2021年12月31日的平均有限售股比例是多少？该股票是高于还是低于板块平均水平，偏离了多少个百分点？(保留两位小数)",
+        "subquestions": [
+            {
+                "id": 1,
+                "subquestion": "查询中直股份在2021年12月31日的总股本。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 2,
+                "subquestion": "查询中直股份在2021年12月31日有限售条件的流通股占比。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 3,
+                "subquestion": "查询中直股份在2021年12月31日境内自然人持股比例。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 4,
+                "subquestion": "查询中直股份在2021年12月31日境外自然人持股比例。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 5,
+                "subquestion": "计算中直股份在2021年12月31日境内自然人持股与境外自然人持股的差值，并保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 6,
+                "subquestion": "查询中直股份在2021年12月31日所属的概念板块。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 7,
+                "subquestion": "查询2021年12月31日其他公司在中直股份所属于的概念板块的平均有限售股比例。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            },
+            {
+                "id": 8,
+                "subquestion": "比较中直股份在2021年12月31日有限售条件的流通股占比与概念板块平均有限售股比例，判断是高于还是低于，并计算偏离了多少个百分点，保留两位小数。",
+                "table_name": "",
+                "reason": "",
+                "sql": ""
+            }
+        ]
+    }
+]

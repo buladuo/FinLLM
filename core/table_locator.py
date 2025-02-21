@@ -4,23 +4,31 @@ import logging
 
 class TableLocator:
     
-    def __init__(self):
+    def __init__(self,question_classification_agent:Agents.QuestionClassificationAgent,table_locator_agent:Agents.TableLocatorAgent):
         self.db_table = ['AStockBasicInfoDB','AStockIndustryDB','AStockOperationsDB',
                          'AStockShareholderDB','AStockFinanceDB','AStockMarketQuotesDB',
                          'AStockEventsDB','PublicFundDB','CreditDB','IndexDB',
                          'InstitutionDB','ConstantDB','HKStockDB','USStockDB']
-        self.question_classification_agent = Agents.QuestionClassificationAgent()
-        self.table_locator_agent = Agents.TableLocatorAgent()
+        self.question_classification_agent = question_classification_agent
+        self.table_locator_agent = table_locator_agent
         self.logger = logging.getLogger(self.__class__.__name__)
         self.logger.info(f"\nDatabase class is : {self.db_table}\n"
                          f"Total num of class is {len(self.db_table)} ")
         
-    def get_table(self, question: str):
+    def get_table(self, question: str, is_hk = False,is_us = False):
+        
+        if is_hk:
+            question = "这是一个港股题目，你应该查找港股相关的表：" + question
+            return self.get_hk_table(question)
+        elif is_us:
+            question = "这是一个股题目，你应该查找美股相关的表：" + question
+            return self.get_us_table(question)
+        
         # 初始化一个空列表用于存储最终结果
         final_results = []
 
         # 遍历 question_classification_agent 查询的多个结果
-        for result in self.question_classification_agent.query(question):
+        for result in self.question_classification_agent.query([{"role":"user","content":question}]):
             # 检查 result 是否为字典类型且不为 None
             if isinstance(result, dict) and result is not None:
                 # 根据分类结果选择对应的数据库
@@ -31,7 +39,7 @@ class TableLocator:
                 self.logger.info(f"Chosen database: {database_info}")
                 
                 # 通过 table_locator_agent 查询表信息
-                tables = self.table_locator_agent.query(question, type=database_info)
+                tables = self.table_locator_agent.query([{"role":"user","content":question}], type=database_info)
                 
                 # 遍历查询结果，确保每个结果都是字典类型且不为 None
                 for res in tables:
@@ -54,6 +62,10 @@ class TableLocator:
         # 初始化一个空列表用于存储最终结果
         final_results = []
         tables = [{
+            "id":12,
+            "class_name": "常量库"
+        },
+        {
             "id": 13,
             "class_name": "港股数据库"
         }]
@@ -70,7 +82,7 @@ class TableLocator:
                 self.logger.info(f"Chosen database: {database_info}")
                 
                 # 通过 table_locator_agent 查询表信息
-                tables = self.table_locator_agent.query(question, type=database_info)
+                tables = self.table_locator_agent.query([{"role":"user","content":question}], type=database_info)
                 
                 # 遍历查询结果，确保每个结果都是字典类型且不为 None
                 for res in tables:
@@ -93,6 +105,9 @@ class TableLocator:
         # 初始化一个空列表用于存储最终结果
         final_results = []
         tables = [{
+            "id":12,
+            "class_name": "常量库"
+        },{
             "id": 14,
             "class_name": "美股数据库"
         }]
@@ -109,7 +124,7 @@ class TableLocator:
                 self.logger.info(f"Chosen database: {database_info}")
                 
                 # 通过 table_locator_agent 查询表信息
-                tables = self.table_locator_agent.query(question, type=database_info)
+                tables = self.table_locator_agent.query([{"role":"user","content":question}], type=database_info)
                 
                 # 遍历查询结果，确保每个结果都是字典类型且不为 None
                 for res in tables:
@@ -140,7 +155,7 @@ class TableLocator:
             database = self.db_table[int(result['id']) - 1].lower()
             database_info = database+'_info'
             self.logger.info(f"Chosed database in:{database_info}")
-            result = self.table_locator_agent.query(question,type=database_info)
+            result = self.table_locator_agent.query([{"role":"user","content":question}],type=database_info)
             
             
             
