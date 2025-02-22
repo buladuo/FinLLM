@@ -1,6 +1,10 @@
 # 全局配置
 global:
   default_model: "gpt-4o-mini"  # 默认使用的模型名称
+  sql_reason_model: "gpt-4o-mini"
+
+  default_embedding: "silicon-bge-m3"  # 默认使用的词向量模型名称
+
   request_timeout: 360          # 请求超时时间（秒）
   retries: 3                   # 失败时的重试次数
   logs_path: "./logs/"         # 日志存储路径
@@ -63,23 +67,6 @@ models:
     type: openai
     rpm: 100
 
-
-  kimi-research:
-    name: "kimi-research"          
-    api_base: "http://127.0.0.1:8012/v1"  
-    api_key: "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1c2VyLWNlbnRlciIsImV4cCI6MTc0MzcwMjUwNiwiaWF0IjoxNzM1OTI2NTA2LCJqdGkiOiJjdHMyNXFuZnRhZWU3aDAzOGtuMCIsInR5cCI6InJlZnJlc2giLCJhcHBfaWQiOiJraW1pIiwic3ViIjoiY3A5dnNjODNyMDdkcnU1dmNtbWciLCJzcGFjZV9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWwwIiwiYWJzdHJhY3RfdXNlcl9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWtnIiwicm9sZXMiOlsidmlkZW9fZ2VuX2FjY2VzcyJdLCJzc2lkIjoiMTczMDMxMDI0NDc0NzEwODEyMSIsImRldmljZV9pZCI6Ijc0NTU3NDcyNjIyOTE5MDU3OTIifQ.De8qRs90hz9PnokrKcppYswzKgGis2mvwqpT4RdOdweGqmAk4bvBySp5l6xeCzkBjyr_3zvGw7DavSN8Y4RGeA"    # 模型后端的 API 密钥
-    model_type: chat
-    type: openai
-    rpm: 5
-
-  kimi-k1:
-    name: "kimi-k1"          
-    api_base: "http://127.0.0.1:8012/v1"  
-    api_key: "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1c2VyLWNlbnRlciIsImV4cCI6MTc0MzcwMjUwNiwiaWF0IjoxNzM1OTI2NTA2LCJqdGkiOiJjdHMyNXFuZnRhZWU3aDAzOGtuMCIsInR5cCI6InJlZnJlc2giLCJhcHBfaWQiOiJraW1pIiwic3ViIjoiY3A5dnNjODNyMDdkcnU1dmNtbWciLCJzcGFjZV9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWwwIiwiYWJzdHJhY3RfdXNlcl9pZCI6ImNwOXZzYzgzcjA3ZHJ1NXZjbWtnIiwicm9sZXMiOlsidmlkZW9fZ2VuX2FjY2VzcyJdLCJzc2lkIjoiMTczMDMxMDI0NDc0NzEwODEyMSIsImRldmljZV9pZCI6Ijc0NTU3NDcyNjIyOTE5MDU3OTIifQ.De8qRs90hz9PnokrKcppYswzKgGis2mvwqpT4RdOdweGqmAk4bvBySp5l6xeCzkBjyr_3zvGw7DavSN8Y4RGeA"    # 模型后端的 API 密钥
-    model_type: think
-    type: openai
-    rpm: 5
-
   glm-4:
     name: "glm-4"          
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
@@ -91,6 +78,15 @@ models:
 
   glm-4-plus:
     name: "glm-4-plus"         
+    api_base: "https://open.bigmodel.cn/api/paas/v4"  
+    api_key: "68ddeffec8d07a1e165e9cb0b4c0b3b7.hG5n1LQU482l3Up0"    # 模型后端的 API 密钥
+    model_type: chat
+    type: openai
+    rpm: 100
+
+
+  glm-4-flash:
+    name: "glm-4-flash"         
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
     api_key: "68ddeffec8d07a1e165e9cb0b4c0b3b7.hG5n1LQU482l3Up0"    # 模型后端的 API 密钥
     model_type: chat
@@ -122,13 +118,6 @@ models:
     type: openai
     rpm: 5
   
-  # deepseek:
-  #   name: "deepseek"
-  #   api_base: "http://127.0.0.1:8015/v1"  
-  #   api_key: "eUcQbrjW28xhK7sVkgF4VQgZ4W2W+hKkwnhIDtme4lQvcis6/xUgvxx5lEyBE1JA" 
-  #   model_type: chat 
-  #   type: openai
-  #   rpm: 5
   deepseek-chat:
     name: "deepseek-chat"
     api_base: "https://api.deepseek.com/v1"  
@@ -145,7 +134,7 @@ models:
     api_key: "sk-pmpxekdgnabxqleqymrgsdijeprbmjvwhuatplnmftdmezpx"  
     model_type: chat
     type: openai
-    rpm: 5
+    rpm: 100
   deepseek-r1:
     name: "deepseek-r1"
     api_base: "http://127.0.0.1:8015/v1"  
@@ -161,9 +150,39 @@ models:
     type: openai
     rpm: 5
 
+embeddings:
+  silicon-bge-m3:
+    name: BAAI/bge-m3
+    api_base: "https://api.siliconflow.cn/v1"
+    api_key: "sk-pmpxekdgnabxqleqymrgsdijeprbmjvwhuatplnmftdmezpx"
+    model_type: embedding
+    dim: 1024
+    rpm: 2000
+    tpm: 50000
+  
+  bce-embedding-base_v1:
+    name: netease-youdao/bce-embedding-base_v1
+    api_base: "https://api.siliconflow.cn/v1"
+    api_key: "sk-pmpxekdgnabxqleqymrgsdijeprbmjvwhuatplnmftdmezpx"
+    model_type: embedding
+    dim: 768
+    rpm: 2000
+    tpm: 50000
+  
+  glm-embedding-3:
+    name: embedding-3
+    api_base: "https://open.bigmodel.cn/api/paas/v4"
+    api_key: "8ddeffec8d07a1e165e9cb0b4c0b3b7.hG5n1LQU482l3Up0"
+    model_type: embedding
+    dim: 2048
+    dimensions: [2048,1024,512,256]
+    rpm: 2000
+    tpm: 50000
+  
+
 database:
   api_url: "https://comm.chatglm.cn/finglm2/api/query"  
-  api_key: "7e479418b08b437bbcbd9594020fb41c"             
+  api_key: "0413d4075e2745aeac3154423796650d"             
   timeout: 15                                  
 
 logging:

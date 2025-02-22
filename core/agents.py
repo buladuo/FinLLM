@@ -25,7 +25,7 @@ class BaseAgent(ABC):
         self.retries = 3
 
     @abstractmethod
-    def query(self, question)->list:
+    def query(self, question):
         pass
 
     def _handle_json_response(self, response)->list:
@@ -51,8 +51,18 @@ class BaseAgent(ABC):
         self.logger.debug(f"Send request: {messages}.")
         
         response = self.service.query(messages)
-        self.logger.info(f"Received response: {response}.")
+        self.logger.info(f"Received response: \n{response}.")
         return self._handle_json_response(response)
+    
+    def _query_with_extract_json(self, prompt_type, message, prompt_id=None):
+        system_prompt = self.prompt_manager.get_prompt(prompt_type, prompt_id)['content']
+        messages = [{"role": "system", "content": str(system_prompt)}]
+        messages.extend(message)
+        self.logger.debug(f"Send request: {messages}.")
+        
+        response = self.service.query(messages)
+        self.logger.info(f"Received response: \n{response}.")
+        return (response,self._handle_json_response(response))
 
     def _handle_sql_response(self, response):
         extract_response = self.sql_extractor.extract_sql(response, model_name=self.model_name)
@@ -142,6 +152,10 @@ class SQLGeneratorAgent(BaseAgent):
 class SQLReGeneratorAgent(BaseAgent):
     def query(self, message, prompt_id=None):
         return self._query_and_extract_sql('sql_regenerator', message, prompt_id)
+    
+class SQLReasonAgent(BaseAgent):
+    def query(self, message, prompt_id=None):
+        return self._query_with_extract_json('sql_reason', message, prompt_id)
 
 class CotAgent(BaseAgent):
     def query(self, message, prompt_id=None):

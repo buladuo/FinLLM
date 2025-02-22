@@ -79,6 +79,10 @@ class QuestionManager:
         self.questions = []
         self.load_questions()
 
+    def get_total_num_questions(self):
+        """获取问题的总数。"""
+        return len(self.questions)
+
     def load_questions(self):
         """从 JSON 文件加载问题数据。"""
         if os.path.exists(self.file_path):
