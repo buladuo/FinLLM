@@ -49,8 +49,18 @@ def main():
     
     if args.items:
         for item in tqdm(items):
-            finllm.process_item(item - 1)
-        finllm.save_result()
+            try:
+                finllm.process_item(item - 1)
+                finllm.save_result()
+            except Exception as e:
+                print(f"处理项目 {item} 时发生错误: {e}")
+
+        
+    # if args.items:
+    #     for item in tqdm(items):
+    #         finllm.process_item(item - 1)
+        # finllm.save_result()
+    
     
 
 if __name__ == "__main__":

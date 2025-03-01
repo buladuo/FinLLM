@@ -192,10 +192,6 @@ fields:
     Potential non-controlling shareholder, 86 - Previous controlling shareholder before
     transfer, 87 - Previous non-controlling shareholder before transfer, 121 - Trustee
     of equity, 122 - Controlled by the same party, 999 - No related relationship.'
-- column_name: .nan
-  column_description: .nan
-  annotation_zh: .nan
-  annotation: .nan
 - column_name: AgreementDate
   column_description: 协议签署日期
   annotation_zh: .nan

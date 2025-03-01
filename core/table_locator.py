@@ -15,20 +15,27 @@ class TableLocator:
         self.logger.info(f"\nDatabase class is : {self.db_table}\n"
                          f"Total num of class is {len(self.db_table)} ")
         
-    def get_table(self, question: str, is_hk = False,is_us = False):
+    def get_table(self, question: str, is_hk = False,is_us = False,db_example = None,table_example = None):
         
         if is_hk:
             question = "这是一个港股题目，你应该查找港股相关的表：" + question
-            return self.get_hk_table(question)
+            return self.get_hk_table(question,db_example=db_example,table_example=table_example)
         elif is_us:
             question = "这是一个股题目，你应该查找美股相关的表：" + question
-            return self.get_us_table(question)
+            return self.get_us_table(question,db_example=db_example,table_example=table_example)
         
         # 初始化一个空列表用于存储最终结果
         final_results = []
 
         # 遍历 question_classification_agent 查询的多个结果
-        for result in self.question_classification_agent.query([{"role":"user","content":question}]):
+        question_classification_results = []
+        if db_example is not None:
+            question_classification_results = self.question_classification_agent.query([{"role":"user","content":question}],'without_example',examples=db_example)
+        else:
+            question_classification_results = self.question_classification_agent.query([{"role":"user","content":question}])
+            
+        
+        for result in question_classification_results:
             # 检查 result 是否为字典类型且不为 None
             if isinstance(result, dict) and result is not None:
                 # 根据分类结果选择对应的数据库
@@ -39,7 +46,11 @@ class TableLocator:
                 self.logger.info(f"Chosen database: {database_info}")
                 
                 # 通过 table_locator_agent 查询表信息
-                tables = self.table_locator_agent.query([{"role":"user","content":question}], type=database_info)
+                tables = []
+                if table_example is not None:
+                    tables = self.table_locator_agent.query([{"role":"user","content":question}],type=database_info,prompt_id='without_example',examples=table_example)
+                else:
+                    tables = self.table_locator_agent.query([{"role":"user","content":question}], type=database_info)
                 
                 # 遍历查询结果，确保每个结果都是字典类型且不为 None
                 for res in tables:
@@ -58,7 +69,7 @@ class TableLocator:
         # 返回包含完整信息的字典列表
         return final_results
 
-    def get_hk_table(self, question: str):
+    def get_hk_table(self, question: str,db_example = None,table_example = None):
         # 初始化一个空列表用于存储最终结果
         final_results = []
         tables = [{
@@ -82,7 +93,11 @@ class TableLocator:
                 self.logger.info(f"Chosen database: {database_info}")
                 
                 # 通过 table_locator_agent 查询表信息
-                tables = self.table_locator_agent.query([{"role":"user","content":question}], type=database_info)
+                tables = []
+                if table_example is not None:
+                    tables = self.table_locator_agent.query([{"role":"user","content":question}],type=database_info,prompt_id='without_example',examples=table_example)
+                else:
+                    tables = self.table_locator_agent.query([{"role":"user","content":question}], type=database_info)
                 
                 # 遍历查询结果，确保每个结果都是字典类型且不为 None
                 for res in tables:
@@ -101,7 +116,7 @@ class TableLocator:
         # 返回包含完整信息的字典列表
         return final_results
 
-    def get_us_table(self, question: str):
+    def get_us_table(self, question: str,db_example = None,table_example = None):
         # 初始化一个空列表用于存储最终结果
         final_results = []
         tables = [{
@@ -124,7 +139,11 @@ class TableLocator:
                 self.logger.info(f"Chosen database: {database_info}")
                 
                 # 通过 table_locator_agent 查询表信息
-                tables = self.table_locator_agent.query([{"role":"user","content":question}], type=database_info)
+                tables = []
+                if table_example is not None:
+                    tables = self.table_locator_agent.query([{"role":"user","content":question}],type=database_info,prompt_id='without_example',examples=table_example)
+                else:
+                    tables = self.table_locator_agent.query([{"role":"user","content":question}], type=database_info)
                 
                 # 遍历查询结果，确保每个结果都是字典类型且不为 None
                 for res in tables:

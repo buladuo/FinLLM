@@ -1,16 +1,14 @@
 from abc import ABC, abstractmethod
-from ast import List
-from tkinter import NO
-from unittest import result
 
-from tenacity import retry
+
+from core.prompt_manager import PromptManager
 from services.llm_client import LLMServiceFactory
 from utils.json_extractor import JsonExtractor
 from utils.sql_extractor import SqlExtractor
 import logging
 
 class BaseAgent(ABC):
-    def __init__(self, model_config, global_config, prompt_manager):
+    def __init__(self, model_config:dict, global_config:dict, prompt_manager: PromptManager):
         self.model_name = model_config['name']
         self.model_config = model_config
         self.global_config = global_config
@@ -44,8 +42,13 @@ class BaseAgent(ABC):
         
         return extract_response
 
-    def _query_and_extract_json(self, prompt_type, message, prompt_id=None):
+    def _query_and_extract_json(self, prompt_type, message, prompt_id=None,examples = None):
         system_prompt = self.prompt_manager.get_prompt(prompt_type, prompt_id)['content']
+        if system_prompt is None:
+            self.logger.error(f"Prompt not found: {prompt_type}, {prompt_id}")
+        if examples and isinstance(examples, str):
+            system_prompt += examples
+            
         messages = [{"role": "system", "content": str(system_prompt)}]
         messages.extend(message)
         self.logger.debug(f"Send request: {messages}.")
@@ -54,8 +57,13 @@ class BaseAgent(ABC):
         self.logger.info(f"Received response: \n{response}.")
         return self._handle_json_response(response)
     
-    def _query_with_extract_json(self, prompt_type, message, prompt_id=None):
+    def _query_with_extract_json(self, prompt_type, message, prompt_id=None,examples = None):
         system_prompt = self.prompt_manager.get_prompt(prompt_type, prompt_id)['content']
+        if system_prompt is None:
+            self.logger.error(f"Prompt not found: {prompt_type}, {prompt_id}")
+        if examples and isinstance(examples, str):
+            system_prompt += examples
+            
         messages = [{"role": "system", "content": str(system_prompt)}]
         messages.extend(message)
         self.logger.debug(f"Send request: {messages}.")
@@ -90,6 +98,15 @@ class BaseAgent(ABC):
         response = self.service.query(messages)
         self.logger.info(f"Received response: {response}.")
         return self._handle_sql_response(response)
+    def _query_with_extract_sql(self, prompt_type, message, prompt_id=None):
+        system_prompt = self.prompt_manager.get_prompt(prompt_type, prompt_id)['content']
+        messages = [{"role": "system", "content": system_prompt}]
+        messages.extend(message)
+        self.logger.debug(f"Send request: {messages}.")
+        
+        response = self.service.query(messages)
+        self.logger.info(f"Received response: {response}.")
+        return response, self._handle_sql_response(response)
     
 
 class EntityRecognitionAgent(BaseAgent):
@@ -98,8 +115,8 @@ class EntityRecognitionAgent(BaseAgent):
 
 
 class QuestionClassificationAgent(BaseAgent):
-    def query(self, message, prompt_id=None):
-        return self._query_and_extract_json('db_cls', message, prompt_id)
+    def query(self, message, prompt_id=None, examples = None):
+        return self._query_and_extract_json('db_cls', message, prompt_id, examples)
     
     
 class JsonFormatRepairAgent(BaseAgent):
@@ -124,12 +141,12 @@ class EntityReferenceReplacementAgent(BaseAgent):
         return self._query_and_extract_json('entity_reference_replacement', message, prompt_id)
 
 class TableLocatorAgent(BaseAgent):
-    def query(self, message, type, prompt_id=None):
+    def query(self, message, type, prompt_id=None, examples = None):
         
-        result = self._query_and_extract_json(type, message, prompt_id)
+        result = self._query_and_extract_json(type, message, prompt_id,examples=examples)
         retry_times = 0
         while not result and retry_times < self.retries:
-            result = self._query_and_extract_json(type, message, prompt_id)
+            result = self._query_and_extract_json(type, message, prompt_id,examples=examples)
             retry_times += 1
         
         return result
@@ -138,29 +155,32 @@ class TableLocatorAgent(BaseAgent):
 class SQLGeneratorAgent(BaseAgent):
     def query(self, message, prompt_id=None):
         return self._query_and_extract_sql('sql_generator', message, prompt_id)
-    def query_json_format(self, message, prompt_id='json_format'):
+    def query_json_format(self, message, prompt_id='json_format',examples = None):
         
-        result = self._query_and_extract_json('sql_generator', message, prompt_id)
+        result = self._query_and_extract_json('sql_generator', message, prompt_id,examples)
         
-        if prompt_id == 'json_format':
+        if prompt_id.startswith('json_format'):
             if not isinstance(result,list):
                 self.logger.warning("Query result is not json format!")
                 return []
         return result
-    
+
+class SQLComparisonAgent(BaseAgent):
+    def query(self, message, prompt_id=None):
+        return self._query_and_extract_json('sql_comparison', message, prompt_id)
 
 class SQLReGeneratorAgent(BaseAgent):
     def query(self, message, prompt_id=None):
-        return self._query_and_extract_sql('sql_regenerator', message, prompt_id)
+        return self._query_with_extract_sql('sql_regenerator', message, prompt_id)
     
 class SQLReasonAgent(BaseAgent):
-    def query(self, message, prompt_id=None):
-        return self._query_with_extract_json('sql_reason', message, prompt_id)
+    def query(self, message, prompt_id=None, examples = None):
+        return self._query_with_extract_json('sql_reason', message, prompt_id,examples)
 
 class CotAgent(BaseAgent):
-    def query(self, message, prompt_id=None):
+    def query(self, message, prompt_id=None, examples = None):
         
-        cot_result = self._query_and_extract_json('cot', message, prompt_id)
+        cot_result = self._query_and_extract_json('cot', message, prompt_id,examples)
         if not isinstance(cot_result,list):
             return []
         

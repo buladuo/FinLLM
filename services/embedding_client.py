@@ -5,6 +5,7 @@ import threading
 from openai import OpenAI
 from typing import Dict, List
 from abc import ABC, abstractmethod
+from collections import deque
 
 import os
 from httpx_socks import SyncProxyTransport
@@ -20,8 +21,10 @@ class EmbeddingService(ABC):
         self.base_url = config["api_base"]
         self.api_key = config["api_key"]
         self.rpm = config["rpm"]
+        self.pool_size = config["embedding_pool_size"]
         self.tpm = config.get("tpm")
         self.dim = config.get("dim")
+        
         
         self.lock = threading.Lock()
         self.last_request_time = 0
@@ -39,6 +42,9 @@ class EmbeddingService(ABC):
             api_key=self.api_key,
             http_client=http_client
         )
+        
+        self.cache = {}
+        self.order = deque()  # 用于记录缓存的顺序
     
     def _get_proxy(self) -> httpx.Client:
         """获取并配置代理客户端"""
@@ -115,6 +121,11 @@ class OpenAIEmbeddingService(EmbeddingService):
 
     def get_embeddings(self, text: List[str]) -> List[List[float]]:
         self.logger.debug(f"Getting embeddings for text: {text}")
+        
+        cached_embeddings = self._get_cached_embeddings(text)
+        if cached_embeddings:
+            return cached_embeddings
+        
         for attempt in range(self.retries):
             self._rate_limit()
             self._check_and_reset_token_usage()
@@ -143,12 +154,38 @@ class OpenAIEmbeddingService(EmbeddingService):
                 
                 embeddings_list = [dict(embedding)['embedding'] for embedding in embeddings]
                 self.logger.debug(f"Received embeddings from model '{self.name}': {embeddings_list}")
+                
+                # 将新获取的嵌入存入缓存
+                self._cache_embeddings(text, embeddings_list)
                 return embeddings_list
             
             except Exception as e:
                 self.logger.error(f"Attempt {attempt + 1} - Error getting embeddings from model {self.name}: {e}")
         
         return []  # Return an empty list if all attempts fail
+    
+    def _get_cached_embeddings(self, text: List[str]) -> List[List[float]]:
+        """检查缓存中是否有已请求过的文本嵌入"""
+        embeddings = []
+        for t in text:
+            if t in self.cache:
+                self.logger.info(f"Cache hit for: {t}")
+                embeddings.append(self.cache[t])
+            else:
+                embeddings.append(None)  # 如果缓存中没有该文本的嵌入，则返回 None
+        return [emb for emb in embeddings if emb is not None]  # 返回已缓存的嵌入列表
+    
+    def _cache_embeddings(self, text: List[str], embeddings_list: List[List[float]]):
+        """将新获取的嵌入存入缓存池"""
+        for t, emb in zip(text, embeddings_list):
+            if len(self.cache) >= self.pool_size:
+                # 缓存已满，移除最久未使用的条目
+                oldest_text = self.order.popleft()
+                del self.cache[oldest_text]
+                self.logger.debug(f"Cache full. Removed: {oldest_text}")
+
+            self.cache[t] = emb
+            self.order.append(t)  # 将新添加的条目放到队列末尾
 
 
 class EmbeddingServiceFactory:
@@ -161,6 +198,7 @@ class EmbeddingServiceFactory:
         # 在这里添加全局配置的信息，但传递给服务的构造函数需要的是合并后的配置
         model_config["request_timeout"] = global_config.get("request_timeout", 10)
         model_config["retries"] = global_config.get("retries", 3)
+        model_config["embedding_pool_size"] = global_config.get("embedding_pool_size", 5)
 
         if model_config.get("type", "embedding") == "embedding":
             logging.info(f"Creating OpenAI embedding service with model name: {model_config['name']}")

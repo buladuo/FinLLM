@@ -340,6 +340,104 @@ prompts:
 
       **注意事项**:
       - `id`必须与其对应的分类保持一致。
-      - 返回内容需包含```json```标识，以便进行正则匹配。
+      - 返回内容需包含```json[]```标识，以便进行正则匹配。
       - 优先选择一个匹配类别，只有在确实需要的时候，才使用逗号连接多个匹配。
+
     
+  - id: without_example
+    content: | 
+      我有一些数据库，其类型说明如下：
+
+      1. A股上市公司数据
+          - 公司基本资料：LC_StockArchives，收录上市公司基本情况，如联系方式、注册信息等。
+          - 公司名称变更：LC_NameChange，记录公司名称历次变更情况。
+          - 公司业务信息：LC_Business，收录上市公司经营范围与涉足行业情况。
+      2. 上市公司行业板块
+          - 公司行业划分表：LC_ExgIndustry，记录上市公司在多种行业划分标准下的所属行业。
+          - 公司行业变更表：LC_ExgIndChange，记录因主营业务变更导致的行业变化。
+          - 行业估值指标：LC_IndustryValuation，记录不同行业标准下的市盈率、市净率等衍生指标。
+          - 行业财务指标表：LC_IndFinIndicators，存储反映行业成长、偿债等能力的衍生指标数据。
+          - 概念所属公司表：LC_COConcept，记录A股上市公司所属概念。
+          - 概念板块常量表：LC_ConceptList，记录A股市场热点概念相关信息。
+      3. 上市公司产品供销/人力资源
+          - 公司供应商与客户：LC_SuppCustDetail，收录上市公司主要供应商、客户及交易信息。
+          - 公司职工构成：LC_Staff，从多方面介绍公司职工构成情况。
+          - 公司管理层报酬统计：LC_RewardStat，按报告期统计管理层报酬情况。
+      4. 上市公司股东与股本/公司治理
+          - 股东类型分类表：LC_SHTypeClassifi，记录聚源股东类型分类数据。
+          - 股东名单(新)：LC_MainSHListNew，收录公司主要股东构成及持股变动记录。
+          - 股东户数：LC_SHNumber，反映公司各类股东持股情况及历史变动。
+          - 大股东介绍：LC_Mshareholder，收录上市公司大股东基本资料。
+          - 公司实际控制人：LC_ActualController，收录上市公司实际控制人信息。
+          - 公司股本结构变动：LC_ShareStru，记录上市公司股本结构历史变动。
+          - 股东持股统计：LC_StockHoldingSt，收录机构投资者持仓及前十大股东持股情况。
+          - 股东股权变动：LC_ShareTransfer，收录股东股权变动明细资料。
+          - 股东股权冻结和质押：LC_ShareFP，记录股东股权冻结和质押及进展情况。
+          - 股东股权冻结和质押统计：LC_ShareFPSta，记录股东股权质押冻结统计数据。
+          - 股份回购：LC_Buyback，记录上市公司股份回购方案信息。
+          - 股份回购关联表：LC_BuybackAttach，补充上市公司股份回购相关信息。
+          - 法人配售与战略投资者：LC_LegalDistribution，收录公司配售企业、基金明细。
+          - A股国家队持股统计：LC_NationalStockHoldSt，记录国家队持有A股相关信息。
+          - 外资持股统计：CS_ForeignHoldingSt，记录境外投资者持股情况。
+          - 员工持股计划：LC_ESOP，记录员工持股计划当期情况。
+          - 员工持股计划概况：LC_ESOPSummary，记录员工持股计划总体情况。
+          - 股东增减持计划表：LC_TransferPlan，收录股东增减持计划等指标。
+          - 股东大会出席信息：LC_SMAttendInfo，记录股东大会出席相关信息。
+      5. 上市公司财务指标/财务报表/融资与分红
+          - A股增发：LC_AShareSeasonedNewIssue，收录A股增发明细情况。
+          - A股配股：LC_ASharePlacement，收录A股配股预案及实施进展。
+          - 公司分红：LC_Dividend，记录上市公司分红预案及实施进展。
+          - 资金投向说明：LC_CapitalInvest，记录募集资金投资及改投情况。
+          - 资产负债表_新会计准则：LC_BalanceSheetAll，反映企业按新准则披露的资产负债表数据。
+          - 利润分配表_新会计准则：LC_IncomeStatementAll，反映企业按新准则披露的利润表数据。
+          - 现金流量表_新会计准则：LC_CashFlowStatementAll，反映企业按新准则披露的现金流量表数据。
+          - 公司研发投入与产出：LC_IntAssetsDetail，收录研发投入相关数据。
+          - 公司主营业务构成：LC_MainOperIncome，收录主营业务收入、成本构成等。
+          - 公司经营情况述评：LC_OperatingStatus，收录公司管理层经营评价与发展计划。
+          - 公司历年审计意见：LC_AuditOpinion，收录中介机构对公司经营的评价。
+      6. 上市公司股票行情
+          - 境内股票交易资金流向指标：CS_StockCapFlowIndex，收录股票交易资金流向衍生统计指标。
+          - 境内股票成交量技术指标：CS_TurnoverVolTecIndex，收录基于行情的成交量技术指标。
+          - 股票技术形态表：CS_StockPatterns，收录股票行情与技术形态表现指标。
+          - 日行情表：QT_DailyQuote，收录股票等每日收盘行情数据。
+          - 股票行情表现(新)：QT_StockPerformance，收录股票一段时期行情表现及风险指标。
+          - 停牌复牌表：LC_SuspendResumption，记录上市公司等停牌复牌信息。
+      7. 上市公司公告资讯/重大事项
+          - 公司担保明细：LC_Warrant，收录上市公司担保等重大事项。
+          - 公司借贷明细：LC_Credit，收录公司借贷重大事项描述。
+          - 公司诉讼仲裁明细：LC_SuitArbitration，记录公司诉讼仲裁重大事项。
+          - 重大事项委托理财：LC_EntrustInv，记录公司委托贷款等重大事项。
+          - 公司资产重组明细：LC_Regroup，记录公司资产重组重大事项。
+          - 公司重大经营合同明细：LC_MajorContract，记录公司重大经营合同事项。
+          - 投资者关系活动：LC_InvestorRa，收录调研机构对上市公司调研详情。
+          - 投资者关系活动调研明细：LC_InvestorDetail，收录参与调研的机构明细数据。
+      8. 公募基金数据库
+          - 公募基金概况：MF_FundArchives，记录基金基本情况。
+          - 公募基金产品名称：MF_FundProdName，记录基金相关名称信息。
+          - 公募基金管理人概况：MF_InvestAdvisorOutline，记录基金管理人基本情况。
+          - 公募基金分红：MF_Dividend，记录基金单次分红及累计分红数据。
+      9. 诚信数据库
+          - 违规当事人处罚：LC_ViolatiParty，记录违规当事人处罚信息。
+      10. 指数数据库
+          - 指数基本情况：LC_IndexBasicInfo，收录市场主要指数基本情况。
+          - 指数成份：LC_IndexComponent，收录市场主要指数成份构成情况。
+      11. 机构数据库
+          - 机构基本资料：LC_InstiArchive，收录重要机构基本资料。
+          - 事件体系指引表：PS_EventStru，收录聚源事件分类体系。
+          - 证券舆情表：PS_NewsSecurity，收录证券舆情及事件信息，划分情感等级。
+      12. 常量库
+          - 证券主表：SecuMain，收录单个证券品种基础信息。
+          - 港股证券主表：HK_SecuMain，收录港股单个证券品种基础信息。
+          - 系统常量表：CT_SystemConst，收录数据库常量值分类和名称描述。
+          - 交易日表(新)：QT_TradingDayNew，收录各市场交易日信息。
+          - 国家城市代码表：LC_AreaCode，收录国家和我国行政区域划分信息。
+          - 美股证券主表：US_SecuMain，收录美股单个证券品种基础信息。 
+      
+
+      **注意事项**:
+        - `id`必须与其对应的分类保持一致。
+        - 返回内容需包含```json[{'id':'对应分类的id','class_name':'你选择的分类的名字'}]```标识，以便进行正则匹配。
+        - 优先选择一个匹配类别，只有在确实需要的时候，才使用逗号连接多个匹配:```json[{xxx},{xxx}]```。
+
+      请根据我提供的数据库信息，对以下问题选择一个合适的类别。回复内容需为JSON格式，方便进行解析，其中`id`对应类别前面的序号，`class_name`对应类别。
+      示例格式：

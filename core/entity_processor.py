@@ -9,6 +9,67 @@ class EntityProcessor:
         self.db_client = db_client
         self.llm_agent = llm_agent
         self.logger = logging.getLogger(self.__class__.__name__)
+        
+    
+    def process_fund_company_name(self, value):
+        """查找基金公司的基本信息 在publicfunddb.mf_investadvisoroutline和institutiondb.lc_instiarchive表中进行查找
+        Args:
+            value (str):  查询的公司名。
+        """
+        res_lst = []
+
+
+        tables = ['publicfunddb.mf_investadvisoroutline']
+        columns_to_match = ['InvestAdvisorCode', 'InvestAdvisorName', 'InvestAdvisorAbbrName']
+        columns_to_select = ['InvestAdvisorCode', 'InvestAdvisorName', 'InvestAdvisorAbbrName']
+
+        value = value.replace("'", "''")  # 防止 SQL 注入
+
+        for table in tables:
+
+            match_conditions = [f"{col} like '%{value}%'" for col in columns_to_match]
+            # match_conditions = [f"{col} = '{value}'" for col in columns_to_match]
+            where_clause = ' OR '.join(match_conditions)
+            sql = f"""
+            SELECT {', '.join(columns_to_select)}
+            FROM {table}
+            WHERE {where_clause}
+            """
+            self.logger.debug(f'Executing SQL: {sql}')  # Log SQL query
+            result = self.db_client.query(sql)
+            if result and result['success'] and result['count']:
+                self.logger.info(f'Result found for {table}: {result}')
+                res_lst.append((result, table))
+            else:
+                self.logger.warning(f'No results found for {table} with value: {value}')
+
+
+        tables = ['institutiondb.lc_instiarchive']
+        columns_to_match = ['CompanyCode', 'ListedCode', 'ChiName', 'AbbrChiName',
+                            'NameChiSpelling', 'EngName', 'AbbrEngName']
+        columns_to_select = ['CompanyCode', 'ListedCode', 'ChiName', 'AbbrChiName',
+                            'NameChiSpelling', 'EngName', 'AbbrEngName']
+
+        for table in tables:
+
+            match_conditions = [f"{col} like '%{value}%'" for col in columns_to_match]
+            # match_conditions = [f"{col} = '{value}'" for col in columns_to_match]
+            where_clause = ' OR '.join(match_conditions)
+            sql = f"""
+            SELECT {', '.join(columns_to_select)}
+            FROM {table}
+            WHERE {where_clause}
+            """
+            self.logger.debug(f'Executing SQL: {sql}')  # Log SQL query
+            result = self.db_client.query(sql)
+            if result and result['success'] and result['count']:
+                self.logger.info(f'Result found for {table}: {result}')
+                res_lst.append((result, table))
+            else:
+                self.logger.warning(f'No results found for {table} with value: {value}')
+
+        return res_lst
+
 
     def process_company_name(self, value):
         self.logger.info(f'Processing company name: {value}')
@@ -29,7 +90,7 @@ class EntityProcessor:
                 columns_to_match.remove('EngNameAbbr')
                 columns_to_select.remove('EngNameAbbr')
 
-            match_conditions = [f"{col} = '{value}'" for col in columns_to_match]
+            match_conditions = [f"{col} like '%{value}%'" for col in columns_to_match]
             where_clause = ' OR '.join(match_conditions)
             sql = f"""
             SELECT {', '.join(columns_to_select)}
@@ -161,17 +222,32 @@ class EntityProcessor:
             self.logger.warning(f'No results found in InstitutionDB.LC_InstiArchive for value: {value}')
             return []
 
+
+    def strip_masks(self, value:str):
+        masks = ["基金","概念","板块","公司"]
+        try:
+            for mask in masks:
+                if value.endswith(mask):
+                    value = value[:-len(mask)].rstrip()  # 去掉屏蔽词并去掉末尾空格
+        except Exception as e:
+            self.logger.error(f"Error found for value {value}")
+        return value
+
     def process_items(self, question):
+        
         item_list = self.llm_agent.query([{"role":"user","content":question}])
         self.logger.info('Processing item list')
         res_list = []
         for item in item_list:
             key, value = list(item.items())[0]
+            value = self.strip_masks(value)
             self.logger.debug(f'Processing item: {key} with value: {value}')
             if key == "基金名称" or key == "上市公司名称":
                 res_list.extend(self.process_company_name(value))
+                res_list.extend(self.process_fund_company_name(value))
             elif key == "基金公司简称":
                 res_list.extend(self.process_institution(value))
+                res_list.extend(self.process_fund_company_name(value))
             elif key == "代码":
                 res_list.extend(self.process_code(value))
             elif key == "概念板块名称" or key == "概念板块":

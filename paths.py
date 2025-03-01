@@ -8,6 +8,6 @@ CONFIG_PATH = ROOT_DIR / "configs/config.yaml"
 PROMPTS_PATH = ROOT_DIR / "data/prompts"
 EXCEL_PATH = ROOT_DIR / "data/DataDict.xlsx"
 YAML_DB_INFO_PATH = ROOT_DIR / "data/table_infos"
-QUESTION_PATH = ROOT_DIR / "data/question.json"
+QUESTION_PATH = ROOT_DIR / "data/fusai-a.json"
 OUTPUT_PATH = ROOT_DIR/"data"
 TEMPLATE_PATH = [ROOT_DIR / "data/cot_all_questions-a.json"]

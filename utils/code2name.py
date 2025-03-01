@@ -42,11 +42,13 @@ class Code2Name():
                         chi_names = []
                         chi_name_abbrs = []
                         for data in result['data']:
-                            chi_names.append(data['ChiName'])
-                            chi_name_abbrs.append(data['ChiNameAbbr'])
+                            chi_names.append(data['ChiName'] if data['ChiName'] else '')
+                            chi_name_abbrs.append(data['ChiNameAbbr'] if data['ChiNameAbbr'] else '' )
                         
-                        item['ChiName'] = ', '.join(chi_names)  # 使用逗号连接多个名称
-                        item['ChiNameAbbr'] = ', '.join(chi_name_abbrs)  # 使用逗号连接多个简称
+                        if chi_names:  
+                            item['ChiName'] = ', '.join(chi_names)  # 使用逗号连接多个名称
+                        if chi_name_abbrs:
+                            item['ChiNameAbbr'] = ', '.join(chi_name_abbrs)  # 使用逗号连接多个简称
 
         return answer
 
@@ -57,6 +59,25 @@ class Code2Name():
     def companycode2name(self, answer):
         ''' 根据 companycode 替换返回的 answer 中的 ChiName 和 ChiNameAbbr '''
         return self._update_names(answer, 'CompanyCode', 'CompanyCode')
+
+    def innercode2disclname(self, answer):
+        for item in answer['data']:
+            code_value = None
+            for key in item.keys():
+                if key.lower() == 'innercode':
+                    code_value = item[key]
+                    break
+            
+            if code_value is not None:
+                sql = f'select DisclName from publicfunddb.mf_fundprodname where innercode={code_value}'
+                result = self.db_client.query(sql)
+                if result and result['success'] and result['count'] > 0 and result['data']:
+                    conceptnames = []
+                    for data in result['data']:
+                        conceptnames.append(data['DisclName'])
+                    item['DisclName'] = ', '.join(conceptnames)
+
+        return answer
 
     def secucode2name(self, answer):
         ''' 根据 secucode 替换返回的 answer 中的 ChiName 和 ChiNameAbbr '''
@@ -83,21 +104,52 @@ class Code2Name():
                             item['CodeWithName'].append(new_result_item) 
 
         return answer
+    
+    def conceptcode2name(self,answer):
+        for item in answer['data']:
+            code_value = None
+            for key in item.keys():
+                if key.lower() == 'conceptcode':
+                    code_value = item[key]
+                    break
+            
+            if code_value is not None:
+                sql = f'select ConceptName from AStockIndustryDB.LC_COConcept where ConceptCode={code_value}'
+                result = self.db_client.query(sql)
+                if result and result['success'] and result['count'] > 0 and result['data']:
+                    conceptnames = []
+                    for data in result['data']:
+                        conceptnames.append(data['ConceptName'])
+                    item['ConceptName'] = ', '.join(conceptnames)
 
-    def process(self, answer):
+        return answer
+    
+
+    def process(self, answer,sql = None):
+        
+
+            
+        
+        if answer.get('success', False) == False:
+            return answer
         # 将 answer 转换为小写字符串
         answer_str = str(answer).lower()
+        
         # 定义一个字段到处理方法的映射
         field_to_method = {
             'innercode': self.innercode2name,
             'companycode': self.companycode2name,
             'secucode': self.secucode2name,
-            'securitycode': self.securitycode2name
+            'securitycode': self.securitycode2name,
+            'conceptcode': self.conceptcode2name
         }
 
         # 检测哪些字段存在于 answer_str 中，并调用相应的方法
         for field in field_to_method.keys():
             if field in answer_str:
+                if sql is not None and isinstance(sql,str):
+                    if field == 'innercode' and 'mf_fundprodname' in sql.lower():
+                        answer = self.innercode2disclname(answer)
                 # 当字段存在时，调用相应的方法
                 answer = field_to_method[field](answer)
         

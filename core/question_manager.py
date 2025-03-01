@@ -56,6 +56,7 @@ class SubQuestion:
     
     def set_answer(self, answer : str):
         """更新答案，如果已有答案，则拼接。"""
+        answer = str(answer)
         if self.answer:
             self.answer += ' ' + str(answer)
         else:

@@ -1,0 +1,7 @@
+default: 1
+type: inner_cot
+
+prompts:
+  - id: 1
+    content: |
+    

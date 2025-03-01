@@ -2,19 +2,19 @@
 global:
   default_model: "gpt-4o-mini"  # 默认使用的模型名称
   sql_reason_model: "gpt-4o-mini"
-
   default_embedding: "silicon-bge-m3"  # 默认使用的词向量模型名称
+  embedding_pool_size: 5       # 词向量模型的缓冲池大小
 
   request_timeout: 360          # 请求超时时间（秒）
   retries: 3                   # 失败时的重试次数
-  logs_path: "./logs/"         # 日志存储路径
+  top_k: 5                     # 返回前k个最相似的问题
 
 # 模型后端配置
 models:
   gpt-4o-mini:
     name: "gpt-4o-mini"          
     api_base: "https://free.v36.cm/v1" 
-    api_key: "sk-vDZ5IL5aWz0OfiBw26D26a0b6e854f0f9069Cd2b831fAa09"      # 模型后端的 API 密钥
+    api_key: "sk-dBvrgbjY7kd1WmstF904AaA07e9647D583255122B05a41B6"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 96
@@ -22,7 +22,7 @@ models:
   gpt-3.5-turbo-0125:
     name: "gpt-3.5-turbo-0125"          
     api_base: "https://free.v36.cm/v1" 
-    api_key: "sk-vDZ5IL5aWz0OfiBw26D26a0b6e854f0f9069Cd2b831fAa09"      # 模型后端的 API 密钥
+    api_key: "sk-dBvrgbjY7kd1WmstF904AaA07e9647D583255122B05a41B6"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 96
@@ -30,7 +30,7 @@ models:
   gpt-3.5-turbo-1106:
     name: "gpt-3.5-turbo-1106"          
     api_base: "https://free.v36.cm/v1" 
-    api_key: "sk-vDZ5IL5aWz0OfiBw26D26a0b6e854f0f9069Cd2b831fAa09"      # 模型后端的 API 密钥
+    api_key: "sk-dBvrgbjY7kd1WmstF904AaA07e9647D583255122B05a41B6"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 96
@@ -38,7 +38,7 @@ models:
   gpt-3.5-turbo:
     name: "gpt-3.5-turbo"          
     api_base: "https://free.v36.cm/v1" 
-    api_key: "sk-vDZ5IL5aWz0OfiBw26D26a0b6e854f0f9069Cd2b831fAa09"      # 模型后端的 API 密钥
+    api_key: "sk-dBvrgbjY7kd1WmstF904AaA07e9647D583255122B05a41B6"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 96
@@ -46,7 +46,7 @@ models:
   gpt-3.5-turbo-16k:
     name: "gpt-3.5-turbo-16k"          
     api_base: "https://free.v36.cm/v1" 
-    api_key: "sk-vDZ5IL5aWz0OfiBw26D26a0b6e854f0f9069Cd2b831fAa09"      # 模型后端的 API 密钥
+    api_key: "sk-dBvrgbjY7kd1WmstF904AaA07e9647D583255122B05a41B6"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 96
@@ -70,7 +70,7 @@ models:
   glm-4:
     name: "glm-4"          
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
-    api_key: "68ddeffec8d07a1e165e9cb0b4c0b3b7.hG5n1LQU482l3Up0"    # 模型后端的 API 密钥
+    api_key: "be01fb2ddeb44fe58450ea527b39aa4a.pxLoq9k0WPekcIHm"    # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 100
@@ -79,7 +79,7 @@ models:
   glm-4-plus:
     name: "glm-4-plus"         
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
-    api_key: "68ddeffec8d07a1e165e9cb0b4c0b3b7.hG5n1LQU482l3Up0"    # 模型后端的 API 密钥
+    api_key: "be01fb2ddeb44fe58450ea527b39aa4a.pxLoq9k0WPekcIHm"    # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 100
@@ -88,7 +88,7 @@ models:
   glm-4-flash:
     name: "glm-4-flash"         
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
-    api_key: "68ddeffec8d07a1e165e9cb0b4c0b3b7.hG5n1LQU482l3Up0"    # 模型后端的 API 密钥
+    api_key: "be01fb2ddeb44fe58450ea527b39aa4a.pxLoq9k0WPekcIHm"    # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 100
@@ -96,7 +96,7 @@ models:
   glm-4-flashx:
     name: "glm-4-flashx"         
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
-    api_key: "68ddeffec8d07a1e165e9cb0b4c0b3b7.hG5n1LQU482l3Up0"    # 模型后端的 API 密钥
+    api_key: "be01fb2ddeb44fe58450ea527b39aa4a.pxLoq9k0WPekcIHm"    # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 100
@@ -104,7 +104,7 @@ models:
   glm-zero-preview:
     name: "glm-zero-preview"          
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
-    api_key: "68ddeffec8d07a1e165e9cb0b4c0b3b7.hG5n1LQU482l3Up0"    # 模型后端的 API 密钥
+    api_key: "be01fb2ddeb44fe58450ea527b39aa4a.pxLoq9k0WPekcIHm"    # 模型后端的 API 密钥
     model_type: think
     type: openai
     rpm: 100
@@ -126,7 +126,6 @@ models:
     type: openai
     rpm: 256
   
-
 
   silicon-deepseek:
     name: "deepseek-ai/DeepSeek-V3"
@@ -182,9 +181,10 @@ embeddings:
 
 database:
   api_url: "https://comm.chatglm.cn/finglm2/api/query"  
-  api_key: "0413d4075e2745aeac3154423796650d"             
+  api_key: "9f7794f4179e441392168ab686b32f4a"             
   timeout: 15                                  
 
 logging:
   level: "INFO"        # 日志级别，可选值：DEBUG, INFO, WARNING, ERROR
-  file: "./logs/runtime.log"  
+  # level: "DEBUG"        # 日志级别，可选值：DEBUG, INFO, WARNING, ERROR
+  file_path: "./logs/"  
