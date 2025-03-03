@@ -2,6 +2,7 @@ from ast import Dict, List
 import logging
 import os
 
+from tqdm import tqdm
 from services.db_client import DBClient
 from core.sql_processor import SqlProcessor
 from core.prompt_manager import PromptManager
@@ -73,6 +74,7 @@ class FINLLM:
         self.entity_reference_replacement_agent = self._init_agent('entity_reference_replacement_model', Agents.EntityReferenceReplacementAgent, default_model)
         self.answer_rewrite_agent = self._init_agent('answer_rewrite_model', Agents.AnswerRewriteAgent, default_model)
         self.cot_agent = self._init_agent('cot_model', Agents.CotAgent, default_model)
+        self.question_expand_agent = self._init_agent('question_expand_model', Agents.QuestionExpandAgent, default_model)
         self.sql_comparison_agent = self._init_agent('sql_comparison_model', Agents.SQLComparisonAgent, default_model)
         self.sql_generator_agent = self._init_agent('sql_generator_model', Agents.SQLGeneratorAgent, default_model)
         self.sql_regenerator_agent = self._init_agent('sql_regenerator_model', Agents.SQLReGeneratorAgent, default_model)
@@ -221,28 +223,7 @@ class FINLLM:
                 for key, value in entity.items():
                     question_cleaned = question_cleaned.replace(str(value), 'xxx')
         return question_cleaned
-        
-        # 写一个
-            
-        
-    # def _handle_question_type(self, question_team, entity_result, question_format, is_a=False, is_hk=False, is_us=False):
-    #     """处理不同类型的问题，减少重复代码"""
-    #     result = self.process_question(question_team.get_all_question(), entity_result, is_hk=is_hk, is_us=is_us)
-    #     # 调用answer_rewrite_agent进行答案重写
-    #     rewritten_answer = self.answer_rewrite_agent.query(
-    #         [{
-    #             'role': 'user',
-    #             'content': f"这是整理好的子问题答案:{result}\n以下是我的请求问题:\n{question_format}"
-    #         }],
-    #         prompt_id=3
-    #     )
 
-    #     # 将重写后的答案设置回相应的question_team
-    #     for answer in rewritten_answer:
-    #         question_team.set_answer_by_id(answer.get("id"), answer.get("answer"))
-
-    #     return rewritten_answer
-    
     def _handle_question_type(self, question_team, entity_result, question_format, is_a=False, is_hk=False, is_us=False):
         """处理不同类型的问题，减少重复代码"""
         result = self.process_question(question_team.get_all_question(), entity_result, is_hk=is_hk, is_us=is_us)
@@ -308,4 +289,73 @@ class FINLLM:
             json.dump(all_cot_questions, f, ensure_ascii=False, indent=4)
             
     def process_templates(self,question_id:int):
+        LoggingUtils.update_logging_file(self.logging_config, question_id)
         self.sql_processor.generate_template(question_id)
+        
+    def question_expand(self):
+        count = 0
+        for question in tqdm(self.template_manager, desc="Processing questions", unit="question"):
+            LoggingUtils.update_logging_file(self.logging_config, count)
+            
+            if isinstance(question, tuple):
+                question = question[1]  # 假设字典在元组的第二个位置
+                
+            if not isinstance(question, dict):
+                self.logger.error(f"Unexpected format for question: {question}")
+                continue  # 跳过无效项
+            del question["question_embedding"]
+            # self.logger.info(f"Origin Question:\n {json.dumps(question,ensure_ascii=False, indent=4)}")
+            entity_result = self.entity_processor.process_items(question["question"])
+            tables = set()
+            count += 1
+            
+            for subquestion in question["subquestions"]:
+                del subquestion["sub_question_embedding"]
+                for table in subquestion["table_name"]:
+                    cleaned_table = table.strip("() ").lower()  
+                    tables.add(cleaned_table)
+            
+            all_tables_info = []
+            for table in tables:
+                # 以 '.' 分割表名，并提取最后一部分
+                table_name_parts = table.split('.')
+                last_part = table_name_parts[-1]
+                
+                table_info = self.db_table_manager.get_table_info(last_part)
+                all_tables_info.append(table_info)
+            
+            
+            prompt = f"""
+                1. 已查询的实体信息：{entity_result}
+                2. 表信息: {all_tables_info}
+                3. 样例问题: {question}
+            """
+            
+            self.logger.info(f"{prompt}")
+            result = self.question_expand_agent.query([{"role":"user","content":prompt}])
+            # self.logger.info(f"{json.dumps(result,ensure_ascii=False, indent=4)}")
+            
+            try:
+            
+                if result and isinstance(result,list) and len(result) > 0:
+                    output_path = os.path.join(OUTPUT_PATH, "question_expand.json")
+                    
+                    # 检查文件是否存在，如果存在则加载现有数据
+                    if os.path.exists(output_path):
+                        with open(output_path, 'r', encoding='utf-8') as file:
+                            try:
+                                existing_data = json.load(file)
+                            except json.JSONDecodeError:
+                                existing_data = []
+                    else:
+                        existing_data = []
+                    
+                    # 将每个 question_expand 写入到现有数据中
+                    for question_expand in result:
+                        existing_data.append(question_expand)  # 追加每个扩展的问题
+                    
+                    # 写入更新后的数据到文件
+                    with open(output_path, 'w', encoding='utf-8') as file:
+                        json.dump(existing_data, file, ensure_ascii=False, indent=4)
+            except Exception as e:
+                self.logger.error(f"An error occurred: {e}")

@@ -127,30 +127,30 @@
             {
                 "id": 3,
                 "subquestion": "查询2021年12月24日当天创一年新高的股票。",
-                "table_name": [],
+                "table_name": ["astockmarketquotesdb.CS_StockPatterns"],
                 "reason": "",
-                "sql": ""
+                "sql": "SELECT InnerCode FROM astockmarketquotesdb.CS_StockPatterns WHERE DATE(TradingDay) = '2021-12-24' AND IfHighestHPriceRY = 1;"
             },
             {
                 "id": 4,
                 "subquestion": "查询2021年12月24日股价大于75而且当天创一年新高的股票。",
-                "table_name": [],
+                "table_name": ["astockmarketquotesdb.qt_dailyquote","astockmarketquotesdb.CS_StockPatterns"],
                 "reason": "",
-                "sql": ""
+                "sql": "SELECT DISTINCT t1.InnerCode FROM astockmarketquotesdb.cs_stockpatterns t1 INNER JOIN astockmarketquotesdb.qt_dailyquote t2 ON t1.InnerCode = t2.InnerCode WHERE t1.IfHighestHPriceRY = 1 AND t2.ClosePrice > 75 AND DATE(t2.TradingDay) = '2021-12-24' AND DATE(t1.TradingDay) = '2021-12-24';"
             },
             {
                 "id": 5,
                 "subquestion": "查询2021年12月23日创近半年新高的股票。",
-                "table_name": [],
+                "table_name": ["astockmarketquotesdb.cs_stockpatterns"],
                 "reason": "",
-                "sql": ""
+                "sql": "SELECT InnerCode FROM astockmarketquotesdb.cs_stockpatterns WHERE DATE(TradingDay) = '2021-12-23' AND IfHighestHPriceRMSix = 1"
             },
             {
                 "id": 6,
                 "subquestion": "查询2021年12月23日当天股价大于75且创一年新高的股票。",
-                "table_name": [],
+                "table_name": ["astockmarketquotesdb.qt_dailyquote","astockmarketquotesdb.CS_StockPatterns"],
                 "reason": "",
-                "sql": ""
+                "sql": "SELECT DISTINCT t1.InnerCode FROM astockmarketquotesdb.cs_stockpatterns t1 INNER JOIN astockmarketquotesdb.qt_dailyquote t2 ON t1.InnerCode = t2.InnerCode WHERE t1.IfHighestHPriceRY = 1 AND t2.ClosePrice > 75 AND DATE(t2.TradingDay) = '2021-12-23' AND DATE(t1.TradingDay) = '2021-12-23';"
             },
             {
                 "id": 7,
@@ -171,7 +171,7 @@
                     "astockoperationsdb.lc_staff"
                 ],
                 "reason": "选择字段时，决定只统计员工数量 (EmployeeSum)，因为我们需要查询合并情况下的职工总数。字段限制条件中，CompanyCode 设置为 71598 是因为我们已知的公司代码；MergeMark = 1 以确保只查询合并类型的数据；ClassfiedMethod = 9000 用于筛选职工总数分类；而 EndDate = '2019-12-31' 确保查询年份的准确性。",
-                "sql": "SELECT SUM(EmployeeSum) AS TotalEmployeeCount FROM astockoperationsdb.lc_staff WHERE CompanyCode = 71598 AND MergeMark = 1 AND ClassfiedMethod = 9000 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d')) = '2019-12-31';"
+                "sql": "SELECT SUM(EmployeeSum) AS TotalEmployeeCount FROM astockoperationsdb.lc_staff WHERE CompanyCode = 71598 AND MergeMark = 1 AND ClassfiedMethod = 9000 AND DATE(EndDate) = '2019-12-31';"
             },
             {
                 "id": 2,
@@ -189,7 +189,7 @@
                     "astockoperationsdb.lc_staff"
                 ],
                 "reason": "选择字段时，SUM(EmployeeSum) 统计退休职工总数是查询的核心。字段限制条件中，CompanyCode 设置为 71598 是已知的公司代码；ClassfiedMethod = 9300 确保查询范围限定为退休人数；而 DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2021-01-01' AND '2021-12-31' 确保得到的结果仅限于2021年的记录；InfoSource = '年度报告' 则确保数据的来源是准确可信的。",
-                "sql": "SELECT SUM(EmployeeSum) AS RetiredCount FROM astockoperationsdb.lc_staff WHERE CompanyCode = 71598 AND ClassfiedMethod = 9300 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2020-01-01' AND '2020-12-31' AND InfoSource = '年度报告';"
+                "sql": "SELECT SUM(EmployeeSum) AS RetiredCount FROM astockoperationsdb.lc_staff WHERE CompanyCode = 71598 AND ClassfiedMethod = 9300 AND DATE(EndDate) BETWEEN '2020-01-01' AND '2020-12-31' AND InfoSource = '年度报告';"
             }
         ]
     },
@@ -300,23 +300,26 @@
                     "astockindustrydb.lc_coconcept",
                     "astockindustrydb.lc_conceptlist"
                 ],
-                "reason": "从",
-                "sql": "SELECT  COUNT(distinct InnerCode) FROM  astockindustrydb.lc_coconcept WHERE ConceptCode in (SELECT ConceptCode FROM astockindustrydb.lc_conceptlist WHERE SubclassName = '化工' and year(begindate) >= 2021 )AND YEAR(InDate) = 2021"
+                "reason": "",
+                "sql": "SELECT  COUNT(distinct InnerCode) FROM  astockindustrydb.lc_coconcept WHERE ConceptCode in (SELECT ConceptCode FROM astockindustrydb.lc_conceptlist WHERE SubclassName = '化工' and year(begindate) = 2021 )AND YEAR(InDate) = 2021"
             },
             {
                 "id": 5,
                 "subquestion": "查询2021年纳入的化工子类概念的股票。（仅考虑2021年新纳入的行业数据）",
-                "table_name": [],
+                "table_name": [
+                    "astockindustrydb.lc_coconcept",
+                    "astockindustrydb.lc_conceptlist"
+                ],
                 "reason": "",
-                "sql": ""
+                "sql": "SELECT  distinct InnerCode FROM  astockindustrydb.lc_coconcept WHERE ConceptCode in (SELECT ConceptCode FROM astockindustrydb.lc_conceptlist WHERE SubclassName = '化工' and year(begindate) = 2021 )AND YEAR(InDate) = 2021"
             }
             ,
             {
                 "id": 6,
                 "subquestion": "根据上面股票对应的CompanyCode查询对应的三级行业分类。",
-                "table_name": [],
-                "reason": "",
-                "sql": ""
+                "table_name": ["AStockIndustryDB.LC_ExgIndustry","astockindustrydb.lc_coconcept","astockindustrydb.lc_conceptlist","ConstantDB.SecuMain"],
+                "reason": "首先根据Innercode 查询对应的CompanyCode，然后根据CompanyCode查询对应的三级行业分类。",
+                "sql": "SELECT ThirdIndustryName FROM AStockIndustryDB.LC_ExgIndustry WHERE CompanyCode IN (SELECT DISTINCT CompanyCode FROM ConstantDB.SecuMain WHERE INNERCODE IN (SELECT DISTINCT InnerCode FROM astockindustrydb.lc_coconcept WHERE ConceptCode IN (SELECT ConceptCode FROM astockindustrydb.lc_conceptlist WHERE SubclassName = '化工' AND YEAR(BeginDate) = 2021) AND YEAR(InDate) = 2021));"
             }
         ]
     },
@@ -407,7 +410,7 @@
                     "astockindustrydb.lc_indfinindicators"
                 ],
                 "reason": "在该查询中，使用IndustryName字段筛选出特定行业（风电零部件）的数据，并通过EndDate字段限制在2021年8月内。我们计算的最大值是使用IndOperatingRevenue字段来获得在指定条件下的最高营业收入。这些选择确保了查询结果能够准确反映出该行业在特定时间内的最高营业收入。",
-                "sql": "select IndOperatingRevenue,EndDate from astockindustrydb.lc_indfinindicators where IndustryName = '风电零部件' and EndDate like '%2021-08%' "
+                "sql": "select IndOperatingRevenue,EndDate from astockindustrydb.lc_indfinindicators where IndustryName = '风电零部件' and YEAR(EndDate) = 2021 AND MONTH(EndDate) = 8 "
             }
         ]
     },
@@ -638,7 +641,7 @@
                     "hkstockdb.hk_employeechange"
                 ],
                 "reason": "在本次查询中，我选择了表格中的关键字段。首先，InnerCode设定为1005749，这是工商银行的唯一识别码，用来确保我们查询的目标是具体的工商银行。其次，EffectiveDate字段的过滤条件用于限制查询结果在2020年12月1日至2020年12月31日之间，确保获取正确的变动记录。最后，IfEffected设定为1，以确保我们仅获取有效的员工数量变动记录。QuaBeforeChange和QuaAfterChange字段是我们需要返回的变更前后员工数量信息，其他字段在此查询中并不重要，因此可以被省略。",
-                "sql": "SELECT QuaBeforeChange, QuaAfterChange FROM hkstockdb.hk_employeechange WHERE InnerCode = 1005749 AND DATE(STR_TO_DATE(EffectiveDate, '%Y-%m-%d %H:%i:%s.%f')) >= '2020-12-1' AND DATE(STR_TO_DATE(EffectiveDate, '%Y-%m-%d %H:%i:%s.%f')) <= '2020-12-31' AND IfEffected = 1;"
+                "sql": "SELECT QuaBeforeChange, QuaAfterChange FROM hkstockdb.hk_employeechange WHERE InnerCode = 1005749 AND DATE(EffectiveDate) >= '2020-12-1' AND DATE(EffectiveDate) <= '2020-12-31' AND IfEffected = 1;"
             }
         ]
     },
@@ -652,7 +655,7 @@
                     "hkstockdb.cs_hkstockperformance"
                 ],
                 "reason": "查询字段中只选择了HighPrice，因为这是用户关心的最重要指标。InnerCode用于筛选特定的阅文集团，而TradingDay用于限制所查询的数据时间范围。理想情况下，TradingDay应该使用BETWEEN条件以准确获取区间内的数据而非单值条件。在此查询中，InnerCode是必选并确立了公司的身份，HighPrice作为查询结果直接反馈。",
-                "sql": "SELECT ROUND(MAX(HighPriceRM), 2) AS HighPriceRM FROM hkstockdb.cs_hkstockperformance WHERE InnerCode = '1150048' AND TradingDay like '%2020-06-24%';"
+                "sql": "SELECT ROUND(HighPriceRM, 2) AS HighPriceRM FROM hkstockdb.cs_hkstockperformance WHERE InnerCode = '1150048' AND DATE(TradingDay) = '2020-06-24';"
             },
             {
                 "id": 2,
@@ -661,14 +664,16 @@
                     "hkstockdb.cs_hkstockperformance"
                 ],
                 "reason": "查询使用了 LowPriceRY 字段作为返回数据，而 InnerCode 则用于筛选阅文集团。尽管 TradingDay 被用来限制日期，但实际上仅用到2020年6月24日，并未满足查询要求中关于近一年的最低股价的条件。理想情况下，TradingDay 应使用一个范围限制，便于获取前一年频次数据的重要性。",
-                "sql": "SELECT LowPriceRY FROM hkstockdb.cs_hkstockperformance WHERE InnerCode = '1150048' AND TradingDay LIKE '2020-06-24%'"
+                "sql": "SELECT LowPriceRY FROM hkstockdb.cs_hkstockperformance WHERE InnerCode = '1150048' AND DATE(TradingDay) = '2020-06-24';"
             },
             {
                 "id": 3,
                 "subquestion": "根据上面的查询结果 计算阅文集团在2020年6月24日近一个月的最高价与近一年最低价的差额。",
-                "table_name": [],
+                "table_name": [
+                    "hkstockdb.cs_hkstockperformance"
+                ],
                 "reason": "",
-                "sql": ""
+                "sql": "SELECT ROUND(HighPriceRM, 2) AS HighPriceRM, LowPriceRY, ROUND(HighPriceRM - LowPriceRY, 2) AS PriceDifference FROM hkstockdb.cs_hkstockperformance WHERE InnerCode = '1150048' AND DATE(TradingDay) = '2020-06-24';"
             }
         ]
     },
@@ -682,7 +687,7 @@
                     "hkstockdb.cs_hkstockperformance"
                 ],
                 "reason": "在查询中，通过选择InnerCode字段，我们可以得到目标的港股简称。使用TradingDay作为查询的限制条件是为了确保获取2020年10月27日的相关数据。此外，使用ORDER BY ClosePrice DESC来根据收盘价的降序排列是必要的，这样能够获取到价格最高的股票记录。在LIMIT 2, 1中，2表示跳过前两条记录并获取第三条，从而找到第三高的港股简称。整体设计帮助我们清晰地定位了需要获取的数据和其排序逻辑。",
-                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE TradingDay like '%2020-10-27%' ORDER BY ClosePrice DESC LIMIT 2, 1;"
+                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE DATE(TradingDay) = '2020-10-27' ORDER BY ClosePrice DESC LIMIT 2, 1;"
             },
             {
                 "id": 2,
@@ -691,7 +696,7 @@
                     "hkstockdb.cs_hkstockperformance"
                 ],
                 "reason": "在此查询中，选择InnerCode作为目标字段，以获取2020年10月27日的港股简称。使用TradingDay作为条件限制，以确保我们获取的记录仅限于该交易日的数据。通过ORDER BY TurnoverVolume DESC来将记录按成交量降序排列，以便找到成交量的第三高记录。ORDER BY和LIMIT 2, 1的组合条件使得我们能够准确获取到需要的股票简称。这一系列的设计确保了查询的精准和目标集中。",
-                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE TradingDay LIKE '2020-10-27%' ORDER BY TurnoverVolume DESC LIMIT 2,1;"
+                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE DATE(TradingDay) = '2020-10-27' ORDER BY TurnoverVolume DESC LIMIT 2,1;"
             },
             {
                 "id": 3,
@@ -700,7 +705,7 @@
                     "hkstockdb.cs_hkstockperformance"
                 ],
                 "reason": "在此SQL查询中，InnerCode字段被选择为返回的关键数据，以获取在2020年10月27日的港股简称。TradingDay作为条件限制，确保只获取到该交易日的相关记录。通过ORDER BY TurnoverRate DESC的方式，记录会按照换手率的降序排列，使得能够轻松找到换手率的第三高的记录。LIMIT 2, 1的应用使我们能够精确获取目标数据。这一系列设计展示了明确的查询目的和有效的数据筛选机制。",
-                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE TradingDay LIKE '2020-10-27%' ORDER BY TurnoverRate DESC LIMIT 2,1;"
+                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE DATE(TradingDay) = '2020-10-27' ORDER BY TurnoverRate DESC LIMIT 2,1;"
             }
         ]
     },
@@ -714,7 +719,7 @@
                     "hkstockdb.cs_hkstockperformance"
                 ],
                 "reason": "本查询主要关注的是2019-09-02当天的港股收盘价最高的股票。首先，选择了InnerCode作为返回字段来获取证券的内部编码。TradingDay则用来限制查询日期，确保我们只获取指定交易日的数据。ClosePrice作为排序依据，可以帮助我们找到当天的最高收盘价。此外，通过ORDER BY和LIMIT 1，我们确保最终只得到收盘价最高的一只股票的编码。综上所述，这些选择能有效满足查询需求。",
-                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE TradingDay like '%2019-09-02%' ORDER BY ClosePrice DESC LIMIT 1;"
+                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE DATE(TradingDay) = '2019-09-02' ORDER BY ClosePrice DESC LIMIT 1;"
             },
             {
                 "id": 2,
@@ -723,7 +728,7 @@
                     "hkstockdb.cs_hkstockperformance"
                 ],
                 "reason": "该查询的目标是查找2019-09-02当天成交量最高的港股简称。选择InnerCode作为返回字段，对于定义港股非常必要。而TradingDay则用来限制查询的日期，确保获取到2019-09-02的数据。TurnoverVolume作为排序依据，能够帮助我们找到成交量最高的证券。最终，通过ORDER BY和LIMIT 1的设置，确保得到一项结果，直接满足查询需求。",
-                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE TradingDay LIKE '2019-09-02%' ORDER BY TurnoverVolume DESC LIMIT 1;"
+                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE DATE(TradingDay) = '2019-09-02' ORDER BY TurnoverVolume DESC LIMIT 1;"
             },
             {
                 "id": 3,
@@ -732,7 +737,7 @@
                     "hkstockdb.cs_hkstockperformance"
                 ],
                 "reason": "该查询旨在找出2019-09-02当天换手率最高的港股简称。选择InnerCode作为结果字段，以获取证券的内部编码。而TradingDay则用来约束查询数据的日期，确保只获取到2019-09-02的相关信息。TurnoverRate作为排序的依据，帮助我们识别出换手率最高的证券。通过ORDER BY与LIMIT 1，我们保证了结果的唯一性，直接满足查询需求。",
-                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE TradingDay LIKE '2019-09-02%' ORDER BY TurnoverRate DESC LIMIT 1;"
+                "sql": "SELECT InnerCode FROM hkstockdb.cs_hkstockperformance WHERE DATE(TradingDay) = '2019-09-02' ORDER BY TurnoverRate DESC LIMIT 1;"
             }
         ]
     },
@@ -746,7 +751,7 @@
                     "astockbasicinfodb.lc_namechange"
                 ],
                 "reason": "此次查询选择了CompanyCode和ChiName字段以确保返回公司代码和中文名称信息。限制条件中，ChangeDate的日期设定在2020年1月1日至2020年12月31日，确保覆盖了整个查询需求的时间范围。该时间限制与ChangeDate字段的取值直接相关，能够有效筛选出所需的公司名称变更数据。",
-                "sql": "SELECT CompanyCode, ChiName FROM astockbasicinfodb.lc_namechange WHERE DATE(STR_TO_DATE(ChangeDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2020-01-01' AND '2020-12-31';"
+                "sql": "SELECT CompanyCode, ChiName FROM astockbasicinfodb.lc_namechange WHERE YEAR(ChangeDate) = 2020;"
             },
             {
                 "id": 2,
@@ -756,7 +761,7 @@
                     "astockbasicinfodb.lc_namechange"
                 ],
                 "reason": "此次查询选择了AStockCode字段以确保返回A股证券代码。同时，使用CompanyCode字段作为连接条件，以获取在2020年期间进行公司名称更改的公司。限制条件中，ChangeDate的日期设定在2020年1月1日至2020年12月31日，以确保仅获取该时间段内的变更记录，从而有效筛选出需要的公司证券代码。",
-                "sql": "SELECT AStockCode FROM astockbasicinfodb.lc_stockarchives WHERE CompanyCode IN (SELECT CompanyCode FROM astockbasicinfodb.lc_namechange WHERE DATE(STR_TO_DATE(ChangeDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2020-01-01' AND '2020-12-31');"
+                "sql": "SELECT AStockCode FROM astockbasicinfodb.lc_stockarchives WHERE CompanyCode IN (SELECT CompanyCode FROM astockbasicinfodb.lc_namechange WHERE YEAR(ChangeDate) = 2020);"
             },
             {
                 "id": 3,
@@ -766,7 +771,7 @@
                     "astockbasicinfodb.lc_namechange"
                 ],
                 "reason": "此次查询选择了InnerCode字段以确保返回证券内部编码，按需求提取相应的数据。同时，使用CompanyCode作为连接条件，以获取在2020年期间进行公司名称更改的公司。限制条件中，ChangeDate的日期设定为2020年1月1日至2020年12月31日，确保仅获取该时间段内的变更记录，从而有效筛选出需要的证券内部编码。",
-                "sql": "SELECT InnerCode FROM constantdb.secumain WHERE CompanyCode IN (SELECT CompanyCode FROM astockbasicinfodb.lc_namechange WHERE DATE(STR_TO_DATE(ChangeDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2020-01-01' AND '2020-12-31');"
+                "sql": "SELECT InnerCode FROM constantdb.secumain WHERE CompanyCode IN (SELECT CompanyCode FROM astockbasicinfodb.lc_namechange WHERE YEAR(ChangeDate) = 2020);"
             }
         ]
     },
@@ -780,7 +785,7 @@
                     "astockfinancedb.lc_balancesheetall"
                 ],
                 "reason": "在查询中，我们选择了CompanyCode作为要返回的字段，因为它能够指明具体公司的身份，而TotalAssets是我们筛选的关键字段。限制条件中的EndDate确保查询集中于2021年12月31日的报告，而InfoSourceCode = 110101确保只返回年度报告的数据，这样可以保证数据的有效性和权威性。",
-                "sql": "SELECT CompanyCode FROM astockfinancedb.lc_balancesheetall WHERE DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31' AND InfoSourceCode = 110101 ORDER BY TotalAssets DESC LIMIT 1;"
+                "sql": "SELECT CompanyCode FROM astockfinancedb.lc_balancesheetall WHERE DATE(EndDate) = '2021-12-31' AND InfoSourceCode = 110101 ORDER BY TotalAssets DESC LIMIT 1;"
             },
             {
                 "id": 2,
@@ -789,7 +794,7 @@
                     "astockfinancedb.lc_cashflowstatementall"
                 ],
                 "reason": "在查询中，我们选择CompanyCode作为返回的字段，以便识别具有最高经营活动现金流量净额的公司，同时使用NetOperateCashFlow进行排序，确保查看报告期内现金流量的高低。限制条件EndDate确保只包含2021年12月31日的报告数据，这样可以精准筛选出目标公司的经营表现。",
-                "sql": "SELECT CompanyCode FROM astockfinancedb.lc_cashflowstatementall WHERE DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31' ORDER BY NetOperateCashFlow DESC LIMIT 1;"
+                "sql": "SELECT CompanyCode FROM astockfinancedb.lc_cashflowstatementall WHERE DATE(EndDate) = '2021-12-31' ORDER BY NetOperateCashFlow DESC LIMIT 1;"
             },
             {
                 "id": 3,
@@ -798,7 +803,7 @@
                     "astockfinancedb.lc_balancesheetall"
                 ],
                 "reason": "当前的 SQL 查询只选择了TotalAssets，但未涉及取决于获取的净利润。为了查询2021-12-31报告期内总资产最高公司的净利润，我们需要连接其他表格以获取净利润信息。当前的查询无法提供所需要的信息。",
-                "sql": "SELECT TotalAssets FROM astockfinancedb.lc_balancesheetall WHERE DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31' AND InfoSourceCode = 110101 ORDER BY TotalAssets DESC LIMIT 1;"
+                "sql": "SELECT TotalAssets FROM astockfinancedb.lc_balancesheetall WHERE DATE(EndDate) = '2021-12-31' AND InfoSourceCode = 110101 ORDER BY TotalAssets DESC LIMIT 1;"
             },
             {
                 "id": 4,
@@ -807,7 +812,7 @@
                     "astockfinancedb.lc_balancesheetall"
                 ],
                 "reason": "当前的 SQL 查询使用了SELECT *，但未能提供经营活动现金流量净额和净利润的数据。虽然设置了CompanyCode、EndDate及InfoSourceCode，但没有合适地连接到包含净利润的数据表。为了实现查询的要求，需联接现金流量表获取相关的净利润数据。",
-                "sql": "SELECT * FROM astockfinancedb.lc_balancesheetall WHERE DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31' AND InfoSourceCode = 110101 AND companycode = 76067;"
+                "sql": "SELECT * FROM astockfinancedb.lc_balancesheetall WHERE DATE(EndDate) = '2021-12-31' AND InfoSourceCode = 110101 AND companycode = 76067;"
             },
             {
                 "id": 5,
@@ -823,31 +828,46 @@
         "subquestions": [
             {
                 "id": 1,
-                "subquestion": "查询2020年4月涨幅前10的港股股票的证券简称(SecuAbbr)及其涨幅。",
-                "table_name": [],
+                "subquestion": "查询2020年4月港股股票记录的最后最后一天的日期",
+                "table_name": ["HKStockDB.CS_HKStockPerformance"],
                 "reason": "",
-                "sql": ""
+                "sql": "SELECT distinct TradingDay  FROM HKStockDB.CS_HKStockPerformance WHERE   YEAR(TradingDay) = 2020 AND MONTH(TradingDay) = 4 ORDER BY TradingDay DESC LIMIT 1;"
             },
             {
                 "id": 2,
-                "subquestion": "查询2020年5月涨幅前10的港股股票的证券简称(SecuAbbr)及其涨幅。",
-                "table_name": [],
+                "subquestion": "查询2020年4月涨幅前10的港股股票的证券简称(SecuAbbr)及其涨幅。",
+                "table_name": [
+                    "ConstantDB.HK_SecuMain",
+                    "HKStockDB.CS_HKStockPerformance",
+                    "HKStockDB.CS_HKStockPerformance"
+                ],
                 "reason": "",
-                "sql": ""
+                "sql": "SELECT SecuAbbr, ChangePCTTM FROM ConstantDB.HK_SecuMain JOIN (SELECT InnerCode, ChangePCTTM FROM HKStockDB.CS_HKStockPerformance WHERE TradingDay = (SELECT DISTINCT TradingDay FROM HKStockDB.CS_HKStockPerformance WHERE YEAR(TradingDay) = 2020 AND MONTH(TradingDay) = 4 ORDER BY TradingDay DESC LIMIT 1) ORDER BY ChangePCTTM DESC LIMIT 10) AS TopPerformers ON ConstantDB.HK_SecuMain.InnerCode = TopPerformers.InnerCode;"
             },
             {
                 "id": 3,
-                "subquestion": "从2020年4月涨幅前10的港股股票中，查询2020年5月的涨幅。",
-                "table_name": [],
+                "subquestion": "查询2020年5月涨幅前10的港股股票的证券简称(SecuAbbr)及其涨幅。",
+                "table_name": [
+                    "ConstantDB.HK_SecuMain",
+                    "HKStockDB.CS_HKStockPerformance",
+                    "HKStockDB.CS_HKStockPerformance"
+                ],
                 "reason": "",
-                "sql": ""
+                "sql": "SELECT SecuAbbr, ChangePCTTM FROM ConstantDB.HK_SecuMain JOIN (SELECT InnerCode, ChangePCTTM FROM HKStockDB.CS_HKStockPerformance WHERE TradingDay = (SELECT DISTINCT TradingDay FROM HKStockDB.CS_HKStockPerformance WHERE YEAR(TradingDay) = 2020 AND MONTH(TradingDay) = 5 ORDER BY TradingDay DESC LIMIT 1) ORDER BY ChangePCTTM DESC LIMIT 10) AS TopPerformers ON ConstantDB.HK_SecuMain.InnerCode = TopPerformers.InnerCode;"
             },
             {
                 "id": 4,
+                "subquestion": "从2020年4月涨幅前10的港股股票中，查询2020年5月的涨幅。",
+                "table_name": [],
+                "reason": "首先查询2020年4月涨幅前10的港股股票的InnerCode,然后根据InnerCode查询2020年5月的涨幅。",
+                "sql": "SELECT TopPerformers.InnerCode FROM ConstantDB.HK_SecuMain JOIN (SELECT InnerCode, ChangePCTTM FROM HKStockDB.CS_HKStockPerformance WHERE TradingDay = (SELECT DISTINCT TradingDay FROM HKStockDB.CS_HKStockPerformance WHERE YEAR(TradingDay) = 2020 AND MONTH(TradingDay) = 4 ORDER BY TradingDay DESC LIMIT 1) ORDER BY ChangePCTTM DESC LIMIT 10) AS TopPerformers ON ConstantDB.HK_SecuMain.InnerCode = TopPerformers.InnerCode;SELECT ChangePCTTM FROM HKStockDB.CS_HKStockPerformance WHERE TradingDay = (SELECT DISTINCT TradingDay FROM HKStockDB.CS_HKStockPerformance WHERE YEAR(TradingDay) = 2020 AND MONTH(TradingDay) = 5 ORDER BY TradingDay DESC LIMIT 1) AND InnerCode IN (1004870, 1009267, 1011289, 1150048, 1182511, 1000546, 1000593, 1000807, 1000832, 1000872);"
+            },
+            {
+                "id": 5,
                 "subquestion": "确定2020年4月涨幅前10的港股股票中，5月涨幅最小的股票及其相关数据。",
                 "table_name": [],
-                "reason": "",
-                "sql": ""
+                "reason": "首先查询2020年4月涨幅前10的港股股票的InnerCode,然后根据InnerCode查询2020年5月的涨幅最小的股票。",
+                "sql": "SELECT S.SecuAbbr, M.MayChangePCTTM FROM ConstantDB.HK_SecuMain S JOIN (SELECT InnerCode FROM HKStockDB.CS_HKStockPerformance WHERE TradingDay = (SELECT DISTINCT TradingDay FROM HKStockDB.CS_HKStockPerformance WHERE YEAR(TradingDay) = 2020 AND MONTH(TradingDay) = 4 ORDER BY TradingDay DESC LIMIT 1) ORDER BY ChangePCTTM DESC LIMIT 10) A ON S.InnerCode = A.InnerCode JOIN (SELECT InnerCode, ChangePCTTM AS MayChangePCTTM FROM HKStockDB.CS_HKStockPerformance WHERE TradingDay = (SELECT DISTINCT TradingDay FROM HKStockDB.CS_HKStockPerformance WHERE YEAR(TradingDay) = 2020 AND MONTH(TradingDay) = 5 ORDER BY TradingDay DESC LIMIT 1)) M ON S.InnerCode = M.InnerCode ORDER BY M.MayChangePCTTM ASC LIMIT 1;"
             }
         ]
     },
@@ -883,10 +903,17 @@
             },
             {
                 "id": 4,
-                "subquestion": "查询该实控人名下从事物流业务的公司数量。",
-                "table_name": [],
+                "subquestion": "查询该实控人名下公司的CompanyCode。",
+                "table_name": ["astockshareholderdb.lc_actualcontroller"],
                 "reason": "",
-                "sql": ""
+                "sql": "SELECT DISTINCT CompanyCode FROM astockshareholderdb.lc_actualcontroller WHERE ControllerCode IN (SELECT ControllerCode FROM astockshareholderdb.lc_actualcontroller WHERE CompanyCode = 338255);"
+            },
+            {
+                "id": 5,
+                "subquestion": "查询该实控人名下从事物流业务的公司的数量。",
+                "table_name": ["AStockIndustryDB.LC_IndFinIndicators","AStockIndustryDB.LC_ExgIndustr"],
+                "reason": "",
+                "sql": "SELECT I.IndustryName FROM AStockIndustryDB.LC_IndFinIndicators I JOIN AStockIndustryDB.LC_ExgIndustry E ON I.IndustryNum = E.Industry AND I.standard = E.standard WHERE E.CompanyCode = 338255 AND I.IndustryName LIKE '物流';"
             }
         ]
     },
@@ -999,11 +1026,18 @@
                 "id": 4,
                 "subquestion": "查询科达制造所属的一级概念。",
                 "table_name": [],
-                "reason": "SELECT ClassCode,ClassName FROM astockindustrydb.LC_ConceptList Where ConceptCode IN (SELECT ConceptCode FROM astockindustrydb.lc_coconcept WHERE InnerCode = 1650 AND IndiState = 1);",
-                "sql": ""
+                "reason": "",
+                "sql": "SELECT ClassCode,ClassName FROM astockindustrydb.LC_ConceptList Where ConceptCode IN (SELECT ConceptCode FROM astockindustrydb.lc_coconcept WHERE InnerCode = 1650 AND IndiState = 1);"
             },
             {
                 "id": 5,
+                "subquestion": "查询科达制造在2021年8月4日所属的二级行业的行业编码以及名称",
+                "table_name": ["AStockIndustryDB.LC_ExgIndustry"],
+                "reason": "",
+                "sql": "SELECT distinct SecondIndustryCode,SecondIndustryName FROM AStockIndustryDB.LC_ExgIndustry WHERE CompanyCode = 1442 AND InfoPublDate <= '2021-08-04' AND IfPerformed = 1;"
+            },
+            {
+                "id": 6,
                 "subquestion": "查询科达制造所属的二级行业在2021年8月4日的总市值。",
                 "table_name": [],
                 "reason": "",
@@ -1195,7 +1229,7 @@
                     "astockoperationsdb.lc_rewardstat"
                 ],
                 "reason": "在查询过程中，首先选择了关键的字段 High3Managers，用于得到该公司在2020年年度报告中前三高管的薪资信息。使用CompanyCode字段限制查询到特定公司（公司代码为499），InfoSource字段确保只从年度报告中查询，以提高数据的相关性和可靠性。EndDate字段通过使用YEAR和日期转换功能进行限制，确保数据属于2020年的记录。",
-                "sql": "SELECT High3Managers FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode = 499 AND InfoSource = '年度报告' AND YEAR(STR_TO_DATE(enddate, '%Y-%m-%d %H:%i:%s.%f')) = 2020;"
+                "sql": "SELECT High3Managers FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode = 499 AND InfoSource = '年度报告' AND YEAR(enddate) = 2020;"
             },
             {
                 "id": 3,
@@ -1204,7 +1238,7 @@
                     "astockeventsdb.lc_regroup"
                 ],
                 "reason": "本查询使用 COUNT(*) 来统计该公司在2020年是否成功进行了资产重组。首先，选择 CompanyCode 字段来限制查询到特定公司的记录（公司代码为499）。其次，EventType 字段被限制为 4, 5, 6, 81，以确保只查询相关的资产重组事件类型。IfEnded 字段设置为0，以过滤尚未终止的事件，从而表示资产重组仍然有效。最后，根据 InfoPublDate 年份进行过滤，只查询 2020 年的记录以保证获取的数据在指定的时间范围内。",
-                "sql": "SELECT COUNT(*) AS RestructureCount FROM astockeventsdb.lc_regroup WHERE CompanyCode = 499 AND EventType IN (4, 5, 6, 81) AND IfEnded = 0 AND YEAR(STR_TO_DATE(InfoPublDate, '%Y-%m-%d %H:%i:%s.%f')) = 2020;"
+                "sql": "SELECT COUNT(*) AS RestructureCount FROM astockeventsdb.lc_regroup WHERE CompanyCode = 499 AND EventType IN (4, 5, 6, 81) AND IfEnded = 0 AND YEAR(InfoPublDate) = 2020;"
             }
         ]
     },
@@ -1234,7 +1268,7 @@
                     "astockfinancedb.lc_intassetsdetail"
                 ],
                 "reason": "在此查询中，我选择了字段 TotalRDInput 作为主要查询字段，因为它代表了公司在指定年份的研发投入总额，这是我们所需的关键信息。为了确保结果的正确和精准，我添加了几个过滤条件：InnerCode 需要为 85470，确保我们获取到瑞芯微的数据；InfoSourceCode 要为 110101，确保数据来自年度报告；最后，通过 EndDate 限制查询的时间范围至2021年，这样能够确保获得有效的研发投入数据。",
-                "sql": "SELECT TotalRDInput FROM astockfinancedb.lc_intassetsdetail WHERE InnerCode = 85470 AND InfoSourceCode = 110101 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d')) BETWEEN '2021-01-01' AND '2021-12-31';"
+                "sql": "SELECT TotalRDInput FROM astockfinancedb.lc_intassetsdetail WHERE InnerCode = 85470 AND InfoSourceCode = 110101 AND YEAR(EndDate) = 2021;"
             }
         ]
     },
@@ -1276,7 +1310,7 @@
                     "astockeventsdb.lc_warrant"
                 ],
                 "reason": "在分析中选取了公司代码(CompanyCode)作为东兴证券的标识符74956，以确保只统计相关记录。InfoPublDate用于限制查询在2019年范围内，通过转化处理将日期格式化，确保查询的准确性。在输出中，DISTINCT ObjectCode会返回东兴证券在指定年份内的不同担保公司数量，这是查询的核心目的是统计担保数量。",
-                "sql": "SELECT COUNT(DISTINCT ObjectCode) AS CompanyCount FROM astockeventsdb.lc_warrant WHERE CompanyCode = 74956 AND YEAR(DATE(STR_TO_DATE(InfoPublDate, '%Y-%m-%d %H:%i:%s.%f'))) = 2019;"
+                "sql": "SELECT COUNT(DISTINCT ObjectCode) AS CompanyCount FROM astockeventsdb.lc_warrant WHERE CompanyCode = 74956 AND YEAR(InfoPublDate) = 2019;"
             },
             {
                 "id": 2,
@@ -1285,7 +1319,7 @@
                     "astockeventsdb.lc_warrant"
                 ],
                 "reason": "在查询中，选取了公司代码(CompanyCode)来筛选东兴证券的记录，以78956为标识。InfoPublDate字段被用来确保记录仅限于2019年，处理后选择符合该年所有担保项目的担保金额。MAX(FirstGuaranteeSum)用于找到东兴证券所有担保项目中最大的一项担保金额，直接反映了我们所需的目标。",
-                "sql": "SELECT MAX(FirstGuaranteeSum) AS MaxGuaranteeAmount FROM astockeventsdb.lc_warrant WHERE CompanyCode = 74956 AND YEAR(STR_TO_DATE(InfoPublDate, '%Y-%m-%d %H:%i:%s')) = 2019;"
+                "sql": "SELECT MAX(FirstGuaranteeSum) AS MaxGuaranteeAmount FROM astockeventsdb.lc_warrant WHERE CompanyCode = 74956 AND YEAR(InfoPublDate) = 2019;"
             },
             {
                 "id": 3,
@@ -1294,7 +1328,7 @@
                     "astockeventsdb.lc_suitarbitration"
                 ],
                 "reason": "在查询中，选择了公司代码(CompanyCode)作为东兴证券的标识符74956。InfoPublDate字段用于确保仅限于2019年发布的记录。此外，通过EventContent和ActionDesc字段中的'合同纠纷'关键字进行模糊匹配，以统计合同纠纷的数量，这是我们查询的核心目标。",
-                "sql": "SELECT COUNT(*) AS ContractDisputeCount FROM astockeventsdb.lc_suitarbitration WHERE CompanyCode = 74956 AND (EventContent LIKE '%合同纠纷%' OR ActionDesc LIKE '%合同纠纷%') AND YEAR(DATE(STR_TO_DATE(InfoPublDate, '%Y-%m-%d %H:%i:%s.%f'))) = 2019;"
+                "sql": "SELECT COUNT(*) AS ContractDisputeCount FROM astockeventsdb.lc_suitarbitration WHERE CompanyCode = 74956 AND (EventContent LIKE '%合同纠纷%' OR ActionDesc LIKE '%合同纠纷%') AND YEAR(InfoPublDate) = 2019;"
             }
         ]
     },
@@ -1392,7 +1426,7 @@
                     "astockmarketquotesdb.lc_suspendresumption"
                 ],
                 "reason": "选择字段SuspendDate作为查询的核心字段，InnerCode用作固定条件以获取指定公司（深桑达）的停牌记录。停牌日期在时间上是从2008年到现在的范围，因此我们的数据能确保反映整个可能的停牌历史。通过InnerCode=75限制，确保只获取深桑达的信息。排序条件保证了结果为最新的停牌日期，并且LIMIT 1确保只返回一个记录以满足查询需求。",
-                "sql": "SELECT SuspendDate FROM astockmarketquotesdb.lc_suspendresumption WHERE InnerCode = 75 ORDER BY DATE(STR_TO_DATE(SuspendDate, '%Y-%m-%d %H:%i:%s.%f')) DESC LIMIT 1;"
+                "sql": "SELECT SuspendDate FROM astockmarketquotesdb.lc_suspendresumption WHERE InnerCode = 75 ORDER BY SuspendDate DESC LIMIT 1;"
             },
             {
                 "id": 2,
@@ -1479,7 +1513,7 @@
                     "astockfinancedb.lc_ashareseasonednewissue"
                 ],
                 "reason": "在sql查询中，我们以总和IssueVolCeiling作为返回的字段，目的是计算山东国瓷功能材料股份有限公司在2020年和2021年的增发股数。使用InnerCode=14953来限制查询为特定公司，确保数据的准确性。此外，设置IfEffected=1，以保证只计算有效增发。为了满足查询的年限要求，通过YEAR函数提取AdvanceDate中的年份，只选取2020和2021年的增发记录，确保只有符合条件的记录被计算在内，这是此查询的核心步骤。",
-                "sql": "SELECT SUM(IssueVolCeiling) AS TotalIncreaseShares FROM astockfinancedb.lc_ashareseasonednewissue WHERE InnerCode = 14953 AND IfEffected = 1 AND (YEAR(STR_TO_DATE(AdvanceDate, '%Y-%m-%d %H:%i:%s.%f')) = 2020 OR YEAR(STR_TO_DATE(AdvanceDate, '%Y-%m-%d %H:%i:%s.%f')) = 2021);"
+                "sql": "SELECT SUM(IssueVolCeiling) AS TotalIncreaseShares FROM astockfinancedb.lc_ashareseasonednewissue WHERE InnerCode = 14953 AND IfEffected = 1 AND (YEAR(AdvanceDate) = 2020 OR YEAR(AdvanceDate) = 2021);"
             }
         ]
     },
@@ -1493,7 +1527,7 @@
                     "astockshareholderdb.lc_smattendinfo"
                 ],
                 "reason": "查询中选择CompanyCode作为关键字段，因为它是决定与股东大会关联的上市公司唯一标识。MeetingDate用于限制查询的时间范围，确保筛选出2020年的数据。同时，TestmonyLawOffice用于过滤出由北京国枫律师事务所见证的股东大会记录，确保查询的准确性和相关性。",
-                "sql": "SELECT DISTINCT CompanyCode FROM astockshareholderdb.lc_smattendinfo WHERE MeetingDate BETWEEN '2020-01-01' AND '2020-12-31' AND TestmonyLawOffice LIKE '%北京国枫律师事务所%' ;"
+                "sql": "SELECT DISTINCT CompanyCode FROM astockshareholderdb.lc_smattendinfo WHERE DATE(MeetingDate) BETWEEN '2020-01-01' AND '2020-12-31' AND TestmonyLawOffice LIKE '%北京国枫律师事务所%' ;"
             },
             {
                 "id": 2,
@@ -1503,7 +1537,7 @@
                     "astockshareholderdb.lc_smattendinfo"
                 ],
                 "reason": "查询选择CompanyCode作为必要的返回字段，以确定哪些公司的股东进行了减持。TransferPlanType用于筛选主动和被动减持计划的信息。InfoPublDate限制为2020年，确保只查询2020年发布的减持信息。此外，使用子查询确保只考虑参加过年度股东大会的公司。所有这些条件确保查询的准确性和相关性。",
-                "sql": "SELECT DISTINCT CompanyCode FROM astockshareholderdb.lc_transferplan WHERE TransferPlanType IN (127, 128) AND InfoPublDate LIKE '%2020%' AND CompanyCode in (SELECT DISTINCT CompanyCode FROM astockshareholderdb.lc_smattendinfo WHERE MeetingDate BETWEEN '2020-01-01' AND '2020-12-31' AND TestmonyLawOffice LIKE '%北京国枫律师事务所%')"
+                "sql": "SELECT DISTINCT CompanyCode FROM astockshareholderdb.lc_transferplan WHERE TransferPlanType IN (127, 128) AND InfoPublDate LIKE '%2020%' AND CompanyCode in (SELECT DISTINCT CompanyCode FROM astockshareholderdb.lc_smattendinfo WHERE DTAE(MeetingDate) BETWEEN '2020-01-01' AND '2020-12-31' AND TestmonyLawOffice LIKE '%北京国枫律师事务所%')"
             },
             {
                 "id": 3,
@@ -1681,7 +1715,7 @@
                     "usstockdb.us_dailyquote"
                 ],
                 "reason": "本查询仅需要Close字段以获取2020年9月18日携程网的收盘价。InnerCode字段确保我们只检索特定证券（携程网）的记录。使用的innercode 7004908 和 TradingDay '2020-09-18' 作为过滤条件能确保准确定位到所需的信息。",
-                "sql": "select Close  from USStockDB.US_DailyQuote where innercode in (7004908) and TradingDay like '%2020-09-18%';"
+                "sql": "select Close  from USStockDB.US_DailyQuote where innercode in (7004908) and DATE(TradingDay) = '2020-09-18';"
             }
         ]
     },
@@ -1724,7 +1758,7 @@
                     "usstockdb.us_dailyquote"
                 ],
                 "reason": "在此查询中，我选择了COUNT(*)用于返回上涨公司的数量，TradingDay用于筛选特定的交易日期，而ChangePCT则用于判断公司是否上涨，必须大于0。选择TradingDay为'2019-04-18'确保能获取到特定的市场数据，ChangePCT > 0确保只获取涨幅为正的记录。其他如Open、High等字段在该查询中并不需要，因此它们被省去。通过这样的条件设定，可以有效的统计出上涨公司的数量，满足需求。",
-                "sql": "SELECT COUNT(*) FROM usstockdb.us_dailyquote WHERE TradingDay like '%2019-04-18%' AND ChangePCT > 0;"
+                "sql": "SELECT COUNT(*) FROM usstockdb.us_dailyquote WHERE DATE(TradingDay) = '2019-04-18' AND ChangePCT > 0;"
             }
         ]
     },
@@ -2016,7 +2050,7 @@
                     "astockfinancedb.lc_balancesheetall"
                 ],
                 "reason": "选择TotalAssets作为查询的目标字段，因为它表示在2020年年度报告中福建坤彩材料科技股份有限公司的资产总计。使用CompanyCode字段确保只获取该公司的数据，IfAdjusted和IfMerged确保返回的报告是未调整的合并报告，而使用AccountingStandards选取新会计准则的合格数据。EndDate字段过滤出一年报告期的数据，确保查询精确到2020年12月31日。",
-                "sql": "SELECT TotalAssets FROM astockfinancedb.lc_balancesheetall WHERE CompanyCode = 206506 AND IfAdjusted = 2 AND IfMerged = 1 AND AccountingStandards = 1 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2020-12-31';"
+                "sql": "SELECT TotalAssets FROM astockfinancedb.lc_balancesheetall WHERE CompanyCode = 206506 AND IfAdjusted = 2 AND IfMerged = 1 AND AccountingStandards = 1 AND DATE(EndDate) = '2020-12-31';"
             },
             {
                 "id": 3,
@@ -2025,7 +2059,7 @@
                     "astockfinancedb.lc_balancesheetall"
                 ],
                 "reason": "选择TotalLiability作为查询的目标字段，因为它表示在2020年度报告中福建坤彩材料科技股份有限公司的负债合计。选择CompanyCode确保只获取该公司的数据，InfoSource过滤条件确保获取年度报告，而IfAdjusted和IfMerged则分别筛选出未调整和母公司报表的数据。EndDate字段过滤出2020年年度报告期的数据，确保查询的准确性。",
-                "sql": "SELECT TotalLiability FROM astockfinancedb.lc_balancesheetall WHERE CompanyCode = 206506 AND InfoSource = '年度报告' AND IfAdjusted = 2 AND IfMerged = 2 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2020-12-31';"
+                "sql": "SELECT TotalLiability FROM astockfinancedb.lc_balancesheetall WHERE CompanyCode = 206506 AND InfoSource = '年度报告' AND IfAdjusted = 2 AND IfMerged = 2 AND DATE(EndDate) = '2020-12-31';"
             }
         ]
     },
@@ -2048,7 +2082,7 @@
                     "astockfinancedb.lc_incomestatementall"
                 ],
                 "reason": "我选择了字段TotalOperatingCost作为查询的关键字段，因为该字段代表了所需的营业总成本。通过CompanyCode=1070我可以指定海信视像科技股份有限公司。InfoSource的过滤确保我获取的是半年度报告的数据，IfAdjusted=2和IfMerged=1则分别确保只考虑未调整的合并报表。这些条件的组合能够精确锁定到符合我们查询需求的唯一一条记录。",
-                "sql": "SELECT TotalOperatingCost FROM astockfinancedb.lc_incomestatementall WHERE CompanyCode = 1070 AND IfAdjusted = 2 AND IfMerged = 1 AND InfoSource = '半年度报告' AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-06-30';"
+                "sql": "SELECT TotalOperatingCost FROM astockfinancedb.lc_incomestatementall WHERE CompanyCode = 1070 AND IfAdjusted = 2 AND IfMerged = 1 AND InfoSource = '半年度报告' AND DATE(EndDate) = '2021-06-30';"
             },
             {
                 "id": 3,
@@ -2057,7 +2091,7 @@
                     "astockfinancedb.lc_incomestatementall"
                 ],
                 "reason": "我选择了字段NetProfit作为查询的关键字段，因为该字段表示所需的净利润数据。此外，我用CompanyCode=1070明确指明了海信视像科技股份有限公司。InfoSource的限制确保获取的数据来源是半年度报告，IfAdjusted=2和IfMerged=1则确保查询只能获取未调整的合并报表。这些条件的组合确保准确地找到符合条件的净利润数据。",
-                "sql": "SELECT NetProfit FROM astockfinancedb.lc_incomestatementall WHERE CompanyCode = 1070 AND InfoSource = '半年度报告' AND IfAdjusted = 2 AND IfMerged = 1 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-06-30';"
+                "sql": "SELECT NetProfit FROM astockfinancedb.lc_incomestatementall WHERE CompanyCode = 1070 AND InfoSource = '半年度报告' AND IfAdjusted = 2 AND IfMerged = 1 AND DATE(EndDate) = '2021-06-30';"
             }
         ]
     },
@@ -2089,7 +2123,7 @@
                     "astockeventsdb.lc_investorra"
                 ],
                 "reason": "在此查询中，选择字段为Place来获取申能股份最近一次调研的地点。InnerCode字段被限制为1857，以确保查询仅聚焦在申能股份的记录。选用ORDER BY DATE(STR_TO_DATE(ReceptionDate, '%Y-%m-%d %H:%i:%s')) DESC和LIMIT 1确保能够得到最新的调研地点，其他字段如接待日期时间等虽然提供了相关背景信息，但在此查询结果中并未必要。",
-                "sql": "SELECT Place FROM astockeventsdb.lc_investorra WHERE InnerCode = 1857 ORDER BY DATE(STR_TO_DATE(ReceptionDate, '%Y-%m-%d %H:%i:%s')) DESC LIMIT 1;"
+                "sql": "SELECT Place FROM astockeventsdb.lc_investorra WHERE InnerCode = 1857 ORDER BY DATE(ReceptionDate) DESC LIMIT 1;"
             }
         ]
     },
@@ -2171,7 +2205,7 @@
                     "astockmarketquotesdb.qt_stockperformance"
                 ],
                 "reason": "在该查询中，字段选择了YearSharpeRatio作为必需字段，用于返回普洛药业（InnerCode = '413'）的年化夏普比率，并将结果保留两位小数。限制条件InnerCode用于确保查询集中在特定证券，而TradingDay的条件保证数据只来自指定的交易日。该SQL查询形式正确，能够准确提取所需数据。",
-                "sql": "SELECT ROUND(YearSharpeRatio, 2) AS YearSharpeRatio FROM astockmarketquotesdb.qt_stockperformance WHERE InnerCode = '413' AND TradingDay like '%2020-11-25%';"
+                "sql": "SELECT ROUND(YearSharpeRatio, 2) AS YearSharpeRatio FROM astockmarketquotesdb.qt_stockperformance WHERE InnerCode = '413' AND DATE(TradingDay) = '2020-11-25';"
             },
             {
                 "id": 5,
@@ -2212,7 +2246,7 @@
                     "astockmarketquotesdb.qt_stockperformance"
                 ],
                 "reason": "在查询中，选择了关键字段InnerCode、TradingDay和AvgPriceRM。InnerCode用来定位特定的证券，TradingDay确保只获取特定时段的数据，而AvgPriceRM是计算近一个月成交均价的重要字段。InnerCode的取值1289为特定证券的标识符，TradingDay的取值范围确保只获取到特别的一个月数据。最终的SQL片段通过条件整合生成，能够有效地获取平均成交价格的所需数据。",
-                "sql": "SELECT TurnoverValueRM FROM aStockMarketQuotesDB.qt_stockperformance WHERE InnerCode = 1289 AND TradingDay LIKE '2021-06-17%';"
+                "sql": "SELECT TurnoverValueRM FROM aStockMarketQuotesDB.qt_stockperformance WHERE InnerCode = 1289 AND DATE(TradingDay) = '2021-06-17';"
             },
             {
                 "id": 4,
@@ -2221,7 +2255,7 @@
                     "astockmarketquotesdb.qt_stockperformance"
                 ],
                 "reason": "在查询中，选择了关键字段InnerCode、TradingDay、AvgPriceRM和AvgPriceRW。InnerCode用来确保获取到特定证券的记录，TradingDay用于限定所需的日期数据，而AvgPriceRM和AvgPriceRW是计算近一周与近一个月成交均价的必要字段。InnerCode的取值1289为特定证券的标识符，TradingDay的取值确保只获取近基地的相关数据。最终的SQL片段通过条件整合生成，从而获取两个均价的比较数据。",
-                "sql": "SELECT ROUND(AvgPriceRM, 2) AS AvgPriceRM, ROUND(AvgPriceRW, 2) AS AvgPriceRW FROM astockmarketquotesdb.qt_stockperformance WHERE InnerCode = '1289' AND TradingDay LIKE '2021-06-17%';"
+                "sql": "SELECT ROUND(AvgPriceRM, 2) AS AvgPriceRM, ROUND(AvgPriceRW, 2) AS AvgPriceRW FROM astockmarketquotesdb.qt_stockperformance WHERE InnerCode = '1289' AND DATE(TradingDay) = '2021-06-17%';"
             }
         ]
     },
@@ -2363,7 +2397,7 @@
                     "astockmarketquotesdb.qt_stockperformance"
                 ],
                 "reason": "选择字段TradingDay并过滤到特定日期2019-12-17是为了确保统计在该交易日上涨的证券。使用COUNT(CASE WHEN ChangePCT > 0 THEN 1 END) AS RisingCount来统计涨幅大于0的证券数量，这是查询的核心目的。通过LIMIT排除所有不相关的记录，从而实现精准的数量统计。",
-                "sql": "SELECT COUNT(CASE WHEN ChangePCT > 0 THEN 1 END) AS RisingCount FROM astockmarketquotesdb.qt_stockperformance WHERE TradingDay LIKE '2019-12-17%';"
+                "sql": "SELECT COUNT(CASE WHEN ChangePCT > 0 THEN 1 END) AS RisingCount FROM astockmarketquotesdb.qt_stockperformance WHERE DATE(TradingDay) = '2019-12-17';"
             },
             {
                 "id": 4,
@@ -2372,7 +2406,7 @@
                     "astockmarketquotesdb.qt_stockperformance"
                 ],
                 "reason": "选择TradingDay作为关键字段并过滤到特定日期2019-12-17，以确保查询仅聚焦于该交易日的数据。使用COUNT(CASE WHEN ChangePCT < 0 THEN 1 END) AS FallingCount来统计跌幅小于0的证券数量，这是查询的核心目的。通过LIMIT排除所有不相关的记录，从而实现精准的数量统计。",
-                "sql": "SELECT COUNT(CASE WHEN ChangePCT < 0 THEN 1 END) AS FallingCount  FROM astockmarketquotesdb.qt_stockperformance WHERE TradingDay LIKE '2019-12-17%';"
+                "sql": "SELECT COUNT(CASE WHEN ChangePCT < 0 THEN 1 END) AS FallingCount  FROM astockmarketquotesdb.qt_stockperformance WHERE DATE(TradingDay) = '2019-12-17';"
             }
         ]
     },
@@ -2404,7 +2438,7 @@
                     "astockmarketquotesdb.qt_stockperformance"
                 ],
                 "reason": "该SQL查询旨在找出2021年9月1日成交量创近一季度新高的证券数量最多的交易日中上涨的证券数量。选择TradingDay字段以过滤出特定交易日的数据，并借助COUNT(CASE WHEN ...来统计正涨幅的情况。This ensures that only the relevant trading day is included (2021-09-01) and only the stocks that experienced an increase. 这样可以有效定位需要的统计数据，满足查询需求。",
-                "sql": "SELECT COUNT(CASE WHEN ChangePCT > 0 THEN 1 END) AS RisingCount FROM astockmarketquotesdb.qt_stockperformance WHERE TradingDay LIKE '2021-09-01%';"
+                "sql": "SELECT COUNT(CASE WHEN ChangePCT > 0 THEN 1 END) AS RisingCount FROM astockmarketquotesdb.qt_stockperformance WHERE DATE(TradingDay) = '2021-09-01';"
             },
             {
                 "id": 4,
@@ -2413,7 +2447,7 @@
                     "astockmarketquotesdb.qt_stockperformance"
                 ],
                 "reason": "该SQL查询旨在找出2021年9月1日成交量创近一季度新高的证券数量最多的交易日中下跌的证券数量。通过选择TradingDay字段来聚焦在特定日期的数据，并使用COUNT(CASE WHEN ChangePCT < 0 THEN 1 END)来统计下跌证券的数量，确保不仅统计到符合要求的交易日，还过滤出真实下跌的证券。这样的设计直接满足查询目标。",
-                "sql": "SELECT COUNT(CASE WHEN ChangePCT < 0 THEN 1 END) AS FallingCount FROM astockmarketquotesdb.qt_stockperformance WHERE TradingDay LIKE '2021-09-01%';"
+                "sql": "SELECT COUNT(CASE WHEN ChangePCT < 0 THEN 1 END) AS FallingCount FROM astockmarketquotesdb.qt_stockperformance WHERE DATE(TradingDay) = '2021-09-01';"
             }
         ]
     },
@@ -2471,7 +2505,7 @@
                     "publicfunddb.mf_investadvisoroutline"
                 ],
                 "reason": "我们在公募基金管理人概况表中选择了InvestAdvisorAbbrName作为查询字段，因为它是我们希望获取的成立日期早于博时基金公司的基金公司简称。同时，EstablishmentDate是这个查询的限制条件，其值设置为早于1998年7月13日，这是博时基金公司的成立日期。这样可以确保我们筛选出所有相关的基金公司，并且去掉了其他不必要的字段。",
-                "sql": "SELECT DISTINCT InvestAdvisorAbbrName FROM PublicFundDB.MF_InvestAdvisorOutline WHERE EstablishmentDate < '1998-07-13 12:00:00.000';"
+                "sql": "SELECT DISTINCT InvestAdvisorAbbrName FROM PublicFundDB.MF_InvestAdvisorOutline WHERE DATE(EstablishmentDate) < '1998-07-13 12:00:00.000';"
             },
             {
                 "id": 3,
@@ -2548,7 +2582,7 @@
                     "astockmarketquotesdb.qt_dailyquote"
                 ],
                 "reason": "选择InnerCode字段用于过滤出安琪酵母（'1421'），用TradingDay字段限定仅查询2020年的数据。ClosePrice是需要获取的最高收盘价信息，TradingDay是对应的日期。选择'LIKE'匹配使得可以覆盖整个2020年的交易日。",
-                "sql": "SELECT TradingDay, ClosePrice FROM astockmarketquotesdb.qt_dailyquote WHERE InnerCode = '1421' AND TradingDay LIKE '%2020%' ORDER BY ClosePrice DESC LIMIT 1;"
+                "sql": "SELECT TradingDay, ClosePrice FROM astockmarketquotesdb.qt_dailyquote WHERE InnerCode = '1421' AND YEAR(TradingDay) = '2020' ORDER BY ClosePrice DESC LIMIT 1;"
             },
             {
                 "id": 2,
@@ -2557,7 +2591,7 @@
                     "astockmarketquotesdb.cs_stockpatterns"
                 ],
                 "reason": "选择InnerCode字段用于过滤出安琪酵母（'1421'），用TradingDay字段限定仅查询2020年8月21日的数据。IfHighestTVolumeRM是需要获取的是否创近一月以来新高成交量的信息，通过指定日期和证券编码来确认查询目标。",
-                "sql": "    SELECT IfHighestTVolumeRM FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = '1421' AND TradingDay like '%2020-08-21%';"
+                "sql": "    SELECT IfHighestTVolumeRM FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = '1421' AND DATE(TradingDay) = '2020-08-21';"
             },
             {
                 "id": 3,
@@ -2566,7 +2600,7 @@
                     "astockmarketquotesdb.cs_stockpatterns"
                 ],
                 "reason": "选择InnerCode字段用于过滤出安琪酵母（1421），用TradingDay字段限定仅查询2020年8月21日的数据。VolumeRisingUpDays是需要获取的连续放量天数的信息，通过指定日期和证券编码来确认查询目标。",
-                "sql": "SELECT VolumeRisingUpDays FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = 1421 AND TradingDay LIKE '2020-08-21%';"
+                "sql": "SELECT VolumeRisingUpDays FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = 1421 AND DATE(TradingDay) = '2020-08-21';"
             }
         ]
     },
@@ -2580,7 +2614,7 @@
                     "astockmarketquotesdb.qt_dailyquote"
                 ],
                 "reason": "在该表中，InnerCode用于识别具体想查询的证券（安琪酵母）；TradingDay用于限定具体的交易日期范围；ClosePrice是查询的核心字段，所需找出的最高收盘价。同时，字符串操作将TradingDay转换为日期格式，以便正确筛选2021年内的数据。通过限制条件，确保了结果的准确性和有效性。最终返回最高收盘价及其交易日期。",
-                "sql": "SELECT TradingDay, ClosePrice FROM astockmarketquotesdb.qt_dailyquote \nWHERE InnerCode = '1421' AND TradingDay LIKE '%2021%' ORDER BY ClosePrice DESC LIMIT 1;"
+                "sql": "SELECT TradingDay, ClosePrice FROM astockmarketquotesdb.qt_dailyquote \nWHERE InnerCode = '1421' AND YEAR(TradingDay) = '2021' ORDER BY ClosePrice DESC LIMIT 1;"
             },
             {
                 "id": 2,
@@ -2589,7 +2623,7 @@
                     "astockmarketquotesdb.cs_stockpatterns"
                 ],
                 "reason": "在查询中，InnerCode用于识别特定的证券（安琪酵母），TradingDay限定为2021年5月25日，这样可以确保查询的数据具有准确的时间和上下文，而IfHighestHPriceRM是核心字段，用于判断该日期的成交量是否创近一月的新高。结构和条件组合确保能够获取正确的结果。",
-                "sql": "SELECT IfHighestHPriceRM FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = '1421' AND TradingDay like '%2021-05-25%';"
+                "sql": "SELECT IfHighestHPriceRM FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = '1421' AND DATE(TradingDay) = '2021-05-25';"
             },
             {
                 "id": 3,
@@ -2598,7 +2632,7 @@
                     "astockmarketquotesdb.cs_stockpatterns"
                 ],
                 "reason": "在查询中，InnerCode用于识别特定的证券（安琪酵母），VolumeRisingUpDays为核心字段，表示连续放量天数，TradingDay目前的条件过于局限，只针对2021-05-25，无法满足查询2021年全年的需求，应该调整为查询所有相关的日期。",
-                "sql": "SELECT VolumeRisingUpDays FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = 1421 AND TradingDay LIKE '2021-05-25%';"
+                "sql": "SELECT VolumeRisingUpDays FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = 1421 AND DATE(TradingDay) = '2021-05-25';"
             }
         ]
     },
@@ -2630,7 +2664,7 @@
                     "astockmarketquotesdb.cs_stockpatterns"
                 ],
                 "reason": "该查询旨在获取厦门钨业在2019年内的连续下跌天数，主要关注FallingDownDays字段。InnerCode = '1720'确保仅查询厦门钨业的数据，然而CURRENT SQL中TradingDay使用LIKE条件仅匹配到特定的交易日期，这可能限制了数据的提取。如果目标是获取2019年所有的连跌数据，建议对TradingDay使用更广泛的条件来获取整个年份的展示。",
-                "sql": "SELECT FallingDownDays FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = '1720' AND TradingDay LIKE '2019-01-31%';"
+                "sql": "SELECT FallingDownDays FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = '1720' AND DATE(TradingDay) = '2019-01-31';"
             }
         ]
     },
@@ -2662,7 +2696,7 @@
                     "astockmarketquotesdb.cs_stockpatterns"
                 ],
                 "reason": "我选择了InnerCode、TradingDay和FallingDownDays。InnerCode（1720）用于锁定厦门钨业，TradingDay则用于确保从指定的日期数据中查询，虽然在输出结果中不需要显示。FallingDownDays是我需要获取的核心指标，以显示厦门钨业当前的连跌天数。",
-                "sql": "SELECT FallingDownDays FROM astockmarketquotesdb.CS_StockPatterns WHERE InnerCode = 1720 AND TradingDay like '%2021-01-15%';"
+                "sql": "SELECT FallingDownDays FROM astockmarketquotesdb.CS_StockPatterns WHERE InnerCode = 1720 AND DATE(TradingDay) = '2021-01-15';"
             }
         ]
     },
@@ -2807,7 +2841,7 @@
                     "astockindustrydb.lc_industryvaluation"
                 ],
                 "reason": "此次查询只涉及 lc_industryvaluation 表，从中提取 A股流通市值（NegotiableMV）。查询条件明确，IndustryCode 设置为 '630602'，确保仅获取风电零部件行业的数据。此外，通过 TradingDay 设置为 '2020-07-02%'，确保仅返回该日期的流动市值数据，保证了数据的准确性与相关性。",
-                "sql": "SELECT NegotiableMV FROM astockindustrydb.lc_industryvaluation WHERE IndustryCode = '630602' AND TradingDay LIKE '2020-07-02%';"
+                "sql": "SELECT NegotiableMV FROM astockindustrydb.lc_industryvaluation WHERE IndustryCode = '630602' AND DATE(TradingDay) = '2020-07-02';"
             },
             {
                 "id": 3,
@@ -2816,7 +2850,7 @@
                     "astockindustrydb.lc_industryvaluation"
                 ],
                 "reason": "此次查询从 lc_industryvaluation 表中提取了 A股流通市值 (NegotiableMV)。使用了 IndustryCode '630602' 确保只获取风电零部件行业的数据。TradingDay 的限制条件使用了子查询来获取第一个交易，即在 '2020-07-02' 之后的最小交易日，让保证数据的有效性和最新性。所有条件的组合确保我们获得的是最新的流通市值数据。",
-                "sql": "SELECT NegotiableMV FROM astockindustrydb.lc_industryvaluation WHERE IndustryCode = '630602' AND TradingDay = (SELECT MIN(TradingDay) FROM astockindustrydb.lc_industryvaluation WHERE TradingDay > '2020-07-02' AND IndustryCode = '630602');"
+                "sql": "SELECT NegotiableMV FROM astockindustrydb.lc_industryvaluation WHERE IndustryCode = '630602' AND TradingDay = (SELECT MIN(TradingDay) FROM astockindustrydb.lc_industryvaluation WHERE DATE(TradingDay) > '2020-07-02' AND IndustryCode = '630602');"
             }
         ]
     },
@@ -2830,7 +2864,7 @@
                     "astockoperationsdb.lc_rewardstat"
                 ],
                 "reason": "本查询旨在获取软通动力在2019年的管理层报酬总额。所选字段TotalYearPay是关键字段，可直接提供查询所需信息。CompanyCode限制确保只针对特定公司进行搜索，而EndDate限制则确保所返回数据的年份在2019，保证了所查询数据的准确性与相关性。",
-                "sql": "SELECT TotalYearPay FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode IN ('613963', '102335737') AND EndDate LIKE '%2019%';"
+                "sql": "SELECT TotalYearPay FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode IN ('613963', '102335737') AND YEAR(EndDate) = '2019';"
             },
             {
                 "id": 2,
@@ -2839,7 +2873,7 @@
                     "astockoperationsdb.lc_rewardstat"
                 ],
                 "reason": "本查询旨在获取软通动力在2019年领取报酬的管理层人数。所选字段NumPayManagers是关键字段，直接提供所需信息。CompanyCode限制确保只针对特定公司进行搜索，而EndDate限制则确保所返回的数据是在2019年，这保证了数据的准确性与相关性。",
-                "sql": "SELECT NumPayManagers FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode IN ('613963', '102335737') AND EndDate LIKE '%2019%';"
+                "sql": "SELECT NumPayManagers FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode IN ('613963', '102335737') AND YEAR(EndDate) = '2019';"
             },
             {
                 "id": 3,
@@ -2848,7 +2882,7 @@
                     "astockoperationsdb.lc_rewardstat"
                 ],
                 "reason": "本查询旨在获取软通动力在2019年报酬最高的前三名董事的报酬。所选字段High3Directors是关键字段，直接提供所需的信息。尽管选择了CompanyCode字段，但并不是必须的。重要的是，缺少针对EndDate的限制条件，未确保获取的数据是2019年的，会影响所需数据的准确性与相关性。",
-                "sql": "SELECT CompanyCode ,High3Directors FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode IN ('613963', '102335737') ;"
+                "sql": "SELECT CompanyCode ,High3Directors FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode IN ('613963', '102335737');"
             },
             {
                 "id": 4,
@@ -2857,7 +2891,7 @@
                     "astockoperationsdb.lc_rewardstat"
                 ],
                 "reason": "本查询旨在获取软通动力在2020年的报酬总额。选择TotalYearPay作为核心字段是必要的，因为它提供了查询要求的数据。尽管包含了CompanyCode字段，但实际查询并不需要。最重要的是，EndDate条件未能正确限制到仅2020年，从而可能导致检索到不必要的2019年数据，这不符合查询的意图。",
-                "sql": "SELECT TotalYearPay, CompanyCode ,EndDate  FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode IN ('613963', '102335737') AND (EndDate LIKE '%2019%' or EndDate LIKE '%2020%' );"
+                "sql": "SELECT TotalYearPay, CompanyCode ,EndDate  FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode IN ('613963', '102335737') AND (YEAR(EndDate) = '2019' or YEAR(EndDate) = '2020' );"
             },
             {
                 "id": 5,
@@ -2911,7 +2945,7 @@
                     "astockfinancedb.lc_intassetsdetail"
                 ],
                 "reason": "在这个查询中选择了总研发投入（TotalRDInput）作为因变量，CompanyCode字段用于过滤中国软件公司，EndDate字段用来确保只获取截止2021年Q4的数据。限制条件IfMerged = 1和IfAdjusted = 1保证了获取的是调整后的合并报表。这些字段的选择合理性基于题目要求，确保查询的信息准确且直接。",
-                "sql": "SELECT TotalRDInput FROM astockfinancedb.lc_intassetsdetail WHERE CompanyCode = '1475'  AND EndDate LIKE '%2021-12-31%';"
+                "sql": "SELECT TotalRDInput FROM astockfinancedb.lc_intassetsdetail WHERE CompanyCode = '1475'  AND DATE(EndDate) = '2021-12-31';"
             },
             {
                 "id": 2,
@@ -2920,7 +2954,7 @@
                     "astockfinancedb.lc_intassetsdetail"
                 ],
                 "reason": "在这个查询中选择了研发投入占营业收入的比例（RDInputRatio）作为因变量，CompanyCode字段用于过滤中国软件公司，EndDate字段用来确保只获取截止至2021年Q4的数据。限制条件IfMerged = 1和IfAdjusted = 1保证了获取的是调整后的合并数据，确保结果符合查询要求。这些字段的选择合理性基于题目要求，以确保查询的信息准确且直接。",
-                "sql": "SELECT RDInputRatio FROM astockfinancedb.lc_intassetsdetail WHERE CompanyCode = '1475'  AND EndDate LIKE '%2021-12-31%';"
+                "sql": "SELECT RDInputRatio FROM astockfinancedb.lc_intassetsdetail WHERE CompanyCode = '1475'  AND DATE(EndDate) = '2021-12-31';"
             },
             {
                 "id": 3,
@@ -2929,7 +2963,7 @@
                     "astockfinancedb.lc_intassetsdetail"
                 ],
                 "reason": "在这个查询中选择了研发人员数量（RDStaffNum）作为因变量，CompanyCode字段用于过滤中国软件公司，EndDate字段用来确保只获取截止至2021年Q4的数据。限制条件IfMerged = 1和IfAdjusted = 1保证了获取的是调整后的合并数据，确保结果符合查询要求。这些字段的选择合理性基于题目要求，以确保查询的信息准确且直接。",
-                "sql": "SELECT RDStaffNumRatio FROM astockfinancedb.lc_intassetsdetail WHERE CompanyCode = '1475'  AND EndDate LIKE '%2021-12-31%';"
+                "sql": "SELECT RDStaffNumRatio FROM astockfinancedb.lc_intassetsdetail WHERE CompanyCode = '1475'  AND DATE(EndDate) = '2021-12-31';"
             },
             {
                 "id": 4,
@@ -2938,7 +2972,7 @@
                     "astockfinancedb.lc_intassetsdetail"
                 ],
                 "reason": "在这个查询中选择了研发人员数量占比（RDStaffNumRatio）作为因变量，CompanyCode字段用于过滤中国软件公司，EndDate字段用来确保只获取截止至2021年Q4的数据。限制条件IfMerged = 1和IfAdjusted = 1保证了获取的是调整后的合并数据，确保结果符合查询要求。这些字段的选择合理性基于题目要求，以确保查询的信息准确且直接。",
-                "sql": "SELECT RDStaffNumRatio FROM astockfinancedb.lc_intassetsdetail WHERE CompanyCode = '1475'  AND EndDate LIKE '%2021-12-31%';"
+                "sql": "SELECT RDStaffNumRatio FROM astockfinancedb.lc_intassetsdetail WHERE CompanyCode = '1475'  AND DATE(EndDate) = '2021-12-31';"
             },
             {
                 "id": 5,
@@ -2959,7 +2993,7 @@
                     "astockeventsdb.lc_credit"
                 ],
                 "reason": "从 lc_credit 表中选取最新借贷金额(LatestLoanSum)和首次借贷金额(FirstLoanSum)作为查询字段，以获取陆家嘴在2019年的最大借贷情况。使用CompanyCode进行公司过滤确保获取陆家嘴的数据，使用InitialInfoPublDate的LIKE子句对时间范围进行限制以确保查询的准确性。",
-                "sql": "SELECT MAX(LatestLoanSum) ,MAX(FirstLoanSum) FROM astockeventsdb.lc_credit WHERE CompanyCode = '1596' AND InitialInfoPublDate LIKE '2019%';"
+                "sql": "SELECT MAX(LatestLoanSum) ,MAX(FirstLoanSum) FROM astockeventsdb.lc_credit WHERE CompanyCode = '1596' AND YEAR(InitialInfoPublDate) = 2019;"
             },
             {
                 "id": 2,
@@ -2968,7 +3002,7 @@
                     "astockeventsdb.lc_credit"
                 ],
                 "reason": "从 lc_credit 表中选取首次借贷金额(FirstLoanSum)来查询2019年陆家嘴的单次首次借贷金额最高的记录，使用CompanyCode进行公司过滤确保只获取陆家嘴的数据，InitialInfoPublDate的LIKE子句对时间范围进行限制以确保查询的准确性。",
-                "sql": "SELECT FirstLoanSum FROM astockeventsdb.lc_credit WHERE CompanyCode = '1596' AND InitialInfoPublDate LIKE '2019%' ORDER BY FirstLoanSum DESC LIMIT 1;"
+                "sql": "SELECT FirstLoanSum FROM astockeventsdb.lc_credit WHERE CompanyCode = '1596' AND YEAR(InitialInfoPublDate) = 2019 ORDER BY FirstLoanSum DESC LIMIT 1;"
             },
             {
                 "id": 3,
@@ -2977,7 +3011,7 @@
                     "astockeventsdb.lc_credit"
                 ],
                 "reason": "在 lc_credit 表中选择首次借贷金额(FirstLoanSum)，用于查询陆家嘴在2019年单次首次借贷金额最高的记录。通过使用CompanyCode进行公司过滤，确保只获取陆家嘴的数据，使用InitialInfoPublDate的LIKE子句对日期范围进行限制保证查询的准确性。",
-                "sql": "SELECT FirstLoanSum FROM astockeventsdb.lc_credit WHERE CompanyCode = '1596' AND InitialInfoPublDate LIKE '2019%' ORDER BY FirstLoanSum DESC LIMIT 1;"
+                "sql": "SELECT FirstLoanSum FROM astockeventsdb.lc_credit WHERE CompanyCode = '1596' AND IYEAR(InitialInfoPublDate) = 2019 ORDER BY FirstLoanSum DESC LIMIT 1;"
             },
             {
                 "id": 4,
@@ -2986,7 +3020,7 @@
                     "astockeventsdb.lc_credit"
                 ],
                 "reason": "在 lc_credit 表中选择事件内容(EventContent)、借入方(Borrower)、出借方(Lender)以及最新借贷金额(LatestLoanSum)来获取陆家嘴在2019年最新的借贷事件信息。通过CompanyCode进行公司过滤，确保只获取陆家嘴的数据，对初次信息发布日期使用LIKE子句进行日期范围限制，以保障查询数据的时效性。",
-                "sql": "SELECT EventContent, Borrower, Lender, LatestLoanSum FROM astockeventsdb.lc_credit WHERE CompanyCode = '1596' AND InitialInfoPublDate LIKE '2019%' ORDER BY InfoPublDate DESC LIMIT 1;"
+                "sql": "SELECT EventContent, Borrower, Lender, LatestLoanSum FROM astockeventsdb.lc_credit WHERE CompanyCode = '1596' AND YEAR(InitialInfoPublDate) = '2019' ORDER BY InfoPublDate DESC LIMIT 1;"
             }
         ]
     },
@@ -3000,7 +3034,7 @@
                     "astockeventsdb.lc_warrant"
                 ],
                 "reason": "在查询中，选择了字段 LatestGuaranteeSum（最新担保金额）来获取亿帆医药在2020年内的最大担保金额，并且使用 CompanyCode（公司代码）来确保选择到特定公司（亿帆医药）相关的记录。InfoPublDate（信息发布日期）用于限制数据范围，确保仅查询2020年内的记录。所有选取的字段和条件都与目标直接相关，保证了查询的有效性和准确性。",
-                "sql": "SELECT MAX(LatestGuaranteeSum) AS MaxGuaranteeSum FROM astockeventsdb.lc_warrant WHERE CompanyCode = '2344' AND InfoPublDate LIKE '%2020%';"
+                "sql": "SELECT MAX(LatestGuaranteeSum) AS MaxGuaranteeSum FROM astockeventsdb.lc_warrant WHERE CompanyCode = '2344' AND YEAR(InfoPublDate) = '2020';"
             },
             {
                 "id": 2,
@@ -3009,7 +3043,7 @@
                     "astockeventsdb.lc_warrant"
                 ],
                 "reason": "在查询中，选择仅返回 GuarantorCompany（提供担保企业）字段。这是因为我们需要找到亿帆医药在2020年最大担保金额涉及的担保方。同时，通过使用 CompanyCode（公司代码）来明确查询特定公司（亿帆医药）的记录，并通过 InfoPublDate（信息发布日期）限制为2020年的数据。为了获取最大担保金额的担保方，查询结果按 LatestGuaranteeSum（最新担保金额）降序排列，并限制结果为1条。",
-                "sql": "SELECT GuarantorCompany FROM astockeventsdb.lc_warrant WHERE CompanyCode = '2344' AND InfoPublDate LIKE '%2020%' ORDER BY LatestGuaranteeSum DESC LIMIT 1;"
+                "sql": "SELECT GuarantorCompany FROM astockeventsdb.lc_warrant WHERE CompanyCode = '2344' AND YEAR(InfoPublDate) = '2020' ORDER BY LatestGuaranteeSum DESC LIMIT 1;"
             },
             {
                 "id": 3,
@@ -3018,7 +3052,7 @@
                     "astockeventsdb.lc_warrant"
                 ],
                 "reason": "在查询中，选择返回 LatestGuaranteeSum（最新担保金额）字段来提取亿帆医药在2020年内的最大担保金额。通过使用 CompanyCode（公司代码）来确保查询仅针对亿帆医药的记录，使用 InfoPublDate（信息发布日期）限制条件为2020年，以确保查询符合题目需求。通过对 LatestGuaranteeSum 字段进行降序排列，并限制返回的结果为1条，以获取最大担保金额。",
-                "sql": "SELECT LatestGuaranteeSum FROM astockeventsdb.lc_warrant WHERE CompanyCode = '2344' AND InfoPublDate LIKE '%2020%' ORDER BY LatestGuaranteeSum DESC LIMIT 1;"
+                "sql": "SELECT LatestGuaranteeSum FROM astockeventsdb.lc_warrant WHERE CompanyCode = '2344' AND YEAR(InfoPublDate) = '2020' ORDER BY LatestGuaranteeSum DESC LIMIT 1;"
             },
             {
                 "id": 4,
@@ -3027,7 +3061,7 @@
                     "astockeventsdb.lc_warrant"
                 ],
                 "reason": "在查询中，选择返回 EventContent（事件内容）、GuarantorCompany（提供担保企业）、SecuredParty（接受担保企业）和 LatestGuaranteeSum（最新担保金额）这几个字段，以获得亿帆医药在2020年最新的担保事件的信息。通过使用 CompanyCode（公司代码）和 InfoPublDate（信息发布日期）的限制，确保查询只针对亿帆医药并过滤出2020年的记录。结果按 InfoPublDate 降序排列，并限制返回记录为1条，以获取最新的担保事件。",
-                "sql": "SELECT EventContent, GuarantorCompany, SecuredParty, LatestGuaranteeSum FROM astockeventsdb.lc_warrant WHERE CompanyCode = '2344' AND InfoPublDate LIKE '%2020%' ORDER BY InfoPublDate DESC LIMIT 1;"
+                "sql": "SELECT EventContent, GuarantorCompany, SecuredParty, LatestGuaranteeSum FROM astockeventsdb.lc_warrant WHERE CompanyCode = '2344' AND YEAR(InfoPublDate) = '2020' ORDER BY InfoPublDate DESC LIMIT 1;"
             },
             {
                 "id": 5,
@@ -3036,7 +3070,7 @@
                     "astockeventsdb.lc_warrant"
                 ],
                 "reason": "在查询中，选择返回 EventContent（事件内容）、GuarantorCompany（提供担保企业）、SecuredParty（接受担保企业）和 LatestGuaranteeSum（最新担保金额）这几个字段，以获取亿帆医药在2020年最新担保事件的信息。通过使用 CompanyCode（公司代码）和 InfoPublDate（信息发布日期）的限制，确保查询只针对亿帆医药并过滤出2020年的记录。结果按 InfoPublDate 降序排列，并限制返回记录为1条，以获取最新的担保事件。",
-                "sql": "SELECT EventContent, GuarantorCompany, SecuredParty, LatestGuaranteeSum FROM astockeventsdb.lc_warrant WHERE CompanyCode = '2344' AND InfoPublDate LIKE '%2020%' ORDER BY InfoPublDate DESC LIMIT 1;"
+                "sql": "SELECT EventContent, GuarantorCompany, SecuredParty, LatestGuaranteeSum FROM astockeventsdb.lc_warrant WHERE CompanyCode = '2344' AND YEAR(InfoPublDate) = '2020' ORDER BY InfoPublDate DESC LIMIT 1;"
             }
         ]
     },
@@ -3057,7 +3091,7 @@
                     "astockeventsdb.lc_investordetail"
                 ],
                 "reason": "本查询统计了2021年许继电气发布的重大事项公告数量。所用字段包括CompanyCode（公司代码为118），InfoPublDate（首次信息发布日期模糊匹配2021年）以及对其他表各自的参与者ID与时间进行过滤。所有字段和条件直接与查询目标相关联，确保所需信息的全面性和准确性。查询将通过count(*)来得到每个表格中符合条件的记录数量，从而统计总公告数量。",
-                "sql": "SELECT count(*) FROM astockeventsdb.lc_warrant WHERE CompanyCode = '118' AND InfoPublDate LIKE '%2021%' ;SELECT count(*) FROM astockeventsdb.LC_Credit WHERE InnerCode = '147' AND InfoPublDate LIKE '%2021%' ;SELECT count(*) FROM astockeventsdb.LC_SuitArbitration WHERE ParticipantID = '118' AND InsertTime LIKE '%2021%' ;SELECT count(*) FROM astockeventsdb.LC_EntrustInv WHERE ParticipantID = '118' AND InsertTime LIKE '%2021%' ;SELECT count(*) FROM astockeventsdb.LC_Regroup WHERE ParticipantID = '118' AND InsertTime LIKE '%2021%' ;SELECT count(*) FROM astockeventsdb.LC_MajorContract WHERE ParticipantID = '118' AND InsertTime LIKE '%2021%' ;SELECT count(*) FROM astockeventsdb.LC_InvestorRa WHERE ParticipantID = '118' AND InsertTime LIKE '%2021%' ;SELECT count(*) FROM astockeventsdb.LC_InvestorDetail WHERE ParticipantID = '118' AND InsertTime LIKE '%2021%' ;"
+                "sql": "SELECT count(*) FROM astockeventsdb.lc_warrant WHERE CompanyCode = '118' AND YEAR(InfoPublDate) = '2021' ;SELECT count(*) FROM astockeventsdb.LC_Credit WHERE InnerCode = '147' AND YEAR(InfoPublDate) = '2021' ;SELECT count(*) FROM astockeventsdb.LC_SuitArbitration WHERE ParticipantID = '118' AND YEAR(InsertTime) = '2021' ;SELECT count(*) FROM astockeventsdb.LC_EntrustInv WHERE ParticipantID = '118' AND YEAR(InsertTime) = '2021' ;SELECT count(*) FROM astockeventsdb.LC_Regroup WHERE ParticipantID = '118' AND YEAR(InsertTime) = '2021' ;SELECT count(*) FROM astockeventsdb.LC_MajorContract WHERE ParticipantID = '118' AND YEAR(InsertTime) = '2021' ;SELECT count(*) FROM astockeventsdb.LC_InvestorRa WHERE ParticipantID = '118' AND YEAR(InsertTime) = '2021' ;SELECT count(*) FROM astockeventsdb.LC_InvestorDetail WHERE ParticipantID = '118' AND YEAR(InsertTime) = '2021' ;"
             },
             {
                 "id": 2,
@@ -3066,7 +3100,7 @@
                     "astockeventsdb.lc_majorcontract"
                 ],
                 "reason": "本查询旨在获取2021年许继电气签订的涉及金额最大的合同标的。选择字段包括ContractObject（合同标的）和AmountInvolved（涉及金额），通过CompanyCode和InfoPublDate过滤条件来确保数据的准确性。结果通过ORDER BY AmountInvolved DESC排序，使得可以显示最高金额的合同标的，LIMIT 1确保只取第一条记录。",
-                "sql": "SELECT ContractObject, AmountInvolved FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '118' AND InfoPublDate LIKE '%2021%' ORDER BY AmountInvolved DESC LIMIT 1;"
+                "sql": "SELECT ContractObject, AmountInvolved FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '118' AND YEAR(InfoPublDate) = '2021' ORDER BY AmountInvolved DESC LIMIT 1;"
             },
             {
                 "id": 3,
@@ -3075,7 +3109,7 @@
                     "astockeventsdb.lc_majorcontract"
                 ],
                 "reason": "本查询旨在获取2021年许继电气签订的金额最大的合同的金额。选择字段AmountInvolved（涉及金额）为主要目标，通过CompanyCode和InfoPublDate过滤条件来确保数据的准确性，且通过ORDER BY AmountInvolved DESC来获取最大合同金额，LIMIT 1确保只取第一条记录。",
-                "sql": "SELECT ContractObject, AmountInvolved FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '118' AND InfoPublDate LIKE '%2021%' ORDER BY AmountInvolved DESC LIMIT 1;"
+                "sql": "SELECT ContractObject, AmountInvolved FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '118' AND YEAR(InfoPublDate) = '2021' ORDER BY AmountInvolved DESC LIMIT 1;"
             },
             {
                 "id": 4,
@@ -3110,7 +3144,7 @@
                     "astockshareholderdb.lc_transferplan"
                 ],
                 "reason": "选择了字段 CompanyCode、InfoPublDate、ReduceShareCeiling 和 ReduceShareFloor 作为关键字段。公司代码是固定的用于筛选特定公司的数据；信息发布日期限制在2021年；最大可减持股份数量和最小可减持股份数量是核心查询结果，这两个字段提供了关于减持计划的直接统计信息。限制条件保证查询的准确性和相关性。",
-                "sql": "SELECT MAX(ReduceShareCeiling) , MIN(ReduceShareFloor) FROM astockshareholderdb.lc_transferplan WHERE CompanyCode = '170424' AND InfoPublDate LIKE '%2021%' ;"
+                "sql": "SELECT MAX(ReduceShareCeiling) , MIN(ReduceShareFloor) FROM astockshareholderdb.lc_transferplan WHERE CompanyCode = '170424' AND YEAR(InfoPublDate) = '2021' ;"
             },
             {
                 "id": 2,
@@ -3119,7 +3153,7 @@
                     "astockshareholderdb.lc_transferplan"
                 ],
                 "reason": "选择了字段 CompanyCode、InfoPublDate、ReduceShareCeiling 和 ReduceShareFloor 作为关键字段。公司代码确保查询只针对美亚光电；信息发布日期限制在2021年；最大可减持股份数量和最小可减持股份数量准确地提供了有关减持计划的核心数据，这两个字段是计算两者间差距的必要条件。限制条件有效地保证了查询结果的专一性与准确性。",
-                "sql": "SELECT MAX(ReduceShareCeiling) , MIN(ReduceShareFloor) FROM astockshareholderdb.lc_transferplan WHERE CompanyCode = '170424' AND InfoPublDate LIKE '%2021%' ;"
+                "sql": "SELECT MAX(ReduceShareCeiling) , MIN(ReduceShareFloor) FROM astockshareholderdb.lc_transferplan WHERE CompanyCode = '170424' AND YEAR(InfoPublDate) = '2021' ;"
             },
             {
                 "id": 3,
@@ -3128,7 +3162,7 @@
                     "astockshareholderdb.lc_transferplan"
                 ],
                 "reason": "选择了字段 CompanyCode、InfoPublDate、SHName 和 TransferPlanType 作为关键字段。公司代码保证查询数据仅关联到美亚光电；信息发布日期限制在2021年；SHName 通过 DISTINCT 计算确保能返回唯一股东的数量；TransferPlanType 则确保只关注于主动和被动减持计划，所有条件保证了查询结果的相关性与准确性。",
-                "sql": "SELECT COUNT(DISTINCT SHName) AS NumberOfShareholders FROM astockshareholderdb.lc_transferplan WHERE CompanyCode = '170424' AND InfoPublDate LIKE '%2021%' AND TransferPlanType IN (127, 128);"
+                "sql": "SELECT COUNT(DISTINCT SHName) AS NumberOfShareholders FROM astockshareholderdb.lc_transferplan WHERE CompanyCode = '170424' AND YEAR(InfoPublDate) = '2021' AND TransferPlanType IN (127, 128);"
             },
             {
                 "id": 4,
@@ -3137,7 +3171,7 @@
                     "astockshareholderdb.lc_transferplan"
                 ],
                 "reason": "选择了字段 CompanyCode、InfoPublDate、SHName 和 ReduceRatioCeiling 作为关键字段。公司代码保证查询针对特定公司（美亚光电）；信息发布日期限制在2021年；SHName 是关键字段，用以识别股东，而 MAX(ReduceRatioCeiling) 是获取每位股东最大减持比例的必要部分。所有条件确保查询的准确性与相关性。",
-                "sql": "SELECT SHName, MAX(ReduceRatioCeiling) AS MaxReduceRatio FROM astockshareholderdb.lc_transferplan WHERE CompanyCode = '170424' AND InfoPublDate LIKE '%2021%' AND TransferPlanType IN (127, 128) GROUP BY SHName ORDER BY MaxReduceRatio DESC LIMIT 1;"
+                "sql": "SELECT SHName, MAX(ReduceRatioCeiling) AS MaxReduceRatio FROM astockshareholderdb.lc_transferplan WHERE CompanyCode = '170424' AND YEAR(InfoPublDate) = '2021' AND TransferPlanType IN (127, 128) GROUP BY SHName ORDER BY MaxReduceRatio DESC LIMIT 1;"
             }
         ]
     },
@@ -3220,7 +3254,7 @@
                     "astockshareholderdb.lc_nationalstockholdst"
                 ],
                 "reason": "选择字段包括 COUNT(DISTINCT SHID), 通过该方法可准确统计在2021年底持有隧道股份的唯一股东数量。限制条件使用 InnerCode 限制到具体的证券，确保准确性，同时使用 EndDate 转换日期以获取特定时间点的数据。",
-                "sql": "SELECT COUNT(DISTINCT SHID) AS ShareholderCount FROM astockshareholderdb.lc_nationalstockholdst WHERE InnerCode = 2057 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31';"
+                "sql": "SELECT COUNT(DISTINCT SHID) AS ShareholderCount FROM astockshareholderdb.lc_nationalstockholdst WHERE InnerCode = 2057 AND DATE(EndDate) = '2021-12-31';"
             },
             {
                 "id": 2,
@@ -3229,7 +3263,7 @@
                     "astockshareholderdb.lc_nationalstockholdst"
                 ],
                 "reason": "选择字段包括 SUM(HoldAShareSum)，这是查询中必不可少的字段，用于求得国家队在2021年底持有的A股的总数。限制条件使用 InnerCode 确保仅限于隧道股份的记录，同时使用 EndDate 转换日期以获取特定时间点的数据。",
-                "sql": "SELECT SUM(HoldAShareSum) AS TotalHoldAShareSum FROM astockshareholderdb.lc_nationalstockholdst WHERE InnerCode = 2057 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31';"
+                "sql": "SELECT SUM(HoldAShareSum) AS TotalHoldAShareSum FROM astockshareholderdb.lc_nationalstockholdst WHERE InnerCode = 2057 AND DATE(EndDate) = '2021-12-31';"
             },
             {
                 "id": 3,
@@ -3238,7 +3272,7 @@
                     "astockshareholderdb.lc_nationalstockholdst"
                 ],
                 "reason": "查询中选择 SUM(HoldAShareSum)（了解持股上下文）、ROUND(MAX(PCTOfFloatShares)*100,2) AS MaxHoldingRatio（找到最高持股比例）、SHName（返回持股比例最高的股东名称）。限制条件使用 CompanyCode 来限制到特定公司，使用 EndDate 确保时间段，且确保 PCTOfFloatShares 有效。",
-                "sql": "SELECT  SUM(HoldAShareSum) AS TotalHolding, ROUND(MAX(PCTOfFloatShares)*100,2) AS MaxHoldingRatio, SHName FROM aStockShareholderDB.lc_nationalstockholdst WHERE CompanyCode = '1753' AND EndDate LIKE '%2021-12%' AND PCTOfFloatShares IS NOT NULL GROUP BY SHID, SHName, PCTOfFloatShares ORDER BY MaxHoldingRatio DESC LIMIT 1;"
+                "sql": "SELECT  SUM(HoldAShareSum) AS TotalHolding, ROUND(MAX(PCTOfFloatShares)*100,2) AS MaxHoldingRatio, SHName FROM aStockShareholderDB.lc_nationalstockholdst WHERE CompanyCode = '1753' AND YEAR(EndDate) = '2021' AND MONTH(EndDate) = '12' AND PCTOfFloatShares IS NOT NULL GROUP BY SHID, SHName, PCTOfFloatShares ORDER BY MaxHoldingRatio DESC LIMIT 1;"
             },
             {
                 "id": 4,
@@ -3247,7 +3281,7 @@
                     "astockshareholderdb.lc_nationalstockholdst"
                 ],
                 "reason": "查询中选择 SUM(HoldAShareSum)（理解持股上下文）、ROUND(MAX(PCTOfFloatShares)*100,2) AS MaxHoldingRatio（获取持股比例），SHName（返回持股比例最高的股东名称）。限制条件使用 CompanyCode 限制到特定公司 & EndDate 确保时间段，以及 PCTOfFloatShares 确保有效性。",
-                "sql": "SELECT  SUM(HoldAShareSum) AS TotalHolding, ROUND(MAX(PCTOfFloatShares)*100,2) AS MaxHoldingRatio, SHName FROM aStockShareholderDB.lc_nationalstockholdst WHERE CompanyCode = '1753' AND EndDate LIKE '%2021-12%' AND PCTOfFloatShares IS NOT NULL GROUP BY SHID, SHName, PCTOfFloatShares ORDER BY MaxHoldingRatio DESC LIMIT 1;"
+                "sql": "SELECT  SUM(HoldAShareSum) AS TotalHolding, ROUND(MAX(PCTOfFloatShares)*100,2) AS MaxHoldingRatio, SHName FROM aStockShareholderDB.lc_nationalstockholdst WHERE CompanyCode = '1753' AND YEAR(EndDate) = '2021' AND MONTH(EndDate) = '12' AND PCTOfFloatShares IS NOT NULL GROUP BY SHID, SHName, PCTOfFloatShares ORDER BY MaxHoldingRatio DESC LIMIT 1;"
             }
         ]
     },
@@ -3261,7 +3295,7 @@
                     "astockoperationsdb.lc_staff"
                 ],
                 "reason": "选择字段确保能获取中国宝安公司（CompanyCode = 25）在2021年（EndDate = '2021-12-31'）年度报告中的员工总数（ClassfiedMethod = 9000）信息，使用EmployeeSum进行汇总. InfoSource字段确保数据来源的准确性，最为关键的就是对EmployeeSum的求和。",
-                "sql": "SELECT SUM(EmployeeSum) AS TotalEmployees FROM astockoperationsdb.lc_staff WHERE CompanyCode = 25 AND InfoSource = '年度报告' AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31' AND ClassfiedMethod = 9000;"
+                "sql": "SELECT SUM(EmployeeSum) AS TotalEmployees FROM astockoperationsdb.lc_staff WHERE CompanyCode = 25 AND InfoSource = '年度报告' AND DATE(EndDate) = '2021-12-31' AND ClassfiedMethod = 9000;"
             },
             {
                 "id": 2,
@@ -3270,7 +3304,7 @@
                     "astockoperationsdb.lc_staff"
                 ],
                 "reason": "选择字段确保能获取中国宝安公司（CompanyCode = 25）在2021年（EndDate like '%2021-12-31%'）末期技术人员（TypeCode = 3035）的员工总数的相关信息。此处需要EmployeeSum进行汇总，而TypeName给予额外的类别标识。",
-                "sql": "SELECT EmployeeSum,TypeName,EndDate ,RatioInSum FROM astockoperationsdb.lc_staff WHERE CompanyCode = '25' AND EndDate like '%2021-12-31%'  and TypeCode=3035"
+                "sql": "SELECT EmployeeSum,TypeName,EndDate ,RatioInSum FROM astockoperationsdb.lc_staff WHERE CompanyCode = '25' AND DATE(EndDate) = '2021-12-31'  and TypeCode=3035"
             },
             {
                 "id": 3,
@@ -3286,7 +3320,7 @@
                     "astockoperationsdb.lc_staff"
                 ],
                 "reason": "选择字段确保能获取中国宝安公司（CompanyCode = '25'）在2021年（EndDate like '%2021-12-31%'）末期具有硕士（TypeCode = 5010）和博士（TypeCode = 5015）学历的技术人员的总人数信息。此处需要EmployeeSum进行汇总，而TypeName帮助识别对应的学历类型。",
-                "sql": "SELECT EmployeeSum,TypeName,EndDate ,RatioInSum FROM astockoperationsdb.lc_staff WHERE CompanyCode = '25' AND EndDate like '%2021-12-31%' and ClassfiedMethod=5000  and (TypeCode=5010 or TypeCode=5015)"
+                "sql": "SELECT EmployeeSum,TypeName,EndDate ,RatioInSum FROM astockoperationsdb.lc_staff WHERE CompanyCode = '25' AND DATE(EndDate) = '2021-12-31' and ClassfiedMethod=5000  and (TypeCode=5010 or TypeCode=5015)"
             },
             {
                 "id": 5,
@@ -3295,7 +3329,7 @@
                     "astockoperationsdb.lc_staff"
                 ],
                 "reason": "查询选取了中国宝安公司（CompanyCode = 25）在2021年12月31日（EndDate = '2021-12-31'）的专业构成（ClassfiedMethod = 3000）职员。对技术人员（TypeCode = 3035）的数量进行了汇总，并与其他类别（3031和3034）的职员总数对比，以计算其在总技术人员中的占比，确保结果保留两位小数，满足实际查询需求。",
-                "sql": "SELECT      SUM(CASE WHEN TypeCode = 3035 THEN EmployeeSum ELSE 0 END) AS TechnicalStaff,     SUM(CASE WHEN TypeCode = 3031 THEN EmployeeSum ELSE 0 END) AS ProductionStaff,     SUM(CASE WHEN TypeCode = 3034 THEN EmployeeSum ELSE 0 END) AS SalesStaff,     SUM(EmployeeSum) AS TotalStaff FROM      astockoperationsdb.lc_staff WHERE      CompanyCode = 25     AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31'     AND ClassfiedMethod = 3000"
+                "sql": "SELECT      SUM(CASE WHEN TypeCode = 3035 THEN EmployeeSum ELSE 0 END) AS TechnicalStaff,     SUM(CASE WHEN TypeCode = 3031 THEN EmployeeSum ELSE 0 END) AS ProductionStaff,     SUM(CASE WHEN TypeCode = 3034 THEN EmployeeSum ELSE 0 END) AS SalesStaff,     SUM(EmployeeSum) AS TotalStaff FROM      astockoperationsdb.lc_staff WHERE      CompanyCode = 25     AND DATE(EndDate) = '2021-12-31'     AND ClassfiedMethod = 3000"
             },
             {
                 "id": 6,
@@ -3304,7 +3338,7 @@
                     "astockoperationsdb.lc_staff"
                 ],
                 "reason": "查询选择了中国宝安公司（CompanyCode = 25）在2021年12月31日（EndDate = '2021-12-31'）的专业构成（ClassfiedMethod = 3000）职员。使用CASE语句分别计算技术人员（TypeCode = 3035）、生产人员（TypeCode = 3031）、销售人员（TypeCode = 3034）的数量，同时求和得到全体职员总数，以便后续能够计算比例。",
-                "sql": "SELECT      SUM(CASE WHEN TypeCode = 3035 THEN EmployeeSum ELSE 0 END) AS TechnicalStaff,     SUM(CASE WHEN TypeCode = 3031 THEN EmployeeSum ELSE 0 END) AS ProductionStaff,     SUM(CASE WHEN TypeCode = 3034 THEN EmployeeSum ELSE 0 END) AS SalesStaff,     SUM(EmployeeSum) AS TotalStaff FROM      astockoperationsdb.lc_staff WHERE      CompanyCode = 25     AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31'     AND ClassfiedMethod = 3000"
+                "sql": "SELECT      SUM(CASE WHEN TypeCode = 3035 THEN EmployeeSum ELSE 0 END) AS TechnicalStaff,     SUM(CASE WHEN TypeCode = 3031 THEN EmployeeSum ELSE 0 END) AS ProductionStaff,     SUM(CASE WHEN TypeCode = 3034 THEN EmployeeSum ELSE 0 END) AS SalesStaff,     SUM(EmployeeSum) AS TotalStaff FROM      astockoperationsdb.lc_staff WHERE      CompanyCode = 25     AND DATE(EndDate) = '2021-12-31'     AND ClassfiedMethod = 3000"
             },
             {
                 "id": 7,
@@ -3349,7 +3383,6 @@
                 "id": 4,
                 "subquestion": "计算海信家电大单和小单的净买入率差值，并保留两位小数。",
                 "table_name": [
-                    "astockmarketquotesdb.cs_stockcapflowindex",
                     "astockmarketquotesdb.cs_stockcapflowindex"
                 ],
                 "reason": "选择InnerCode作为过滤条件，以确保查询针对海信家电的证券数据，TradingDay则确保数据是在2021-12-24这个特定日期。LargeNBValueRatio和SmallNBValueRatio作为计算差值的字段，查询时获取它们的值，并进行差值计算，最终结果使用ROUND函数保留两位小数，准确返回结果。通过这些选择，查询可以高效和准确地得到目标结果。",
@@ -3359,11 +3392,6 @@
                 "id": 5,
                 "subquestion": "分析海信家电在2021-12-24的资金流向组合所反映的现象。",
                 "table_name": [
-                    "astockmarketquotesdb.cs_stockcapflowindex",
-                    "astockmarketquotesdb.cs_stockcapflowindex",
-                    "astockmarketquotesdb.cs_stockcapflowindex",
-                    "astockmarketquotesdb.cs_stockcapflowindex",
-                    "astockmarketquotesdb.cs_stockcapflowindex",
                     "astockmarketquotesdb.cs_stockcapflowindex"
                 ],
                 "reason": "我通过选择InnerCode过滤条件，确保只查询海信家电的数据，并使用TradingDay限制，确保数据是2021年12月24日的记录。我选取了小单、中单、大单、超大单、全单及主力的流入和流出额字段，以便全面反映资金流向的组合情况。这将有利于后续的分析和解读资金流入、流出之间的关系。",
@@ -3511,7 +3539,7 @@
                     "astockshareholderdb.lc_shnumber"
                 ],
                 "reason": "在该查询中，重点选择了字段CompanyCode用于限定特定公司（安琪酵母），EndDate用于确认记录日期，SHNum为查询核心结果字段。由于任务要求指定日期为2021年12月31日，因此设置了精确的日期限制条件。由于确知CompanyCode（1288）和EndDate（'2021-12-31'），因此这些值是查询的固定条件，这确保查询结果的准确性与有效性。",
-                "sql": "SELECT SHNum FROM astockshareholderdb.lc_shnumber WHERE CompanyCode = 1288 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31';"
+                "sql": "SELECT SHNum FROM astockshareholderdb.lc_shnumber WHERE CompanyCode = 1288 AND DATE(EndDate) = '2021-12-31';"
             },
             {
                 "id": 2,
@@ -3520,7 +3548,7 @@
                     "astockshareholderdb.lc_shnumber"
                 ],
                 "reason": "本查询选取的字段包含CompanyCode用于指定查询的公司（安琪酵母），EndDate用于确保精确到目标日期，AAverageHoldSum是查询中返回的核心字段。由于查询是针对2021年12月31日，因此在SQL中设定了固定的CompanyCode（1288）以及确保了查询日期的准确性，以得到准确结果。",
-                "sql": "SELECT AAverageHoldSum FROM astockshareholderdb.lc_shnumber WHERE CompanyCode = 1288 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31';"
+                "sql": "SELECT AAverageHoldSum FROM astockshareholderdb.lc_shnumber WHERE CompanyCode = 1288 AND DATE(EndDate) = '2021-12-31';"
             },
             {
                 "id": 3,
@@ -3529,7 +3557,7 @@
                     "astockshareholderdb.lc_shnumber"
                 ],
                 "reason": "查询选择了字段CompanyCode用于确保查询的公司为安琪酵母，并通过EndDate的模糊匹配获取到2021年12月31日的相关数据。所需的AAvgHoldSumGRQuarter字段是本查询的核心，提供了季度增长率计算所需的数据。通过这些条件，可以顺利检索到特定日期的相关数据，以便计算A股户均持股数相较上一季度的变化率。",
-                "sql": "select AAvgHoldSumGRQuarter FROM astockshareholderdb.lc_shnumber WHERE CompanyCode = '1288' and EndDate like '%2021-12-31%'"
+                "sql": "select AAvgHoldSumGRQuarter FROM astockshareholderdb.lc_shnumber WHERE CompanyCode = '1288' and DATE(EndDate) = '2021-12-31'"
             },
             {
                 "id": 4,
@@ -3545,7 +3573,7 @@
                     "astockoperationsdb.lc_rewardstat"
                 ],
                 "reason": "查询中选用了字段CompanyCode来限定公司为安琪酵母，并通过EndDate约束日期在2021年内。SUM(TotalYearPay)是必选项，用于计算管理层的总薪酬。同时，InfoSource被用作条件，确保返回的数据来源于年度报告，增强了数据的准确性。底层逻辑确保了查询结果能够正确反映安琪酵母在2021年的管理层总薪酬。",
-                "sql": "SELECT SUM(TotalYearPay) AS TotalManagementCompensation FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode = 1288 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2021-01-01' AND '2021-12-31' AND InfoSource LIKE '%年度报告%'"
+                "sql": "SELECT SUM(TotalYearPay) AS TotalManagementCompensation FROM astockoperationsdb.lc_rewardstat WHERE CompanyCode = 1288 AND DATE(EndDate) BETWEEN '2021-01-01' AND '2021-12-31' AND InfoSource LIKE '%年度报告%'"
             },
             {
                 "id": 6,
@@ -3554,7 +3582,7 @@
                     "astockoperationsdb.lc_rewardstat"
                 ],
                 "reason": "本查询选择了SUM(TotalYearPay)与SUM(NumPayManagers)进行计算，以此导出所有管理层的平均薪酬水平。InfoSource被用作过滤条件，确保获取的数据源自年度报告，而YEAR(STR_TO_DATE(EndDate, '%Y-%m-%d')) = 2021保证了数据针对特定年份的准确性。通过设计这些条件，能保证查询结果是反映2021年的管理层薪酬数据，且是根据年度报告统计而来。",
-                "sql": "SELECT SUM(TotalYearPay) / SUM(NumPayManagers) AS AverageManagerSalary FROM astockoperationsdb.lc_rewardstat WHERE InfoSource = '年度报告' AND YEAR(STR_TO_DATE(EndDate, '%Y-%m-%d')) = 2021;"
+                "sql": "SELECT SUM(TotalYearPay) / SUM(NumPayManagers) AS AverageManagerSalary FROM astockoperationsdb.lc_rewardstat WHERE InfoSource = '年度报告' AND YEAR(EndDate) = 2021;"
             },
             {
                 "id": 7,
@@ -3577,7 +3605,7 @@
                     "astockshareholderdb.lc_buyback"
                 ],
                 "reason": "选择字段包括公司代码、起始日期和结束日期，以确保精准统计健康元药业在2020-2021年的股份回购次数。字段CompanyCode = 1360指定特定公司，StartDate和EndDate限制了查询的时间范围为2020-01-01至2021-12-31，从而确保结果的相关性和准确性。",
-                "sql": "SELECT COUNT(*) AS BuybackCount FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1360 AND DATE(STR_TO_DATE(StartDate, '%Y-%m-%d %H:%i:%s.%f')) >= '2020-01-01' AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) <= '2021-12-31';"
+                "sql": "SELECT COUNT(*) AS BuybackCount FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1360 AND DATE(StartDate) >= '2020-01-01' AND DATE(EndDate) <= '2021-12-31';"
             },
             {
                 "id": 2,
@@ -3595,7 +3623,7 @@
                     "astockshareholderdb.lc_buyback"
                 ],
                 "reason": "选择字段PurposeDesc，用于获取健康元药业集团股份有限公司最近一次回购的主要目的。通过CompanyCode = 1360进行公司筛选，并按FirstPublDate降序排列，以确保获取到最新的回购记录，最后通过LIMIT 1仅返回一条记录，从而满足查询需求。",
-                "sql": "SELECT PurposeDesc FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1360 ORDER BY DATE(STR_TO_DATE(FirstPublDate, '%Y-%m-%d %H:%i:%s.%f')) DESC LIMIT 1;"
+                "sql": "SELECT PurposeDesc FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1360 ORDER BY DATE(FirstPublDate) DESC LIMIT 1;"
             },
             {
                 "id": 4,
@@ -3613,7 +3641,7 @@
                     "astockshareholderdb.lc_buyback"
                 ],
                 "reason": "选择字段包括CompanyCode和SUM(BuybackMoney) AS TotalBuybackMoney，以获取健康元药业在2020-2021年期间的回购总金额。通过CompanyCode = 1360对公司进行筛选，设置StartDate的时间范围为2020-01-01至2021-12-31，并根据InfoSource确保只包括集中竞价交易的记录。这将有助于计算健康元的回购金额，以便在A股上市公司中进行排名。",
-                "sql": "SELECT CompanyCode, SUM(BuybackMoney) AS TotalBuybackMoney FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1360 AND (DATE(STR_TO_DATE(StartDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2020-01-01' AND '2021-12-31') AND InfoSource LIKE '%集中竞价交易%' GROUP BY CompanyCode ORDER BY TotalBuybackMoney DESC;"
+                "sql": "SELECT CompanyCode, SUM(BuybackMoney) AS TotalBuybackMoney FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1360 AND (DATE(StartDate) BETWEEN '2020-01-01' AND '2021-12-31') AND InfoSource LIKE '%集中竞价交易%' GROUP BY CompanyCode ORDER BY TotalBuybackMoney DESC;"
             }
         ]
     },
@@ -3701,7 +3729,7 @@
                     "astockshareholderdb.lc_stockholdingst"
                 ],
                 "reason": "查询的关键字段包括InstitutionsHoldPropA和FundsHoldPropA，分别代表机构和基金在2021年末持股比例的合计。选择CompanyCode (170593)、EndDate ('%2021-12-%') 和 InfoSource ('年度报告')作为限制条件，确保查询数据的正确性和相关性。InfoSource的限制确保接受到的数据来源为有效的年度报告。如此设置最大程度上缩小了查询范围，只返回有效信息。字段的取值设计涵盖了公司的必要信息以及报告的时效，使查询结果针对性强。",
-                "sql": "SELECT round(InstitutionsHoldPropA,2),round(FundsHoldPropA,2) FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' AND InfoSource like '年度报告' AND EndDate LIKE '%2021-12-%';"
+                "sql": "SELECT round(InstitutionsHoldPropA,2),round(FundsHoldPropA,2) FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' AND InfoSource like '年度报告' AND YEAR(EndDate) = 2021 AND MONTH(EndDate) = 12;"
             },
             {
                 "id": 2,
@@ -3710,7 +3738,7 @@
                     "astockshareholderdb.lc_stockholdingst"
                 ],
                 "reason": "关键字段为FundsHoldPropA，代表光环新网在2021年年底的基金持股比例，查询中选择CompanyCode (170593)、EndDate ('%2021-12-%') 和 InfoSource ('年度报告')作为过滤条件，确保数据的及时性和相关性。选用的字段和条件确保结果聚焦于目标公司在特定时期的正式报告，FundHoldPropA提供准确的基金持股比例数据，这是查询的核心内容。",
-                "sql": "SELECT round(InstitutionsHoldPropA,2),round(FundsHoldPropA,2) FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' AND InfoSource like '年度报告' AND EndDate LIKE '%2021-12-%';"
+                "sql": "SELECT round(InstitutionsHoldPropA,2),round(FundsHoldPropA,2) FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' AND InfoSource like '年度报告' AND YEAR(EndDate) = 2021 AND MONTH(EndDate) = 12;"
             },
             {
                 "id": 3,
@@ -3722,7 +3750,7 @@
                     "astockshareholderdb.lc_stockholdingst"
                 ],
                 "reason": "SELECT语句中涉及的字段有InstitutionsHoldPropA（机构持股比例）和StatDate（统计日期），其中前者是本查询关注的核心数据，后者用以记录每个季度的统计截止时间。公司代码CompanyCode (170593)锁定为光环新网，InfoSource根据季度要求分别设置为'第一季报'、'%半年%'、'第三季报'和'%年度%'，以获取准确的持股比例信息。StatDate的区间限制确保查询结果具体到2021年所有四个季度的报表，确保数据时效性和针对性。",
-                "sql": "SELECT round(InstitutionsHoldPropA,2) ,StatDate FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' and InfoSource like '第一季报' AND StatDate LIKE '%2021-%'  ORDER BY StatDate DESC LIMIT 1;SELECT round(InstitutionsHoldPropA,2) ,StatDate FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' and InfoSource like '%半年%' AND StatDate LIKE '%2021-%'  ORDER BY StatDate DESC LIMIT 1;SELECT round(InstitutionsHoldPropA,2) ,StatDate FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' and InfoSource like '第三季报' AND StatDate LIKE '%2021-%'  ORDER BY StatDate DESC LIMIT 1;SELECT round(InstitutionsHoldPropA,2) ,StatDate FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' and InfoSource like '%年度%' AND StatDate LIKE '%2021-%'  ORDER BY StatDate DESC LIMIT 1;"
+                "sql": "SELECT round(InstitutionsHoldPropA,2) ,StatDate FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' and InfoSource like '第一季报' AND YEAR(StatDate) = '2021'  ORDER BY StatDate DESC LIMIT 1;SELECT round(InstitutionsHoldPropA,2) ,StatDate FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' and InfoSource like '%半年%' AND StatDate LIKE '%2021-%'  ORDER BY StatDate DESC LIMIT 1;SELECT round(InstitutionsHoldPropA,2) ,StatDate FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' and InfoSource like '第三季报' AND StatDate LIKE '%2021-%'  ORDER BY StatDate DESC LIMIT 1;SELECT round(InstitutionsHoldPropA,2) ,StatDate FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' and InfoSource like '%年度%' AND YEAR(StatDate) = '2021'  ORDER BY StatDate DESC LIMIT 1;"
             },
             {
                 "id": 4,
@@ -3731,7 +3759,7 @@
                     "astockshareholderdb.lc_stockholdingst"
                 ],
                 "reason": "本查询的主要目标是获取光环新网（公司代码170593）在2020年年末的机构持股比例，选择的字段为InstitutionsHoldPropA（机构持股比例），另保留FundsHoldPropA（基金持股比例）以扩充结果信息。限制条件选定公司代码（CompanyCode）为'170593'，信息来源（InfoSource）设定为'年度报告'，日期（EndDate）则通过模糊匹配'%2020-12-%'确保限定在年末数据。这样的限制条件确保查询结果是有效和精准的。",
-                "sql": "SELECT round(InstitutionsHoldPropA,2),round(FundsHoldPropA,2) FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' AND InfoSource like '年度报告' AND EndDate LIKE '%2020-12-%';"
+                "sql": "SELECT round(InstitutionsHoldPropA,2),round(FundsHoldPropA,2) FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' AND InfoSource like '年度报告' AND YEAR(EndDate) = 2020 AND MONTH(EndDate) = 12;"
             },
             {
                 "id": 5,
@@ -3740,7 +3768,7 @@
                     "astockshareholderdb.lc_stockholdingst"
                 ],
                 "reason": "查询的核心字段是FundsHoldPropA（公募基金持股比例），设置CompanyCode（170593）锁定光环新网，InfoSource（'年度报告'）和EndDate（'%2020-12-%'）作为过滤条件，确保查询结果仅针对特定的年度报告数据，含2020年年末的有效信息。虽然InstitutionsHoldPropA为背景数据，但主要目的在于输出准确的基金持股比例。",
-                "sql": "SELECT round(InstitutionsHoldPropA,2),round(FundsHoldPropA,2) FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' AND InfoSource like '年度报告' AND EndDate LIKE '%2020-12-%';"
+                "sql": "SELECT round(InstitutionsHoldPropA,2),round(FundsHoldPropA,2) FROM astockshareholderdb.lc_stockholdingst WHERE CompanyCode = '170593' AND InfoSource like '年度报告' AND YEAR(EndDate) = 2020 AND MONTH(EndDate) = 12;"
             },
             {
                 "id": 6,
@@ -3900,19 +3928,16 @@
                     "astockeventsdb.lc_majorcontract"
                 ],
                 "reason": "选择了字段CompanyCode以过滤特定公司的数据，InfoPublDate和AgreementDate以限定查询范围在2021年，ContractObject和AmountInvolved是查询中必须返回的内容，其中格式化InfoPublDate为ContractReleaseDate以便于展示，同时AmountInvolved取值需要保证是金额较大。添加ORDER BY和LIMIT确保只返回金额排前两的记录。",
-                "sql": "SELECT CONCAT(SUBSTRING(InfoPublDate, 1, 4),'-', SUBSTRING(InfoPublDate, 6, 2), '-', SUBSTRING(InfoPublDate, 9, 2)) AS ContractReleaseDate, ContractObject, ROUND(AmountInvolved, 2) AS ContractAmount FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND (AgreementDate LIKE '%2021%' or InitialInfoPublDate LIKE '%2021%') ORDER BY AmountInvolved DESC LIMIT 2"
+                "sql": "SELECT CONCAT(SUBSTRING(InfoPublDate, 1, 4),'-', SUBSTRING(InfoPublDate, 6, 2), '-', SUBSTRING(InfoPublDate, 9, 2)) AS ContractReleaseDate, ContractObject, ROUND(AmountInvolved, 2) AS ContractAmount FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND (YEAR(AgreementDate) = '2021' or YEAR(InitialInfoPublDate) = '2021') ORDER BY AmountInvolved DESC LIMIT 2"
             },
             {
                 "id": 2,
                 "subquestion": "查询中铁工业在2021年的重大合同的季度数量。",
                 "table_name": [
-                    "astockeventsdb.lc_majorcontract",
-                    "astockeventsdb.lc_majorcontract",
-                    "astockeventsdb.lc_majorcontract",
                     "astockeventsdb.lc_majorcontract"
                 ],
                 "reason": "查询条件中包括CompanyCode以确保只获取中铁工业的记录，同时使用InitialInfoPublDate的多个LIKE条件覆盖2021年四个季度的不同月份。统计使用了count(*)以获取满足条件的记录数量，由于需要逐个季度统计，因此提供了多个SELECT查询。",
-                "sql": "SELECT count(*) FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND (InitialInfoPublDate LIKE '%2021-01%' or InitialInfoPublDate LIKE '%2021-02%' or InitialInfoPublDate LIKE '%2021-03%');SELECT count(*) FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND (InitialInfoPublDate LIKE '%2021-04%' or InitialInfoPublDate LIKE '%2021-05%' or InitialInfoPublDate LIKE '%2021-06%');SELECT count(*) FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND (InitialInfoPublDate LIKE '%2021-07%' or InitialInfoPublDate LIKE '%2021-08%' or InitialInfoPublDate LIKE '%2021-09%');SELECT count(*) FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND (InitialInfoPublDate LIKE '%2021-10%' or InitialInfoPublDate LIKE '%2021-11%' or InitialInfoPublDate LIKE '%2021-12%')"
+                "sql": "SELECT COUNT(*) FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND DATE(InitialInfoPublDate) BETWEEN '2021-01-01' AND '2021-03-31';  SELECT COUNT(*) FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND DATE(InitialInfoPublDate) BETWEEN '2021-04-01' AND '2021-06-30';  SELECT COUNT(*) FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND DATE(InitialInfoPublDate) BETWEEN '2021-07-01' AND '2021-09-30';  SELECT COUNT(*) FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND DATE(InitialInfoPublDate) BETWEEN '2021-10-01' AND '2021-12-31';"
             },
             {
                 "id": 3,
@@ -3921,7 +3946,7 @@
                     "astockeventsdb.lc_majorcontract"
                 ],
                 "reason": "通过CompanyCode限制，只统计中铁工业的合同记录。使用InitialInfoPublDate的LIKE条件确保仅包括2021年的合同，同时按照SubjectName分组以统计每个客户的合同数量和合同金额。",
-                "sql": "SELECT COUNT(*) AS Count , sum(AmountInvolved), SubjectName FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND  InitialInfoPublDate LIKE '%2021%' GROUP BY  SubjectName;"
+                "sql": "SELECT COUNT(*) AS Count , sum(AmountInvolved), SubjectName FROM astockeventsdb.lc_majorcontract WHERE CompanyCode = '1468' AND  YEAR(InitialInfoPublDate) = '2021' GROUP BY  SubjectName;"
             },
             {
                 "id": 4,
@@ -3972,7 +3997,7 @@
                     "institutiondb.ps_newssecurity"
                 ],
                 "reason": "本查询通过选择 EventName 字段，获取华峰化学在2019年所有舆情事件的名称。InnerCode 的取值为 4503 和 CompanyCode 的取值为 3754 确保只查询与华峰化学相关的信息。事件时间使用 DATE(STR_TO_DATE(EventDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31' 来确保只返回在2019年内发生的事件，保证查询的准确性与相关性。",
-                "sql": "SELECT EventName FROM institutiondb.ps_newssecurity WHERE InnerCode = 4503 AND CompanyCode = 3754 AND DATE(STR_TO_DATE(EventDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31';"
+                "sql": "SELECT EventName FROM institutiondb.ps_newssecurity WHERE InnerCode = 4503 AND CompanyCode = 3754 AND DATE(EventDate) BETWEEN '2019-01-01' AND '2019-12-31';"
             },
             {
                 "id": 3,
@@ -3990,7 +4015,7 @@
                     "astockmarketquotesdb.lc_suspendresumption"
                 ],
                 "reason": "本查询选择 SuspendDate 和 ResumptionDate 字段，以获取华峰化学在2019年停牌的起止日期。InnerCode 的取值为 4503 确保查询的数据特定于华峰化学，而 SuspendDate 的过滤条件确保只返回2019年内的记录，通过 DATE(STR_TO_DATE(SuspendDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31' 保证日期范围的准确性。",
-                "sql": "SELECT SuspendDate, ResumptionDate FROM astockmarketquotesdb.lc_suspendresumption WHERE InnerCode = 4503 AND DATE(STR_TO_DATE(SuspendDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31';"
+                "sql": "SELECT SuspendDate, ResumptionDate FROM astockmarketquotesdb.lc_suspendresumption WHERE InnerCode = 4503 AND DATE(SuspendDate) BETWEEN '2019-01-01' AND '2019-12-31';"
             },
             {
                 "id": 5,
@@ -3999,7 +4024,7 @@
                     "astockmarketquotesdb.lc_suspendresumption"
                 ],
                 "reason": "本查询选择 SuspendReason 字段，以获取华峰化学在2019年停牌的具体原因。InnerCode 的取值为 4503 确保查询数据仅限于华峰化学，而 SuspendDate 的过滤条件确保只返回2019年内的停牌信息，确保结果的准确性。",
-                "sql": "SELECT SuspendReason FROM astockmarketquotesdb.lc_suspendresumption WHERE InnerCode = 4503 AND DATE(STR_TO_DATE(SuspendDate, '%Y-%m-%d %H:%i:%s.%f')) >= '2019-01-01' AND DATE(STR_TO_DATE(SuspendDate, '%Y-%m-%d %H:%i:%s.%f')) <= '2019-12-31';"
+                "sql": "SELECT SuspendReason FROM astockmarketquotesdb.lc_suspendresumption WHERE InnerCode = 4503 AND YEAR(SuspendDate) = 2019;"
             },
             {
                 "id": 6,
@@ -4008,7 +4033,7 @@
                     "astockshareholderdb.lc_sharetransfer"
                 ],
                 "reason": "本查询选择 TranDate 字段，以便提取华峰化学在2019年最大比例股权变动的具体日期。其中，InnerCode 的取值为 4503 确保只查询华峰化学的数据，而 TranDate 的过滤条件确保只返回2019年内的记录。通过 ORDER BY PCTBeforeTran DESC LIMIT 1 的条件，我们能够找出持股比例最大的股权变动日期。",
-                "sql": "SELECT TranDate FROM astockshareholderdb.lc_sharetransfer WHERE InnerCode = 4503 AND DATE(STR_TO_DATE(TranDate, '%Y-%m-%d %H:%i:%s')) BETWEEN '2019-01-01' AND '2019-12-31' ORDER BY PCTBeforeTran DESC LIMIT 1;"
+                "sql": "SELECT TranDate FROM astockshareholderdb.lc_sharetransfer WHERE InnerCode = 4503 AND YEAR(SuspendDate) = 2019 ORDER BY PCTBeforeTran DESC LIMIT 1;"
             },
             {
                 "id": 7,
@@ -4036,7 +4061,7 @@
                     "astockfinancedb.lc_balancesheetall"
                 ],
                 "reason": "我选择TotalLiability和TotalAssets字段用于计算资产负债率，这是因为资产负债率为总负债与总资产的比值，且需要保留两位小数。此外，限制条件细致地指定了根据CompanyCode、InfoSourceCode和EndDate来确保查询结论的准确性，特别是EndDate字段，我指定为2019年的第一季度末。格式控制采用ROUND函数保留2位小数，从而符合财务报表显示的常规需求。",
-                "sql": "SELECT ROUND(TotalLiability / TotalAssets, 2) AS DebtRatio FROM astockfinancedb.lc_balancesheetall WHERE CompanyCode = 78397 AND InfoSourceCode = '110103' AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2019-03-31';"
+                "sql": "SELECT ROUND(TotalLiability / TotalAssets, 2) AS DebtRatio FROM astockfinancedb.lc_balancesheetall WHERE CompanyCode = 78397 AND InfoSourceCode = '110103' AND DATE(EndDate) = '2019-03-31';"
             },
             {
                 "id": 2,
@@ -4045,7 +4070,7 @@
                     "astockfinancedb.lc_balancesheetall"
                 ],
                 "reason": "我选择了TotalCurrentAssets和TotalAssets字段用于计算流动资产占总资产的比例，这是因为流动资产的比例反映了公司的短期流动资金状况。通过SUM函数汇总这些字段，保证无论数据有多少行均可计算出正确的比例。此外，限制条件细致地设定了根据CompanyCode、EndDate、InfoSource和IfMerged来确保查询结果的准确性，特别是限制EndDate确保获取的是2019年第一个季度的数据。最后使用ROUND函数将结果格式化为两位小数，从而满足财务报告的常用要求。",
-                "sql": "SELECT ROUND(SUM(TotalCurrentAssets) / SUM(TotalAssets) * 100, 2) AS CurrentAssetRatio FROM astockfinancedb.lc_balancesheetall WHERE CompanyCode = 78397 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-03-31' AND InfoSource LIKE '%第一季报%' AND IfMerged = 1;"
+                "sql": "SELECT ROUND(SUM(TotalCurrentAssets) / SUM(TotalAssets) * 100, 2) AS CurrentAssetRatio FROM astockfinancedb.lc_balancesheetall WHERE CompanyCode = 78397 AND DATE(EndDate) BETWEEN '2019-01-01' AND '2019-03-31' AND InfoSource LIKE '%第一季报%' AND IfMerged = 1;"
             },
             {
                 "id": 3,
@@ -4054,7 +4079,7 @@
                     "astockfinancedb.lc_balancesheetall"
                 ],
                 "reason": "我选择了TotalNonCurrentAssets和TotalAssets字段用于计算非流动资产占总资产的比例，这是因为非流动资产的比例能够反映公司的资本结构和长期投资状况。通过ROUND函数确保结果格式为两位小数，以符合财务数据的展示标准。此外，限制条件中细致设定了CompanyCode、InfoSourceCode以及EndDate，确保只提取特定公司的特定时间段内的准确数据，保证数据的有效性与相关性。",
-                "sql": "SELECT ROUND(TotalNonCurrentAssets / TotalAssets * 100, 2) AS NonCurrentAssetRatio FROM astockfinancedb.lc_balancesheetall WHERE CompanyCode = 78397 AND InfoSourceCode = 110103 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2019-03-31';"
+                "sql": "SELECT ROUND(TotalNonCurrentAssets / TotalAssets * 100, 2) AS NonCurrentAssetRatio FROM astockfinancedb.lc_balancesheetall WHERE CompanyCode = 78397 AND InfoSourceCode = 110103 AND DATE(EndDate) = '2019-03-31';"
             },
             {
                 "id": 4,
@@ -4063,7 +4088,7 @@
                     "astockeventsdb.lc_warrant"
                 ],
                 "reason": "我选择了FirstGuaranteeSum字段用于计算大北农为其子公司提供的总担保金额，这个字段直接提供了担保金额的数据。采用ROUND函数将计算结果格式化为两位小数，以符合财务报告标准。同时，限制条件中的CompanyCode、SubjectAssociation和InfoPublDate确保查询只针对大北农在2019年子公司的相关担保信息，这保证了数据的准确性和相关性。",
-                "sql": "SELECT ROUND(SUM(FirstGuaranteeSum), 2) AS TotalGuaranteeAmount FROM astockeventsdb.lc_warrant WHERE CompanyCode = 78397 AND SubjectAssociation = 10 AND DATE(STR_TO_DATE(InfoPublDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31';"
+                "sql": "SELECT ROUND(SUM(FirstGuaranteeSum), 2) AS TotalGuaranteeAmount FROM astockeventsdb.lc_warrant WHERE CompanyCode = 78397 AND SubjectAssociation = 10 AND DATE(InfoPublDate) BETWEEN '2019-01-01' AND '2019-12-31';"
             },
             {
                 "id": 5,
@@ -4102,7 +4127,7 @@
                     "astockshareholderdb.lc_buyback"
                 ],
                 "reason": "本查询通过计算梅花生物在2019年的股票回购次数，涉及的关键字段包括CompanyCode（用于确认公司的身份）和FirstPublDate（用于时间过滤）。由于针对特定公司的数据已有明确定义，因此直接使用了已知的CompanyCode值1806。查询的时间范围通过YEAR函数与FirstPublDate结合，确保没有遗漏2019年的任意回购。最终使用COUNT(*)来得到统计结果，以满足查询的需求。",
-                "sql": "SELECT COUNT(*) AS BuybackCount FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1806 AND YEAR(STR_TO_DATE(FirstPublDate, '%Y-%m-%d')) = 2019;"
+                "sql": "SELECT COUNT(*) AS BuybackCount FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1806 AND YEAR(FirstPublDate) = 2019;"
             },
             {
                 "id": 2,
@@ -4111,7 +4136,7 @@
                     "astockshareholderdb.lc_buyback"
                 ],
                 "reason": "本查询旨在计算梅花生物在2019年股票回购的金额合计。涉及到的关键字段包括CompanyCode（用于确保数据来源于梅花生物）和BuybackMoney（用于聚合回购总金额）。通过使用ROUND(SUM(BuybackMoney), 2)来获取金额的合计值，并保留两位小数。关键的时间限制条件为YEAR函数与FirstPublDate结合，确保所有计算均为2019年内的回购。",
-                "sql": "SELECT ROUND(SUM(BuybackMoney), 2) AS TotalBuybackMoney FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1806 AND YEAR(STR_TO_DATE(FirstPublDate, '%Y-%m-%d %H:%i:%s.%f')) = 2019;"
+                "sql": "SELECT ROUND(SUM(BuybackMoney), 2) AS TotalBuybackMoney FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1806 AND YEAR(FirstPublDate) = 2019;"
             },
             {
                 "id": 3,
@@ -4120,7 +4145,7 @@
                     "astockshareholderdb.lc_buyback"
                 ],
                 "reason": "本查询目的是获取梅花生物在2019年最大单笔回购的具体时间。涉及的关键字段包括CompanyCode（用于确认查询范围为梅花生物），BuybackMoney（用于排序以找出最大回购），和FirstPublDate与InsertTime（用于返回时间信息）。通过按BuybackMoney降序排序并限制结果为1，获取最大金额的记录。",
-                "sql": "SELECT FirstPublDate,InsertTime,StartDate FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1806 AND YEAR(STR_TO_DATE(FirstPublDate, '%Y-%m-%d %H:%i:%s.%f')) = 2019 ORDER BY BuybackMoney DESC LIMIT 1;"
+                "sql": "SELECT FirstPublDate,InsertTime,StartDate FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1806 AND YEAR(FirstPublDate) = 2019 ORDER BY BuybackMoney DESC LIMIT 1;"
             },
             {
                 "id": 4,
@@ -4129,7 +4154,7 @@
                     "astockshareholderdb.lc_buyback"
                 ],
                 "reason": "本查询的目的是获取梅花生物在2019年最大的单笔回购金额。涉及的关键字段包括CompanyCode（确保只查询梅花生物的数据）和BuybackMoney（用于找出最大金额）。通过ROUND(MAX(BuybackMoney), 2)计算出最大回购金额并保留两位小数，确保只计入2019年的记录。",
-                "sql": "SELECT ROUND(SUM(BuybackMoney), 2) FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1806 AND YEAR(STR_TO_DATE(FirstPublDate, '%Y-%m-%d %H:%i:%s.%f')) = 2019 ORDER BY BuybackMoney DESC LIMIT 1;"
+                "sql": "SELECT ROUND(SUM(BuybackMoney), 2) FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1806 AND YEAR(FirstPublDate) = 2019 ORDER BY BuybackMoney DESC LIMIT 1;"
             },
             {
                 "id": 5,
@@ -4145,7 +4170,7 @@
                     "astockshareholderdb.lc_buyback"
                 ],
                 "reason": "本查询的目的是计算梅花生物在2019年的平均回购金额。涉及的关键字段包括CompanyCode（用于确认查询的数据为梅花生物）和BuybackMoney（用于计算平均值）。通过ROUND(AVG(BuybackMoney), 2)计算期间的平均回购金额，并保留到小数点后两位，确保在2019年的记录中进行该计算。",
-                "sql": "SELECT ROUND(AVG(BuybackMoney), 2) AS TotalBuybackMoney FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1806 AND YEAR(STR_TO_DATE(FirstPublDate, '%Y-%m-%d %H:%i:%s.%f')) = 2019;"
+                "sql": "SELECT ROUND(AVG(BuybackMoney), 2) AS TotalBuybackMoney FROM astockshareholderdb.lc_buyback WHERE CompanyCode = 1806 AND YEAR(FirstPublDate) = 2019;"
             }
         ]
     },
@@ -4279,7 +4304,7 @@
                     "astockshareholderdb.lc_sharefp"
                 ],
                 "reason": "选择所有字段是为了获取美年健康在2019年发生的所有股权质押记录的全面信息。关键字段包括：CompanyCode（2730，标识美年健康）、TypeSelect（3，代表股权质押）及StartDate（以确保日期范围为2019年），这些都直接满足查询条件。由于公司代码和质押类型是查询的主要限制条件，我们进行了必要的过滤，以确保获取准确的记录和信息。这种选择也保证了查询的效率，使我们能够得到想要的数据结果。",
-                "sql": "SELECT * FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND TypeSelect = 3 AND DATE(STR_TO_DATE(StartDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31';"
+                "sql": "SELECT * FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND TypeSelect = 3 AND YEAR(StartDate) = 2019;"
             },
             {
                 "id": 2,
@@ -4288,7 +4313,7 @@
                     "astockshareholderdb.lc_sharefp"
                 ],
                 "reason": "选择所有字段是为了获得美年健康在2019年所有相关股权质押记录的详细信息。关键字段包括：CompanyCode（2730，为确认美年健康）、TypeSelect（3，指代股权质押）、InfoPublDate（日期范围限制），以及PCTOfPledger（用于按比例排序并确定最高的记录）。通过这些条件的组合，可以确保查询出2019年间质押比例最大的股权质押记录。所有的条件合在一起保障了查询的准确性。",
-                "sql": "SELECT * FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND TypeSelect = 3 AND DATE(STR_TO_DATE(InfoPublDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31' ORDER BY PCTOfPledger DESC LIMIT 1;"
+                "sql": "SELECT * FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND TypeSelect = 3 AND YEAR(InfoPublDate) = 2019 ORDER BY PCTOfPledger DESC LIMIT 1;"
             },
             {
                 "id": 3,
@@ -4297,7 +4322,7 @@
                     "astockshareholderdb.lc_sharefp"
                 ],
                 "reason": "查询仅返回FPSHName字段，以获取美年健康在2019年质押比例最大股东的名称。关键条件包括：CompanyCode（2730，确保是针对美年健康公司）、TypeSelect（3，表示股权质押）、以及年份条件（确保是2019年数据），随后根据PCTOfPledger降序排列以找到最大质押比例记录。通过这些条件的结合，准确性和高效性得以保障。",
-                "sql": "SELECT FPSHName FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND TypeSelect = 3 AND YEAR(STR_TO_DATE(InfoPublDate, '%Y-%m-%d %H:%i:%s.%f')) = 2019 ORDER BY PCTOfPledger DESC LIMIT 1;"
+                "sql": "SELECT FPSHName FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND TypeSelect = 3 AND YEAR(InfoPublDate) = 2019 ORDER BY PCTOfPledger DESC LIMIT 1;"
             },
             {
                 "id": 4,
@@ -4306,7 +4331,7 @@
                     "astockshareholderdb.lc_sharefp"
                 ],
                 "reason": "查询返回ReceiverName字段，目的是获取美年健康在2019年所有股权质押中质押比例最大的质押对象的名称。关键条件包括：CompanyCode（2730，指向美年健康）、TypeSelect（3，表示股权质押）、InfoPublDate（确保时间框架是2019年）；接着通过PCTOfPledger按比例降序排列，最后限制结果为1以获得最大质押比例的记录。通过这些条件组合，确保了查询的准确性和针对性。",
-                "sql": "SELECT ReceiverName FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND TypeSelect = 3 AND DATE(STR_TO_DATE(InfoPublDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31' ORDER BY PCTOfPledger DESC LIMIT 1;"
+                "sql": "SELECT ReceiverName FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND TypeSelect = 3 AND DATE(InfoPublDate) BETWEEN '2019-01-01' AND '2019-12-31' ORDER BY PCTOfPledger DESC LIMIT 1;"
             },
             {
                 "id": 5,
@@ -4315,7 +4340,7 @@
                     "astockshareholderdb.lc_sharefp"
                 ],
                 "reason": "查询返回InvolvedSum字段，其目的是为获取美年健康在2019年质押比例最大的一笔股权质押的质押股数。关键条件包括CompanyCode（2730，确保记录是美年健康的）、StartDate（确保时间框架是2019年）；接着通过PCTOfPledger按比例降序排列以找出最大质押比例的记录。通过这些条件组合，保证了查询的有效性和准确性。",
-                "sql": "SELECT InvolvedSum FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND YEAR(STR_TO_DATE(StartDate, '%Y-%m-%d')) = 2019 ORDER BY PCTOfPledger DESC LIMIT 1;"
+                "sql": "SELECT InvolvedSum FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND YEAR(StartDate) = 2019 ORDER BY PCTOfPledger DESC LIMIT 1;"
             },
             {
                 "id": 6,
@@ -4342,7 +4367,7 @@
                     "astockshareholderdb.lc_sharefpsta"
                 ],
                 "reason": "查询使用COUNT(*)汇总指定条件下的记录数，统计在2019年全年美年健康的股权质押笔数。关键条件包括：CompanyCode（2730，用于限制记录为美年健康）、EndDate（确保记录是在2019年有效）、以及Category（3，确保记录为股权质押）。通过这些组合，确保查询的准确性与有效性。",
-                "sql": "SELECT COUNT(*) AS PledgeCount FROM astockshareholderdb.lc_sharefpsta WHERE CompanyCode = 2730 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31' AND Category = 3;"
+                "sql": "SELECT COUNT(*) AS PledgeCount FROM astockshareholderdb.lc_sharefpsta WHERE CompanyCode = 2730 AND YEAR(EndDate) = 2019 AND Category = 3;"
             },
             {
                 "id": 9,
@@ -4351,7 +4376,7 @@
                     "astockshareholderdb.lc_sharefp"
                 ],
                 "reason": "查询返回InitialPledgeSum字段的汇总金额，表示美年健康在2019年全年股权质押融资的总额。关键条件包括CompanyCode（2730，确保仅选中美年健康）、InfoPublDate（确保仅在2019年内有效的记录），以及TypeSelect（3，确保记录是股权质押类型）。通过这些条件的有效结合，确保所查询的数据反映了真实的融资状态，结果也有高度的精准性。",
-                "sql": "SELECT SUM(InitialPledgeSum) AS TotalPledgeAmount FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND DATE(STR_TO_DATE(InfoPublDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-12-31' AND TypeSelect = 3;"
+                "sql": "SELECT SUM(InitialPledgeSum) AS TotalPledgeAmount FROM astockshareholderdb.lc_sharefp WHERE CompanyCode = 2730 AND YEAR(InfoPublDate) = 2019 AND TypeSelect = 3;"
             },
             {
                 "id": 10,
@@ -4388,7 +4413,7 @@
                     "astockeventsdb.lc_investorra"
                 ],
                 "reason": "在这次查询中，我选择了InnerCode字段（4427）来锁定特定的公司横店东磁。同时使用ReceptionDate字段并通过BETWEEN条件限制在2019年1月份，以确保筛选出特定时间范围内的活动。最重要的是，我还计数了Participant字段来找到参与机构最多的活动日期，最后选择了ReceptionDate作为输出字段，因为这是关键查询目标。",
-                "sql": "SELECT ReceptionDate FROM astockeventsdb.lc_investorra WHERE InnerCode = 4427 AND DATE(STR_TO_DATE(ReceptionDate, '%Y-%m-%d %H:%i:%s.%f')) BETWEEN '2019-01-01' AND '2019-01-31' GROUP BY ReceptionDate ORDER BY COUNT(Participant) DESC LIMIT 1;"
+                "sql": "SELECT ReceptionDate FROM astockeventsdb.lc_investorra WHERE InnerCode = 4427 AND YEAR(ReceptionDate) = 2019 GROUP BY ReceptionDate ORDER BY COUNT(Participant) DESC LIMIT 1;"
             },
             {
                 "id": 3,
@@ -4459,7 +4484,7 @@
                     "astockshareholderdb.lc_sharestru"
                 ],
                 "reason": "在这个查询中，使用了TotalShares作为必选字段，因为我们只需查询中直股份在2021年12月31日的总股本。筛选条件中CompanyCode明确指定为1058，是查询该公司的必要条件。同时，EndDate字段约束为特定日期，以确保获取到正确的股本数据。选定的取值是基于题目中提供的具体信息，确保查询的准确性。",
-                "sql": "SELECT TotalShares FROM AStockShareholderDB.LC_ShareStru WHERE CompanyCode = 1058 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31';"
+                "sql": "SELECT TotalShares FROM AStockShareholderDB.LC_ShareStru WHERE CompanyCode = 1058 AND DATE(EndDate) = '2021-12-31';"
             },
             {
                 "id": 2,
@@ -4468,7 +4493,7 @@
                     "astockshareholderdb.lc_sharestru"
                 ],
                 "reason": "在这个查询中，RestrictedShareProp字段根据有限售条件的流通股与总股本的比例进行计算，这是查询的核心目标。CompanyCode指定为1058，确保我们关注的是中直股份；而EndDate限制为'2021-12-31'以获取这个特定日期的数据。选定的取值和字段是基于题目中提供的信息，确保我们获取的结果是准确且完整的。",
-                "sql": "SELECT ROUND((RestrictedShares / TotalShares) * 100, 2) AS RestrictedShareProp FROM AStockShareholderDB.LC_ShareStru WHERE CompanyCode = 1058 AND DATE(STR_TO_DATE(EndDate, '%Y-%m-%d %H:%i:%s.%f')) = '2021-12-31';"
+                "sql": "SELECT ROUND((RestrictedShares / TotalShares) * 100, 2) AS RestrictedShareProp FROM AStockShareholderDB.LC_ShareStru WHERE CompanyCode = 1058 AND DATE(EndDate) = '2021-12-31';"
             },
             {
                 "id": 3,

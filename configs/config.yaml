@@ -2,10 +2,11 @@
 global:
   default_model: "gpt-4o-mini"  # 默认使用的模型名称
   sql_reason_model: "gpt-4o-mini"
+  entity_recognition_agent_model: "gpt-4o-mini"
   default_embedding: "silicon-bge-m3"  # 默认使用的词向量模型名称
   embedding_pool_size: 5       # 词向量模型的缓冲池大小
 
-  request_timeout: 360          # 请求超时时间（秒）
+  request_timeout: 720          # 请求超时时间（秒）
   retries: 3                   # 失败时的重试次数
   top_k: 5                     # 返回前k个最相似的问题
 
@@ -125,7 +126,14 @@ models:
     model_type: chat
     type: openai
     rpm: 256
-  
+
+  tianyi-deepseek-v3:
+    name: "9dc913a037774fc0b248376905c85da5"
+    api_base: "https://wishub-x1.ctyun.cn/v1"  
+    api_key: "5b401c5c4563493cb6e182db2a0431ad"  
+    model_type: chat
+    type: openai
+    rpm: 256
 
   silicon-deepseek:
     name: "deepseek-ai/DeepSeek-V3"

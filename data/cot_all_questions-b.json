@@ -1412,19 +1412,23 @@
             {
                 "id": 1,
                 "subquestion": "查询普洛药业股份有限公司最近一次创上市以来的新高的日期。",
-                "table_name": [],
-                "reason": "",
+                "table_name": [
+                    "astockmarketquotesdb.cs_stockpatterns"
+                ],
+                "reason": "该查询选择了 TradingDay 作为返回字段，因为这是我们需要获取的特定信息。使用 InnerCode = 413 确保查询仅针对普洛药业股份有限公司，而 IfHighestHPriceSL = 1 则筛选出最近的上市以来新高。通过 ORDER BY TradingDay DESC 和 LIMIT 1 来确保返回最新的交易日期。这些选择都非常符合问题的需求标准。",
                 "sql": "SELECT TradingDay FROM astockmarketquotesdb.cs_stockpatterns WHERE InnerCode = 413 and IfHighestHPriceSL = 1 ORDER BY TradingDay DESC LIMIT 1;"
             },
             {
                 "id": 2,
                 "subquestion": "查询在普洛药业股份有限公司创出新高的当天，涨幅超过10%的股票数量。",
-                "table_name": [],
-                "reason": "",
+                "table_name": [
+                    "astockmarketquotesdb.qt_stockperformance"
+                ],
+                "reason": "该查询选择了 COUNT(*) AS StockCount 作为返回字段，以统计在普洛药业股份有限公司创出新高当天（2021-11-29）涨幅超过10%的股票数量。通过设置 TradingDay = '2021-11-29' 限定查询时间，ChangePCT > 10 过滤出符合涨幅条件的记录，InnerCode != 413 则确保不统计普洛药业本身。这些条件都非常符合问题的需求标准。",
                 "sql": "SELECT COUNT(*) AS StockCount FROM astockmarketquotesdb.qt_stockperformance WHERE TradingDay = '2021-11-29' AND ChangePCT > 10 AND InnerCode != 413"
             },
             {
-                "id": 3, 
+                "id": 3,
                 "subquestion": "查询在当天涨幅超过10%的股票中，哪些公司是连板的。",
                 "table_name": [],
                 "reason": "",
@@ -1638,22 +1642,28 @@
             {
                 "id": 1,
                 "subquestion": "查询凤凰新媒体的联系电话。",
-                "table_name": [],
-                "reason": "",
+                "table_name": [
+                    "usstockdb.us_companyinfo"
+                ],
+                "reason": "在查询中，PEOTel是我们直接关注的联系人信息，而CompanyCode则用作查询的条件，以确保检索到的电话号码仅属于凤凰新媒体。通过将CompanyCode限制为7003994，我们保证了查询的针对性和准确性。联系电话PEOTel希望获得的是有效的公司联系号码格式，可能为带国家区号的字符串格式。",
                 "sql": "SELECT PEOTel FROM usstockdb.us_companyinfo WHERE CompanyCode = 7003994"
             },
             {
                 "id": 2,
                 "subquestion": "查询凤凰新媒体成立的时间。（时间回答XXXX-XX-XX）",
-                "table_name": [],
-                "reason": "",
+                "table_name": [
+                    "usstockdb.us_companyinfo"
+                ],
+                "reason": "在查询中，EstablishmentDate是我们需要获取的数据，因为它记录了凤凰新媒体的成立时间。同时，CompanyCode字段用于查询条件限制，以确保检索到的数据仅对凤凰新媒体有效。查询的目标是得到一个格式化的成立日期，故需使用DATE_FORMAT函数将其格式化为XXXX-XX-XX的形式。",
                 "sql": "SELECT DATE_FORMAT(EstablishmentDate, '%Y-%m-%d') AS EstablishmentDate FROM usstockdb.us_companyinfo WHERE CompanyCode = 7003994"
             },
             {
                 "id": 3,
                 "subquestion": "查询2020年9月18日凤凰新媒体的收盘价。",
-                "table_name": [],
-                "reason": "",
+                "table_name": [
+                    "usstockdb.us_dailyquote"
+                ],
+                "reason": "在查询中，Close是我们需要获取的收盘价字段，而InnerCode字段用于查询条件限制，以确保检索到的数据仅对凤凰新媒体有效。此外，TradingDay字段用作限制，用于精确匹配特定日期的收盘信息。选定的InnerCode值为7001932，而交易日被限制为2020年9月18日，这样可以确保我们获取到正确的收盘价格。",
                 "sql": "SELECT Close AS ClosePrice FROM usstockdb.us_dailyquote WHERE InnerCode = 7001932 AND DATE(TradingDay) = '2020-09-18'"
             }
         ]

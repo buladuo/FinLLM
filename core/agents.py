@@ -165,6 +165,10 @@ class SQLGeneratorAgent(BaseAgent):
                 return []
         return result
 
+class QuestionExpandAgent(BaseAgent):
+    def query(self, message, prompt_id=None):
+        return self._query_and_extract_json('question_expand', message, prompt_id)
+
 class SQLComparisonAgent(BaseAgent):
     def query(self, message, prompt_id=None):
         return self._query_and_extract_json('sql_comparison', message, prompt_id)

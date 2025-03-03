@@ -3,9 +3,12 @@ import os
 import json
 import uuid
 import logging
+
+
 import numpy as np
 
 from tqdm import tqdm
+from core.agents import QuestionExpandAgent
 from services.embedding_client import OpenAIEmbeddingService
 
 from collections import deque
@@ -30,6 +33,7 @@ class TemplatesManager:
             else:
                 self.logger.error(f"模板文件 {path} 不存在。")
                 raise FileNotFoundError(f"模板文件 {path} 不存在。")
+            
     
     def get_topk_questions(self, question_str) -> list:
         """
@@ -206,6 +210,10 @@ class TemplatesManager:
         embedding2 = np.array(embedding2)
         similarity = np.dot(embedding1, embedding2) / (np.linalg.norm(embedding1) * np.linalg.norm(embedding2))
         return similarity
+    
+    def __iter__(self):
+        """迭代器，用于遍历模板"""
+        return iter(self.templates.items())
 
     def test_topk_question_table_names(self, question_str: str, topk=5):
         """

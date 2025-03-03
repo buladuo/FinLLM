@@ -101,7 +101,8 @@ class LLMService(ABC):
         """
         # 示例检查：根据某些关键词裁剪文本
         thinking_indicators = [
-            "[思考结束]"
+            "[思考结束]",
+            "</think>"
         ]
 
         for indicator in thinking_indicators:

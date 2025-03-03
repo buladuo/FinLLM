@@ -315,95 +315,11 @@ class SqlProcessor:
                         'annotations': " | ".join(combined_annotations)
                     })
 
-
-
-    
-    # def get_sql_result(self,question:str,entity_info:dict,all_info:list,sql_example:None, history_subquestions:list)->list:
-    #     prompt = f"""\n问题是：{question}\n已知实体信息：\n```json\n{entity_info}\n```\n
-    #                 \n已经完成的历史查询信息：\n```json\n{history_subquestions}\n```\n涉及的表的信息：\n{all_info}\n
-    #                 在回答之前，你应当首先解读我的提问:{question}，你应当从已知的信息中读取信息，然后按照要求生成sql。
-    #                 请注意：externtion_annotation字段中包含了重要的信息，我要求你首先解读其中的每一条指示.
-    #                 之后，你需要逐个字段分析表中的每一个字段的注解信息，这有助于你选择正确的数值。最后你再生成sql"""
-        
-    #     sql_list = []
-    #     if sql_example:
-    #         sql_list = list(self.sql_generator_agent.query_json_format([{
-    #                     'role':'user',
-    #                     'content':prompt
-    #                 }],'json_format_witout_example',examples=sql_example))
-    #     else:
-    #         sql_list = list(self.sql_generator_agent.query_json_format([{
-    #             'role':'user',
-    #             'content':prompt
-    #         }]))
-        
-    #     for sql in sql_list:
-            
-    #         if 'sql' not in sql:
-    #             self.logger.warning(f"Warning: 'sql' field is missing in the sql list item: {sql}")
-    #             continue
-    #         sql_result = self.db_client.query(sql['sql'])
-    #         sql_message = []
-    #         retry_count = 0
-    #         while sql_result and sql_result.get('success',False) == False and retry_count < self.retries:
-    #             # TODO : 多轮对话形式
-                
-    #             prompt_with_error = f"""\n问题是\n{question}\n
-    #                                     已知信息：\n{entity_info}\n
-    #                                     涉及的表的信息：\n{all_info}\n
-    #                                     SQL:\n{sql['sql']}\n
-    #                                     错误信息:\n{sql_result['detail']}"""
-    #             sql_message.append({
-    #                 'role':'user',
-    #                 'content':prompt_with_error
-    #             })
-    #             response, sql['sql'] = self.sql_regenerator_agent.query(sql_message)
-                
-    #             sql_message.append({
-    #                 'role':'assistant',
-    #                 'content':response
-    #             })
-                
-    #             sql_result = self.db_client.query(sql['sql'])
-    #             retry_count +=1
-                
-    #         if not sql_result:
-    #             sql_result = {'success':False}
-    #         sql['sql_result_count'] = sql_result.get('count') if sql_result['success'] else 0
-    #         sql_result = self.code2name.process(sql_result) if sql_result['success'] else sql_result
-    #         sql['sql_result'] = sql_result['data'] if sql_result['success'] else []
-                
-    #         if sql_result['success']:
-    #             sql['filed_annotations'] = []
-    #             # 如果成功就获取sql中的查询字段，然后找到它们的解释
-    #             fields = self.extract_fields(sql['sql'])
-                
-    #             for field in fields:
-    #                 combined_annotations = []  # 用于存储每个字段来自不同表的注释
-    #                 field_lower = field.lower()  # 将当前字段转换为小写以进行不区分大小写的比较
-                    
-    #                 for table in all_info:
-    #                     for column in table['fields']:
-    #                         if str(column['column_name']).lower() == field_lower:  # 不区分大小写的匹配
-    #                             # 将找到的注释添加到列表中
-    #                             # combined_annotations.append(column['annotation'])
-    #                             # 如果需要，可以添加中文注释
-    #                             if column['annotation_zh'] and str(column['annotation_zh']).strip() != 'nan':
-    #                                 combined_annotations.append(str(column['annotation_zh']))
-                    
-    #                 # 将匹配到的所有注释合并成一个字符串
-    #                 if combined_annotations:
-    #                     sql['filed_annotations'].append({
-    #                         'field': field,
-    #                         'annotations': " | ".join(combined_annotations)  # 使用 | 分隔多个注释
-    #                     })
-                        
-    #     self.logger.info(f"SQL Query Result: {json.dumps(sql_list, indent=4, ensure_ascii=False)}")
-    #     return sql_list
     
     def generate_template(self, question_id:int):
         id = 0
         for file_path in TEMPLATE_PATH:
+            
             if os.path.exists(file_path):
                 with open(file_path, 'r', encoding='utf-8') as file:
                     data = json.load(file)
@@ -434,10 +350,13 @@ class SqlProcessor:
                         message.append({'role':'user','content':f"## 这里是sql所涉及的表的信息:\n{all_info}\n ## 以下是我的请求问题:\n{question}\n## 以下是我的sql查询:\n{sql_query}\n## 题目中已经知道的实体信息为：\n{entity_result}"})
                         response,result = self.sql_reason_agent.query(message)
                         
-                        if isinstance(result,list):
-                            result = result[-1]
-                            subquestion['reason'] = str(result.get('reason',""))
-                        
+                        try:
+                            if isinstance(result,list) and len(result) > 0:
+                                result = result[-1]
+                                subquestion['reason'] = str(result.get('reason',""))
+                        except Exception as e:
+                            self.logger.error(f"An error occurred: {e}")
+                            return
                         message.append({'role':'assistant','content':f"{response}"})
                     
                         
