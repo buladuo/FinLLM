@@ -15,7 +15,7 @@ models:
   gpt-4o-mini:
     name: "gpt-4o-mini"          
     api_base: "https://free.v36.cm/v1" 
-    api_key: "sk-dBvrgbjY7kd1WmstF904AaA07e9647D583255122B05a41B6"      # 模型后端的 API 密钥
+    api_key: "sk-xxx"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 96
@@ -23,7 +23,7 @@ models:
   gpt-3.5-turbo-0125:
     name: "gpt-3.5-turbo-0125"          
     api_base: "https://free.v36.cm/v1" 
-    api_key: "sk-dBvrgbjY7kd1WmstF904AaA07e9647D583255122B05a41B6"      # 模型后端的 API 密钥
+    api_key: "sk-xxx"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 96
@@ -31,7 +31,7 @@ models:
   gpt-3.5-turbo-1106:
     name: "gpt-3.5-turbo-1106"          
     api_base: "https://free.v36.cm/v1" 
-    api_key: "sk-dBvrgbjY7kd1WmstF904AaA07e9647D583255122B05a41B6"      # 模型后端的 API 密钥
+    api_key: "sk-xxx"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 96
@@ -39,7 +39,7 @@ models:
   gpt-3.5-turbo:
     name: "gpt-3.5-turbo"          
     api_base: "https://free.v36.cm/v1" 
-    api_key: "sk-dBvrgbjY7kd1WmstF904AaA07e9647D583255122B05a41B6"      # 模型后端的 API 密钥
+    api_key: "sk-xxx"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 96
@@ -47,7 +47,7 @@ models:
   gpt-3.5-turbo-16k:
     name: "gpt-3.5-turbo-16k"          
     api_base: "https://free.v36.cm/v1" 
-    api_key: "sk-dBvrgbjY7kd1WmstF904AaA07e9647D583255122B05a41B6"      # 模型后端的 API 密钥
+    api_key: "sk-xxx"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 96
@@ -55,7 +55,7 @@ models:
   qwen:
     name: "qwen"          
     api_base: "http://127.0.0.1:8011/v1" 
-    api_key: "XATd9u91Ag5eKKe3Nufbazzp_8Gn1gsBy1ogROHqapzX0CcdoyjNa$rW04pVMVkcWSVq*3ZvwxOZ0"      # 模型后端的 API 密钥
+    api_key: "xxx"      # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 5
@@ -63,7 +63,7 @@ models:
   qwen-7b:
     name: "Qwen/Qwen2-7B-Instruct"          
     api_base: "https://api.siliconflow.cn/v1"
-    api_key: "sk-pmpxekdgnabxqleqymrgsdijeprbmjvwhuatplnmftdmezpx"  
+    api_key: "sk-xxx"  
     model_type: chat
     type: openai
     rpm: 100
@@ -71,7 +71,7 @@ models:
   glm-4:
     name: "glm-4"          
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
-    api_key: "be01fb2ddeb44fe58450ea527b39aa4a.pxLoq9k0WPekcIHm"    # 模型后端的 API 密钥
+    api_key: "xxx"    # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 100
@@ -80,7 +80,7 @@ models:
   glm-4-plus:
     name: "glm-4-plus"         
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
-    api_key: "be01fb2ddeb44fe58450ea527b39aa4a.pxLoq9k0WPekcIHm"    # 模型后端的 API 密钥
+    api_key: "xxx"    # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 100
@@ -89,7 +89,7 @@ models:
   glm-4-flash:
     name: "glm-4-flash"         
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
-    api_key: "be01fb2ddeb44fe58450ea527b39aa4a.pxLoq9k0WPekcIHm"    # 模型后端的 API 密钥
+    api_key: "xxx"    # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 100
@@ -97,7 +97,7 @@ models:
   glm-4-flashx:
     name: "glm-4-flashx"         
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
-    api_key: "be01fb2ddeb44fe58450ea527b39aa4a.pxLoq9k0WPekcIHm"    # 模型后端的 API 密钥
+    api_key: "xxx"    # 模型后端的 API 密钥
     model_type: chat
     type: openai
     rpm: 100
@@ -105,7 +105,7 @@ models:
   glm-zero-preview:
     name: "glm-zero-preview"          
     api_base: "https://open.bigmodel.cn/api/paas/v4"  
-    api_key: "be01fb2ddeb44fe58450ea527b39aa4a.pxLoq9k0WPekcIHm"    # 模型后端的 API 密钥
+    api_key: "xxx"    # 模型后端的 API 密钥
     model_type: think
     type: openai
     rpm: 100
@@ -114,7 +114,7 @@ models:
   doubao:
     name: "doubao"            
     api_base: "http://127.0.0.1:8013/v1"  
-    api_key: "59c23e5f7c59e74fe511cf99e4379115"    
+    api_key: "xxx"    
     model_type: chat
     type: openai
     rpm: 5
@@ -122,7 +122,7 @@ models:
   deepseek-chat:
     name: "deepseek-chat"
     api_base: "https://api.deepseek.com/v1"  
-    api_key: "sk-a14dd5cce0ef4119bb0d1cfde15742b9"  
+    api_key: "sk-xxx"  
     model_type: chat
     type: openai
     rpm: 256
@@ -130,7 +130,7 @@ models:
   tianyi-deepseek-v3:
     name: "9dc913a037774fc0b248376905c85da5"
     api_base: "https://wishub-x1.ctyun.cn/v1"  
-    api_key: "5b401c5c4563493cb6e182db2a0431ad"  
+    api_key: "xxx"  
     model_type: chat
     type: openai
     rpm: 256
@@ -138,21 +138,21 @@ models:
   silicon-deepseek:
     name: "deepseek-ai/DeepSeek-V3"
     api_base: "https://api.siliconflow.cn/v1"
-    api_key: "sk-pmpxekdgnabxqleqymrgsdijeprbmjvwhuatplnmftdmezpx"  
+    api_key: "sk-xxx"  
     model_type: chat
     type: openai
     rpm: 100
   deepseek-r1:
     name: "deepseek-r1"
     api_base: "http://127.0.0.1:8015/v1"  
-    api_key: "eUcQbrjW28xhK7sVkgF4VQgZ4W2W+hKkwnhIDtme4lQvcis6/xUgvxx5lEyBE1JA"   
+    api_key: "xxx"   
     model_type: think
     type: openai
     rpm: 5
   deepseek-v3:
     name: "deepseek-v3"
     api_base: "http://127.0.0.1:8015/v1"  
-    api_key: "eUcQbrjW28xhK7sVkgF4VQgZ4W2W+hKkwnhIDtme4lQvcis6/xUgvxx5lEyBE1JA"   
+    api_key: "xxx"   
     model_type: chat
     type: openai
     rpm: 5
@@ -161,7 +161,7 @@ embeddings:
   silicon-bge-m3:
     name: BAAI/bge-m3
     api_base: "https://api.siliconflow.cn/v1"
-    api_key: "sk-pmpxekdgnabxqleqymrgsdijeprbmjvwhuatplnmftdmezpx"
+    api_key: "sk-xxx"
     model_type: embedding
     dim: 1024
     rpm: 2000
@@ -170,7 +170,7 @@ embeddings:
   bce-embedding-base_v1:
     name: netease-youdao/bce-embedding-base_v1
     api_base: "https://api.siliconflow.cn/v1"
-    api_key: "sk-pmpxekdgnabxqleqymrgsdijeprbmjvwhuatplnmftdmezpx"
+    api_key: "sk-xxx"
     model_type: embedding
     dim: 768
     rpm: 2000
@@ -179,7 +179,7 @@ embeddings:
   glm-embedding-3:
     name: embedding-3
     api_base: "https://open.bigmodel.cn/api/paas/v4"
-    api_key: "8ddeffec8d07a1e165e9cb0b4c0b3b7.hG5n1LQU482l3Up0"
+    api_key: "xxx.xxx"
     model_type: embedding
     dim: 2048
     dimensions: [2048,1024,512,256]
@@ -189,7 +189,7 @@ embeddings:
 
 database:
   api_url: "https://comm.chatglm.cn/finglm2/api/query"  
-  api_key: "9f7794f4179e441392168ab686b32f4a"             
+  api_key: "xxx"             
   timeout: 15                                  
 
 logging:
